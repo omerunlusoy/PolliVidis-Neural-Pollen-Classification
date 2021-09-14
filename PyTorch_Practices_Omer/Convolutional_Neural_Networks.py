@@ -120,7 +120,6 @@ def show_images(images, labels, predictions=None):
                          color=("green" if predictions[index] == labels[index] else "red"))
             # plt.savefig('testset.jpg', dpi=500, bbox_inches='tight')
 
-
     plt.show()
 
 
@@ -353,8 +352,8 @@ def train_network(model_conv, training_loader, criterion, optimizer):
     if plot_loss_and_corrects:
         model_conv.plot_loss_and_corrects_epoch(epochs, losses, corrects, validation_losses, validation_corrects)
 
-# MAIN #################################################################################################################
 
+# MAIN #################################################################################################################
 
 # training dataset
 transform = transforms.Compose([transforms.Resize((28, 28)),
