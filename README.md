@@ -7,5 +7,5 @@ CS 491 Senior Design Project (Pollen Classification with Deep Learning)
   - Elif Gamze Güliter    - 21802870  
   - İrem Tekin		        - 21803267  
   - Ece Ünal			        - 21703149 
-  - Umut Ada Yürüten		-  
+  - Umut Ada Yürüten		  - 21802410 
 
