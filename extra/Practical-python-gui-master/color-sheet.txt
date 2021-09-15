@@ -1,0 +1,11 @@
+#2993cc - blue
+#0078d7 - default
+#298BCC - mild blue
+#0099ff - mild blue 2
+#298FCC - mild blue 3
+#F7630C - orange bright
+#E81123 - red
+#9BCC29 - lime
+#486860 - missed name
+#68768A - steel blue
+#4C4A48 - storm (dark)
