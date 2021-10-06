@@ -1,4 +1,4 @@
-# CS491_Senior_Design_Project
+# CS491 Senior Design Project
 
 CS 491 Senior Design Project (Pollen Classification with Deep Learning)
 
@@ -9,4 +9,8 @@ CS 491 Senior Design Project (Pollen Classification with Deep Learning)
   - Ece Ünal			        - 21703149 
   - Umut Ada Yürüten		  - 21802410 
 
-### Website : https://omerunlusoy.github.io/CS491_Senior_Design_Project/
+### Files
+[Project Specifications Report]()
+
+### Project Website
+[Website](https://omerunlusoy.github.io/CS491_Senior_Design_Project/)
