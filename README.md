@@ -13,5 +13,7 @@ CS 491 Senior Design Project (Pollen Classification with Deep Learning)
 ### Files
 [Project Specifications Report](https://github.com/omerunlusoy/CS491_Senior_Design_Project/blob/main/Reports/Specification.pdf)
 
+[Analysis Report](https://github.com/omerunlusoy/CS491_Senior_Design_Project/blob/main/Reports/Analysis_Report.pdf)
+
 ### Project Website
 [Website](https://omerunlusoy.github.io/CS491_Senior_Design_Project/)
