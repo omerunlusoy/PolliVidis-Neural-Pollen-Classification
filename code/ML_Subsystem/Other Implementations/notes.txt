@@ -1,0 +1,22 @@
+Alternatives for Image Extraction:
+
+- skimage.filters.threshold_otsu()
+- skimage.filters.threshold_niblack()
+- skimage.filters.threshold_sauvola()
+
+- skimage.filters.threshold_otsu()  -PLUS-
+- skimage.morphology.binary_erosion() # Apply 2 times erosion to get rid of background particles  -PLUS-
+- skimage.morphology.binary_dilation() # Apply 14 times dilation to close holes
+
+- skimage.measure.find_contours()
+
+- cv2.threshold()
+- cv2.erode()
+- cv2.dilate()
+
+- cv2.GaussianBlur()
+- cv2.Sobel()
+
+- YOLO
+
+- ImageAI
