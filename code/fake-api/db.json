@@ -1,0 +1,38 @@
+{
+  "analysis_posts": [
+    {
+      "id": 1,
+      "date": "22.11.2000",
+      "lat": 60.192059,
+      "lng": 24.945831,
+      "image_url": "",
+      "analysis_text": ""
+    },
+    {
+      "id": 2,
+      "date": "Thu Dec 09 2021 17:06:14 GMT+0300 (GMT+03:00)",
+      "lat": 39.8872314,
+      "lng": 32.8198321,
+      "image_url": null,
+      "analysis_text": "this is example analysis text"
+    },
+    {
+      "id": 10,
+      "date": "Thu Dec 09 2021 18:41:34 GMT+0300 (GMT+03:00)",
+      "lat": 39.8893265,
+      "lng": 32.8050856,
+      "image_url": null,
+      "analysis_text": "this is example analysis text"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
