@@ -55,7 +55,7 @@ database_manager = Database_Manager(initialize_database=True)
 
 # add_academic test
 pp = Image.open("6.jpg")
-academic = AcademicModel(3, "John", "SaysHi", "Dr.", "Bilkent University", "Researcher", "john@bilkent.edu.tr", "asd123", pp, "research_gate/John")
+academic = AcademicModel(-1, "John", "SaysHi", "Dr.", "Bilkent University", "Researcher", "john@bilkent.edu.tr", "asd123", pp, "research_gate/John")
 john_id = database_manager.add_academic(academic)
 academic_id = database_manager.get_academic_from_email("john@bilkent.edu.tr").academic_id
 print(john_id, academic_id)
