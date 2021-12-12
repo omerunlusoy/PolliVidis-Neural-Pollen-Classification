@@ -203,12 +203,11 @@ def main():
 
     pollen_extraction = Pollen_Extraction()
 
-    pollen_extraction.extract_folder(source_directory, save_directory, current_folder, n_dilation)
+    # pollen_extraction.extract_folder(source_directory, save_directory, current_folder, n_dilation)
 
     pollen_image = Image.open("test_images/4.jpg")
-    img = pollen_extraction.extract_PIL_Image(pollen_image, 16)
+    img = pollen_extraction.extract_PIL_Image(pollen_image, 0)
     for im in img:
-        print(im)
         plt.imshow(im)
         plt.show()
 
