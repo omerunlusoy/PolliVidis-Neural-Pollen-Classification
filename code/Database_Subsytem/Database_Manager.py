@@ -33,7 +33,7 @@ from random import randint
 # get_feedback_from_email(email) -> [FeedbackModel]
 
 # IMPORTANT NOTE: do not have to fill primary key ids of parameter model for add functions.
-# add_academic(AcademicModel) -> Boolean
+# add_academic(AcademicModel) -> int
 # add_sample(SampleModel) -> sample_id
 # add_pollen_type(PollenTypeModel) -> Boolean
 # add_feedback(FeedbackModel) -> Boolean
@@ -55,11 +55,12 @@ from random import randint
 
 class Database_Manager:
 
-    def __init__(self):
+    def __init__(self, initialize_database=False):
         self.connect_database()
-        self.delete_tables()
-        self.create_tables()
-        self.initialize_pollen_types()
+        if initialize_database:
+            self.delete_tables()
+            self.create_tables()
+            self.initialize_pollen_types()
 
     def connect_database(self):
         # for the first run, create database named pollividis
@@ -403,14 +404,14 @@ class Database_Manager:
             try:
                 self.cursor.execute(sql, val)
                 self.db.commit()
-                return True
+                return self.get_academic_from_email(academic.email).academic_id
             except(mysql.connector.Error, mysql.connector.Warning) as e:
                 print(e)
-                return False
+                return -1
 
         else:
             print("Given object is not type AcademicModel")
-            return False
+            return -1
 
     def delete_academic(self, academic_id):
         sql = "DELETE FROM Academic WHERE academic_id = %s"

@@ -26,7 +26,7 @@ from FeedbackModel import FeedbackModelStatus
 # get_feedback_from_email(email) -> [FeedbackModel]
 
 # IMPORTANT NOTE: do not have to fill primary key ids of parameter model for add functions.
-# add_academic(AcademicModel) -> Boolean
+# add_academic(AcademicModel) -> int
 # add_sample(SampleModel) -> sample_id
 # add_pollen_type(PollenTypeModel) -> Boolean
 # add_feedback(FeedbackModel) -> Boolean
@@ -51,14 +51,14 @@ from FeedbackModel import FeedbackModelStatus
 # at each run, creating Database_Manager object resets database
 # for the first run, create database named pollividis
 # check database connection info
-database_manager = Database_Manager()
+database_manager = Database_Manager(initialize_database=True)
 
 # add_academic test
 pp = Image.open("6.jpg")
 academic = AcademicModel(3, "John", "SaysHi", "Dr.", "Bilkent University", "Researcher", "john@bilkent.edu.tr", "asd123", pp, "research_gate/John")
-database_manager.add_academic(academic)
+john_id = database_manager.add_academic(academic)
 academic_id = database_manager.get_academic_from_email("john@bilkent.edu.tr").academic_id
-print(academic_id)
+print(john_id, academic_id)
 academic = database_manager.get_academic_from_id(academic_id)
 print(academic.name)
 database_manager.print_academic_table()
