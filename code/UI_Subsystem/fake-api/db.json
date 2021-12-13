@@ -23,6 +23,14 @@
       "lng": 32.8050856,
       "image_url": null,
       "analysis_text": "this is example analysis text"
+    },
+    {
+      "id": 11,
+      "date": "Mon Dec 13 2021 13:05:53 GMT+0300 (GMT+03:00)",
+      "lat": 41.0283665,
+      "lng": 28.6151177,
+      "image_url": "blob:http://localhost:3000/34bfca6a-dd2c-4f75-8db9-95f5a95ae4bb",
+      "analysis_text": "this is example analysis text"
     }
   ],
   "comments": [
