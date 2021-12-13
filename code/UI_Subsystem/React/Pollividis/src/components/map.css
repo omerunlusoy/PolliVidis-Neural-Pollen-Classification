@@ -25,13 +25,13 @@ h1 {
 
 .search {
     position: absolute;
-    top: 1rem;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
-    max-width: 400px;
+    max-width: 250px;
     z-index: 10;
 }
+
+
 
 .search input {
     padding: 0.5rem;
