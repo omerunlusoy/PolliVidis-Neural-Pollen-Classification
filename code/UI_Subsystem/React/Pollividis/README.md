@@ -1,6 +1,14 @@
 # Read Me
 
-When you first open the project you might need to run npm install
+Read me about fake-api and react
+
+##1)Open terminal and go into fake-api directory, run:
+
+### `npx json-server --watch db.json --port 8000`
+
+##2)Then open React project and run React app 
+
+When you first open the React project you might need to run npm install
 
 ### `npm install`
 
