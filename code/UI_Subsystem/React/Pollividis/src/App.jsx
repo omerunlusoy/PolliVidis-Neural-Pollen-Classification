@@ -18,9 +18,7 @@ const useStyles = makeStyles((theme) => ({
 const App = () => {
     const classes = useStyles();
     return (
-
-                    <AnalyzeSample />
-
+        <AnalyzeSample />
     );
 };
 

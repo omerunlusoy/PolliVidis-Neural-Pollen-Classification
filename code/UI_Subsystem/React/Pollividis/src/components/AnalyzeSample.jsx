@@ -16,9 +16,6 @@ import Navbar from "./Navbar";
 import axios from 'axios';
 import {Link, Navigate} from "react-router-dom";
 import Leftbar from "./Leftbar";
-import SimpleMap from "./SimpleMap";
-import {MapContainer} from "./PollenMap";
-//import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -117,9 +114,6 @@ const AnalyzeSample = () => {
       <div>
           <Navbar />
           <Grid container>
-              <Grid item sm={2} xs={2}>
-                  <Leftbar />
-              </Grid>
               <Grid item sm={7} xs={10}>
                   <Grid container>
                       <Grid item sm={8} >

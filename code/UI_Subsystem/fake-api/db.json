@@ -31,6 +31,14 @@
       "lng": 28.6151177,
       "image_url": "blob:http://localhost:3000/34bfca6a-dd2c-4f75-8db9-95f5a95ae4bb",
       "analysis_text": "this is example analysis text"
+    },
+    {
+      "id": 12,
+      "date": "Thu Dec 16 2021 16:30:35 GMT+0300 (GMT+03:00)",
+      "lat": 39.8893341,
+      "lng": 32.8051463,
+      "image_url": "blob:http://localhost:3000/69a6b03e-13aa-4194-bb74-9eea04c93a84",
+      "analysis_text": "this is example analysis text"
     }
   ],
   "comments": [

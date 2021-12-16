@@ -3,7 +3,6 @@ import {Container, Grid, makeStyles, Typography} from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Navbar from "./Navbar";
-import Leftbar from "./Leftbar";
 import {Link} from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
@@ -44,9 +43,6 @@ const Login = ({ handleClose }) => {
         <div>
             <Navbar />
             <Grid container>
-                <Grid item sm={2} xs={2}>
-                    <Leftbar />
-                </Grid>
                 <Grid item sm={7} xs={10}>
                     <Container className={classes.container}>
                         <Typography style={{marginBottom:10}}variant="h3" component="p">
