@@ -7,6 +7,8 @@ from skimage.color import rgb2gray, label2rgb
 from skimage.measure import label, regionprops
 from PIL import Image
 import os
+import time
+from datetime import timedelta
 
 
 # Pollen_Extraction class extract pollen images from sample images
@@ -65,7 +67,8 @@ class Pollen_Extraction:
             if region.area >= (300 * 300):
                 # get segmented image
                 im = self.get_segmented_image(region.coords, original_img, file_name, i, save_folder, err_folder, plot=plot)
-                ims.append(im)
+                if im is not None:
+                    ims.append(im)
                 if plot:
                     # draw rectangle around segmented coins
                     minr, minc, maxr, maxc = region.bbox
@@ -86,7 +89,11 @@ class Pollen_Extraction:
         xmax, ymax, xmin, ymin, square = self.add_padding(xmax, ymax, xmin, ymin, len(arr2), len(arr2[0]))
 
         cropped = org_image[ymin:ymax, xmin:xmax]
-        im = Image.fromarray(cropped)
+        try:
+            im = Image.fromarray(cropped)
+        except:
+            return None
+
         if square:
             if file_name is not None:
                 file_name1 = str(file_name.title())[:-4] + "_" + str(i) + ".jpg"
@@ -156,10 +163,10 @@ class Pollen_Extraction:
         return xmax, ymax, xmin, ymin, False
 
     # for folder iteration
-    def extract_image(self, file, filename, save_folder, err_folder, n_dilation):
-        original_img, gray_img, thresholded_img = self.get_image_and_threshold(file_name=file, plot=True)
+    def extract_image(self, file, filename, save_folder, err_folder, n_dilation, plot=False):
+        original_img, gray_img, thresholded_img = self.get_image_and_threshold(file_name=file, plot=plot)
         dilated_img = self.binary_dilation(thresholded_img, n_dilation)
-        self.label_image(dilated_img, gray_img, original_img, filename, save_folder, err_folder, plot=True)
+        self.label_image(dilated_img, gray_img, original_img, filename, save_folder, err_folder, plot=plot)
 
     # this function will be used to process images from users
     def extract_PIL_Image(self, PILImage, n_dilation=16):
@@ -167,7 +174,7 @@ class Pollen_Extraction:
         dilated_img = self.binary_dilation(thresholded_img, n_dilation)
         return self.label_image(dilated_img, gray_img, original_img, plot=True)
 
-    def extract_folder(self, source_directory, save_directory, current_folder, n_dilation):
+    def extract_folder(self, source_directory, save_directory, current_folder, n_dilation, plot=False):
         # folders
         source_folder = os.path.join(source_directory, current_folder)
         save_folder = os.path.join(save_directory, current_folder)
@@ -183,11 +190,13 @@ class Pollen_Extraction:
         _, _, files = next(os.walk(source_folder))
         file_count = len(files)
 
+        start_training_time = time.time()
         for i, filename in enumerate(os.listdir(source_folder)):
             if filename.endswith(".jpg"):
                 file = os.path.join(source_folder, filename)
-                self.extract_image(file, filename, save_folder, err_folder, n_dilation)
-                print(str(i), "/", str(file_count), "completed.")
+                self.extract_image(file, filename, save_folder, err_folder, n_dilation, plot=plot)
+                finish_training_time = time.time()
+                print(str(i), "/", str(file_count), ':', filename, ', time passed: ' + str(timedelta(seconds=finish_training_time - start_training_time)))
             else:
                 continue
 
@@ -195,24 +204,24 @@ class Pollen_Extraction:
 # MAIN ###################################################################################################
 
 def main():
-    n_dilation = 16
+    n_dilation = 1
 
     source_directory = r'/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/Ankara_Dataset/'
     save_directory = r'/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/Ankara_Dataset_cropped/'
-    current_folder = r'betula'
+    current_folder = r'populus'
 
     pollen_extraction = Pollen_Extraction()
 
-    # pollen_extraction.extract_folder(source_directory, save_directory, current_folder, n_dilation)
+    # extract folder for dataset
+    pollen_extraction.extract_folder(source_directory, save_directory, current_folder, n_dilation, plot=True)
 
-    pollen_image = Image.open("test_images/4.jpg")
-    img = pollen_extraction.extract_PIL_Image(pollen_image, 0)
-    for im in img:
-        plt.imshow(im)
-        plt.show()
+    # extract single image
+    # pollen_image = Image.open("test_images/1.jpg")
+    # img = pollen_extraction.extract_PIL_Image(pollen_image, 0)
+    # for im in img:
+    #     plt.imshow(im)
+    #     plt.show()
 
 
 if __name__ == "__main__":
     main()
-
-

@@ -26,6 +26,15 @@
     },
     {
       "id": 11,
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+      "date": "Sun Dec 12 2021 20:44:55 GMT+0300 (+03)",
+      "lat": 39.865065311222104,
+      "lng": 32.74662889213681,
+      "image_url": "blob:http://localhost:3000/7f71a91f-dce1-4693-8ee0-fccd03701f1b",
+=======
+>>>>>>> Stashed changes
       "date": "Mon Dec 13 2021 13:05:53 GMT+0300 (GMT+03:00)",
       "lat": 41.0283665,
       "lng": 28.6151177,
@@ -38,6 +47,10 @@
       "lat": 39.8893341,
       "lng": 32.8051463,
       "image_url": "blob:http://localhost:3000/69a6b03e-13aa-4194-bb74-9eea04c93a84",
+<<<<<<< Updated upstream
+=======
+>>>>>>> 0256e49a17d2a005d555bc6fb06e66ad44800b03
+>>>>>>> Stashed changes
       "analysis_text": "this is example analysis text"
     }
   ],
