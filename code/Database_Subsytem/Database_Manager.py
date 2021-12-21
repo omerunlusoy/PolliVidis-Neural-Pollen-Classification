@@ -66,10 +66,10 @@ class Database_Manager:
         # for the first run, create database named pollividis
         # update connect info accordingly
         self.db = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="mer9950",
-            database="pollividis"
+            host="dijkstra.ug.bcc.bilkent.edu.tr",
+            user="omer.unlusoy",
+            password="8cWZ7QRc",
+            database="omer_unlusoy"
         )
         self.cursor = self.db.cursor()
         # cursor.execute("CREATE DATABASE pollividis")  # run once
