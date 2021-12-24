@@ -16,7 +16,7 @@ warnings.filterwarnings("ignore")  # suppress all warnings
 ########################################################################################################################
 # hyper parameters
 learning_rate = 0.0001
-epochs = 5
+epochs = 1
 batch_size = 20
 
 freeze_AlexNet_until_layer = 7
@@ -24,13 +24,13 @@ freeze_AlexNet_until_layer = 7
 # dataset parameters
 image_size = 300
 train_validation_split_ratio = 0.8
-dataset_path = '/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/Ankara_Dataset_cropped'
+dataset_path = '/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/datasets/Ankara_Dataset_cropped'
 
 # classes
 classes = ["betula", "populus_nigra"]  # order is important
 
 # print variables
-print_initial_dataset = False
+print_initial_dataset = True
 plot_loss_and_corrects = True
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")  # specifies run device for more optimum runtime
@@ -38,8 +38,6 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")  # speci
 ########################################################################################################################
 
 """ Pollen CNN Class """
-
-
 class Pollen_Model(nn.Module):
 
     def __init__(self):
@@ -58,6 +56,18 @@ class Pollen_Model(nn.Module):
 
     def forward(self, X):
         return self.model.forward(X)
+
+    def forward_image(self, img):
+        transform_validation = transforms.Compose([transforms.Resize((image_size, image_size)),
+                                                    transforms.ToTensor(),  # from (0, 255) intensity to (0, 1) probability
+                                                    transforms.Normalize((0.5,), (0.5,))])  # mean and center deviation to normalize (ranges from -1 to 1)
+
+        img = transform_validation(img)
+        img = img.unsqueeze(0)
+        # print(img.shape, img)
+        output = self.model.forward(img)
+        _, predicted_classes = torch.max(output, 1)  # gets the maximum output value for each output
+        return classes[predicted_classes.item()]
 
 
 ########################################################################################################################
@@ -129,63 +139,64 @@ def train(model, training_loader, validation_loader, criterion, optimizer, helpe
 
 # MAIN #################################################################################################################
 
-# helper functions class including some general purpose functions
-helper_functions = Helper_Functions()
-
-# Transforms for both training set and validation set
-# Data Augmentation (apply these transformations to training set only)
-transform_train = transforms.Compose([transforms.Resize((image_size, image_size)),  # resizes each image (pixels)
-                                      transforms.RandomHorizontalFlip(),  # horizontal flip (lift to right)
-                                      # random rotation hinders the performance
-                                      transforms.RandomAffine(0, shear=10, scale=(0.8, 1.2)),  # Affine Type Transformations (stretch, scale)
-                                      transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2),  # changes color (this time, use 1)
-                                      transforms.ToTensor(),
-                                      transforms.Normalize((0.5,), (0.5,))])
-
-# Transformations for Validation Set
-transform_validation = transforms.Compose([transforms.Resize((image_size, image_size)),
-                                           transforms.ToTensor(),  # from (0, 255) intensity to (0, 1) probability
-                                           transforms.Normalize((0.5,), (0.5,))])  # mean and center deviation to normalize (ranges from -1 to 1)
-
-# Load dataset
-training_dataset = datasets.ImageFolder(dataset_path, transform=transform_train)
-validation_dataset = datasets.ImageFolder(dataset_path, transform=transform_validation)
-
-# obtain training and validation indices
-num_training = len(training_dataset)
-indices = list(range(num_training))
-np.random.shuffle(indices)
-split = int(np.floor((1 - train_validation_split_ratio) * num_training))
-train_idx, valid_idx = indices[split:], indices[:split]
-
-# define samplers for obtaining training and validation batches
-training_sampler = torch.utils.data.SubsetRandomSampler(train_idx)
-validation_sampler = torch.utils.data.SubsetRandomSampler(valid_idx)
-
-# prepare data loaders
-training_loader = torch.utils.data.DataLoader(training_dataset, batch_size=batch_size, sampler=training_sampler)
-validation_loader = torch.utils.data.DataLoader(validation_dataset, batch_size=batch_size, sampler=validation_sampler)
-
-# just to visualize dataset
-data_iter = iter(training_loader)
-pollen_images, labels = data_iter.next()
-
-pollen_images = pollen_images.to(device)
-labels = labels.to(device)
-
-if print_initial_dataset:
-    helper_functions.show_images(pollen_images, labels, classes=classes)
-
-# get model
-model = Pollen_Model()
-
-# create criterion and optimizer
-# nn.CrossEntropyLoss loss function is used for multiclass classification (requires raw output)
-# nn.CrossEntropyLoss is combination of log_softmax() and NLLLoss()
-criterion = nn.CrossEntropyLoss()
-
-# Adam Optimizer
-optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
-
-# train model
-train(model, training_loader, validation_loader, criterion, optimizer, helper_functions)
+# # helper functions class including some general purpose functions
+# helper_functions = Helper_Functions()
+#
+# # Transforms for both training set and validation set
+# # Data Augmentation (apply these transformations to training set only)
+# transform_train = transforms.Compose([transforms.Resize((image_size, image_size)),  # resizes each image (pixels)
+#                                       transforms.RandomHorizontalFlip(),  # horizontal flip (lift to right)
+#                                       # random rotation hinders the performance
+#                                       transforms.RandomAffine(0, shear=10, scale=(0.8, 1.2)),  # Affine Type Transformations (stretch, scale)
+#                                       transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2),  # changes color (this time, use 1)
+#                                       transforms.ToTensor(),
+#                                       transforms.Normalize((0.5,), (0.5,))])
+#
+# # Transformations for Validation Set
+# transform_validation = transforms.Compose([transforms.Resize((image_size, image_size)),
+#                                            transforms.ToTensor(),  # from (0, 255) intensity to (0, 1) probability
+#                                            transforms.Normalize((0.5,), (0.5,))])  # mean and center deviation to normalize (ranges from -1 to 1)
+#
+# # Load dataset
+# training_dataset = datasets.ImageFolder(dataset_path, transform=transform_train)
+# validation_dataset = datasets.ImageFolder(dataset_path, transform=transform_validation)
+#
+# # obtain training and validation indices
+# num_training = len(training_dataset)
+# indices = list(range(num_training))
+# np.random.shuffle(indices)
+# split = int(np.floor((1 - train_validation_split_ratio) * num_training))
+# train_idx, valid_idx = indices[split:], indices[:split]
+#
+# # define samplers for obtaining training and validation batches
+# training_sampler = torch.utils.data.SubsetRandomSampler(train_idx)
+# validation_sampler = torch.utils.data.SubsetRandomSampler(valid_idx)
+#
+# # prepare data loaders
+# training_loader = torch.utils.data.DataLoader(training_dataset, batch_size=batch_size, sampler=training_sampler)
+# validation_loader = torch.utils.data.DataLoader(validation_dataset, batch_size=batch_size, sampler=validation_sampler)
+#
+# # just to visualize dataset
+# data_iter = iter(training_loader)
+# pollen_images, labels = data_iter.next()
+#
+# pollen_images = pollen_images.to(device)
+# labels = labels.to(device)
+#
+# if print_initial_dataset:
+#     helper_functions.show_images(pollen_images, labels, classes=classes)
+#
+# # get model
+# model = Pollen_Model()
+#
+# # create criterion and optimizer
+# # nn.CrossEntropyLoss loss function is used for multiclass classification (requires raw output)
+# # nn.CrossEntropyLoss is combination of log_softmax() and NLLLoss()
+# criterion = nn.CrossEntropyLoss()
+#
+# # Adam Optimizer
+# optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+#
+# # train model
+# train(model, training_loader, validation_loader, criterion, optimizer, helper_functions)
+# torch.save(model, 'models/best_model')

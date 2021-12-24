@@ -5,7 +5,7 @@ import matplotlib.patches as mpatches
 from skimage import io, filters, morphology, color, segmentation
 from skimage.color import rgb2gray, label2rgb
 from skimage.measure import label, regionprops
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 import os
 import time
 from datetime import timedelta
@@ -20,6 +20,51 @@ class Pollen_Extraction:
 
     def __init__(self):
         pass
+
+    # this function will be used to process images from users
+    def extract_PIL_Image(self, PILImage, n_dilation=16):
+        original_img, gray_img, thresholded_img = self.get_image_and_threshold(PILImage=PILImage, plot=True)
+        dilated_img = self.binary_dilation(thresholded_img, n_dilation)
+        labeled_images, box_coordinates = self.label_image(dilated_img, gray_img, original_img, plot=True)
+        return labeled_images, box_coordinates
+
+    def extract_folder(self, source_directory, save_directory, current_folder, n_dilation, plot=False):
+        # folders
+        source_folder = os.path.join(source_directory, current_folder)
+        save_folder = os.path.join(save_directory, current_folder)
+        err_folder = os.path.join(save_folder, 'err')
+
+        # create Ankara_Dataset_cropped/betula_cropped and Ankara_Dataset_cropped/betula_cropped/err
+        if not os.path.exists(save_folder):
+            os.mkdir(save_folder)
+            if not os.path.exists(err_folder):
+                os.mkdir(err_folder)
+
+        # get file count
+        _, _, files = next(os.walk(source_folder))
+        file_count = len(files)
+
+        start_training_time = time.time()
+        for i, filename in enumerate(os.listdir(source_folder)):
+            if filename.endswith(".jpg"):
+                file = os.path.join(source_folder, filename)
+                self.extract_image(file, filename, save_folder, err_folder, n_dilation, plot=plot)
+                finish_training_time = time.time()
+                print(str(i), "/", str(file_count), ':', filename, ', time passed: ' + str(timedelta(seconds=finish_training_time - start_training_time)))
+            else:
+                continue
+
+    # for folder iteration
+    def extract_image(self, file, filename, save_folder, err_folder, n_dilation, plot=False):
+        original_img, gray_img, thresholded_img = self.get_image_and_threshold(file_name=file, plot=plot)
+        dilated_img = self.binary_dilation(thresholded_img, n_dilation)
+        self.label_image(dilated_img, gray_img, original_img, filename, save_folder, err_folder, plot=plot)
+
+    def binary_dilation(self, thresholded_img, n_dilation):
+        image_dilated = thresholded_img  # OR binary_erosion
+        for x in range(n_dilation):
+            image_dilated = morphology.binary_dilation(image_dilated)
+        return image_dilated
 
     def get_image_and_threshold(self, file_name=None, PILImage=None, plot=False):
         if file_name is not None:
@@ -45,23 +90,19 @@ class Pollen_Extraction:
             plt.show()
         return img, image, image_thresholded
 
-    def binary_dilation(self, thresholded_img, n_dilation):
-        image_dilated = thresholded_img  # OR binary_erosion
-        for x in range(n_dilation):
-            image_dilated = morphology.binary_dilation(image_dilated)
-        return image_dilated
-
     def label_image(self, dilated_img, gray_img, original_img, file_name=None, save_folder=None, err_folder=None, plot=False):
         # label image regions
         label_image = label(dilated_img)
         # to make the background transparent, pass the value of `bg_label`,
         # and leave `bg_color` as `None` and `kind` as `overlay`
         image_label_overlay = label2rgb(label_image, image=gray_img, bg_label=0)
+
         if plot:
             fig, ax = plt.subplots(figsize=(10, 6))
             ax.imshow(image_label_overlay)
 
         ims = []
+        box_coordinates = []
         for i, region in enumerate(regionprops(label_image)):
             # take regions with large enough areas
             if region.area >= (300 * 300):
@@ -72,12 +113,13 @@ class Pollen_Extraction:
                 if plot:
                     # draw rectangle around segmented coins
                     minr, minc, maxr, maxc = region.bbox
+                    box_coordinates.append((minr, minc, maxr, maxc))
                     rect = mpatches.Rectangle((minc, minr), maxc - minc, maxr - minr, fill=False, edgecolor='red', linewidth=2)
                     ax.add_patch(rect)
         if plot:
             plt.tight_layout()
             plt.show()
-        return ims
+        return ims, box_coordinates
 
     def get_segmented_image(self, coords, org_image, file_name, i, save_folder, err_folder, plot=False):
         arr = np.array(coords)
@@ -161,44 +203,6 @@ class Pollen_Extraction:
 
             return xmax, ymax, xmin, ymin, True
         return xmax, ymax, xmin, ymin, False
-
-    # for folder iteration
-    def extract_image(self, file, filename, save_folder, err_folder, n_dilation, plot=False):
-        original_img, gray_img, thresholded_img = self.get_image_and_threshold(file_name=file, plot=plot)
-        dilated_img = self.binary_dilation(thresholded_img, n_dilation)
-        self.label_image(dilated_img, gray_img, original_img, filename, save_folder, err_folder, plot=plot)
-
-    # this function will be used to process images from users
-    def extract_PIL_Image(self, PILImage, n_dilation=16):
-        original_img, gray_img, thresholded_img = self.get_image_and_threshold(PILImage=PILImage, plot=True)
-        dilated_img = self.binary_dilation(thresholded_img, n_dilation)
-        return self.label_image(dilated_img, gray_img, original_img, plot=True)
-
-    def extract_folder(self, source_directory, save_directory, current_folder, n_dilation, plot=False):
-        # folders
-        source_folder = os.path.join(source_directory, current_folder)
-        save_folder = os.path.join(save_directory, current_folder)
-        err_folder = os.path.join(save_folder, 'err')
-
-        # create Ankara_Dataset_cropped/betula_cropped and Ankara_Dataset_cropped/betula_cropped/err
-        if not os.path.exists(save_folder):
-            os.mkdir(save_folder)
-            if not os.path.exists(err_folder):
-                os.mkdir(err_folder)
-
-        # get file count
-        _, _, files = next(os.walk(source_folder))
-        file_count = len(files)
-
-        start_training_time = time.time()
-        for i, filename in enumerate(os.listdir(source_folder)):
-            if filename.endswith(".jpg"):
-                file = os.path.join(source_folder, filename)
-                self.extract_image(file, filename, save_folder, err_folder, n_dilation, plot=plot)
-                finish_training_time = time.time()
-                print(str(i), "/", str(file_count), ':', filename, ', time passed: ' + str(timedelta(seconds=finish_training_time - start_training_time)))
-            else:
-                continue
 
 
 # MAIN ###################################################################################################
