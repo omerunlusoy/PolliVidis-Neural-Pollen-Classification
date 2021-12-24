@@ -26,7 +26,7 @@ from random import randint
 # get_pollen_type(pollen_name) -> PollenTypeModel
 # get_sample(sample_id) -> SampleModel
 # get_samples_of_academic(academic_id) -> [SampleModel]
-# get_samples_of_location(location) -> [SampleModel]
+# get_samples_of_location(location_latitude, location_longitude) -> [SampleModel]
 # get_all_samples() -> [SampleModel]
 # get_total_sample_num() -> int
 # get_feedback_from_feedback_id(feedback_id) -> FeedbackModel
@@ -106,7 +106,8 @@ class Database_Manager:
                             "academic_id INT NOT NULL," +
                             "sample_photo BLOB," +  # should not be stored in database but in the file system
                             "date DATETIME," +
-                            "location VARCHAR(1000)," +  # will be redefined according to GoogleMaps API
+                            "location_latitude DOUBLE," +
+                            "location_longitude DOUBLE," +
                             "analysis_text VARCHAR(1000)," +
                             "publication_status BOOL," +
                             "anonymous_status BOOL," +
@@ -200,7 +201,7 @@ class Database_Manager:
             sample_photo = Image.open(io.BytesIO(results[0][2]))
             f = '%Y-%m-%d %H:%M:%S'
             date = datetime.datetime.strftime(results[0][3], f)
-            cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, date, results[0][4], results[0][5], results[0][6], results[0][7], pollens)
+            cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, date, results[0][4], results[0][5], results[0][6], results[0][7], results[0][8], pollens)
             return cur_sample
         else:
             print("Duplicate or None sample_id")
@@ -230,7 +231,7 @@ class Database_Manager:
                 sample_photo = Image.open(io.BytesIO(results[0][2]))
                 f = '%Y-%m-%d %H:%M:%S'
                 date = datetime.datetime.strftime(results[0][3], f)
-                cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, date, results[0][4], results[0][5], results[0][6], results[0][7], pollens)
+                cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, date, results[0][4], results[0][5], results[0][6], results[0][7], results[0][8], pollens)
                 samples.append(cur_sample)
 
             return samples
@@ -238,9 +239,9 @@ class Database_Manager:
         else:
             return []
 
-    def get_samples_of_location(self, location):
-        sql = "SELECT * FROM Sample WHERE location = %s"
-        val = (location,)
+    def get_samples_of_location(self, location_latitude, location_longitude):
+        sql = "SELECT * FROM Sample WHERE location_latitude = %s and location_longitude = %s"
+        val = (location_latitude, location_longitude,)
         self.cursor.execute(sql, val)
         results = self.cursor.fetchall()
 
@@ -262,7 +263,7 @@ class Database_Manager:
                 sample_photo = Image.open(io.BytesIO(results[0][2]))
                 f = '%Y-%m-%d %H:%M:%S'
                 date = datetime.datetime.strftime(results[0][3], f)
-                cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, date, results[0][4], results[0][5], results[0][6], results[0][7], pollens)
+                cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, date, results[0][4], results[0][5], results[0][6], results[0][7], results[0][8], pollens)
                 samples.append(cur_sample)
 
             return samples
@@ -293,7 +294,7 @@ class Database_Manager:
                 sample_photo = Image.open(io.BytesIO(results[0][2]))
                 f = '%Y-%m-%d %H:%M:%S'
                 date = datetime.datetime.strftime(results[0][3], f)
-                cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, date, results[0][4], results[0][5], results[0][6], results[0][7], pollens)
+                cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, date, results[0][4], results[0][5], results[0][6], results[0][7], results[0][8], pollens)
                 samples.append(cur_sample)
 
             return samples
@@ -437,8 +438,8 @@ class Database_Manager:
 
     def add_sample(self, sample):
 
-        sql = "INSERT INTO Sample (sample_id, academic_id, sample_photo, date, location, analysis_text, publication_status, anonymous_status) " \
-              "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+        sql = "INSERT INTO Sample (sample_id, academic_id, sample_photo, date, location_latitude, location_longitude, analysis_text, publication_status, anonymous_status) " \
+              "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
 
         if isinstance(sample, SampleModel):
             # to use open, we needed to save the image
@@ -451,7 +452,7 @@ class Database_Manager:
             timestampStr = date.strftime("%Y-%m-%d %H:%M:%S")
             sample_id = str(sample.academic_id) + str(10000 * sample.date.year + 100 * sample.date.month + sample.date.day) + str(randint(0, 10000))
 
-            val = (sample_id, sample.academic_id, binaryData, timestampStr, sample.location, sample.analysis_text, sample.publication_status, sample.anonymous_status)
+            val = (sample_id, sample.academic_id, binaryData, timestampStr, sample.location_latitude, sample.location_longitude, sample.analysis_text, sample.publication_status, sample.anonymous_status)
             try:
                 self.cursor.execute(sql, val)
                 self.db.commit()
@@ -586,7 +587,7 @@ class Database_Manager:
             for i in range(len(results)):
                 f = '%Y-%m-%d %H:%M:%S'
                 date = datetime.datetime.strftime(results[0][3], f)
-                print(i, ":", results[i][0], results[i][1], date, results[i][4], results[i][5], results[i][6], results[i][7])
+                print(i, ":", results[i][0], results[i][1], date, results[i][4], results[i][5], results[i][6], results[i][7], results[i][8])
             print("")
         else:
             print("No Sample Record...")

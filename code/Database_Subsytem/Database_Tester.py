@@ -19,7 +19,7 @@ from FeedbackModel import FeedbackModelStatus
 # get_pollen_type(pollen_name) -> PollenTypeModel
 # get_sample(sample_id) -> SampleModel
 # get_samples_of_academic(academic_id) -> [SampleModel]
-# get_samples_of_location(location) -> [SampleModel]
+# get_samples_of_location(location_latitude, location_longitude) -> [SampleModel]
 # get_all_samples() -> [SampleModel]
 # get_total_sample_num() -> int
 # get_feedback_from_feedback_id(feedback_id) -> FeedbackModel
@@ -73,7 +73,7 @@ database_manager.print_pollen_type_table()
 # add_sample test
 sample_image = Image.open("6.jpg")
 pollens = {"Betula": 10, "Rumex": 16}
-sample1 = SampleModel(-1, 1, sample_image, datetime.datetime.now(), "loc", "analysis", False, False, pollens)
+sample1 = SampleModel(-1, 1, sample_image, datetime.datetime.now(), 1.1, 1.1, "analysis", False, False, pollens)
 sample_id1 = database_manager.add_sample(sample1)
 pollens = database_manager.get_sample(sample_id1).pollens
 print(pollens)
