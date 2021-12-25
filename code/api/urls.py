@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import analyses, analyses_get_by_id, gmap, login, profile, sign_up, analyses_post, get_all_samples
+from .views import analyses_get_by_id, analyses_post, get_all_samples
 
 urlpatterns= [
     path('analysis_posts/',analyses_post),

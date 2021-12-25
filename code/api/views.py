@@ -1,24 +1,12 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from rest_framework.serializers import ModelSerializer
-from .models import Academic, Sample
-from ..managers.SignUpManager import sign_up
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework import generics, status
+from rest_framework import status
 
 from .serializers import SampleSerializer
 
-import sys
-sys.path.append("/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/code")
-print('anan', sys.path)
-from Database_Subsytem.SampleModel import SampleModel
-from Database_Subsytem.Database_Manager import Database_Manager
-from ML_Subsystem.ML_Manager import ML_Manager
-import json
-
-from django.shortcuts import render
-from django.http import JsonResponse
+from ..Database_Subsytem.SampleModel import SampleModel
+from ..Database_Subsytem.Database_Manager import Database_Manager
+from ..ML_Subsystem.ML_Manager import ML_Manager
 
 db_manager = Database_Manager(False)
 ml_manager = ML_Manager()
@@ -40,17 +28,17 @@ def analyses_post(request):
 
 @api_view(['GET'])
 def analyses_get_by_id(request,pk):
-    #Database_Manager.connect_database()
+    # Database_Manager.connect_database()
     result = db_manager.get_sample(pk)
 
     if(result == None):
             return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
     return Response(result, status=status.HTTP_302_FOUND)
-    #analyses = Sample.objects.get(id=pk)
+    # analyses = Sample.objects.get(id=pk)
 
 @api_view(['GET'])
 def get_all_samples(request):
-    #Database_Manager.connect_database()
+    # Database_Manager.connect_database()
     result = db_manager.get_all_samples()
     
     if (result == []):
@@ -59,7 +47,7 @@ def get_all_samples(request):
     return Response(result, status=status.HTTP_302_FOUND)
 
 
-#def sign_up(request):
+# def sign_up(request):
 #    print(request)
 #
 #    return HttpResponse(sign_up)
