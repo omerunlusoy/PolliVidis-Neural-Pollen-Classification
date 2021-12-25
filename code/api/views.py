@@ -14,16 +14,16 @@ db_manager = Database_Manager(False)
 @api_view(['POST'])
 def analyses_post(request):
 
-    print(request)
+    print(request.data)
     print("IREMMMMMMMMMMMMMMMMMMMM")
     
     #Database_Manager.connect_database()
-    serializer = SampleSerializer(data=request.data)
-    image, pollenText,pollens = serializer.data['sample_photo'], serializer.data['analysis_text'], serializer.data['pollens'] # ml_manager.analyze_sample(serializer.data['sample_photo'], "", serializer.data['date'], "John", db_manager)
+    #serializer = SampleSerializer(data=request.data)
+    image, pollenText,pollens = request.data['sample_photo'], request.data['analysis_text'], request.data['pollens'] # ml_manager.analyze_sample(serializer.data['sample_photo'], "", serializer.data['date'], "John", db_manager)
     
     #serializer = SampleSerializer(data=request.data)
     #sampleObj = SampleModel(-1,-1, serializer.data['sample_photo'],serializer.data['location_latitude'],serializer.data['location_longitude'],serializer.data['analysis_text'],serializer.data['publication_status']serializer.data['anonymous_status'],serializer.data['pollens'])
-    sampleObj = SampleModel(-1, 1, image, serializer.data['date'], serializer.data['location_latitude'], serializer.data['location_longitude'], pollenText, serializer.data['publication_status'],serializer.data['anonymous_status'], pollens)
+    sampleObj = SampleModel(-1, 1, image, request.data['date'], request.data['location_latitude'], request.data['location_longitude'], pollenText, request.data['publication_status'],request.data['anonymous_status'], pollens)
     result = db_manager.add_sample(sampleObj)
     if( result== -1):
          return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
