@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 import torch
 
 from Pollen_Extraction import Pollen_Extraction
-from PIL import Image, ImageDraw, ImageFont
-from CNN import Pollen_Model
-
+from PIL import Image
+from CNN import Pollen_Model, initialize_CNN
+from Helper_Functions import Helper_Functions
 
 # ML Manager handles ML Subsystem
 # analyze_sample(sample_image) -> PIL Image, analysis text
@@ -14,15 +14,13 @@ class ML_Manager:
     def __init__(self):
         self.extractor = Pollen_Extraction()
         self.model = torch.load('models/best_model')
+        self.helper = Helper_Functions()
 
-    def analyze_sample(self, sample_image, dilation=10):
-
-        pollen_image = Image.open("test_images/1.jpg")
-
+    def analyze_sample(self, sample_image, location, date, academic_name, db_manager, dilation=10):
         # extract pollen images
         pollen_images, box_coordinates = self.extractor.extract_PIL_Image(sample_image, dilation)
 
-        # get predictions
+        # get predictions (forward to the CNN model)
         pollens = []
         for img in pollen_images:
             # print(img)
@@ -36,30 +34,46 @@ class ML_Manager:
             pollens_dict[i] = pollens_dict.get(i, 0) + 1
 
         # get image with labels
-        source_img = sample_image.convert("RGB")
-        for i, coo in enumerate(box_coordinates):
-            draw = ImageDraw.Draw(source_img)
-            minr, minc, maxr, maxc = coo
-            draw.rectangle([(minc, minr), (maxc, maxr)], outline='blue', width=12)
-            # font = ImageFont.load_default()
-            font = ImageFont.truetype("Other Implementations/Helvetica.ttc", 100)
-            if minr - 100 > 0:
-                draw.text((minc, minr - 100), pollens[i], font=font, fill='black')
-            else:
-                draw.text((minc, maxr + 30), pollens[i], font=font, fill='black')
-        plt.imshow(source_img)
-        plt.title('Labeled Image')
-        # plt.savefig('prediction.jpg', dpi=500, bbox_inches='tight')
-        plt.show()
+        source_img = self.helper.label_sample_image(sample_image, box_coordinates, pollens, plot=True)
+        return source_img, self.get_analysis_text(pollens_dict, location, date, academic_name, db_manager), pollens_dict
 
-        return pollen_image, self.get_analysis_text(pollens_dict), pollens_dict
+    def extract_dataset_folder(self, source_directory, save_directory, current_folder, dilation):
+        self.extractor.extract_folder(source_directory, save_directory, current_folder, dilation, plot=True)
 
-    def get_analysis_text(self, pollens_dict):
+    def get_analysis_text(self, pollens_dict, location, date, academic_name, db_manager=None):
         analysis_text = ''
+
+        if db_manager is not None:
+            for pollen_name, count in pollens_dict.items():
+                text = db_manager.get_pollen_type(pollen_name).explanation_text
+                analysis_text += pollen_name + ' : ' + count + '\n' + text + '\n'
+
         return analysis_text
 
+    def train_model(self):
+        initialize_CNN()
 
-##########################################################################################
-sample_image = Image.open("test_images/pop.jpg")
-manager = ML_Manager()
-manager.analyze_sample(sample_image)
+
+# MAIN #################################################################################################################################
+
+def main():
+
+    # Analyze Sample
+    sample_image = Image.open("test_images/pop.jpg")
+    manager = ML_Manager()
+    manager.analyze_sample(sample_image, -1, -1, -1, None)
+
+    # extract dataset folder
+    # source_directory = r'/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/Ankara_Dataset/'
+    # save_directory = r'/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/Ankara_Dataset_cropped/'
+    # current_folder = r'populus'
+    # dilation = 1
+    # manager.extract_dataset_folder(source_directory, save_directory, current_folder, dilation)
+
+    # train model
+    # manager.train_model()
+
+
+if __name__ == "__main__":
+    main()
+

@@ -88,6 +88,7 @@ class Pollen_Extraction:
             ax[1].set_title("Gray")
             ax[2].set_title("Thresholded")
             # plt.savefig('threshold.jpg', dpi=500, bbox_inches='tight')
+            plt.axis('off')
             plt.show()
         return img, image, image_thresholded
 
@@ -205,29 +206,3 @@ class Pollen_Extraction:
 
             return xmax, ymax, xmin, ymin, True
         return xmax, ymax, xmin, ymin, False
-
-
-# MAIN ###################################################################################################
-
-def main():
-    n_dilation = 1
-
-    source_directory = r'/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/Ankara_Dataset/'
-    save_directory = r'/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/Ankara_Dataset_cropped/'
-    current_folder = r'populus'
-
-    pollen_extraction = Pollen_Extraction()
-
-    # extract folder for dataset
-    # pollen_extraction.extract_folder(source_directory, save_directory, current_folder, n_dilation, plot=True)
-
-    # extract single image
-    # pollen_image = Image.open("test_images/3.jpg")
-    # img = pollen_extraction.extract_PIL_Image(pollen_image, 0)
-    # for im in img:
-    #     plt.imshow(im)
-    #     plt.show()
-
-
-if __name__ == "__main__":
-    main()

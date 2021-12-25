@@ -5,6 +5,7 @@ from PIL import Image
 from datetime import timedelta, datetime
 import cv2  # for video
 from torchvision.utils import save_image
+from PIL import Image, ImageDraw, ImageFont
 
 
 # this class includes some general supporting functions for CNN
@@ -41,6 +42,7 @@ class Helper_Functions:
                 ax.set_title("{} ({})".format(str(labels[index].item()), str(predictions[index].item())),
                              color=("green" if predictions[index] == labels[index] else "red"))
                 # plt.savefig('dataset.jpg', dpi=500, bbox_inches='tight')
+        plt.axis('off')
         plt.show()
 
     def plot_loss_and_corrects_epoch(self, epochs, losses, corrects, validation_losses, validation_corrects):
@@ -63,3 +65,23 @@ class Helper_Functions:
         plt.grid(color='gray', linestyle='-', linewidth=0.2)
         # plt.savefig('Epoch vs Corrects.jpg', dpi=500, bbox_inches='tight')
         plt.show()
+
+    def label_sample_image(self, sample_image, box_coordinates, pollens, plot=False):
+        source_img = sample_image.convert("RGB")
+        for i, coo in enumerate(box_coordinates):
+            draw = ImageDraw.Draw(source_img)
+            minr, minc, maxr, maxc = coo
+            draw.rectangle([(minc, minr), (maxc, maxr)], outline='blue', width=12)
+            # font = ImageFont.load_default()
+            font = ImageFont.truetype("Other Implementations/Helvetica.ttc", 100)
+            if minr - 100 > 0:
+                draw.text((minc, minr - 100), pollens[i], font=font, fill='black')
+            else:
+                draw.text((minc, maxr + 30), pollens[i], font=font, fill='black')
+        if plot:
+            plt.imshow(source_img)
+            # plt.savefig('prediction.jpg', dpi=500, bbox_inches='tight')
+            plt.axis('off')
+            plt.show()
+        return source_img
+
