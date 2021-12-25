@@ -1,20 +1,24 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework.serializers import ModelSerializer
-from .models  import Academic,Sample
+from .models import Academic, Sample
 from ..managers.SignUpManager import sign_up
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import generics, status
+
 from .serializers import SampleSerializer
-from ....Database_Subsytem.SampleModel import SampleModel
-from ....Database_Subsytem.Database_Manager import Database_Manager
-from ....ML_Subsystem.ML_Manager import ML_Manager
+
+import sys
+sys.path.append("/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/code")
+print('anan', sys.path)
+from Database_Subsytem.SampleModel import SampleModel
+from Database_Subsytem.Database_Manager import Database_Manager
+from ML_Subsystem.ML_Manager import ML_Manager
 import json
 
 from django.shortcuts import render
 from django.http import JsonResponse
-
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework import generics, status
 
 db_manager = Database_Manager(False)
 ml_manager = ML_Manager()

@@ -110,14 +110,12 @@ database_manager.print_pollen_type_table()
 # delete
 feedback2 = database_manager.get_feedback_from_email("a@b")[0].feedback_id
 database_manager.delete_feedback(feedback2)
-database_manager.print_feedback_table()
-
 database_manager.delete_sample(sample1.sample_id)
-database_manager.print_sample_table()
-
-database_manager.delete_academic(academic_object1.academic_id)
-database_manager.print_academic_table()
-
+# database_manager.delete_academic(academic_object1.academic_id)
 database_manager.delete_pollen_type("Betula")
+
+database_manager.print_sample_table()
+database_manager.print_academic_table()
 database_manager.print_pollen_type_table()
+database_manager.print_feedback_table()
 
