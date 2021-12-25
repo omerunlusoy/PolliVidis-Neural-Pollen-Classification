@@ -49,6 +49,7 @@ class ML_Manager:
                 draw.text((minc, maxr + 30), pollens[i], font=font, fill='black')
         plt.imshow(source_img)
         plt.title('Labeled Image')
+        # plt.savefig('prediction.jpg', dpi=500, bbox_inches='tight')
         plt.show()
 
         return pollen_image, self.get_analysis_text(pollens_dict), pollens_dict

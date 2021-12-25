@@ -40,7 +40,7 @@ class Helper_Functions:
             else:
                 ax.set_title("{} ({})".format(str(labels[index].item()), str(predictions[index].item())),
                              color=("green" if predictions[index] == labels[index] else "red"))
-                # plt.savefig('testset.jpg', dpi=500, bbox_inches='tight')
+                # plt.savefig('dataset.jpg', dpi=500, bbox_inches='tight')
         plt.show()
 
     def plot_loss_and_corrects_epoch(self, epochs, losses, corrects, validation_losses, validation_corrects):
