@@ -79,6 +79,11 @@ const AnalyzeSample = () => {
     //analyze button handler
     const submitHandler= () => {
 
+        let img = new FormData(); // creates a new FormData object
+
+        img.append("image", selectedImage); // add your file to form data
+
+
         const myObject = {
             sample_id: -1,
             academic_id: -1,
@@ -92,6 +97,7 @@ const AnalyzeSample = () => {
             pollens: []
         }
 
+        console.log(myObject)
 
         axios
             .post('http://127.0.0.1:8000/api/analysis_posts/', myObject)
