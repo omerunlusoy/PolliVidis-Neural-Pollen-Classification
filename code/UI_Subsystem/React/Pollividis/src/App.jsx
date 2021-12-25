@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Rightbar from "./components/Rightbar";
 import AnalyzeSample from "./components/AnalyzeSample";
 import SampleImagePreviewCard from "./components/SampleImagePreviewCard";
+import PollenMap from "./components/PollenMap";
 
 const useStyles = makeStyles((theme) => ({
     right: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 const App = () => {
     const classes = useStyles();
     return (
-        <AnalyzeSample />
+        <PollenMap />
     );
 };
 

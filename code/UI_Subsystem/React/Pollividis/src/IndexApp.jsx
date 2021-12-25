@@ -6,6 +6,7 @@ import Profile from "./components/Profile";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import PollenMap from "./components/PollenMap";
+import AnalyzeSample from "./components/AnalyzeSample";
 
 const IndexApp = () => {
   return (
@@ -18,6 +19,7 @@ const IndexApp = () => {
               <Route path="/profile" element={<Profile/>} />
               <Route path="/login" element={<Login/>} />
               <Route path="/map" element={<PollenMap/>} />
+              <Route path="/analyze_sample" element={<AnalyzeSample/>} />
 
           </Routes>
       </BrowserRouter>

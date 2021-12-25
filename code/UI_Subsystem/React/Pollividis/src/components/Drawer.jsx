@@ -48,14 +48,14 @@ export default function TemporaryDrawer() {
                                 switch (index) {
                                     case 0:  {url = "/login"} return <div><Home/></div>;
                                     case 1: {url = "/profile"} return <Person/>;
-                                    case 2: {url = "/"} return <FolderIcon />;
-                                    case 3: {url = "/"} return <AnalyticsIcon />;
+                                    case 2: {url = "/analyze_sample"} return <FolderIcon />;
+                                    case 3: {url = "/analyze_sample"} return <AnalyticsIcon />;
                                     case 4: {url = "/map"} return <MapIcon />;
-                                    case 5: {url = "/"} return <GetAppIcon/>;
+                                    case 5: {url = "/analyze_sample"} return <GetAppIcon/>;
                                     case 6: {url = "/about-us"} return <GroupIcon/>;
-                                    case 7: {url = "/"} return  <FeedbackIcon/>;
-                                    case 8: {url = "/"} return  <HelpIcon/>;
-                                    case 9: {url = "/"} return  <ExitToApp/>;
+                                    case 7: {url = "/analyze_sample"} return  <FeedbackIcon/>;
+                                    case 8: {url = "/analyze_sample"} return  <HelpIcon/>;
+                                    case 9: {url = "/analyze_sample"} return  <ExitToApp/>;
                                     default:      return <MailIcon />;
                                 }
                             })()}

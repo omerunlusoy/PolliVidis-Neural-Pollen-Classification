@@ -54,7 +54,7 @@ const AboutUs = () => {
                       <Typography style={{marginBottom:20}} variant="h5"  component="p">
                           Research Gate:
                       </Typography>
-                      <Button style={{marginTop:10}} variant="contained" color="primary"size="medium" >
+                      <Button style={{marginTop:10}} variant="contained" style={{backgroundColor:'#A6232A', color:'white'}}size="medium" >
                           Edit
                       </Button>
                   </Container>
@@ -68,7 +68,7 @@ const AboutUs = () => {
                       roundedSize="15"
                       borderRadius="100"
                   />
-                  <Button style={{marginTop:10}} variant="contained" color="primary"size="medium" >
+                  <Button style={{marginTop:10}} variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} size="medium" >
                       Change Profile Image
                   </Button>
               </Grid>
