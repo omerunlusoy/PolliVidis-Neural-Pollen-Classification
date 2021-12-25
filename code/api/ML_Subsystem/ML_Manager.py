@@ -1,11 +1,9 @@
-import numpy as np
-import matplotlib.pyplot as plt
+from .Pollen_Extraction import Pollen_Extraction
+from .CNN import initialize_CNN, CNN, load_model
+from .Helper_Functions import Helper_Functions
+
 import torch
 
-from Pollen_Extraction import Pollen_Extraction
-from PIL import Image
-from CNN import Pollen_Model, initialize_CNN
-from Helper_Functions import Helper_Functions
 
 # ML Manager handles ML Subsystem
 # analyze_sample(sample_image) -> PIL Image, analysis text
@@ -13,8 +11,9 @@ class ML_Manager:
 
     def __init__(self):
         self.extractor = Pollen_Extraction()
-        self.model = torch.load('models/best_model')
         self.helper = Helper_Functions()
+        print('baban')
+        self.model = load_model()
 
     def analyze_sample(self, sample_image, location, date, academic_name, db_manager, dilation=10):
         # extract pollen images
@@ -54,14 +53,17 @@ class ML_Manager:
         initialize_CNN()
 
 
+
 # MAIN #################################################################################################################################
 
 def main():
 
-    # Analyze Sample
-    sample_image = Image.open("test_images/pop.jpg")
-    manager = ML_Manager()
-    manager.analyze_sample(sample_image, -1, -1, -1, None)
+    pass
+    # manager = ML_Manager()
+
+    # # Analyze Sample
+    # sample_image = Image.open("test_images/pop.jpg")
+    # manager.analyze_sample(sample_image, -1, -1, -1, None)
 
     # extract dataset folder
     # source_directory = r'/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/Ankara_Dataset/'

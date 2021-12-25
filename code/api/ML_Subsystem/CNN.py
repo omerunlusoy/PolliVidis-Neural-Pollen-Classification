@@ -1,44 +1,25 @@
 import torch
 import torch.nn as nn
-import torch.nn.functional as Functional
-
 from torchvision import datasets, transforms, models  # torchvision package contains many types of datasets (including MNIST dataset)
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-from Helper_Functions import Helper_Functions
-
+from .Helper_Functions import Helper_Functions
 import warnings
-
 warnings.filterwarnings("ignore")  # suppress all warnings
-
-########################################################################################################################
-# hyper parameters
-learning_rate = 0.0001
-epochs = 1
-batch_size = 20
-
-freeze_AlexNet_until_layer = 7
-
-# dataset parameters
-image_size = 300
-train_validation_split_ratio = 0.8
-dataset_path = '/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/datasets/Ankara_Dataset_cropped'
 
 # classes
 classes = ["betula", "populus_nigra"]  # order is important
-
-# print variables
-print_initial_dataset = True
-plot_loss_and_corrects = True
-
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")  # specifies run device for more optimum runtime
+
+image_size = 300
+freeze_AlexNet_until_layer = 7
 
 ########################################################################################################################
 
-""" Pollen CNN Class """
-class Pollen_Model(nn.Module):
+""" CNN Class """
+class CNN(nn.Module):
 
     def __init__(self):
         super().__init__()
@@ -69,8 +50,37 @@ class Pollen_Model(nn.Module):
         _, predicted_classes = torch.max(output, 1)  # gets the maximum output value for each output
         return classes[predicted_classes.item()]
 
+def load_model():
+    print('anan')
+    return torch.load('/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/code/api/ML_Subsystem/models/best_model.tf')
+
 
 ########################################################################################################################
+# hyper parameters
+learning_rate = 0.0001
+epochs = 1
+batch_size = 20
+
+freeze_AlexNet_until_layer = 7
+
+# dataset parameters
+image_size = 300
+train_validation_split_ratio = 0.8
+dataset_path = '/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/datasets/Ankara_Dataset_cropped'
+
+# classes
+classes = ["betula", "populus_nigra"]  # order is important
+
+# print variables
+print_initial_dataset = True
+plot_loss_and_corrects = True
+
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")  # specifies run device for more optimum runtime
+
+
+########################################################################################################################
+
+
 
 def train(model, training_loader, validation_loader, criterion, optimizer, helper_functions):
     # iterations
@@ -188,7 +198,7 @@ def initialize_CNN():
         helper_functions.show_images(pollen_images, labels, classes=classes)
 
     # get model
-    model = Pollen_Model()
+    model = CNN()
 
     # create criterion and optimizer
     # nn.CrossEntropyLoss loss function is used for multiclass classification (requires raw output)
@@ -200,4 +210,5 @@ def initialize_CNN():
 
     # train model
     train(model, training_loader, validation_loader, criterion, optimizer, helper_functions)
-    torch.save(model, 'models/best_model')
+    torch.save(model, 'models/best_model.tf')
+    # torch.jit.save(torch.jit.trace(model, (X)), "models/best_model.tf")

@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="183a074e-13d0-460a-8224-d6a7a74a608b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../api/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../api/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../api/.idea/code.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../api/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../api/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../api/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../api/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../api/.idea/other.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../api/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database_Subsytem/6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../api/Database_Subsytem/6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database_Subsytem/AcademicModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/Database_Subsytem/AcademicModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database_Subsytem/Database_Manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/Database_Subsytem/Database_Manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database_Subsytem/Database_Tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/Database_Subsytem/Database_Tester.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database_Subsytem/FeedbackModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/Database_Subsytem/FeedbackModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database_Subsytem/PollenTypeModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/Database_Subsytem/PollenTypeModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database_Subsytem/SampleModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/Database_Subsytem/SampleModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/AlexNet_Architecture.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/AlexNet_Architecture.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/CNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/CNN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/Helper_Functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/Helper_Functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/ML_Manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/ML_Manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/Other_Implementations/ConvNN_v1.0.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/Other_Implementations/ConvNN_v1.0.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/Other_Implementations/FreeMono.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/Other_Implementations/FreeMono.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/Other_Implementations/Helvetica.ttc" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/Other_Implementations/Helvetica.ttc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/Other_Implementations/ImageAI.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/Other_Implementations/ImageAI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/Other_Implementations/Yolo.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/Other_Implementations/Yolo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/Other_Implementations/cv2_Nucleus_Detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/Other_Implementations/cv2_Nucleus_Detection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/Other_Implementations/cv2_sobel.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/Other_Implementations/cv2_sobel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/Other_Implementations/cv2_threshold.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/Other_Implementations/cv2_threshold.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/Other_Implementations/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/Other_Implementations/notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/Other_Implementations/skimage_filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/Other_Implementations/skimage_filters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/Other_Implementations/skimage_find_contours.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/Other_Implementations/skimage_find_contours.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/Pollen_Extraction.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/Pollen_Extraction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/test_images/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/test_images/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/test_images/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/test_images/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/test_images/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/test_images/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/test_images/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/test_images/4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/test_images/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/test_images/5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/test_images/k1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/test_images/k1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/test_images/k2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/test_images/k2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/test_images/k3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/test_images/k3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/test_images/k4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/test_images/k4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/test_images/kk1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/test_images/kk1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Subsystem/test_images/pop.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../api/ML_Subsystem/test_images/pop.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/.idea/pollividis.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/.idea/pollividis.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/public/compass.svg" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/public/compass.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/public/irem_about_us.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/public/irem_about_us.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/public/microscope_marker.png" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/public/microscope_marker.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/public/pin.png" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/public/pin.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/public/polen.png" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/public/polen.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/public/welcome_pollividis.png" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/public/welcome_pollividis.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/IndexApp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/IndexApp.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/components/AboutUs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/components/AboutUs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/components/Add.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/components/Add.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/components/AnalysisPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/components/AnalysisPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/components/AnalyzeSample.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/components/AnalyzeSample.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/components/Drawer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/components/Drawer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/components/Feed.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/components/Feed.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/components/ImageCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/components/ImageCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/components/Leftbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/components/Leftbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/components/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/components/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/components/Map.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/components/Map.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/components/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/components/PollenMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/components/PollenMap.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/components/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/components/Post.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/components/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/components/Profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/components/Rightbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/components/Rightbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/components/SampleImagePreviewCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/components/SampleImagePreviewCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/components/SignUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/components/SignUp.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/components/map.css" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/components/map.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/React/Pollividis/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Subsystem/fake-api/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/../api/UI_Subsystem/fake-api/db.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/../api/db.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../api/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/AnalysisReportManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/managers/AnalysisReportManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/FeedbackManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/managers/FeedbackManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/LoginManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/managers/LoginManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/PreviousAnalysesManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/managers/PreviousAnalysesManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/ProfileManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/managers/ProfileManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/SampleUploadManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/managers/SampleUploadManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/SearchManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/managers/SearchManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/SignUpManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/managers/SignUpManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../api/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request_handler/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/request_handler/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request_handler/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/request_handler/asgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request_handler/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/request_handler/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request_handler/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/request_handler/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request_handler/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/../api/request_handler/wsgi.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/../api/UI_Subsystem/React/Pollividis/package.json" />
+  </component>
+  <component name="ProjectId" id="1y8LOgDZl7jrYQ2LbkxY4EKUf4V" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql&#10;mariadb" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.stylelint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.stylelint" value="" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/UI_Subsystem/api" />
+      <recent name="$PROJECT_DIR$/UI_Subsystem" />
+      <recent name="$PROJECT_DIR$/ML_Subsystem/Other Implementations" />
+      <recent name="$PROJECT_DIR$/UI_Subsystem/React/Pollividis" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.manage">
+    <configuration name="CNN" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ML_Subsystem" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ML_Subsystem/CNN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Database_Tester" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Database_Subsytem" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Database_Subsytem/Database_Tester.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ML_Manager" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ML_Subsystem" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ML_Subsystem/ML_Manager.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Pollen_Extraction" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ML_Subsystem" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ML_Subsystem/Pollen_Extraction.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/UI_Subsystem" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.manage" />
+        <item itemvalue="Python.Database_Tester" />
+        <item itemvalue="Python.ML_Manager" />
+        <item itemvalue="Python.CNN" />
+        <item itemvalue="Python.Pollen_Extraction" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="183a074e-13d0-460a-8224-d6a7a74a608b" name="Default Changelist" comment="" />
+      <created>1631628238391</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1631628238391</updated>
+      <workItem from="1631628239861" duration="1415000" />
+      <workItem from="1631639172710" duration="47000" />
+      <workItem from="1632921903611" duration="2096000" />
+      <workItem from="1633710372489" duration="38000" />
+      <workItem from="1637763443200" duration="22000" />
+      <workItem from="1638617344833" duration="7249000" />
+      <workItem from="1638640725333" duration="1361000" />
+      <workItem from="1638642246380" duration="369000" />
+      <workItem from="1638876778941" duration="68000" />
+      <workItem from="1639152999301" duration="15000" />
+      <workItem from="1639315299916" duration="32000" />
+      <workItem from="1639321827289" duration="3577000" />
+      <workItem from="1639338577658" duration="2259000" />
+      <workItem from="1639345481022" duration="580000" />
+      <workItem from="1639428174220" duration="2799000" />
+      <workItem from="1639593072002" duration="156000" />
+      <workItem from="1639593289050" duration="2293000" />
+      <workItem from="1639596094350" duration="4597000" />
+      <workItem from="1639650000315" duration="1588000" />
+      <workItem from="1639745666567" duration="4000" />
+      <workItem from="1639761647081" duration="2248000" />
+      <workItem from="1639844470692" duration="3780000" />
+      <workItem from="1640100179823" duration="544000" />
+      <workItem from="1640105506439" duration="3160000" />
+      <workItem from="1640117078822" duration="86000" />
+      <workItem from="1640117956705" duration="42000" />
+      <workItem from="1640168391327" duration="1748000" />
+      <workItem from="1640176103111" duration="997000" />
+      <workItem from="1640358523306" duration="33570000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/code$CNN.coverage" NAME="CNN Coverage Results" MODIFIED="1640443912984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ML_Subsystem" />
+    <SUITE FILE_PATH="coverage/code$Helper_Functions.coverage" NAME="Helper_Functions Coverage Results" MODIFIED="1639594121581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ML_Subsystem" />
+    <SUITE FILE_PATH="coverage/code$deneme.coverage" NAME="deneme Coverage Results" MODIFIED="1640115203811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ML_Subsystem" />
+    <SUITE FILE_PATH="coverage/code$Pollen_Extraction.coverage" NAME="Pollen_Extraction Coverage Results" MODIFIED="1640430954278" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ML_Subsystem" />
+    <SUITE FILE_PATH="coverage/code$manage.coverage" NAME="manage Coverage Results" MODIFIED="1640461743865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/UI_Subsystem" />
+    <SUITE FILE_PATH="coverage/code$ML_Manager.coverage" NAME="ML_Manager Coverage Results" MODIFIED="1640449436398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ML_Subsystem" />
+    <SUITE FILE_PATH="coverage/code$Database_Tester.coverage" NAME="Database_Tester Coverage Results" MODIFIED="1640461332572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Database_Subsytem" />
+    <SUITE FILE_PATH="coverage/code$Object_Detection_Trail.coverage" NAME="Object_Detection_Trail Coverage Results" MODIFIED="1632926471009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

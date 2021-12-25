@@ -1,12 +1,11 @@
 import mysql.connector
 
 import sys
-sys.path.append('/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/code')
-from AcademicModel import AcademicModel
-from SampleModel import SampleModel
-from PollenTypeModel import PollenTypeModel
-from FeedbackModel import FeedbackModel
-from FeedbackModel import FeedbackModelStatus
+from .AcademicModel import AcademicModel
+from .SampleModel import SampleModel
+from .PollenTypeModel import PollenTypeModel
+from .FeedbackModel import FeedbackModel
+from .FeedbackModel import FeedbackModelStatus
 
 from PIL import Image
 import io

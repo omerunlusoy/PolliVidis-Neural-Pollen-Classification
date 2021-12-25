@@ -4,9 +4,9 @@ from rest_framework import status
 
 from .serializers import SampleSerializer
 
-from ..Database_Subsytem.SampleModel import SampleModel
-from ..Database_Subsytem.Database_Manager import Database_Manager
-from ..ML_Subsystem.ML_Manager import ML_Manager
+from .Database_Subsytem.SampleModel import SampleModel
+from .Database_Subsytem.Database_Manager import Database_Manager
+from .ML_Subsystem.ML_Manager import ML_Manager
 
 db_manager = Database_Manager(False)
 ml_manager = ML_Manager()
@@ -16,7 +16,7 @@ def analyses_post(request):
     
     #Database_Manager.connect_database()
     serializer = SampleSerializer(data=request.data)
-    image, pollenText,pollens = ml_manager.analyze_sample(serializer.data['sample_photo'], "", serializer.data['date'], "John", db_manager)
+    image, pollenText,pollens = 1, 1, 1# ml_manager.analyze_sample(serializer.data['sample_photo'], "", serializer.data['date'], "John", db_manager)
     
     #serializer = SampleSerializer(data=request.data)
     #sampleObj = SampleModel(-1,-1, serializer.data['sample_photo'],serializer.data['location_latitude'],serializer.data['location_longitude'],serializer.data['analysis_text'],serializer.data['publication_status']serializer.data['anonymous_status'],serializer.data['pollens'])
