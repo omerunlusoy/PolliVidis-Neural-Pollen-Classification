@@ -43,7 +43,7 @@ const AboutUs = () => {
                           Ece Ünal
                       </Typography>
 
-                      <ImageCard img="https://images.pexels.com/photos/7319337/pexels-photo-7319337.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"/>
+                      <ImageCard img="/irem_about_us.jpeg"/>
                   </Container>
               </Grid>
               <Grid item sm={3} className={classes.right}>

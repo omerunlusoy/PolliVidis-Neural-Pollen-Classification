@@ -15,7 +15,6 @@ import React, {useEffect, useState} from "react";
 import Navbar from "./Navbar";
 import axios from 'axios';
 import {Link, Navigate} from "react-router-dom";
-import Leftbar from "./Leftbar";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -69,7 +68,7 @@ const AnalyzeSample = () => {
         date: "",
         lat: "",
         lng: "",
-        image_url: ""
+        image_url: "o"
     }
 
     //analyze button handler
@@ -80,7 +79,7 @@ const AnalyzeSample = () => {
             date: date,
             lat: lat,
             lng: lng,
-            image_url: imageUrl,
+            image_url: selectedImage,
             analysis_text:"this is example analysis text"
         }
 
@@ -125,7 +124,7 @@ const AnalyzeSample = () => {
                                                   Analyze Sample
                                               </Typography>
                                           <CardActions>
-                                                  <Button variant="contained" color="primary" size="medium" onClick={handleClickOpen}>
+                                                  <Button variant="contained" style={{backgroundColor:'#A6232A', color:'white'}}  size="medium" onClick={handleClickOpen}>
                                                       Upload Sample Image
                                                   </Button>
                                               <Dialog
@@ -142,7 +141,7 @@ const AnalyzeSample = () => {
                                                               </Typography>
                                                               <div align={"center"} style={{marginBottom:30}}>
                                                                   <label htmlFor="contained-button-file">
-                                                                      <Input accept="image/*" id="contained-button-file" multiple type="file"  onChange={e => setSelectedImage(e.target.files[0])} />
+                                                                      <Input accept="image/*" id="contained-button-file" multiple type="file"  onChange={e => {setSelectedImage(e.target.files[0])} }/>
                                                                       <Button variant="contained" component="span">
                                                                           Select Image
                                                                       </Button>
@@ -161,10 +160,10 @@ const AnalyzeSample = () => {
                                                                   )}
                                                               </div>
                                                               <div align={"center"}>
-                                                                  <Button  variant="contained" style={{marginRight:5}} color="primary" size="medium" onClick={handleClose} >
+                                                                  <Button  variant="contained"  style={{backgroundColor:'#A6232A', color:'white',marginRight:5}} size="medium" onClick={handleClose} >
                                                                       Use This Image
                                                                   </Button>
-                                                                  <Button  variant="contained" color="secondary" size="medium" onClick={handleDeleteImage} >
+                                                                  <Button  variant="contained"  size="medium" onClick={handleDeleteImage} >
                                                                       Delete This Image
                                                                   </Button>
                                                               </div>
@@ -173,14 +172,14 @@ const AnalyzeSample = () => {
 
                                                   </Card>
                                               </Dialog>
-                                                  <Button variant="contained" color="primary"size="medium" >
+                                                  <Button variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} size="medium" >
                                                       Upload Image Collection
                                                   </Button>
                                           </CardActions>
                                           <CardActions>
                                                       <div>
                                                           <Button
-                                                              variant="contained" color="primary" size="medium"
+                                                              variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} size="medium"
                                                               onClick={() => {
                                                                   navigator.geolocation.getCurrentPosition(
                                                                       (position) => {
@@ -199,7 +198,7 @@ const AnalyzeSample = () => {
                                                       </div>
                                           </CardActions>
                                           <CardActions>
-                                              <Button variant="contained" color="primary" size="medium" onClick={submitHandler}>Analyze</Button>
+                                              <Button variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} size="medium" onClick={submitHandler}>Analyze</Button>
                                           </CardActions>
                                       </CardContent>
 
@@ -209,7 +208,6 @@ const AnalyzeSample = () => {
                           </Container>
                       </Grid>
                       <Grid item sm={4} className={classes.right}>
-
                           <SampleImagePreviewCard img={imageUrl}/>
                       </Grid>
                   </Grid>

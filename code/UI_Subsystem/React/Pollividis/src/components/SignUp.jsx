@@ -101,7 +101,7 @@ const SignUp = () => {
                                 <Button variant="contained" onClick={clearForm}>
                                     Clear
                                 </Button>
-                                <Button type="submit" variant="contained" color="primary" onClick={handleSubmit}>
+                                <Button type="submit" variant="contained"style={{backgroundColor:'#A6232A', color:'white'}}  onClick={handleSubmit}>
                                     Signup
                                 </Button>
                             </div>
