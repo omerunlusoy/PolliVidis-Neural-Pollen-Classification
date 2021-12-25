@@ -64,28 +64,37 @@ const AnalyzeSample = () => {
     }, [selectedImage,id]);
 
     let myObjectHelper = {
-        id: "",
+        sample_id: -1,
+        academic_id: -1,
+        sample_photo: null,
         date: "",
-        lat: "",
-        lng: "",
-        image_url: "o"
+        location_latitude: "",
+        location_longitude: "",
+        analysis_text:"",
+        publication_status: false,
+        anonymous_status:false,
+        pollens: []
     }
 
     //analyze button handler
     const submitHandler= () => {
 
         const myObject = {
-            id: "",
+            sample_id: -1,
+            academic_id: -1,
+            sample_photo: selectedImage,
             date: date,
-            lat: lat,
-            lng: lng,
-            image_url: selectedImage,
-            analysis_text:"this is example analysis text"
+            location_latitude: lat,
+            location_longitude: lng,
+            analysis_text:"this is example analysis text",
+            publication_status: false,
+            anonymous_status:false,
+            pollens: []
         }
 
 
         axios
-            .post('http://localhost:8000/analysis_posts', myObject)
+            .post('http://127.0.0.1:8000/api/analysis_posts/', myObject)
             .then(response => {
                 myObjectHelper = response;
                 setId(myObjectHelper.data.id)
@@ -113,7 +122,7 @@ const AnalyzeSample = () => {
       <div>
           <Navbar />
           <Grid container>
-              <Grid item sm={7} xs={10}>
+              <Grid item sm={7} xs={10} >
                   <Grid container>
                       <Grid item sm={8} >
                           <Container  className={classes.container}>
