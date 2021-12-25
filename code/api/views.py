@@ -13,6 +13,9 @@ db_manager = Database_Manager(False)
 # Create your views here.
 @api_view(['POST'])
 def analyses_post(request):
+
+    print(request)
+    print("IREMMMMMMMMMMMMMMMMMMMM")
     
     #Database_Manager.connect_database()
     serializer = SampleSerializer(data=request.data)
