@@ -33,7 +33,7 @@ class Sample(models.Model):
     sample_id = models.IntegerField()
     academic_id = models.IntegerField()
     sample_photo = models.ImageField(upload_to ='uploads/') ## ???
-    date = models.DateField()
+    date = models.CharField(max_length=1000)
     location_latitude = models.FloatField()
     location_longitude = models.FloatField()
     analysis_text = models.CharField(max_length=1000)
