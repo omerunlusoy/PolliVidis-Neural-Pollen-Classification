@@ -106,8 +106,12 @@ def get_all_samples(request):
         temp2 = Sample(request,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
                     temp.location_longitude,
                     temp.analysis_text, temp.publication_status, temp.anonymous_status, temp.pollens)
+        print(temp2)
         samples.append(temp2)
 
+    test = Sample.objects.all()
+    print(type(test))
+    print(test)
     result = SampleSerializer(samples, many=True).data
     #result = json.dumps(result)
 
