@@ -12,7 +12,7 @@ class ML_Manager:
     def __init__(self):
         self.extractor = Pollen_Extraction()
         self.helper = Helper_Functions()
-        print('baban')
+        print('! ML_Manager.__init__')
         self.model = load_model()
 
     def analyze_sample(self, sample_image, location, date, academic_name, db_manager, dilation=10):
@@ -53,8 +53,7 @@ class ML_Manager:
         initialize_CNN()
 
 
-
-# MAIN #################################################################################################################################
+# MAIN ############################################################################################################
 
 def main():
 

@@ -51,71 +51,72 @@ from FeedbackModel import FeedbackModelStatus
 # at each run, creating Database_Manager object resets database
 # for the first run, create database named pollividis
 # check database connection info
-database_manager = Database_Manager(initialize_database=True)
+database_manager = Database_Manager(initialize_database=False)
 
-# add_academic test
-pp = Image.open("6.jpg")
-academic = AcademicModel(-1, "John", "SaysHi", "Dr.", "Bilkent University", "Researcher", "john@bilkent.edu.tr", "asd123", pp, "research_gate/John")
-john_id = database_manager.add_academic(academic)
-academic_id = database_manager.get_academic_from_email("john@bilkent.edu.tr").academic_id
-print(john_id, academic_id)
-academic = database_manager.get_academic_from_id(academic_id)
-print(academic.name)
-database_manager.print_academic_table()
+# # add_academic test
+# pp = Image.open("6.jpg")
+# academic = AcademicModel(-1, "John", "SaysHi", "Dr.", "Bilkent University", "Researcher", "john@bilkent.edu.tr", "asd123", pp, "research_gate/John")
+# john_id = database_manager.add_academic(academic)
+# academic_id = database_manager.get_academic_from_email("john@bilkent.edu.tr").academic_id
+# print(john_id, academic_id)
+# academic = database_manager.get_academic_from_id(academic_id)
+# print(academic.name)
+# database_manager.print_academic_table()
+#
+# # add_pollen_type test
+# pollen_type1 = PollenTypeModel("Betula", "betula description")
+# pollen_type2 = PollenTypeModel("Rumex", "rumex description")
+# database_manager.add_pollen_type(pollen_type1)
+# database_manager.add_pollen_type(pollen_type2)
+# database_manager.print_pollen_type_table()
+#
+# # add_sample test
+# sample_image = Image.open("6.jpg")
+# pollens = {"Betula": 10, "Rumex": 16}
+# sample1 = SampleModel(-1, 1, sample_image, str(datetime.datetime.now()), 1.1, 1.1, "analysis", False, False, pollens)
+# sample_id1 = database_manager.add_sample(sample1)
+# pollens = database_manager.get_sample(sample_id1).pollens
+# print(pollens)
+# database_manager.print_sample_table()
+#
+# # prints sample1
+# sample1 = database_manager.get_sample(sample_id1)
+# print(sample1.academic_id)
+# print(database_manager.get_total_sample_num())
+#
+# # get_academic and get_sample test
+# academic_object1 = database_manager.get_academic_from_id(1)
+# academic_object2 = database_manager.get_academic_from_email('john@bilkent.edu.tr')
+# print(academic_object1.email, academic_object2.name)
+# print(sample1.sample_id, sample1.date, sample1.pollens, sample1.anonymous_status)
+#
+# feedback1 = FeedbackModel(-1, 1, "John", "a@b", "1234", str(datetime.datetime.now()), FeedbackModelStatus.pending)
+# database_manager.add_feedback(feedback1)
+# database_manager.print_feedback_table()
+#
+# samp2 = database_manager.get_samples_of_academic(academic_object1.academic_id)
+# print(samp2[0].sample_id)
+#
+# # update
+# academic_object1.name = "John Updated"
+# database_manager.update_academic(academic_object1)
+# database_manager.print_academic_table()
+#
+# pol1 = database_manager.get_pollen_type(pollen_type1.pollen_name)
+# pol1.explanation_text += " Updated"
+# database_manager.update_pollen_type_description(pol1)
+# database_manager.print_pollen_type_table()
+#
+# # delete
+# feedback2 = database_manager.get_feedback_from_email("a@b")[0].feedback_id
+# database_manager.delete_feedback(feedback2)
+# database_manager.delete_sample(sample1.sample_id)
+# # database_manager.delete_academic(academic_object1.academic_id)
+# database_manager.delete_pollen_type("Betula")
 
-# add_pollen_type test
-pollen_type1 = PollenTypeModel("Betula", "betula description")
-pollen_type2 = PollenTypeModel("Rumex", "rumex description")
-database_manager.add_pollen_type(pollen_type1)
-database_manager.add_pollen_type(pollen_type2)
-database_manager.print_pollen_type_table()
-
-# add_sample test
-sample_image = Image.open("6.jpg")
-pollens = {"Betula": 10, "Rumex": 16}
-sample1 = SampleModel(-1, 1, sample_image, datetime.datetime.now(), 1.1, 1.1, "analysis", False, False, pollens)
-sample_id1 = database_manager.add_sample(sample1)
-pollens = database_manager.get_sample(sample_id1).pollens
-print(pollens)
 database_manager.print_sample_table()
-
-# prints sample1
-sample1 = database_manager.get_sample(sample_id1)
-print(sample1.academic_id)
-print(database_manager.get_total_sample_num())
-
-# get_academic and get_sample test
-academic_object1 = database_manager.get_academic_from_id(1)
-academic_object2 = database_manager.get_academic_from_email('john@bilkent.edu.tr')
-print(academic_object1.email, academic_object2.name)
-print(sample1.sample_id, sample1.date, sample1.pollens, sample1.anonymous_status)
-
-feedback1 = FeedbackModel(-1, 1, "John", "a@b", "1234", datetime.datetime.now(), FeedbackModelStatus.pending)
-database_manager.add_feedback(feedback1)
-database_manager.print_feedback_table()
-
-samp2 = database_manager.get_samples_of_academic(academic_object1.academic_id)
-print(samp2[0].sample_id)
-
-# update
-academic_object1.name = "John Updated"
-database_manager.update_academic(academic_object1)
-database_manager.print_academic_table()
-
-pol1 = database_manager.get_pollen_type(pollen_type1.pollen_name)
-pol1.explanation_text += " Updated"
-database_manager.update_pollen_type_description(pol1)
-database_manager.print_pollen_type_table()
-
-# delete
-feedback2 = database_manager.get_feedback_from_email("a@b")[0].feedback_id
-database_manager.delete_feedback(feedback2)
-database_manager.delete_sample(sample1.sample_id)
-# database_manager.delete_academic(academic_object1.academic_id)
-database_manager.delete_pollen_type("Betula")
-
-database_manager.print_sample_table()
 database_manager.print_academic_table()
 database_manager.print_pollen_type_table()
+database_manager.print_sample_has_pollen_table()
 database_manager.print_feedback_table()
 
