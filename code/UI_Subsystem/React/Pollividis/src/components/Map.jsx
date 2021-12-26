@@ -46,7 +46,7 @@ export default function Map() {
     const [selected, setSelected] = React.useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:8000/analysis_get`)
+        fetch(`http://localhost:8000/api/analysis_get`)
             .then((data) => data.json())
             .then((data) => setMarkers(data))
     },[]);
