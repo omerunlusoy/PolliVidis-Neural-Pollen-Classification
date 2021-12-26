@@ -12,13 +12,9 @@ class ML_Manager:
     def __init__(self):
         self.extractor = Pollen_Extraction()
         self.helper = Helper_Functions()
-        print('! ML_Manager.__init__')
         self.CNN = CNN()
-        print('! self.CNN = CNN()')
-        initialize_CNN()
-        print('! initialize_CNN()')
         self.model = self.CNN.load_model()
-        print('! model loaded')
+        print('! model loaded.')
 
     def analyze_sample(self, sample_image, location, date, academic_name, db_manager, dilation=10):
         # extract pollen images
