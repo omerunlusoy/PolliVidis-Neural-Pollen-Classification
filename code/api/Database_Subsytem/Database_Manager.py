@@ -290,7 +290,7 @@ class Database_Manager:
                     pollens[pol[1]] = pol[2]
 
                 sample_photo = Image.open(io.BytesIO(results[0][2]))
-                cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, results[0][3], results[0][4], results[0][5], results[0][6], results[0][7], results[0][8], pollens)
+                cur_sample = SampleModel(results[i][0], results[i][1], sample_photo, results[i][3], results[i][4], results[i][5], results[i][6], results[i][7], results[i][8], pollens)
                 samples.append(cur_sample)
 
             return samples
@@ -428,8 +428,8 @@ class Database_Manager:
 
     def add_sample(self, sample):
 
-        sql = "INSERT INTO Sample (sample_id, academic_id, sample_photo, date, location_latitude, location_longitude, analysis_text, publication_status, anonymous_status) " \
-              "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        sql = "INSERT INTO Sample (academic_id, sample_photo, date, location_latitude, location_longitude, analysis_text, publication_status, anonymous_status) " \
+              "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
 
         if isinstance(sample, SampleModel):
             # to use open, we needed to save the image
@@ -438,15 +438,23 @@ class Database_Manager:
                 binaryData = file.read()
             os.remove("buff.jpg")
 
-            # Sun Dec 26 2021 17:30:21 GMT+0300 (+03)
-            sample_id = str(sample.academic_id) + str(sample.date) + str(randint(0, 10000))
-
-            val = (sample_id, sample.academic_id, binaryData, sample.date, sample.location_latitude, sample.location_longitude, sample.analysis_text, sample.publication_status, sample.anonymous_status)
+            val = (sample.academic_id, binaryData, sample.date, sample.location_latitude, sample.location_longitude,
+                   sample.analysis_text, sample.publication_status, sample.anonymous_status)
             try:
                 self.cursor.execute(sql, val)
                 self.db.commit()
             except(mysql.connector.Error, mysql.connector.Warning) as e:
                 print(e)
+                return -1
+
+            sql = "SELECT MAX(sample_id) FROM Sample"
+            self.cursor.execute(sql)
+            results = self.cursor.fetchall()
+
+            sample_id = -1
+            if len(results) == 1:
+                sample_id = results[0][0]
+            else:
                 return -1
 
             # we have added the sample to the Sample Table

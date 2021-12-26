@@ -30,8 +30,7 @@ class Academic(models.Model):
      research_gate_link = models.CharField(max_length=200)
 
 class Sample(models.Model):
-    #id = models.IntegerField()
-    sample_id = models.CharField(max_length=1000, unique= True)
+    sample_id = models.IntegerField()
     academic_id = models.IntegerField()
     sample_photo = models.ImageField(upload_to= 'uploads/') ## ???
     date = models.CharField(max_length=1000)

@@ -102,16 +102,21 @@ def get_all_samples(request):
     # Database_Manager.connect_database()
     all_samples = db_manager.get_all_samples()
     samples = []
+    print("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU")
+    #print("sample id:,",all_samples[0].sample_id)
+    #print("sample id:,", all_samples[1].sample_id)
     for temp in all_samples:
-        temp2 = Sample(request,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
+        temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
                     temp.location_longitude,
                     temp.analysis_text, temp.publication_status, temp.anonymous_status, temp.pollens)
-        print(temp2)
+        print(temp2.sample_id)
+        print("temp:",temp.__str__())
         samples.append(temp2)
 
-    test = Sample.objects.all()
-    print(type(test))
-    print(test)
+    print(samples)
+    #test = Sample.objects.all()
+    #print(type(test))
+    #print(test)
     result = SampleSerializer(samples, many=True).data
     #result = json.dumps(result)
 
