@@ -98,13 +98,22 @@ def analyses_get_by_id(request, pk):
 
 @api_view(['GET'])
 def get_all_samples(request):
+    
     # Database_Manager.connect_database()
-    result = db_manager.get_all_samples()
+    all_samples = db_manager.get_all_samples()
+    samples = []
+    for temp in all_samples:
+        temp2 = Sample(request,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
+                    temp.location_longitude,
+                    temp.analysis_text, temp.publication_status, temp.anonymous_status, temp.pollens)
+        samples.append(temp2)
 
-    if (result == []):
-        return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
+    result = SampleSerializer(samples, many=True).data
 
-    return Response(result, status=status.HTTP_302_FOUND)
+    #if (result == []):
+    #    return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
+
+    return Response(result)
 
 # def sign_up(request):
 #    print(request)
