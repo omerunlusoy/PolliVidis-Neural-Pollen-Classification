@@ -19,6 +19,9 @@ print('! views db created')
 # Create your views here.
 @api_view(['POST'])
 def analyses_post(request):
+    print("here analyses_post")
+    print(request.data['sample_photo'])
+    
     # print('! request.data:', request.data)
     # print('! request.data[sample_photo]:', request.data['sample_photo'])
     # print("! end of data.")
@@ -49,7 +52,7 @@ def analyses_get_by_id(request, pk):
     # Database_Manager.connect_database()
     print(pk)
     result = db_manager.get_sample(pk)
-    
+
     if (result == None):
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
     return Response(result, status=status.HTTP_302_FOUND)
