@@ -23,7 +23,7 @@ const Feed = () => {
     const [analysis, setAnalysis] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:8000/api/analysis_posts/${id}`)
+        fetch(`http://localhost:8000/api/analysis_get_id/${id}/`)
             .then((data) => data.json())
             .then((data) => setAnalysis(data))
     },[]);

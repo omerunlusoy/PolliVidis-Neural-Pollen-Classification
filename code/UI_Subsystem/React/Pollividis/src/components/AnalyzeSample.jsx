@@ -105,11 +105,12 @@ const AnalyzeSample = () => {
         sampleObject.append("anonymous_status",myObject.anonymous_status);
         sampleObject.append("pollens",myObject.pollens);
 
-        
+
 
         axios
             .post('http://127.0.0.1:8000/api/analysis_posts/', sampleObject)
             .then(response => {
+                console.log(response)
                 myObjectHelper = response;
                 setId(myObjectHelper.data.id)
                 setGoAnalysisPage(true)
