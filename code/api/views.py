@@ -3,18 +3,19 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
+from .models import Sample
 from .serializers import SampleSerializer
 
 from .Database_Subsytem.SampleModel import SampleModel
 from .Database_Subsytem.Database_Manager import Database_Manager
 
-from .ML_Subsystem.ML_Manager import ML_Manager
+#from .ML_Subsystem.ML_Manager import ML_Manager
 
 from PIL import Image
 
 db_manager = Database_Manager(False)
 print('! views db created')
-ml_manager = ML_Manager()
+#ml_manager = ML_Manager()
 print('! views ml created')
 
 
@@ -63,13 +64,19 @@ def analyses_get_by_id(request, pk):
     # Database_Manager.connect_database()
     print('inGet')
     print('django', pk)
-    result = db_manager.get_sample(pk)
+    temp = db_manager.get_sample(pk)
+    temp2 = Sample(temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
+                    temp.location_longitude,
+                    temp.analysis_text, temp.publication_status, temp.anonymous_status, temp.pollens)
+
+    result = SampleSerializer(temp2).data
 
     print(result.sample_id)
+    print(type(result))
 
     # if (result == None):
     #     return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
-    return Response(result, status=status.HTTP_302_FOUND)
+    return Response(result)
     # analyses = Sample.objects.get(id=pk)
 
 

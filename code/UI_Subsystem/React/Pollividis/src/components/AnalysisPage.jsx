@@ -24,7 +24,7 @@ const Feed = () => {
 
     useEffect(() => {
         fetch(`http://localhost:8000/api/analysis_get_id/${id}/`)
-            .then((data) => {data.json();console.log(data)})
+            .then((data) => {data.json();console.log("Here: ",data)})
             .then((data) => setAnalysis(data))
     },[]);
 
