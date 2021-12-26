@@ -18,21 +18,22 @@ from django.db import models
 
 
 class Academic(models.Model):
-    academic_id = models.IntegerField()
-    name = models.CharField(max_length=200)
-    surname = models.CharField(max_length=200)
-    appellation = models.CharField(max_length=200)
-    institution = models.CharField(max_length=200)
-    job_title = models.CharField(max_length=200)
-    email = models.CharField(max_length=200)
-    password = models.CharField(max_length=200)
-    photo = models.CharField(max_length=200)
-    research_gate_link = models.CharField(max_length=200)
+     academic_id = models.IntegerField()
+     name = models.CharField(max_length=200)
+     surname = models.CharField(max_length=200)
+     appellation = models.CharField(max_length=200)
+     institution = models.CharField(max_length=200)
+     job_title = models.CharField(max_length=200)
+     email = models.CharField(max_length=200)
+     password = models.CharField(max_length=200)
+     photo = models.CharField(max_length=200)
+     research_gate_link = models.CharField(max_length=200)
 
 class Sample(models.Model):
-    sample_id = models.CharField(max_length=1000)
+    #id = models.IntegerField()
+    sample_id = models.CharField(max_length=1000, unique= True)
     academic_id = models.IntegerField()
-    sample_photo = models.ImageField(upload_to ='uploads/') ## ???
+    sample_photo = models.ImageField(upload_to= 'uploads/') ## ???
     date = models.CharField(max_length=1000)
     location_latitude = models.FloatField()
     location_longitude = models.FloatField()

@@ -7,6 +7,7 @@ import SampleImagePreviewCard from "./SampleImagePreviewCard";
 import React, {useEffect, useState} from "react";
 import ImageCard from "./ImageCard";
 import {useLocation, useParams} from "react-router-dom";
+import {waitFor} from "@testing-library/react";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -20,13 +21,17 @@ const Feed = () => {
     const { id } = useParams();
     console.log("id:",id)
 
+
     const [analysis, setAnalysis] = useState([])
+    const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
         fetch(`http://localhost:8000/api/analysis_get_id/${id}/`)
-            .then((data) => {data.json();console.log("Here: ",data)})
-            .then((data) => setAnalysis(data))
+            .then((data) =>  data.json())
+            .then((data) => setAnalysis(JSON.parse(data)))
+            //.then((data) => console.log(data) )
     },[]);
+
 
   return (
       <div>

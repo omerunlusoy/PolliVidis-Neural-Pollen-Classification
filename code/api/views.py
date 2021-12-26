@@ -1,7 +1,11 @@
 import django
+from django.forms import model_to_dict
+from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from django.core import serializers
+import json
 
 from .models import Sample
 from .serializers import SampleSerializer
@@ -64,15 +68,27 @@ def analyses_get_by_id(request, pk):
     # Database_Manager.connect_database()
     print('inGet')
     print('django', pk)
+    print(type(pk))
     temp = db_manager.get_sample(pk)
-    temp2 = Sample(temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
+    print("bd: ", temp)
+    print(temp.sample_id)
+    temp2 = Sample(pk,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
                     temp.location_longitude,
                     temp.analysis_text, temp.publication_status, temp.anonymous_status, temp.pollens)
-
+    print("aaaa: ",temp2.sample_photo)
     result = SampleSerializer(temp2).data
 
-    print(result.sample_id)
-    print(type(result))
+    #result = serializers.serialize('json',[temp2])
+    # temp2 = model_to_dict(temp)
+    result = json.dumps(result)
+    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+    #print(result.sample_id)
+    #result['sample_photo'] = temp2.sample_photo
+    print(result)
+    print(temp2.sample_photo)
+
+
+
 
     # if (result == None):
     #     return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
