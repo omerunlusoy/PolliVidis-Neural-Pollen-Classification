@@ -81,8 +81,8 @@ export default function Map() {
             >
                 {markers.map((marker) => (
                     <Marker
-                        key={`${marker.lat}-${marker.lng}`}
-                        position={{ lat: marker.lat, lng: marker.lng }}
+                        key={`${marker.location_latitude}-${marker.location_longitude}`}
+                        position={{ lat: marker.location_latitude, lng: marker.location_longitude }}
                         onClick={() => {
                             setSelected(marker);
                         }}
@@ -98,7 +98,7 @@ export default function Map() {
 
                 {selected ? (
                     <InfoWindow
-                        position={{ lat: selected.lat, lng: selected.lng }}
+                        position={{ lat: selected.location_latitude, lng: selected.location_longitude }}
                         onCloseClick={() => {
                             setSelected(null);
                         }}
