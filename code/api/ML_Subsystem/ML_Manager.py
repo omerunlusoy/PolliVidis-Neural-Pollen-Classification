@@ -1,5 +1,5 @@
 from .Pollen_Extraction import Pollen_Extraction
-from .CNN import initialize_CNN, CNN, load_model
+from .CNN import initialize_CNN, CNN
 from .Helper_Functions import Helper_Functions
 
 import torch
@@ -13,7 +13,12 @@ class ML_Manager:
         self.extractor = Pollen_Extraction()
         self.helper = Helper_Functions()
         print('! ML_Manager.__init__')
-        self.model = load_model()
+        self.CNN = CNN()
+        print('! self.CNN = CNN()')
+        initialize_CNN()
+        print('! initialize_CNN()')
+        self.model = self.CNN.load_model()
+        print('! model loaded')
 
     def analyze_sample(self, sample_image, location, date, academic_name, db_manager, dilation=10):
         # extract pollen images

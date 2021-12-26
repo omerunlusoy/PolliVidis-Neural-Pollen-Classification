@@ -8,15 +8,16 @@ from .serializers import SampleSerializer
 from .Database_Subsytem.SampleModel import SampleModel
 from .Database_Subsytem.Database_Manager import Database_Manager
 
-# from .ML_Subsystem.ML_Manager import ML_Manager
+from .ML_Subsystem.ML_Manager import ML_Manager
 
 from PIL import Image
 
 db_manager = Database_Manager(False)
 print('! views db created')
+ml_manager = ML_Manager()
+print('! views ml created')
 
 
-# ml_manager = ML_Manager()
 # Create your views here.
 @api_view(['POST'])
 def analyses_post(request):

@@ -1,20 +1,13 @@
 import torch
 import torch.nn as nn
 from torchvision import datasets, transforms, models  # torchvision package contains many types of datasets (including MNIST dataset)
-
 import numpy as np
 import matplotlib.pyplot as plt
+import warnings
 
 from .Helper_Functions import Helper_Functions
-import warnings
+
 warnings.filterwarnings("ignore")  # suppress all warnings
-
-# classes
-classes = ["betula", "populus_nigra"]  # order is important
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")  # specifies run device for more optimum runtime
-
-image_size = 300
-freeze_AlexNet_until_layer = 7
 
 ########################################################################################################################
 
@@ -23,17 +16,23 @@ class CNN(nn.Module):
 
     def __init__(self):
         super().__init__()
-        self.model = models.AlexNet(num_classes=len(classes))
-        # self.model = torch.hub.load('pytorch/vision:v0.10.0', 'alexnet', pretrained=True)
-        # self.model.eval()
-        # print(self.model)
+
+        # self parameters
+        self.classes = ["betula", "populus_nigra"]  # order is important
+        self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")  # specifies run device for more optimum runtime
+
+        self.image_size = 300
+        self.freeze_AlexNet_until_layer = 7
+
+        # self model
+        self.model = models.AlexNet(num_classes=len(self.classes))
 
         # freeze some layers with setting requires_grad to False
-        for i in range(freeze_AlexNet_until_layer):
+        for i in range(self.freeze_AlexNet_until_layer):
             for param in self.model.features[i].parameters():
                 param.requires_grad = False
 
-        self.model.to(device=device)
+        self.model.to(device=self.device)
 
     def forward(self, X):
         return self.model.forward(X)
@@ -45,14 +44,13 @@ class CNN(nn.Module):
 
         img = transform_validation(img)
         img = img.unsqueeze(0)
-        # print(img.shape, img)
         output = self.model.forward(img)
         _, predicted_classes = torch.max(output, 1)  # gets the maximum output value for each output
-        return classes[predicted_classes.item()]
+        return self.classes[predicted_classes.item()]
 
-def load_model():
-    print('! CNN.load_Model()')
-    return torch.load('/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/code/api/ML_Subsystem/models/best_model.tf')
+    def load_model(self):
+        print('! CNN.load_Model()')
+        return torch.load('/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/code/api/ML_Subsystem/models/best_model.tf')
 
 
 ########################################################################################################################
@@ -61,7 +59,7 @@ learning_rate = 0.0001
 epochs = 1
 batch_size = 20
 
-freeze_AlexNet_until_layer = 7
+# freeze_AlexNet_until_layer = 7
 
 # dataset parameters
 image_size = 300
@@ -72,15 +70,13 @@ dataset_path = '/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/da
 classes = ["betula", "populus_nigra"]  # order is important
 
 # print variables
-print_initial_dataset = True
-plot_loss_and_corrects = True
+print_initial_dataset = False
+plot_loss_and_corrects = False
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")  # specifies run device for more optimum runtime
 
 
 ########################################################################################################################
-
-
 
 def train(model, training_loader, validation_loader, criterion, optimizer, helper_functions):
     # iterations
@@ -210,5 +206,6 @@ def initialize_CNN():
 
     # train model
     train(model, training_loader, validation_loader, criterion, optimizer, helper_functions)
-    torch.save(model, 'models/best_model.tf')
+    torch.save(model, '/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/code/api/ML_Subsystem/models/best_model.tf')
+    print('! model saved.')
     # torch.jit.save(torch.jit.trace(model, (X)), "models/best_model.tf")
