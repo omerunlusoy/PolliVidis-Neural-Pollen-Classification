@@ -109,11 +109,13 @@ def get_all_samples(request):
         samples.append(temp2)
 
     result = SampleSerializer(samples, many=True).data
+    #result = json.dumps(result)
 
     #print(samples)
     print(result)
 
-    print(samples.__len__)
+    print(len(samples))
+    print(len(result))
     #if (result == []):
     #    return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
 
