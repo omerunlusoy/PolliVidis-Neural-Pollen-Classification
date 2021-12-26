@@ -61,11 +61,14 @@ def analyses_post(request):
 @api_view(['GET'])
 def analyses_get_by_id(request, pk):
     # Database_Manager.connect_database()
+    print('inGet')
     print('django', pk)
     result = db_manager.get_sample(pk)
 
-    if (result == None):
-        return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
+    print(result.sample_id)
+
+    # if (result == None):
+    #     return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
     return Response(result, status=status.HTTP_302_FOUND)
     # analyses = Sample.objects.get(id=pk)
 

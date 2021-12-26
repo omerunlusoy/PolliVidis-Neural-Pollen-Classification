@@ -24,7 +24,7 @@ const Feed = () => {
 
     useEffect(() => {
         fetch(`http://localhost:8000/api/analysis_get_id/${id}/`)
-            .then((data) => data.json())
+            .then((data) => {data.json();console.log(data)})
             .then((data) => setAnalysis(data))
     },[]);
 
@@ -38,7 +38,7 @@ const Feed = () => {
                           Analysis Report
                       </Typography>
                       <Typography style={{marginBottom:5}} variant="h5"  component="p">
-                          Location: {analysis.lat}-{analysis.lng}
+                          Location: {analysis.location_latitude}-{analysis.location_longitude}
                       </Typography>
                       <Typography style={{marginBottom:5}} variant="h5"  component="p">
                           Date: {analysis.date}
@@ -46,7 +46,7 @@ const Feed = () => {
                       <Typography style={{marginBottom:5}} variant="h5"  component="p">
                           {analysis.analysis_text}
                       </Typography>
-                      <ImageCard img={analysis.image_url}/>
+                      <ImageCard img={analysis.sample_photo}/>
                   </Container>
               </Grid>
               <Grid item sm={3} className={classes.right}>
