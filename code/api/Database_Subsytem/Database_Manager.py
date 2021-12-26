@@ -106,7 +106,7 @@ class Database_Manager:
                             "sample_id VARCHAR(50)," +
                             "academic_id INT NOT NULL," +
                             "sample_photo BLOB," +  # should not be stored in database but in the file system
-                            "date DATETIME," +
+                            "date VARCHAR(100)," +
                             "location_latitude DOUBLE," +
                             "location_longitude DOUBLE," +
                             "analysis_text VARCHAR(1000)," +
@@ -200,9 +200,7 @@ class Database_Manager:
                 pollens[pol[1]] = pol[2]
 
             sample_photo = Image.open(io.BytesIO(results[0][2]))
-            f = '%Y-%m-%d %H:%M:%S'
-            date = datetime.datetime.strftime(results[0][3], f)
-            cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, date, results[0][4], results[0][5], results[0][6], results[0][7], results[0][8], pollens)
+            cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, results[0][3], results[0][4], results[0][5], results[0][6], results[0][7], results[0][8], pollens)
             return cur_sample
         else:
             print("Duplicate or None sample_id")
@@ -230,9 +228,7 @@ class Database_Manager:
                     pollens[pol[1]] = pol[2]
 
                 sample_photo = Image.open(io.BytesIO(results[0][2]))
-                f = '%Y-%m-%d %H:%M:%S'
-                date = datetime.datetime.strftime(results[0][3], f)
-                cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, date, results[0][4], results[0][5], results[0][6], results[0][7], results[0][8], pollens)
+                cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, results[0][3], results[0][4], results[0][5], results[0][6], results[0][7], results[0][8], pollens)
                 samples.append(cur_sample)
 
             return samples
@@ -262,9 +258,7 @@ class Database_Manager:
                     pollens[pol[1]] = pol[2]
 
                 sample_photo = Image.open(io.BytesIO(results[0][2]))
-                f = '%Y-%m-%d %H:%M:%S'
-                date = datetime.datetime.strftime(results[0][3], f)
-                cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, date, results[0][4], results[0][5], results[0][6], results[0][7], results[0][8], pollens)
+                cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, results[0][3], results[0][4], results[0][5], results[0][6], results[0][7], results[0][8], pollens)
                 samples.append(cur_sample)
 
             return samples
@@ -293,9 +287,7 @@ class Database_Manager:
                     pollens[pol[1]] = pol[2]
 
                 sample_photo = Image.open(io.BytesIO(results[0][2]))
-                f = '%Y-%m-%d %H:%M:%S'
-                date = datetime.datetime.strftime(results[0][3], f)
-                cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, date, results[0][4], results[0][5], results[0][6], results[0][7], results[0][8], pollens)
+                cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, results[0][3], results[0][4], results[0][5], results[0][6], results[0][7], results[0][8], pollens)
                 samples.append(cur_sample)
 
             return samples
@@ -316,13 +308,11 @@ class Database_Manager:
         results = self.cursor.fetchall()
 
         if len(results) == 1:
-            f = '%Y-%m-%d %H:%M:%S'
-            date = datetime.datetime.strftime(results[0][5], f)
             if results[0][6] == 'pending':
                 status = FeedbackModelStatus.pending
             else:
                 status = FeedbackModelStatus.answered
-            cur_feedback = FeedbackModel(results[0][0], results[0][1], results[0][2], results[0][3], results[0][4], date, status)
+            cur_feedback = FeedbackModel(results[0][0], results[0][1], results[0][2], results[0][3], results[0][4], results[0][5], status)
             return cur_feedback
         else:
             print("Duplicate or None feedback_id")
@@ -337,13 +327,11 @@ class Database_Manager:
         if len(results) > 0:
             feedbacks = []
             for i in range(len(results)):
-                f = '%Y-%m-%d %H:%M:%S'
-                date = datetime.datetime.strftime(results[i][5], f)
                 if results[i][6] == 'pending':
                     status = FeedbackModelStatus.pending
                 else:
                     status = FeedbackModelStatus.answered
-                cur_feedback = FeedbackModel(results[i][0], results[i][1], results[i][2], results[i][3], results[i][4], date, status)
+                cur_feedback = FeedbackModel(results[i][0], results[i][1], results[i][2], results[i][3], results[i][4], results[0][5], status)
                 feedbacks.append(cur_feedback)
 
             return feedbacks
@@ -357,14 +345,12 @@ class Database_Manager:
 
         if isinstance(feedback, FeedbackModel):
 
-            date = feedback.date
-            timestampStr = date.strftime("%Y-%m-%d %H:%M:%S")
             if feedback.status is FeedbackModelStatus.pending:
                 status = "pending"
             else:
                 status = "answered"
 
-            val = (feedback.academic_id, feedback.name, feedback.email, feedback.text, timestampStr, status)
+            val = (feedback.academic_id, feedback.name, feedback.email, feedback.text, feedback.date, status)
             try:
                 self.cursor.execute(sql, val)
                 self.db.commit()
@@ -449,11 +435,10 @@ class Database_Manager:
                 binaryData = file.read()
             os.remove("buff.jpg")
 
-            date = sample.date
-            timestampStr = date.strftime("%Y-%m-%d %H:%M:%S")
-            sample_id = str(sample.academic_id) + str(10000 * sample.date.year + 100 * sample.date.month + sample.date.day) + str(randint(0, 10000))
+            # Sun Dec 26 2021 17:30:21 GMT+0300 (+03)
+            sample_id = str(sample.academic_id) + str(sample.date) + str(randint(0, 10000))
 
-            val = (sample_id, sample.academic_id, binaryData, timestampStr, sample.location_latitude, sample.location_longitude, sample.analysis_text, sample.publication_status, sample.anonymous_status)
+            val = (sample_id, sample.academic_id, binaryData, sample.date, sample.location_latitude, sample.location_longitude, sample.analysis_text, sample.publication_status, sample.anonymous_status)
             try:
                 self.cursor.execute(sql, val)
                 self.db.commit()
@@ -586,9 +571,7 @@ class Database_Manager:
         if len(results) > 0:
             print("Sample Table:")
             for i in range(len(results)):
-                f = '%Y-%m-%d %H:%M:%S'
-                date = datetime.datetime.strftime(results[0][3], f)
-                print(i, ":", results[i][0], results[i][1], date, results[i][4], results[i][5], results[i][6], results[i][7], results[i][8])
+                print(i, ":", results[i][0], results[i][1], results[i][2], results[i][3], results[i][4], results[i][5], results[i][6], results[i][7], results[i][8])
             print("")
         else:
             print("No Sample Record...")
@@ -627,13 +610,11 @@ class Database_Manager:
         if len(results) > 0:
             print("Feedback Table:")
             for i in range(len(results)):
-                f = '%Y-%m-%d %H:%M:%S'
-                date = datetime.datetime.strftime(results[0][5], f)
                 if results[0][6] == 'pending':
                     status = FeedbackModelStatus.pending
                 else:
                     status = FeedbackModelStatus.answered
-                print(i, ":", results[i][0], results[i][1], results[i][2], results[i][3], results[i][4], date, status)
+                print(i, ":", results[i][0], results[i][1], results[i][2], results[i][3], results[i][4], results[i][5], status)
             print("")
         else:
             print("No Feedback Record...")

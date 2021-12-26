@@ -51,7 +51,7 @@ class CNN(nn.Module):
         return classes[predicted_classes.item()]
 
 def load_model():
-    print('anan')
+    print('! CNN.load_Model()')
     return torch.load('/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/code/api/ML_Subsystem/models/best_model.tf')
 
 
