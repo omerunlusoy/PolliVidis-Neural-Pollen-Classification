@@ -1,3 +1,4 @@
+import django
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -19,6 +20,10 @@ print('! views db created')
 # Create your views here.
 @api_view(['POST'])
 def analyses_post(request):
+
+    print(request.data)
+    print(request.FILES)
+
     print("here analyses_post")
     print(request.data['sample_photo'])
     
@@ -35,22 +40,27 @@ def analyses_post(request):
     # sampleObj = SampleModel(-1,-1, serializer.data['sample_photo'],serializer.data['location_latitude'],serializer.data['location_longitude'],serializer.data['analysis_text'],serializer.data['publication_status']serializer.data['anonymous_status'],serializer.data['pollens'])
 
     # django image to PIL Image
-    image = Image.open(image.temporary_file_path())
+
+    if isinstance(image, django.core.files.uploadedfile.InMemoryUploadedFile):
+        image = Image.open(image)
+    else:
+        image = Image.open(image.temporary_file_path())
 
     # create Sample Model to upload to the database
     sampleObj = SampleModel(-1, 1, image, request.data['date'], request.data['location_latitude'], request.data['location_longitude'], pollenText,
                             request.data['publication_status'], request.data['anonymous_status'], pollens)
     # query database to upload the sample
     result = db_manager.add_sample(sampleObj)
+    print('django1', result)
     if result == -1:
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
-    return Response(result, status=status.HTTP_201_CREATED)
+    return Response(result)
 
 
 @api_view(['GET'])
 def analyses_get_by_id(request, pk):
     # Database_Manager.connect_database()
-    print(pk)
+    print('django', pk)
     result = db_manager.get_sample(pk)
 
     if (result == None):

@@ -187,6 +187,9 @@ class Database_Manager:
         self.cursor.execute(sql, val)
         results = self.cursor.fetchall()
 
+        print(sample_id)
+        print(len(results))
+        #self.print_sample_table()
         if len(results) == 1:
 
             pollens = {}
@@ -465,6 +468,7 @@ class Database_Manager:
 
         else:
             print("Given object is not type SampleModel")
+            return -1
 
     def delete_sample(self, sample_id):
         sql = "DELETE FROM Sample WHERE sample_id = %s"
