@@ -79,10 +79,7 @@ const AnalyzeSample = () => {
     //analyze button handler
     const submitHandler= () => {
 
-        let img = new FormData(); // creates a new FormData object
-
-        img.append("image", selectedImage); // add your file to form data
-
+        let sampleObject = new FormData(); // creates a new FormData object
 
         const myObject = {
             sample_id: -1,
@@ -97,10 +94,21 @@ const AnalyzeSample = () => {
             pollens: []
         }
 
-        console.log(myObject)
+        sampleObject.append("sample_id",myObject.sample_id);
+        sampleObject.append("academic_id",myObject.academic_id);
+        sampleObject.append("sample_photo", myObject.sample_photo); // add your file to form data
+        sampleObject.append("date",myObject.date);
+        sampleObject.append("location_latitude",myObject.location_latitude);
+        sampleObject.append("location_longitude",myObject.location_longitude);
+        sampleObject.append("analysis_text",myObject.analysis_text);
+        sampleObject.append("publication_status",myObject.publication_status);
+        sampleObject.append("anonymous_status",myObject.anonymous_status);
+        sampleObject.append("pollens",myObject.pollens);
+
+        
 
         axios
-            .post('http://127.0.0.1:8000/api/analysis_posts/', myObject)
+            .post('http://127.0.0.1:8000/api/analysis_posts/', sampleObject)
             .then(response => {
                 myObjectHelper = response;
                 setId(myObjectHelper.data.id)

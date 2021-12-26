@@ -6,21 +6,24 @@
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
     <data-source source="LOCAL" name="dijkstra" uuid="b6721db5-5f03-45d8-9ceb-d38365ae3737">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://dijkstra.ug.bcc.bilkent.edu.tr:22/omer_unlusoy</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
     <data-source source="LOCAL" name="pollividis@dijkstra.ug.bcc.bilkent.edu.tr" uuid="0e40db4f-87cf-43d2-bbc4-dd1e5d7844a3">
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mariadb://dijkstra.ug.bcc.bilkent.edu.tr:22/pollividis</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="db" uuid="801633d8-e0f9-4eeb-b79c-91ab89d56ae1">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\irem_\Documents\GitHub\CS491_Senior_Design_Project\code\db.sqlite3</jdbc-url>
     </data-source>
   </component>
 </project>

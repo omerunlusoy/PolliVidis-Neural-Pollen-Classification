@@ -17,6 +17,7 @@ def analyses_post(request):
     print(request.data)
     print(request.data['sample_photo'])
     print("IREMMMMMMMMMMMMMMMMMMMM")
+
     
     #Database_Manager.connect_database()
     #serializer = SampleSerializer(data=request.data)
