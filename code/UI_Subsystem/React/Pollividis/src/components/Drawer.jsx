@@ -17,7 +17,7 @@ import HelpIcon from "@material-ui/icons/Help";
 import MenuIcon from '@mui/icons-material/Menu';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 
-export default function TemporaryDrawer() {
+export default function RightDrawer() {
 
     const [state, setState] = React.useState({
         right: false,

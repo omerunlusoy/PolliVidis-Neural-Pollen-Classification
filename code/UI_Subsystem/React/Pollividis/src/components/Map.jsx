@@ -19,6 +19,8 @@ import {
 } from "@reach/combobox";
 
 import "@reach/combobox/styles.css";
+import Drawer from '@mui/material/Drawer';
+import AnalysisInfoDrawer from "./AnalysisInfoDrawer";
 
 //api key: "AIzaSyAHlwtPiz1TdtLSNXtladNYvGRtCbzkm6g"
 
@@ -97,19 +99,7 @@ export default function Map() {
 
 
                 {selected ? (
-                    <InfoWindow
-                        position={{ lat: selected.location_latitude, lng: selected.location_longitude }}
-                        onCloseClick={() => {
-                            setSelected(null);
-                        }}
-                    >
-                        <div>
-                            <h2>
-                                Pollen
-                            </h2>
-                            <p>Date: {selected.date}</p>
-                        </div>
-                    </InfoWindow>
+                    <AnalysisInfoDrawer sample_id={selected.sample_id} open="true" />
                 ) : null}
             </GoogleMap>
         </div>

@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import React, { useState } from "react";
-import TemporaryDrawer from "./Drawer";
+import RightDrawer from "./Drawer";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -48,7 +48,7 @@ const Navbar = () => {
         </Typography>
         <div className={classes.icons}>
           <Badge className={classes.badge}>
-            <TemporaryDrawer/>
+            <RightDrawer/>
           </Badge>
         </div>
       </Toolbar>
