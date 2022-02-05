@@ -64,6 +64,12 @@ export default function Map() {
         mapRef.current.setZoom(14);
     }, []);
 
+    const [plsOpen, setPlsOpen] = React.useState(true);
+
+    const handleCallback = (childData) =>{
+        setPlsOpen(childData)
+    }
+
     if (loadError) return "Error";
     if (!isLoaded) return "Loading...";
 
@@ -87,6 +93,7 @@ export default function Map() {
                         position={{ lat: marker.location_latitude, lng: marker.location_longitude }}
                         onClick={() => {
                             setSelected(marker);
+                            setPlsOpen(true);
                         }}
                         icon={{
                             url: `/microscope_marker.png`,
@@ -99,8 +106,9 @@ export default function Map() {
 
 
                 {selected ? (
-                    <AnalysisInfoDrawer sample_id={selected.sample_id} open="true" />
+                    <AnalysisInfoDrawer sample_id={selected.sample_id} open={plsOpen} parentCallback={handleCallback}/>
                 ) : null}
+
             </GoogleMap>
         </div>
     );

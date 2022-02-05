@@ -24,8 +24,19 @@ export default function AnalysisInfoDrawer(props) {
 
     const [open, setOpen] = React.useState(props.open);
 
+    console.log(props.sample_id)
+    let myOpen = true;
+
+    /*
+    useEffect(() => {
+        setOpen(props.open);
+    }, [props.open]) */
+
+
     const handleDrawerClose = () => {
-        setOpen(false);
+        //setOpen(false);
+        myOpen = false;
+        props.parentCallback(myOpen);
     };
 
     const toggleDrawer = (anchor, open) => (event) => {
@@ -42,7 +53,8 @@ export default function AnalysisInfoDrawer(props) {
         fetch(`http://localhost:8000/api/analysis_get_id/${props.sample_id}/`)
             .then((data) =>  data.json())
             .then((data) => setAnalysis(JSON.parse(data)))
-    },[]);
+    },[props.sample_id]);
+
 
     const list = (anchor) => (
         <Box
@@ -50,6 +62,8 @@ export default function AnalysisInfoDrawer(props) {
             role="presentation"
         >
             <p>Location: {analysis.location_latitude}-{analysis.location_longitude}</p>
+            <p>Date: {analysis.date}</p>
+
         </Box>
     );
 
@@ -60,7 +74,7 @@ export default function AnalysisInfoDrawer(props) {
                     <Drawer
                         variant="persistent"
                         anchor="left"
-                        open={open}
+                        open={props.open}
                     >
                         <DrawerHeader>
                             <IconButton onClick={handleDrawerClose}>
