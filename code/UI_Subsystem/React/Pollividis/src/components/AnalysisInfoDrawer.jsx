@@ -2,12 +2,11 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import {useEffect, useState} from "react";
-import Button from "@mui/material/Button";
-import MenuIcon from "@mui/icons-material/Menu";
 import styled from "@emotion/styled";
-import {Divider, IconButton} from "@material-ui/core";
+import {Divider, IconButton, Typography} from "@material-ui/core";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import Geocode from "react-geocode";
+import ImageCard from "./ImageCard";
 
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -18,34 +17,19 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function AnalysisInfoDrawer(props) {
 
-    const [state, setState] = React.useState({
-        left: false,
-    });
-
-    const [open, setOpen] = React.useState(props.open);
 
     console.log(props.sample_id)
     let myOpen = true;
 
-    /*
-    useEffect(() => {
-        setOpen(props.open);
-    }, [props.open]) */
-
+    let lat = 39;
+    let lng = 38;
+    const [address, setAddress] = React.useState("");
 
     const handleDrawerClose = () => {
-        //setOpen(false);
         myOpen = false;
         props.parentCallback(myOpen);
     };
 
-    const toggleDrawer = (anchor, open) => (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
-
-        setState({ ...state, [anchor]: open });
-    };
 
     const [analysis, setAnalysis] = useState([])
 
@@ -56,14 +40,42 @@ export default function AnalysisInfoDrawer(props) {
     },[props.sample_id]);
 
 
+    lat = analysis.location_latitude;
+    lng = analysis.location_longitude;
+
+    Geocode.setApiKey("AIzaSyAHlwtPiz1TdtLSNXtladNYvGRtCbzkm6g");
+    Geocode.enableDebug();
+
+    Geocode.fromLatLng(lat, lng).then(
+        response => {
+            setAddress(response.results[0].formatted_address);
+            console.log(address);
+        },
+        error => {
+            console.error(error);
+        }
+    );
+
+
     const list = (anchor) => (
         <Box
             sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
             role="presentation"
         >
-            <p>Location: {analysis.location_latitude}-{analysis.location_longitude}</p>
-            <p>Date: {analysis.date}</p>
-
+            <ImageCard img={analysis.sample_photo}/>
+            <Typography style={{marginBottom:3}} variant="h6"  component="p">
+                Location: {address}
+            </Typography>
+            <Typography style={{marginBottom:5}} variant="h6"  component="p">
+                Date: {analysis.date}
+            </Typography>
+            <Typography style={{marginBottom:2}} variant="h6"  component="p">
+                Analysis:
+            </Typography>
+            <Typography style={{marginBottom:2}} variant="h5"  component="p">
+                {analysis.analysis_text}
+            </Typography>
+            
         </Box>
     );
 
