@@ -75,7 +75,7 @@ export default function AnalysisInfoDrawer(props) {
             <Typography style={{marginBottom:2}} variant="h5"  component="p">
                 {analysis.analysis_text}
             </Typography>
-            
+
         </Box>
     );
 
