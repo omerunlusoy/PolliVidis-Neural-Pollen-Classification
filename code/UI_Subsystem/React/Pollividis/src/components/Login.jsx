@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import {Link} from "react-router-dom";
 import ImageCard from "./ImageCard";
 import Box from "@mui/material/Box";
+import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -37,7 +38,28 @@ const Login = ({ handleClose }) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log(email, password);
+        const user = {
+            u_email: email,
+            u_password: password
+        };
+
+        axios
+            .post('http://127.0.0.1:8000/api/login/', {user})
+            .then(response => {
+                if (response.data.accessToken) {
+                    localStorage.setItem("user", JSON.stringify(response.data));
+                }
+                return response.data;
+            })
+            .catch(error => {
+                const resMessage =
+                    (error.response &&
+                        error.response.data &&
+                        error.response.data.message) ||
+                    error.message ||
+                    error.toString();
+
+            })
     };
 
 

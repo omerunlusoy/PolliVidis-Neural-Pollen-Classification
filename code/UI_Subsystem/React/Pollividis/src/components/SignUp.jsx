@@ -4,6 +4,55 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Navbar from "./Navbar";
 import Leftbar from "./Leftbar";
+import axios from 'axios';
+import Form from "react-validation/build/form";
+import Input from "react-validation/build/input";
+import CheckButton from "react-validation/build/button";
+import { isEmail } from "validator";
+
+
+
+const required = value => {
+    if (!value) {
+        return (
+            <div className="alert alert-danger" role="alert">
+                This field is required!
+            </div>
+        );
+    }
+};
+
+const vemail = value => {
+    if (!isEmail(value)) {
+        return (
+            <div className="alert alert-danger" role="alert">
+                This is not a valid email.
+            </div>
+        );
+    }
+};
+
+const vusername = value => {
+    if (value.length < 3 || value.length > 20) {
+        return (
+            <div className="alert alert-danger" role="alert">
+                The username must be between 3 and 20 characters.
+            </div>
+        );
+    }
+};
+
+//will change
+const vpassword = value => {
+    if (value.length < 6 || value.length > 40) {
+        return (
+            <div className="alert alert-danger" role="alert">
+                The password must be between 6 and 40 characters.
+            </div>
+        );
+    }
+};
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -36,9 +85,37 @@ const SignUp = () => {
     const [institution, setInstitution] = useState('');
     const [password, setPassword] = useState('');
 
+    const [message, setMessage] = useState('');
     const handleSubmit = e => {
         e.preventDefault();
+
+
         console.log(fullName, appellation, email,institution, password);
+
+        const user = {
+            u_fullName: fullName,
+            u_appellation: appellation,
+            u_email: email,
+            u_institution: institution,
+            u_password: password
+        };
+
+        axios
+            .post('http://127.0.0.1:8000/api/sign_up/', {user})
+            .then(response => {
+                setMessage(response.data.message)
+            })
+            .catch(error => {
+                const resMessage =
+                    (error.response &&
+                        error.response.data &&
+                        error.response.data.message) ||
+                    error.message ||
+                    error.toString();
+
+            })
+
+
     };
 
     const clearForm = e => {
@@ -49,6 +126,82 @@ const SignUp = () => {
         setInstitution('');
         setPassword('');
     };
+
+
+    /*
+    return (
+        <div className="col-md-12">
+            <div className="card card-container">
+                <Form
+                    onSubmit={handleSubmit}
+                    ref={c => {
+                        this.form = c;
+                    }}
+                >
+                    {!this.state.successful && (
+                        <div>
+                            <div className="form-group">
+                                <label htmlFor="username">Name</label>
+                                <Input
+                                    type="text"
+                                    className="form-control"
+                                    name="username"
+                                    value={fullName}
+                                    onChange={e => setfullName(e.target.value)}
+                                    validations={[required, vusername]}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="email">Email</label>
+                                <Input
+                                    type="text"
+                                    className="form-control"
+                                    name="email"
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)}
+                                    validations={[required, vemail]}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="password">Password</label>
+                                <Input
+                                    type="password"
+                                    className="form-control"
+                                    name="password"
+                                    value={password}
+                                    onChange={e => setPassword(e.target.value)}
+                                    validations={[required, vpassword]}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <button className="btn btn-primary btn-block">Sign Up</button>
+                            </div>
+                        </div>
+                    )}
+                    {this.state.message && (
+                        <div className="form-group">
+                            <div
+                                className={
+                                    this.state.successful
+                                        ? "alert alert-success"
+                                        : "alert alert-danger"
+                                }
+                                role="alert"
+                            >
+                                {this.state.message}
+                            </div>
+                        </div>
+                    )}
+                    <CheckButton
+                        style={{ display: "none" }}
+                        ref={c => {
+                            this.checkBtn = c;
+                        }}
+                    />
+                </Form>
+            </div>
+        </div>
+    );*/
 
     return (
         <div>
@@ -66,6 +219,7 @@ const SignUp = () => {
                                 required
                                 value={fullName}
                                 onChange={e => setfullName(e.target.value)}
+
                             />
                             <TextField
                                 label="Appellation"
@@ -114,6 +268,7 @@ const SignUp = () => {
             </Grid>
         </div>
     );
+
 };
 
 export default SignUp;
