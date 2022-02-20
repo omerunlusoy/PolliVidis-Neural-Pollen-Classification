@@ -1,9 +1,8 @@
-from .Pollen_Extraction import Pollen_Extraction
-from .CNN import initialize_CNN, CNN
-from .Helper_Functions import Helper_Functions
+from Pollen_Extraction import Pollen_Extraction
+from CNN import initialize_CNN, CNN
+from Helper_Functions import Helper_Functions
 
 import torch
-
 
 # ML Manager handles ML Subsystem
 # analyze_sample(sample_image) -> PIL Image, analysis text
@@ -58,12 +57,11 @@ class ML_Manager:
 
 def main():
 
-    pass
-    # manager = ML_Manager()
+    manager = ML_Manager()
 
-    # # Analyze Sample
-    # sample_image = Image.open("test_images/pop.jpg")
-    # manager.analyze_sample(sample_image, -1, -1, -1, None)
+    # Analyze Sample
+    sample_image = Image.open("test_images/pop.jpg")
+    manager.analyze_sample(sample_image, -1, -1, -1, None)
 
     # extract dataset folder
     # source_directory = r'/Users/omerunlusoy/Desktop/CS 491/CS491_Senior_Design_Project/Ankara_Dataset/'
@@ -78,4 +76,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
