@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="183a074e-13d0-460a-8224-d6a7a74a608b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/api/ML_Subsystem/CNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/api/ML_Subsystem/CNN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/api/ML_Subsystem/ML_Manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/api/ML_Subsystem/ML_Manager.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,6 +239,9 @@
       <workItem from="1644510303882" duration="3017000" />
       <workItem from="1644950668168" duration="2000" />
       <workItem from="1645116683752" duration="924000" />
+      <workItem from="1645377683784" duration="143000" />
+      <workItem from="1645480074838" duration="496000" />
+      <workItem from="1645802372301" duration="108000" />
     </task>
     <servers />
   </component>
