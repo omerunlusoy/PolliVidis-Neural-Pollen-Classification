@@ -48,13 +48,13 @@ export default function RightDrawer() {
                                 switch (index) {
                                     case 0:  {url = "/login"} return <div><Home/></div>;
                                     case 1: {url = "/profile"} return <Person/>;
-                                    case 2: {url = "/analyze_sample"} return <FolderIcon />;
+                                    case 2: {url = "/previous_analyses"} return <FolderIcon />;
                                     case 3: {url = "/analyze_sample"} return <AnalyticsIcon />;
                                     case 4: {url = "/map"} return <MapIcon />;
                                     case 5: {url = "/analyze_sample"} return <GetAppIcon/>;
                                     case 6: {url = "/about-us"} return <GroupIcon/>;
-                                    case 7: {url = "/analyze_sample"} return  <FeedbackIcon/>;
-                                    case 8: {url = "/analyze_sample"} return  <HelpIcon/>;
+                                    case 7: {url = "/send_feedback"} return  <FeedbackIcon/>;
+                                    case 8: {url = "/how_pollividis_works"} return  <HelpIcon/>;
                                     case 9: {url = "/analyze_sample"} return  <ExitToApp/>;
                                     default:      return <MailIcon />;
                                 }

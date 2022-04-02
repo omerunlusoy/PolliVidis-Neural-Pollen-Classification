@@ -7,6 +7,9 @@ import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import PollenMap from "./components/PollenMap";
 import AnalyzeSample from "./components/AnalyzeSample";
+import SendFeedback from "./components/SendFeedback";
+import HowItWorks from "./components/HowItWorks";
+import PreviousAnalyses from "./components/PreviousAnalyses";
 
 const IndexApp = () => {
   return (
@@ -20,6 +23,9 @@ const IndexApp = () => {
               <Route path="/login" element={<Login/>} />
               <Route path="/map" element={<PollenMap/>} />
               <Route path="/analyze_sample" element={<AnalyzeSample/>} />
+              <Route path="/send_feedback" element={<SendFeedback/>} />
+              <Route path="/how_pollividis_works" element={<HowItWorks/>} />
+              <Route path="/previous_analyses" element={<PreviousAnalyses/>} />
 
           </Routes>
       </BrowserRouter>
