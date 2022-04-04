@@ -1,7 +1,7 @@
 import {Card, CardActionArea, CardContent, CardMedia, Container, Grid, makeStyles, Typography} from "@material-ui/core";
 import Post from "./Post";
 import Navbar from "./Navbar";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ImageCard from "./ImageCard";
 import TextField from '@mui/material/TextField';
 import {Link} from "react-router-dom";
@@ -22,17 +22,49 @@ const AboutUs = () => {
     const [your_name, setName] = useState('');
     const [your_feedback, setFeedback] = useState('');
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        const feedback = {
-            u_name: your_name,
-            u_email: your_email,
-            feedback: your_feedback
-        };
 
-        console.log(feedback)
+    const submitHandler= () => {
 
-    };
+        const current = new Date();
+        const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+
+        //let feedBackObject = new FormData(); // creates a new FormData object
+
+        const myObject = {
+            id: "",
+            academic_id: -1,
+            name: your_name,
+            email: your_email,
+            text: your_feedback,
+            date: date,
+            status: "",
+        }
+
+
+/*
+        feedBackObject.append("id",myObject.id);
+        feedBackObject.append("academic_id",myObject.academic_id);
+        feedBackObject.append("name", myObject.name); // add your file to form data
+        feedBackObject.append("email",myObject.email);
+        feedBackObject.append("text",myObject.text);
+        feedBackObject.append("date",myObject.date);
+        feedBackObject.append("status",myObject.status);
+
+        axios
+            .post('http://127.0.0.1:9000/feedback/', myObject)
+            .then(response => {
+                console.log(response.data)
+
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+ */
+
+        console.log(myObject)
+
+    }
 
     const classes = useStyles();
   return (
@@ -74,7 +106,7 @@ const AboutUs = () => {
                           />
                       </div>
                       <div>
-                          <Button type="submit" variant="contained" style={{backgroundColor:'#A6232A', color:'white'}}  onClick={handleSubmit}>
+                          <Button type="submit" variant="contained" style={{backgroundColor:'#A6232A', color:'white'}}  onClick={submitHandler}>
                               Send Feedback
                           </Button>
                       </div>
@@ -90,3 +122,5 @@ const AboutUs = () => {
 };
 
 export default AboutUs;
+
+
