@@ -8,8 +8,10 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
+
 import React, { useState } from "react";
 import RightDrawer from "./Drawer";
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -40,12 +42,16 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const classes = useStyles({ open });
-  return (
+  
+
+    return (
     <AppBar position="fixed" style={{backgroundColor:'black'}}>
       <Toolbar className={classes.toolbar}>
-        <Typography variant="h6" className={classes.logoLg}>
-         POLLIVIDIS
-        </Typography>
+        <Link style={{ textDecoration: 'none' }} to="/map"><Button variant = 'text' disableRipple={true} style={{
+          color: 'white',
+          fontSize : 'large'
+        }} className={classes.text}>POLLIVIDIS</Button></Link>
+
         <div className={classes.icons}>
           <Badge className={classes.badge}>
             <RightDrawer/>
