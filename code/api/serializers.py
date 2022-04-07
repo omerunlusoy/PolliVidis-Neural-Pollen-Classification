@@ -12,10 +12,10 @@ from .models import Sample,Academic
 #		model = SampleModel
 #		fields ='__all__'
 
-# class AcademicSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Academic
-#         fields = ('academic_id', 'name', 'surname','appellation' ,'institution','job_title' ,'email' ,'password','photo','research_gate_link' )
+class AcademicSerializer(serializers.ModelSerializer):
+     class Meta:
+         model = Academic
+         fields = ('academic_id', 'name', 'surname','appellation' ,'institution','job_title' ,'email' ,'password','photo','research_gate_link' )
 
 
 

@@ -8,7 +8,7 @@ from django.core import serializers
 import json
 
 from .models import Sample
-from .serializers import SampleSerializer
+from .serializers import AcademicSerializer, SampleSerializer
 
 from .Database_Subsytem.SampleModel import SampleModel
 from .Database_Subsytem.Database_Manager import Database_Manager
@@ -140,9 +140,27 @@ def get_all_samples(request):
 
 #    return HttpResponse("Profile")
 
-# def login(request):
-#    print(request)
+@api_view(['GET'])
+def login(request, pk):
+    #result = []
+    print(request)
+    print(pk)
+    #??
+    academic = db_manager.get_academic_from_email(pk.u_email)
 
+    if academic.password == pk.u_password:
+        return Response(AcademicSerializer(academic))
+    else:
+        return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
+
+    #
+@api_view(['POST'])
+def signup(request,pk):
+    result = db_manager.add_academic(pk)
+    if result == -1:
+        return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
+    else:
+        return Response(AcademicSerializer(pk))
 #    return HttpResponse("Login info")
 
 # def gmap(request):
