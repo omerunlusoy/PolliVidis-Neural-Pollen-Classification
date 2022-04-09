@@ -101,7 +101,7 @@ const SignUp = () => {
         };
 
         axios
-            .post('http://127.0.0.1:8000/api/sign_up/', {user})
+            .post('http://127.0.0.1:8000/api/sign-up/', {user})
             .then(response => {
                 setMessage(response.data.message)
             })
