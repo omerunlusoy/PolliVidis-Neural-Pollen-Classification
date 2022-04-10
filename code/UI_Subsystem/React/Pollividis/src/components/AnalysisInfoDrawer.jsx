@@ -7,6 +7,8 @@ import {Divider, IconButton, Typography} from "@material-ui/core";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Geocode from "react-geocode";
 import ImageCard from "./ImageCard";
+import {getDownloadURL, ref} from "@firebase/storage";
+import {storage} from "../firebase";
 
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -24,6 +26,7 @@ export default function AnalysisInfoDrawer(props) {
     let lat = 39;
     let lng = 38;
     const [address, setAddress] = React.useState("");
+    const [photo,setPhoto] = useState(null)
 
     const handleDrawerClose = () => {
         myOpen = false;
@@ -37,7 +40,20 @@ export default function AnalysisInfoDrawer(props) {
         fetch(`http://localhost:8000/api/analysis_get_id/${props.sample_id}/`)
             .then((data) =>  data.json())
             .then((data) => setAnalysis(JSON.parse(data)))
+            .then(()=> getPhoto(props.sample_id))
     },[props.sample_id]);
+
+    const getPhoto = async(id) => {
+
+        let fileU = '/files/' + id
+        const storageRef = ref(storage,fileU);
+        getDownloadURL(storageRef).then((url)=>{
+            console.log(url)
+            setPhoto(url)
+        }).catch((error) => {
+            // Handle any errors
+        });
+    }
 
 
     lat = analysis.location_latitude;
@@ -62,7 +78,7 @@ export default function AnalysisInfoDrawer(props) {
             sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
             role="presentation"
         >
-            <ImageCard img={analysis.sample_photo}/>
+            <ImageCard img={photo}/>
             <Typography style={{marginBottom:3}} variant="h6"  component="p">
                 Location: {address}
             </Typography>
