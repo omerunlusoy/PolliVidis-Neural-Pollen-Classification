@@ -155,12 +155,14 @@ def login(request, pk):
 
     #
 @api_view(['POST'])
-def signup(request,pk):
-    result = db_manager.add_academic(pk)
+def signup(request):
+    print("In sign-up")
+    print(request.data)
+    result = db_manager.add_academic(request.data)
     if result == -1:
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
     else:
-        return Response(AcademicSerializer(pk))
+        return Response(result)
 #    return HttpResponse("Login info")
 
 # def gmap(request):
