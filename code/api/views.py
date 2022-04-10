@@ -7,7 +7,7 @@ from rest_framework import status
 from django.core import serializers
 import json
 
-from .models import Sample
+from .models import Sample, Academic
 from .serializers import AcademicSerializer, SampleSerializer
 
 from .Database_Subsytem.SampleModel import SampleModel
@@ -158,7 +158,13 @@ def login(request, pk):
 def signup(request):
     print("In sign-up")
     print(request.data)
-    result = db_manager.add_academic(request.data)
+
+    mdl = Academic(0,request.data['name'],request.data['surname'],request.data['appellitation'],
+                    request.data['institution'],request.data['job_title'],request.data['email'],request.data['password'],
+                    request.data['photo'],request.data['research_gate_link'])
+    print("MODEL TEST:")
+    print(mdl)
+    result = db_manager.add_academic(mdl)
     if result == -1:
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
     else:
