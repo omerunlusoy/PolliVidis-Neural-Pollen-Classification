@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {Card, CardContent, CardMedia, Container, Grid, makeStyles, Typography} from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -36,32 +36,26 @@ const Login = ({ handleClose }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    let str_user = ""
     const handleSubmit = e => {
         e.preventDefault();
         const user = {
-            u_email: email,
-            u_password: password
+            email: email,
+            password: password
         };
 
-        axios
-            .post('http://127.0.0.1:8000/api/login/', {user})
-            .then(response => {
-                if (response.data.accessToken) {
-                    localStorage.setItem("user", JSON.stringify(response.data));
-                }
-                return response.data;
-            })
-            .catch(error => {
-                const resMessage =
-                    (error.response &&
-                        error.response.data &&
-                        error.response.data.message) ||
-                    error.message ||
-                    error.toString();
+        str_user = user.email + "~" + user.password
 
-            })
+
     };
 
+
+
+    useEffect(() => {
+        fetch(`http://localhost:8000/api/login/${str_user}/`)
+            .then((data) =>  data.json())
+            .then((data) => console.log(data) )
+    },[]);
 
     return (
         <div>

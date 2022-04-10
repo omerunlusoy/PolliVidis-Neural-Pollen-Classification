@@ -86,22 +86,43 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
 
     const [message, setMessage] = useState('');
+
+
+
     const handleSubmit = e => {
         e.preventDefault();
 
 
         console.log(fullName, appellation, email,institution, password);
 
-        const user = {
-            u_fullName: fullName,
-            u_appellation: appellation,
-            u_email: email,
-            u_institution: institution,
-            u_password: password
+        let sampleObject = new FormData(); // creates a new FormData object
+
+        const myObject = {
+            academic_id: 0,
+            name: fullName,
+            surname: fullName,
+            appellation: appellation,
+            institution: institution,
+            job_title: "a",
+            email: email,
+            password: password,
+            photo: "",
+            reserch_gate_link:"link"
         };
 
+        sampleObject.append("academic_id",myObject.academic_id);
+        sampleObject.append("name", myObject.name);
+        sampleObject.append("surname", myObject.surname);// add your file to form data
+        sampleObject.append("appellation", myObject.appellation);// add your file to form data
+        sampleObject.append("institution", myObject.institution);// add your file to form data
+        sampleObject.append("job_title", myObject.job_title);// add your file to form data
+        sampleObject.append("email", myObject.email);// add your file to form data
+        sampleObject.append("password", myObject.password);// add your file to form data
+        sampleObject.append("photo", myObject.photo);// add your file to form data
+        sampleObject.append("reserch_gate_link", myObject.reserch_gate_link);// add your file to form data
+
         axios
-            .post('http://127.0.0.1:8000/api/sign-up/', {user})
+            .post('http://127.0.0.1:8000/api/sign-up/', sampleObject)
             .then(response => {
                 setMessage(response.data.message)
             })
