@@ -159,7 +159,7 @@ def signup(request):
     print("In sign-up")
     print(request.data)
 
-    mdl = Academic(0,request.data['name'],request.data['surname'],request.data['appellitation'],
+    mdl = Academic(0,request.data['name'],request.data['surname'],request.data['appellation'],
                     request.data['institution'],request.data['job_title'],request.data['email'],request.data['password'],
                     request.data['photo'],request.data['research_gate_link'])
     print("MODEL TEST:")
