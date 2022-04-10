@@ -7,6 +7,8 @@ from rest_framework import status
 from django.core import serializers
 import json
 
+from api.Database_Subsytem.AcademicModel import AcademicModel
+
 from .models import Sample, Academic
 from .serializers import AcademicSerializer, SampleSerializer
 
@@ -154,11 +156,12 @@ def login(request, pk):
     print(academic)
     print(academic.password)
     
-
+    AcademicModel
     if academic.password == strings[1]:
         return Response(AcademicSerializer(academic).data)
     else:
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
+        #return Response()
 
     #
 @api_view(['POST'])
