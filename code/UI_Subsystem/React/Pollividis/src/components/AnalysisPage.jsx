@@ -8,6 +8,8 @@ import React, {useEffect, useState} from "react";
 import ImageCard from "./ImageCard";
 import {useLocation, useParams} from "react-router-dom";
 import {waitFor} from "@testing-library/react";
+import {storage} from "../firebase.js";
+import {getDownloadURL, ref, uploadBytesResumable} from "@firebase/storage";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -24,13 +26,27 @@ const Feed = () => {
 
     const [analysis, setAnalysis] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
+    const [photo,setPhoto] = useState(null)
 
     useEffect(() => {
         fetch(`http://localhost:8000/api/analysis_get_id/${id}/`)
             .then((data) =>  data.json())
             .then((data) => setAnalysis(JSON.parse(data)))
             //.then((data) => console.log(data) )
+            .then(()=> getPhoto(id))
     },[]);
+
+    const getPhoto = async(id) => {
+
+        let fileU = '/files/' + id
+        const storageRef = ref(storage,fileU);
+        getDownloadURL(storageRef).then((url)=>{
+            console.log(url)
+            setPhoto(url)
+        }).catch((error) => {
+            // Handle any errors
+        });
+    }
 
 
   return (
@@ -51,7 +67,7 @@ const Feed = () => {
                       <Typography style={{marginBottom:5}} variant="h5"  component="p">
                           {analysis.analysis_text}
                       </Typography>
-                      <ImageCard img={analysis.sample_photo}/>
+                      <ImageCard img={photo}/>
                   </Container>
               </Grid>
               <Grid item sm={3} className={classes.right}>

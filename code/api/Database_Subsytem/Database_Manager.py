@@ -182,6 +182,7 @@ class Database_Manager:
             return None
 
     def get_sample(self, sample_id):
+        print(sample_id)
         sql = "SELECT * FROM Sample WHERE sample_id = %s"
         val = (sample_id,)
         self.cursor.execute(sql, val)

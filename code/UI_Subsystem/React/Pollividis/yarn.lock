@@ -1560,7 +1560,7 @@
   "resolved" "https://registry.npmjs.org/@firebase/storage-types/-/storage-types-0.6.0.tgz"
   "version" "0.6.0"
 
-"@firebase/storage@0.9.4":
+"@firebase/storage@^0.9.4", "@firebase/storage@0.9.4":
   "integrity" "sha512-oDqIIxoGMuchwTDHugDE/ul0h+hFVh7eAmvIWHrchaj0R2BTivb+H5qgszWjlCs2pjHS6waGsnSGJgpBTW4AeA=="
   "resolved" "https://registry.npmjs.org/@firebase/storage/-/storage-0.9.4.tgz"
   "version" "0.9.4"

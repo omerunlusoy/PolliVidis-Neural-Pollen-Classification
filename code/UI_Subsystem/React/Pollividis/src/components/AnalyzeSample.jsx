@@ -54,9 +54,10 @@ const AnalyzeSample = () => {
 
     const [location, setLocation] = useState('');
 
-    const uploadImage =(file)=>{
+    const uploadImage =(file,id)=>{
         if(!file) return;
-        let fileU = '/files/' + file.name
+
+        let fileU = '/files/' + id
         const storageRef = ref(storage,fileU);
         const uploadTask = uploadBytesResumable(storageRef,file);
 
@@ -82,18 +83,6 @@ const AnalyzeSample = () => {
         }
     }, [selectedImage,id]);
 
-    let myObjectHelper = {
-        sample_id: -1,
-        academic_id: -1,
-        sample_photo: null,
-        date: "",
-        location_latitude: "",
-        location_longitude: "",
-        analysis_text:"",
-        publication_status: false,
-        anonymous_status:false,
-        pollens: []
-    }
 
     //analyze button handler
     const submitHandler= () => {
@@ -131,12 +120,16 @@ const AnalyzeSample = () => {
             .then(response => {
                 console.log(response.data)
                 setId(response.data);
+                console.log(id)
+                uploadImage(selectedImage,response.data)
                 setGoAnalysisPage(true)
 
             })
             .catch(error => {
                 console.log(error)
             })
+
+
 
     }
 
@@ -183,12 +176,11 @@ const AnalyzeSample = () => {
                                                               </Typography>
                                                               <div align={"center"} style={{marginBottom:30}}>
                                                                   <label htmlFor="contained-button-file">
-                                                                      <Input accept="image/*" id="contained-button-file" multiple type="file"  onChange={e => {setSelectedImage(e.target.files[0]); uploadImage(e.target.files[0])} }/>
+                                                                      <Input accept="image/*" id="contained-button-file" multiple type="file"  onChange={e => {setSelectedImage(e.target.files[0]);} }/>
                                                                       <Button variant="contained" component="span">
                                                                           Select Image
                                                                       </Button>
                                                                   </label>
-                                                                  <h3>Uploaded {progress} %</h3>
                                                               </div>
                                                               <div>
                                                                   {imageUrl && selectedImage && (
