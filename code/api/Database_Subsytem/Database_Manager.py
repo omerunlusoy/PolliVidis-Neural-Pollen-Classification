@@ -385,16 +385,16 @@ class Database_Manager:
         if isinstance(academic, AcademicModel):
 
             # to use open, we needed to save the image
-            #academic.photo.save("buff.jpg")
-            #with open("buff.jpg", 'rb') as file:
-            #    binaryData = file.read()
-            #os.remove("buff.jpg")
+            academic.photo.save("buff.jpg")
+            with open("buff.jpg", 'rb') as file:
+                binaryData = file.read()
+            os.remove("buff.jpg")
 
-            #val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, binaryData,
-            #       academic.research_gate_link)
+            val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, binaryData,
+                   academic.research_gate_link)
 
-            val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, academic.photo,
-                   academic.research_gate_link)       
+            #val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, academic.photo,
+            #       academic.research_gate_link)       
             try:
                 self.cursor.execute(sql, val)
                 self.db.commit()

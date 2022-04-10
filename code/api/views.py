@@ -146,9 +146,9 @@ def login(request, pk):
     print(request)
     print(pk)
     #??
-    academic = db_manager.get_academic_from_email(pk.u_email)
+    academic = db_manager.get_academic_from_email(pk.email)
 
-    if academic.password == pk.u_password:
+    if academic.password == pk.password:
         return Response(AcademicSerializer(academic))
     else:
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
