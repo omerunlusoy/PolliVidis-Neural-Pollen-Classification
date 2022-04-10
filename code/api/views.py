@@ -150,6 +150,10 @@ def login(request, pk):
     print(strings)
     #??
     academic = db_manager.get_academic_from_email(strings[0])
+    print("academic:")
+    print(academic)
+    print(academic.password)
+    
 
     if academic.password == strings[1]:
         return Response(AcademicSerializer(academic))
