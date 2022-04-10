@@ -144,6 +144,7 @@ def get_all_samples(request):
 def login(request, pk):
     #result = []
     strings = pk.split('~')
+    print('a')
     print(request)
     print(pk)
     print(strings)

@@ -35,16 +35,13 @@ const Login = ({ handleClose }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [str, setStr] = useState('');
 
-    let str_user = ""
     const handleSubmit = e => {
         e.preventDefault();
-        const user = {
-            email: email,
-            password: password
-        };
 
-        str_user = user.email + "~" + user.password
+
+        setStr(email + "~" + password)
 
 
     };
@@ -52,10 +49,10 @@ const Login = ({ handleClose }) => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:8000/api/login/${str_user}/`)
+        fetch(`http://localhost:8000/api/login/${str}/`)
             .then((data) =>  data.json())
             .then((data) => console.log(data) )
-    },[]);
+    },[str]);
 
     return (
         <div>
