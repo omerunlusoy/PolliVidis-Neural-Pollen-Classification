@@ -156,7 +156,7 @@ def login(request, pk):
     
 
     if academic.password == strings[1]:
-        return Response(AcademicSerializer(academic))
+        return Response(AcademicSerializer(academic).data)
     else:
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
 

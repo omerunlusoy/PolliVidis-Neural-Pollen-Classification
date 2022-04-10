@@ -46,13 +46,13 @@ const Login = ({ handleClose }) => {
 
     };
 
-
-
     useEffect(() => {
         fetch(`http://localhost:8000/api/login/${str}/`)
             .then((data) =>  data.json())
             .then((data) => console.log(data) )
     },[str]);
+
+
 
     return (
         <div>
