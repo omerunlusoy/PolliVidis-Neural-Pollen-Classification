@@ -23,6 +23,8 @@ import Drawer from '@mui/material/Drawer';
 import AnalysisInfoDrawer from "./AnalysisInfoDrawer";
 
 //api key: "AIzaSyAHlwtPiz1TdtLSNXtladNYvGRtCbzkm6g"
+//api_key_irem2 : "AIzaSyBKACLg3Nl9SOXYQkYdiMeTR9cVNS2_rJQ"
+//api_key_ece: "AIzaSyCovV7pf9gtNN93EAgzMqOZLYie_e27Gno"
 
 const libraries = ["places"];
 const mapContainerStyle = {
