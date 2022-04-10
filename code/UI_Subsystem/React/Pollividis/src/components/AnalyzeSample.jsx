@@ -15,6 +15,8 @@ import React, {useEffect, useState} from "react";
 import Navbar from "./Navbar";
 import axios from 'axios';
 import {Link, Navigate} from "react-router-dom";
+import {storage} from "../firebase.js"
+import {getDownloadURL, ref, uploadBytesResumable} from "@firebase/storage"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -40,6 +42,7 @@ const AnalyzeSample = () => {
         setOpen(false);
     };
 
+    const [progress,setProgress] = useState(0)
     const [selectedImage, setSelectedImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
     const [id, setId] = useState(null);
@@ -50,6 +53,22 @@ const AnalyzeSample = () => {
     const [lng, setLng] = useState(null);
 
     const [location, setLocation] = useState('');
+
+    const uploadImage =(file)=>{
+        if(!file) return;
+        let fileU = '/files/' + file.name
+        const storageRef = ref(storage,fileU);
+        const uploadTask = uploadBytesResumable(storageRef,file);
+
+        uploadTask.on("state_changed",(snapshot)=>{
+            const progress = Math.round((snapshot.bytesTransferred /snapshot.totalBytes) * 100);
+
+            setProgress(progress)
+        },(err) => {console.log(err)},
+            () => {
+            getDownloadURL(uploadTask.snapshot.ref).then(url => console.log(url))
+            })
+    };
 
     const handleDeleteImage = () => {
         setImageUrl(null);
@@ -164,11 +183,12 @@ const AnalyzeSample = () => {
                                                               </Typography>
                                                               <div align={"center"} style={{marginBottom:30}}>
                                                                   <label htmlFor="contained-button-file">
-                                                                      <Input accept="image/*" id="contained-button-file" multiple type="file"  onChange={e => {setSelectedImage(e.target.files[0])} }/>
+                                                                      <Input accept="image/*" id="contained-button-file" multiple type="file"  onChange={e => {setSelectedImage(e.target.files[0]); uploadImage(e.target.files[0])} }/>
                                                                       <Button variant="contained" component="span">
                                                                           Select Image
                                                                       </Button>
                                                                   </label>
+                                                                  <h3>Uploaded {progress} %</h3>
                                                               </div>
                                                               <div>
                                                                   {imageUrl && selectedImage && (
