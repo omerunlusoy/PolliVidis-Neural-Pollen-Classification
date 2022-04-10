@@ -143,12 +143,14 @@ def get_all_samples(request):
 @api_view(['GET'])
 def login(request, pk):
     #result = []
+    strings = pk.split('~')
     print(request)
     print(pk)
+    print(strings)
     #??
-    academic = db_manager.get_academic_from_email(pk.email)
+    academic = db_manager.get_academic_from_email(strings[0])
 
-    if academic.password == pk.password:
+    if academic.password == strings[1]:
         return Response(AcademicSerializer(academic))
     else:
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
