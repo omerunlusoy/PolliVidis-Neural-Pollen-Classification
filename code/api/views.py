@@ -169,10 +169,15 @@ def signup(request):
     print("In sign-up")
     print(request.data)
     print("research")
-    print(request.data['research_gate_link'])
+    #print(request.data['research_gate_link'])
     mdl = Academic(0,request.data['name'],request.data['surname'],request.data['appellation'],
                     request.data['institution'],request.data['job_title'],request.data['email'],request.data['password'],
                     request.data['photo'],request.data['research_gate_link'])
+
+   # mdl = Academic(0,request.data['name'],request.data['surname'],request.data['appellation'],
+    #                request.data['institution'],request.data['job_title'],request.data['email'],request.data['password'],
+    #                request.data['photo'],request.data['research_gate_link'])
+
     print("MODEL TEST:")
     print(mdl)
     result = db_manager.add_academic(mdl)

@@ -15,7 +15,7 @@ from .models import Sample,Academic
 class AcademicSerializer(serializers.ModelSerializer):
      class Meta:
          model = Academic
-         fields = ('academic_id', 'name', 'surname','appellation' ,'institution','job_title' ,'email' ,'password','photo','research_gate_link' )
+         fields = ('academic_id', 'name', 'surname','appellation' ,'institution','job_title' ,'email' ,'password','photo','research_gate_link')
 
 
 
