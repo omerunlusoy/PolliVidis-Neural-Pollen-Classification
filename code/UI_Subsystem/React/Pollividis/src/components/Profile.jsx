@@ -30,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
 
 const AboutUs = () => {
   const classes = useStyles();
+
+    const id = sessionStorage.getItem('academic_id');
+    console.log(id);
+
   return (
       <div>
           <Navbar />
