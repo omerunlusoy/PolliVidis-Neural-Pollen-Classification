@@ -394,8 +394,10 @@ class Database_Manager:
                     binaryData = file.read()
                 os.remove("buff.jpg")
 
-            val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, binaryData,
-                   academic.research_gate_link)
+            #val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, binaryData,
+            #       academic.research_gate_link)
+
+            val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, binaryData, "aaa")
 
             #val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, academic.photo,
             #       academic.research_gate_link)       
