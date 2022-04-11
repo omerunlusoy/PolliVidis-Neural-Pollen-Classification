@@ -14,7 +14,7 @@ import Navbar from "./Navbar";
 import Leftbar from "./Leftbar";
 import Add from "./Add";
 import SampleImagePreviewCard from "./SampleImagePreviewCard";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import ImageCard from "./ImageCard";
 import ReactRoundedImage from "react-rounded-image";
 
@@ -32,7 +32,16 @@ const AboutUs = () => {
   const classes = useStyles();
 
     const id = sessionStorage.getItem('academic_id');
-    console.log(id);
+    console.log(Object.values(id)); //Object object
+    //id.
+    //const [profile, setProfile] = useState([])
+/*
+    useEffect(() => {
+        fetch(`http://localhost:8000/api/get_academic_by_id/${id}/`)
+            .then((data) =>  data.json())
+            .then((data) => setProfile(JSON.parse(data)))
+        console.log(profile);
+    },[]);*/
 
   return (
       <div>

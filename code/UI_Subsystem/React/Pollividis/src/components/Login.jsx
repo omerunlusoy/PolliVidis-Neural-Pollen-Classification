@@ -49,7 +49,7 @@ const Login = ({ handleClose }) => {
         fetch(`http://localhost:8000/api/login/${info}/`)
             .then((data) =>  data.json())
             //.then((data) => default_storage = JSON.parse(data))
-            .then( (data) => sessionStorage.setItem('academic_id', data) );
+            .then( (data) => sessionStorage.setItem('academic_id',data.academic_id) );
 
 
 
