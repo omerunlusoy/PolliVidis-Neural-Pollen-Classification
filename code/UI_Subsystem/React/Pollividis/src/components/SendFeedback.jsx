@@ -22,6 +22,8 @@ const AboutUs = () => {
     const [your_name, setName] = useState('');
     const [your_feedback, setFeedback] = useState('');
 
+    const academic_id = sessionStorage.getItem('academic_id');
+
 
     const submitHandler= () => {
 
@@ -32,7 +34,7 @@ const AboutUs = () => {
 
         const myObject = {
             id: "",
-            academic_id: -1,
+            academic_id: academic_id,
             name: your_name,
             email: your_email,
             text: your_feedback,
