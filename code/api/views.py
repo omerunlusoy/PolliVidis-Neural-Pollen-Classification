@@ -10,10 +10,11 @@ import json
 from api.Database_Subsytem.AcademicModel import AcademicModel
 
 from .models import Sample, Academic
-from .serializers import AcademicSerializer, SampleSerializer
+from .serializers import AcademicSerializer, SampleSerializer,FeedbackSerializer
 
 from .Database_Subsytem.SampleModel import SampleModel
 from .Database_Subsytem.Database_Manager import Database_Manager
+from .Database_Subsytem.FeedbackModel import FeedbackModel
 
 #from .ML_Subsystem.ML_Manager import ML_Manager
 
@@ -188,6 +189,22 @@ def signup(request):
     else:
 
         return Response(result)
+
+@api_view(['POST'])
+def add_feedback(request):
+    print(request.data)
+
+    mdl = FeedbackModel(0,request.data['academic_id'],request.data['name'],request.data['email'],request.data['text'],
+                        request.data['date'],request.data['status'])
+    
+    result = db_manager.add_feedback(mdl)
+    if result == False:
+        return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
+    else:
+        return Response(result)
+
+
+    
 #    return HttpResponse("Login info")
 
 # def gmap(request):

@@ -16,6 +16,14 @@ from django.db import models
        # self.photo = photo
        # self.research_gate_link = research_gate_link
 
+class Feedback(models.Model):
+    feedback_id = models.IntegerField()
+    academic_id = models.IntegerField()
+    name = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    text = models.CharField(max_length=10000)
+    date = models.CharField(max_length=1000)
+    status = models.CharField(max_length=10)
 
 class Academic(models.Model):
      academic_id = models.IntegerField()
