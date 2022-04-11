@@ -203,7 +203,22 @@ def add_feedback(request):
     else:
         return Response(result)
 
+@api_view(['GET'])
+def get_academic_by_id(request,pk):
+    print(pk)
 
+    temp = db_manager.get_academic_from_id(pk)
+
+    temp2 = Academic(pk,temp.academic_id, temp.name, temp.surname, temp.appellation,temp.institution, temp.job_title,
+                    temp.email,
+                    temp.password, temp.photo, temp.research_gate_link)
+    result = AcademicSerializer(temp2).data
+    print(result)
+    result = json.dumps(result)
+
+    print(result)
+
+    return Response(result)
     
 #    return HttpResponse("Login info")
 
