@@ -175,9 +175,12 @@ def signup(request):
     print("MODEL TEST:")
     print(mdl)
     result = db_manager.add_academic(mdl)
+    print("Res:",result)
     if result == -1:
+        print("Burada patladi")
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
     else:
+
         return Response(result)
 #    return HttpResponse("Login info")
 

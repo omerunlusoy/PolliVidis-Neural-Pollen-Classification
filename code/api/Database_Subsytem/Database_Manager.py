@@ -385,8 +385,8 @@ class Database_Manager:
               "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
 
         if isinstance(academic, AcademicModel):
-            if academic.photo == NULL:
-                binaryData = NULL
+            if academic.photo == None:
+                binaryData = None
             else:
                 # to use open, we needed to save the image
                 academic.photo.save("buff.jpg")
@@ -397,8 +397,8 @@ class Database_Manager:
             #val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, binaryData,
             #       academic.research_gate_link)
 
-            val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, binaryData, "aaa")
-
+            #val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, binaryData, "aaa")
+            val = ("ece","ece","ece","ece","ece","ece@ece","ece",None,"ece")
             #val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, academic.photo,
             #       academic.research_gate_link)       
             try:
