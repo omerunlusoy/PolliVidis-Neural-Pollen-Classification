@@ -162,7 +162,8 @@ class Database_Manager:
         results = self.cursor.fetchall()
 
         if len(results) == 1:
-            img = Image.open(io.BytesIO(results[0][8]))
+            #img = Image.open(io.BytesIO(results[0][8]))
+            img = None
             cur_academic = AcademicModel(results[0][0], results[0][1], results[0][2], results[0][3], results[0][4], results[0][5], results[0][6], results[0][7], img, results[0][9])
             return cur_academic
         else:
@@ -385,8 +386,10 @@ class Database_Manager:
               "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
         print("heey")
         self.print_academic_table()
+        print(type(academic))
+        print("hwat")
         if isinstance(academic, AcademicModel):
-            if academic.photo == None:
+            if academic.photo != None:
                 binaryData = None
             else:
                 # to use open, we needed to save the image
@@ -403,8 +406,11 @@ class Database_Manager:
             #val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, academic.photo,
             #       academic.research_gate_link)       
             try:
+                print("heyo")
                 self.cursor.execute(sql, val)
+                print("peki bura?")
                 self.db.commit()
+
                 return self.get_academic_from_email(academic.email).academic_id
             except(mysql.connector.Error, mysql.connector.Warning) as e:
                 print(e)
