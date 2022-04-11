@@ -25,6 +25,7 @@ import AnalysisInfoDrawer from "./AnalysisInfoDrawer";
 //api key: "AIzaSyAHlwtPiz1TdtLSNXtladNYvGRtCbzkm6g"
 //api_key_irem2 : "AIzaSyBKACLg3Nl9SOXYQkYdiMeTR9cVNS2_rJQ"
 //api_key_ece: "AIzaSyCovV7pf9gtNN93EAgzMqOZLYie_e27Gno"
+//omer: "AIzaSyDr2mi0HT_Hu22x6sriuAYIx1a6M3uWSRU"
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -43,7 +44,7 @@ const center = {
 
 export default function Map() {
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: "AIzaSyAHlwtPiz1TdtLSNXtladNYvGRtCbzkm6g",
+        googleMapsApiKey: "AIzaSyDr2mi0HT_Hu22x6sriuAYIx1a6M3uWSRU",
         libraries,
     });
     const [markers, setMarkers] = React.useState([]);
