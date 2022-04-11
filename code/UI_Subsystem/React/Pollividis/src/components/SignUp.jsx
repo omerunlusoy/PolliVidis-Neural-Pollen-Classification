@@ -119,7 +119,7 @@ const SignUp = () => {
         sampleObject.append("email", myObject.email);// add your file to form data
         sampleObject.append("password", myObject.password);// add your file to form data
         sampleObject.append("photo", myObject.photo);// add your file to form data
-        sampleObject.append("reserch_gate_link", myObject.reserch_gate_link);// add your file to form data
+        sampleObject.append("research_gate_link", myObject.reserch_gate_link);// add your file to form data
 
         axios
             .post('http://127.0.0.1:8000/api/sign-up/', sampleObject)

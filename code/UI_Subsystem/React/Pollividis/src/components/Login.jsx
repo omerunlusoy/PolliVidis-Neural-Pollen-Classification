@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Card, CardContent, CardMedia, Container, Grid, makeStyles, Typography} from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -35,24 +35,47 @@ const Login = ({ handleClose }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [str, setStr] = useState('');
+
+    const [user_info, setUserInfo] = useState('')
+    const isInitialMount = useRef(true);
+
 
     const handleSubmit = e => {
         e.preventDefault();
+        var info = email + "~" + password;
+        var default_storage = -1;
+        console.log(info);
 
+        fetch(`http://localhost:8000/api/login/${info}/`)
+            .then((data) =>  data.json())
+            //.then((data) => default_storage = JSON.parse(data))
+            .then( (data) => sessionStorage.setItem('academic_id', data) );
 
-        setStr(email + "~" + password)
 
 
     };
-
+/*
     useEffect(() => {
-        fetch(`http://localhost:8000/api/login/${str}/`)
-            .then((data) =>  data.json())
-            .then((data) => console.log(data) )
-    },[str]);
+
+        if (isInitialMount.current) {
+            isInitialMount.current = false;
+        } else {
+            var id = sessionStorage.getItem('academic_id');
+            if (id == null) {
+                // Initialize page views count
+                id = -1;
+            }
+            else{
+                sessionStorage.setItem('academic_id', data);
+                console.log("aaaaaaa");
+            }
+        }
 
 
+    }, [data]);
+    //console.log(sessionStorage.getItem('academic_id'));
+
+*/
 
     return (
         <div>
@@ -85,7 +108,7 @@ const Login = ({ handleClose }) => {
                                         />
                                         <div>
                                             <Link style={{ textDecoration:'none'}} to="/sign-up"><Button variant="contained" >Sign Up</Button></Link>
-                                            <Button type="submit" variant="contained" style={{backgroundColor:'#A6232A', color:'white'}}  onClick={handleSubmit}>
+                                            <Button type="submit" variant="contained" style={{backgroundColor:'#A6232A', color:'white'}}  >
                                                 Login
                                             </Button>
                                         </div>
