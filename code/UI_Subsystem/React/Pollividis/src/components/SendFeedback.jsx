@@ -28,7 +28,7 @@ const AboutUs = () => {
         const current = new Date();
         const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
-        //let feedBackObject = new FormData(); // creates a new FormData object
+        let feedBackObject = new FormData(); // creates a new FormData object
 
         const myObject = {
             id: "",
@@ -41,7 +41,7 @@ const AboutUs = () => {
         }
 
 
-/*
+
         feedBackObject.append("id",myObject.id);
         feedBackObject.append("academic_id",myObject.academic_id);
         feedBackObject.append("name", myObject.name); // add your file to form data
@@ -51,7 +51,7 @@ const AboutUs = () => {
         feedBackObject.append("status",myObject.status);
 
         axios
-            .post('http://127.0.0.1:9000/feedback/', myObject)
+            .post('http://127.0.0.1:8000/api/feedback/', myObject)
             .then(response => {
                 console.log(response.data)
 
@@ -59,8 +59,6 @@ const AboutUs = () => {
             .catch(error => {
                 console.log(error)
             })
-
- */
 
         console.log(myObject)
 
