@@ -383,7 +383,8 @@ class Database_Manager:
 
         sql = "INSERT INTO Academic (name, surname, appellation, institution, job_title, email, password, photo, research_gate_link) " \
               "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
-
+        print("heey")
+        self.print_academic_table()
         if isinstance(academic, AcademicModel):
             if academic.photo == None:
                 binaryData = None
