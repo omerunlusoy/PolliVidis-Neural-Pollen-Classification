@@ -31,10 +31,9 @@ const useStyles = makeStyles((theme) => ({
 const AboutUs = () => {
   const classes = useStyles();
 
-    const id = sessionStorage.getItem('academic_id');
-    console.log(Object.values(id)); //Object object
-    //id.
-    //const [profile, setProfile] = useState([])
+    const id = JSON.parse(sessionStorage.getItem('academic_id'));
+    console.log(id.academic_id)
+    console.log(id.name)
 /*
     useEffect(() => {
         fetch(`http://localhost:8000/api/get_academic_by_id/${id}/`)
@@ -53,19 +52,19 @@ const AboutUs = () => {
                           Profile
                       </Typography>
                       <Typography style={{marginBottom:5}} variant="h5"  component="p">
-                          Name:
+                          Name: {id.name}
                       </Typography>
                       <Typography style={{marginBottom:5}} variant="h5"  component="p">
-                          Job:
+                          Job: {id.job_title}
                       </Typography>
                       <Typography style={{marginBottom:5}} variant="h5"  component="p">
-                          E-Mail:
+                          E-Mail: {id.email}
                       </Typography>
                       <Typography style={{marginBottom:5}} variant="h5"  component="p">
-                          Institution:
+                          Institution: {id.institution}
                       </Typography>
                       <Typography style={{marginBottom:20}} variant="h5"  component="p">
-                          Research Gate:
+                          Research Gate: {id.research_gate_link}
                       </Typography>
                       <Button style={{marginTop:10}} variant="contained" style={{backgroundColor:'#A6232A', color:'white'}}size="medium" >
                           Edit
