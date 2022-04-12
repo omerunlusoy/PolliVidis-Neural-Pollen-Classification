@@ -52,7 +52,7 @@ const AboutUs = () => {
                           Profile
                       </Typography>
                       <Typography style={{marginBottom:5}} variant="h5"  component="p">
-                          Name: {id.name}
+                          Name: {id.name} {id.surname}
                       </Typography>
                       <Typography style={{marginBottom:5}} variant="h5"  component="p">
                           Job: {id.job_title}
