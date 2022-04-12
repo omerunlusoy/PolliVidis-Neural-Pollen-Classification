@@ -33,6 +33,11 @@ export default function RightDrawer() {
         setState({ ...state, [anchor]: open });
     };
 
+    var default_list = ['Academic Login', 'Analyze Sample','Pollen Map', 'Download Dataset','About Us','Send Feedback','How PolliVidis Works'];
+    var user_list = ['Profile','Previous Analyses', 'Analyze Sample','Pollen Map', 'Download Dataset','About Us','Send Feedback','How PolliVidis Works', 'Logout'];
+    if (sessionStorage.getItem("academic_id") != null){
+        default_list = user_list;
+    }
     const list = (anchor) => (
         <Box
             sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
@@ -41,22 +46,24 @@ export default function RightDrawer() {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
-                {['Academic Login', 'Profile', 'Previous Analysis', 'Analyze Sample','Pollen Map', 'Download Dataset','About Us','Send Feedback','How PolliVidis Works','Logout'].map((text, index) => (
+                {
+                    default_list.map((text) => (
                     <ListItem button key={text}>
                         <ListItemIcon>
                             {(() => {
-                                switch (index) {
-                                    case 0:  {url = "/login"} return <div><Home/></div>;
-                                    case 1: {url = "/profile"} return <Person/>;
-                                    case 2: {url = "/previous_analyses"} return <FolderIcon />;
-                                    case 3: {url = "/analyze_sample"} return <AnalyticsIcon />;
-                                    case 4: {url = "/map"} return <MapIcon />;
-                                    case 5: {url = "/analyze_sample"} return <GetAppIcon/>;
-                                    case 6: {url = "/about-us"} return <GroupIcon/>;
-                                    case 7: {url = "/send_feedback"} return  <FeedbackIcon/>;
-                                    case 8: {url = "/how_pollividis_works"} return  <HelpIcon/>;
-                                    case 9: {url = "/analyze_sample"} return  <ExitToApp/>;
+                                switch (text) {
+                                    case "Academic Login":  {url = "/login"} return <div><Home/></div>;
+                                    case "Profile": {url = "/profile"} return <Person/>;
+                                    case "Previous Analyses": {url = "/previous_analyses"} return <FolderIcon />;
+                                    case "Analyze Sample": {url = "/analyze_sample"} return <AnalyticsIcon />;
+                                    case "Pollen Map": {url = "/map"} return <MapIcon />;
+                                    case "Download Dataset": {url = "/analyze_sample"} return <GetAppIcon/>;
+                                    case "About Us": {url = "/about-us"} return <GroupIcon/>;
+                                    case "Send Feedback": {url = "/send_feedback"} return  <FeedbackIcon/>;
+                                    case "How Pollividis Works": {url = "/how_pollividis_works"} return  <HelpIcon/>;
+                                    case "Logout": {url = "/analyze_sample"} return  <ExitToApp/>;
                                     default:      return <MailIcon />;
+
                                 }
                             })()}
                         </ListItemIcon>
