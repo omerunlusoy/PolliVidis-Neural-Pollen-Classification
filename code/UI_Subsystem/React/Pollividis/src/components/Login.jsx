@@ -43,13 +43,15 @@ const Login = ({ handleClose }) => {
     const handleSubmit = e => {
         e.preventDefault();
         var info = email + "~" + password;
-        var default_storage = -1;
-        console.log(info);
+
 
         fetch(`http://localhost:8000/api/login/${info}/`)
             .then((data) =>  data.json())
-            .then( (data) => sessionStorage.setItem('academic_id',JSON.stringify(data)) );
-
+            .then( (data) => sessionStorage.setItem('academic_id',JSON.stringify(data)) )
+            .catch( error => {
+                    //this.setState({ errorMessage: error.toString() });
+                    console.log('There was an error!', error);
+                });
 
 
     };

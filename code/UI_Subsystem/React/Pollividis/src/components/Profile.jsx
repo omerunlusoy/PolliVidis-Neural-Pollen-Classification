@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
 const AboutUs = () => {
   const classes = useStyles();
 
+  //TODO: render nothing if user is not logged in
     const id = JSON.parse(sessionStorage.getItem('academic_id'));
     console.log(id.academic_id)
     console.log(id.name)
