@@ -1,4 +1,15 @@
-import {Card, CardActionArea, CardContent, CardMedia, Container, Grid, makeStyles, Typography} from "@material-ui/core";
+import {
+    Box,
+    Card,
+    CardActionArea,
+    CardContent,
+    CardMedia,
+    Container,
+    Dialog,
+    Grid,
+    makeStyles,
+    Typography
+} from "@material-ui/core";
 import Post from "./Post";
 import Navbar from "./Navbar";
 import React, {useEffect, useState} from "react";
@@ -21,9 +32,16 @@ const AboutUs = () => {
     const [your_email, setEmail] = useState('');
     const [your_name, setName] = useState('');
     const [your_feedback, setFeedback] = useState('');
+    const [open,setOpen] = useState(false);
+    const [notEmpty,setNotEmpty] = useState(false);
+
 
     const academic = JSON.parse(sessionStorage.getItem('academic_id'));
     const academic_id = academic.academic_id;
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
 
     const submitHandler= () => {
@@ -53,17 +71,24 @@ const AboutUs = () => {
         feedBackObject.append("date",myObject.date);
         feedBackObject.append("status",myObject.status);
 
-        axios
-            .post('http://127.0.0.1:8000/api/feedback/', myObject)
-            .then(response => {
-                console.log(response.data)
 
-            })
-            .catch(error => {
-                console.log(error)
-            })
+            axios
+                .post('http://127.0.0.1:8000/api/feedback/', myObject)
+                .then(response => {
+                    console.log(response.data)
 
-        console.log(myObject)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+
+            console.log(myObject)
+
+            setOpen(true);
+
+
+
+
 
     }
 
@@ -97,6 +122,7 @@ const AboutUs = () => {
                       </div>
                       <div style={{marginBottom:10}}>
                           <TextField
+                              required
                               id="outlined-textarea"
                               label="Your Feedback"
                               placeholder="Your feedback"
@@ -111,6 +137,21 @@ const AboutUs = () => {
                               Send Feedback
                           </Button>
                       </div>
+                      <Dialog
+                          open={open}
+                          onClose={handleClose}
+                      >
+                          <Navbar/>
+                          <Card >
+                              <CardActionArea>
+                                  <CardContent>
+                                      <Typography align={"center"}  variant="h4" >
+                                          Thank you for your feedback!
+                                      </Typography>
+                                  </CardContent>
+                              </CardActionArea>
+                          </Card>
+                      </Dialog>
 
                   </Container>
               </Grid>
