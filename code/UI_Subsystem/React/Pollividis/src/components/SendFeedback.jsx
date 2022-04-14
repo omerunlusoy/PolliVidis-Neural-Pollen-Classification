@@ -22,7 +22,8 @@ const AboutUs = () => {
     const [your_name, setName] = useState('');
     const [your_feedback, setFeedback] = useState('');
 
-    const academic_id = sessionStorage.getItem('academic_id');
+    const academic = JSON.parse(sessionStorage.getItem('academic_id'));
+    const academic_id = academic.academic_id;
 
 
     const submitHandler= () => {
