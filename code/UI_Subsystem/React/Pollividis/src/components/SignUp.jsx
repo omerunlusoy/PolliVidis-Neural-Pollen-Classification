@@ -9,6 +9,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
+import {Link, Navigate} from "react-router-dom";
 
 
 
@@ -86,6 +87,7 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
 
     const [message, setMessage] = useState('');
+    const [goLoginPage,setGoLoginPage] = useState(false);
 
 
 
@@ -125,6 +127,7 @@ const SignUp = () => {
             .post('http://127.0.0.1:8000/api/sign-up/', sampleObject)
             .then(response => {
                 setMessage(response.data.message)
+                setGoLoginPage(true)
             })
             .catch(error => {
                 const resMessage =
@@ -148,6 +151,15 @@ const SignUp = () => {
         setPassword('');
     };
 
+    if(goLoginPage)
+    {
+        return <Navigate
+            to={{
+                pathname: `/login`
+            }}
+        />
+
+    }
 
     /*
     return (
