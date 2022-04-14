@@ -109,9 +109,10 @@ const Login = ({ handleClose }) => {
                                         />
                                         <div>
                                             <Link style={{ textDecoration:'none'}} to="/sign-up"><Button variant="contained" >Sign Up</Button></Link>
-                                            <Button type="submit" variant="contained" style={{backgroundColor:'#A6232A', color:'white'}}  >
+                                            <Link style={{ textDecoration:'none'}} to="/map"><Button type="submit" variant="contained" style={{backgroundColor:'#A6232A', color:'white'}}  >
                                                 Login
-                                            </Button>
+                                            </Button></Link>
+
                                         </div>
                                     </form>
                                 </Box>

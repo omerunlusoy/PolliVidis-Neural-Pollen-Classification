@@ -33,8 +33,8 @@ export default function RightDrawer() {
         setState({ ...state, [anchor]: open });
     };
 
-    var default_list = ['Academic Login', 'Analyze Sample','Pollen Map', 'Download Dataset','About Us','Send Feedback','How PolliVidis Works'];
-    var user_list = ['Profile','Previous Analyses', 'Analyze Sample','Pollen Map', 'Download Dataset','About Us','Send Feedback','How PolliVidis Works', 'Logout'];
+    var default_list = ['Academic Login', 'Analyze Sample','Pollen Map', 'Download Dataset','About Us','Send Feedback','How Pollividis Works'];
+    var user_list = ['Profile','Previous Analyses', 'Analyze Sample','Pollen Map', 'Download Dataset','About Us','Send Feedback','How Pollividis Works', 'Logout'];
     if (sessionStorage.getItem("academic_id") != null){
         default_list = user_list;
     }
