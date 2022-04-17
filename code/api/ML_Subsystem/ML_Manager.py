@@ -16,8 +16,8 @@ class ML_Manager:
     def __init__(self):
 
         # UPDATE for yourself
-        self.model_path = '/Users/omerunlusoy/Desktop/CS 492/copy_project/ML_Subsystem/models/best_model.pth'
-
+        #self.model_path = '/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/ML_Subsystem/models/best_model.pth'
+        self.model_path = './models/best_model.pth'
         self.extractor = Pollen_Extraction()
         self.helper = Helper_Functions()
 

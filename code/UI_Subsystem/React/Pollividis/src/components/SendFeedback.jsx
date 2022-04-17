@@ -34,10 +34,19 @@ const AboutUs = () => {
     const [your_feedback, setFeedback] = useState('');
     const [open,setOpen] = useState(false);
     const [notEmpty,setNotEmpty] = useState(false);
+    let academic_id;
 
 
     const academic = JSON.parse(sessionStorage.getItem('academic_id'));
-    const academic_id = academic.academic_id;
+    if(academic!= null)
+    {
+        academic_id = academic.academic_id;
+    }
+    else
+    {
+        academic_id = 0;
+    }
+
 
     const handleClose = () => {
         setOpen(false);
