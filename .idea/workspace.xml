@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="183a074e-13d0-460a-8224-d6a7a74a608b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/code/api/ML_Subsystem/test_images/6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/api/ML_Subsystem/test_images/d1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/api/ML_Subsystem/test_images/d2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/api/ML_Subsystem/test_images/d3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/api/ML_Subsystem/test_images/d4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/api/ML_Subsystem/test_images/d5.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/api/ML_Subsystem/CNN.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/api/ML_Subsystem/Helper_Functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/api/ML_Subsystem/Helper_Functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/api/ML_Subsystem/ML_Manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/api/ML_Subsystem/ML_Manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/api/ML_Subsystem/Pollen_Extraction.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/api/ML_Subsystem/Pollen_Extraction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/api/ML_Subsystem/test_images/pop.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,7 +243,7 @@
       <workItem from="1645377683784" duration="143000" />
       <workItem from="1645480074838" duration="496000" />
       <workItem from="1645802372301" duration="108000" />
-      <workItem from="1650196021242" duration="489000" />
+      <workItem from="1650196021242" duration="601000" />
     </task>
     <servers />
   </component>
@@ -284,7 +274,7 @@
     <SUITE FILE_PATH="coverage/code$deneme.coverage" NAME="deneme Coverage Results" MODIFIED="1640115203811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ML_Subsystem" />
     <SUITE FILE_PATH="coverage/code$Pollen_Extraction.coverage" NAME="Pollen_Extraction Coverage Results" MODIFIED="1640430954278" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ML_Subsystem" />
     <SUITE FILE_PATH="coverage/code$manage.coverage" NAME="manage Coverage Results" MODIFIED="1640461743865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/UI_Subsystem" />
-    <SUITE FILE_PATH="coverage/PolliVidis_Neural_Pollen_Classification$ML_Manager__1_.coverage" NAME="ML_Manager (1) Coverage Results" MODIFIED="1650196376056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code/api/ML_Subsystem" />
+    <SUITE FILE_PATH="coverage/PolliVidis_Neural_Pollen_Classification$ML_Manager__1_.coverage" NAME="ML_Manager (1) Coverage Results" MODIFIED="1650196514451" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code/api/ML_Subsystem" />
     <SUITE FILE_PATH="coverage/code$ML_Manager.coverage" NAME="ML_Manager Coverage Results" MODIFIED="1640449436398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ML_Subsystem" />
     <SUITE FILE_PATH="coverage/code$Database_Tester.coverage" NAME="Database_Tester Coverage Results" MODIFIED="1640461332572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Database_Subsytem" />
     <SUITE FILE_PATH="coverage/code$Object_Detection_Trail.coverage" NAME="Object_Detection_Trail Coverage Results" MODIFIED="1632926471009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

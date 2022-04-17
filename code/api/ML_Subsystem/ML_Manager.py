@@ -14,6 +14,10 @@ import matplotlib.pyplot as plt
 class ML_Manager:
 
     def __init__(self):
+
+        # UPDATE for yourself
+        self.model_path = '/Users/omerunlusoy/Desktop/CS 492/copy_project/ML_Subsystem/models/best_model.pth'
+
         self.extractor = Pollen_Extraction()
         self.helper = Helper_Functions()
 
@@ -24,7 +28,7 @@ class ML_Manager:
         self.model = torch.hub.load('pytorch/vision:v0.10.0', 'alexnet', pretrained=False)
         self.model.classifier[6] = nn.Linear(4096, len(self.classes))
 
-        self.model.load_state_dict(torch.load('/Users/omerunlusoy/Desktop/CS 492/copy_project/ML_Subsystem/models/best_model.pth'))
+        self.model.load_state_dict(torch.load(self.model_path))
         self.model.eval()
         print('! model and state dict loaded.')
 
