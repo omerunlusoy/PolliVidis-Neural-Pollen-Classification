@@ -21,7 +21,7 @@ from .ML_Subsystem.ML_Manager import ML_Manager
 
 from PIL import Image
 
-cred = credentials.Certificate("firebase-sdk.json")
+cred = credentials.Certificate("/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/firebase-sdk.json")
 initialize_app(cred, {'storageBucket': 'fir-react1-70dd6.appspot.com'})
 
 #firebase = Firebase(firebaseConfig)
@@ -258,7 +258,7 @@ def analyze(request):
     photo_url = request.data['url']
     photo_id = request.data['id']
 
-    filename = '/files/' + photo_id
+    fileName = 'files/' + str(photo_id)
 
     print(photo_url)
     print(photo_id)
@@ -267,9 +267,17 @@ def analyze(request):
     
     #download_file = 
     bucket = storage.bucket()
-    fileName= "6.jpg"
+    #fileName= "/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/6.jpg"
     blob = bucket.blob(fileName)
-    blob.upload_from_filename(fileName)
+    print("Irem 2")
+    fileName2 = "/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/test.jpg"
+    im = blob.download_to_filename(fileName2)
+    print("Irem Irem")
+    #print(blob.generate_signed_url(fileName, method='GET'))
+
+    blob.make_public()
+    im.show()
+    print(im)
 
     #blob = bucket.blob('Finals/',bucket)
     #blob.download_to_filename('')

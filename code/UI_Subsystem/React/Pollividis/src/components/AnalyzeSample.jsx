@@ -140,13 +140,14 @@ const AnalyzeSample = () => {
                 let fileU = '/files/' + id
                 const storageRef = ref(storage,fileU);
                 getDownloadURL(storageRef).then((url)=>{
-                    
+
                     console.log(url)
                     myUrl = url;
-                    
+
                     axios.put('http://127.0.0.1:8000/api/analyze/', {url: myUrl, id:id})
                     .then(response => {
                         // NAVIGATION
+                        //setGoAnalysisPage(true)
                     })
                 }).catch((error) => {
                     // Handle any errors
