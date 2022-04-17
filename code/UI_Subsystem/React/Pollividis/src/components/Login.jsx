@@ -50,7 +50,12 @@ const Login = ({ handleClose }) => {
 
 
         fetch(`http://localhost:8000/api/login/${info}/`)
-            .then((data) =>  data.json())
+            .then((data) =>  { if (!data.ok){
+                const err = new Error("Not 2xx response");
+                err.response = data;
+                throw err;
+            }
+                data.json()})
             .then( (data) => {sessionStorage.setItem('academic_id',JSON.stringify(data))
                 console.log(data)
                 setUser_logged_in(true)}
@@ -61,6 +66,7 @@ const Login = ({ handleClose }) => {
             .catch( error => {
                     //this.setState({ errorMessage: error.toString() });
                     console.log('There was an error!', error);
+                    alert("Please check the login information")
                 });
 
 
