@@ -56,22 +56,22 @@ const Login = ({ handleClose }) => {
                 err.response = data;
                 throw err;
                 }
-
-
                 } )
             */
             .then( (data) => {sessionStorage.setItem('academic_id',JSON.stringify(data))
-                 console.log(data)
-                setUser_logged_in(true)}
-        )
-           // .then((data) =>)
+                console.log(data)
+                setUser_logged_in(true)
+                console.log(user_logged_in)
+            }
+            )
+            // .then((data) =>)
             //.then()
             //.then( navigate("/profile") )
             .catch( error => {
-                    //this.setState({ errorMessage: error.toString() });
-                    console.log('There was an error!', error);
-                    alert("Please check the login information")
-                });
+                //this.setState({ errorMessage: error.toString() });
+                console.log('There was an error!', error);
+                alert("Please check the login information")
+            });
 
 
     };

@@ -35,9 +35,22 @@ export default function RightDrawer() {
 
     var default_list = ['Academic Login', 'Analyze Sample','Pollen Map', 'Download Dataset','About Us','Send Feedback','How Pollividis Works'];
     var user_list = ['Profile','Previous Analyses', 'Analyze Sample','Pollen Map', 'Download Dataset','About Us','Send Feedback','How Pollividis Works', 'Logout'];
+    var logout = false;
     if (sessionStorage.getItem("academic_id") != null){
         default_list = user_list;
     }
+
+
+
+
+
+    const handleLogout = e => {
+        e.preventDefault();
+        if (logout){
+            sessionStorage.clear();
+        }
+    }
+
     const list = (anchor) => (
         <Box
             sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
@@ -61,13 +74,13 @@ export default function RightDrawer() {
                                     case "About Us": {url = "/about-us"} return <GroupIcon/>;
                                     case "Send Feedback": {url = "/send_feedback"} return  <FeedbackIcon/>;
                                     case "How Pollividis Works": {url = "/how_pollividis_works"} return  <HelpIcon/>;
-                                    case "Logout": {url = "/analyze_sample"} return  <ExitToApp/>;
+                                    case "Logout": {url = "/logout"}  return  <ExitToApp/>;
                                     default:      return <MailIcon />;
 
                                 }
                             })()}
                         </ListItemIcon>
-                        <Link style={{ textDecoration: 'none'}} to={url}><Button style={{textAlign:"left",color:'black'}}>{text}</Button></Link>
+                        <Link style={{ textDecoration: 'none'}} to={url}  ><Button style={{textAlign:"left",color:'black'}} >{text}</Button></Link>
                     </ListItem>
                 ))}
             </List>

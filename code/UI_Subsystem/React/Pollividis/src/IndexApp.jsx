@@ -1,6 +1,8 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import App from "./App";
 import AboutUs from "./components/AboutUs";
+import Logout from "./components/Logout";
+
 import AnalysisPage from "./components/AnalysisPage";
 import Profile from "./components/Profile";
 import SignUp from "./components/SignUp";
@@ -26,6 +28,7 @@ const IndexApp = () => {
               <Route path="/send_feedback" element={<SendFeedback/>} />
               <Route path="/how_pollividis_works" element={<HowItWorks/>} />
               <Route path="/previous_analyses" element={<PreviousAnalyses/>} />
+              <Route path="/logout" element={<Logout/>} />
 
           </Routes>
       </BrowserRouter>
