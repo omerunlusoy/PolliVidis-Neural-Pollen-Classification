@@ -21,7 +21,7 @@ from .ML_Subsystem.ML_Manager import ML_Manager
 
 from PIL import Image
 
-cred = credentials.Certificate("/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/firebase-sdk.json")
+cred = credentials.Certificate("./firebase-sdk.json")
 initialize_app(cred, {'storageBucket': 'fir-react1-70dd6.appspot.com'})
 
 #firebase = Firebase(firebaseConfig)
@@ -270,20 +270,32 @@ def analyze(request):
     #fileName= "/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/6.jpg"
     blob = bucket.blob(fileName)
     print("Irem 2")
-    fileName2 = "/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/test.jpg"
-    im = blob.download_to_filename(fileName2)
+    fileName2 = "./"+str(photo_id) +"_final.jpg"
+
+
+    
+    blob.download_to_filename(fileName2)
     print("Irem Irem")
     #print(blob.generate_signed_url(fileName, method='GET'))
 
+    sample_image = Image.open(fileName2)
+
+    source_img, analysis_text, pollens_dict = ml_manager.analyze_sample(sample_image, erosion_dilation=10)
+
+    #plt.imshow(source_img)
+    #print('\n! Analysis text:\n', analysis_text)
+    #print('! Pollens dictionary:\n', pollens_dict)
+
+    #blob = bucket.blob('Finals/',bucket)
+    img = source_img.save(fileName2)
+    blob.upload_from_filename(fileName2)
     blob.make_public()
-    im.show()
-    print(im)
+    #im.show()
+    #print(im)
 
     #blob = bucket.blob('Finals/',bucket)
     #blob.download_to_filename('')
     #blob = bucket.blob(filename)
-    #bucket.
-    #storage
     #filename = photo_id + '_final'
     
     #blob.upload_from_filename(filename)
