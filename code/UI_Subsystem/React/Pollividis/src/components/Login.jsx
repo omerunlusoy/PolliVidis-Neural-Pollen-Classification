@@ -50,14 +50,18 @@ const Login = ({ handleClose }) => {
 
 
         fetch(`http://localhost:8000/api/login/${info}/`)
-            .then((data) =>  { if (!data.ok){
+            .then((data) => data.json())
+            /*.then((data) =>  { if (!data.ok) {
                 const err = new Error("Not 2xx response");
                 err.response = data;
                 throw err;
-            }
-                data.json()})
+                }
+
+
+                } )
+            */
             .then( (data) => {sessionStorage.setItem('academic_id',JSON.stringify(data))
-                console.log(data)
+                 console.log(data)
                 setUser_logged_in(true)}
         )
            // .then((data) =>)
