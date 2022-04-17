@@ -22,11 +22,12 @@ from .ML_Subsystem.ML_Manager import ML_Manager
 
 from PIL import Image
 
-cred = credentials.Certificate('firebase-sdk.json')
+#cred = credentials.Certificate('firebase-sdk.json')
 
-firebase_admin.initialize_app(cred,{
-    'storeageBucket': ''
-})
+
+#firebase_admin.initialize_app(cred,{
+#    'storeageBucket': ''
+#})
 db_manager = Database_Manager(False)
 ml_manager = ML_Manager()
 print('! views db created')
@@ -58,13 +59,13 @@ def analyses_post(request):
 
     # django image to PIL Image
 
-    #if isinstance(image, django.core.files.uploadedfile.InMemoryUploadedFile):
-    #    image = Image.open(image)
-    #else:
-    #    image = Image.open(image.temporary_file_path())
+    if isinstance(image, django.core.files.uploadedfile.InMemoryUploadedFile):
+        image = Image.open(image)
+    else:
+        image = Image.open(image.temporary_file_path())
 
     # create Sample Model to upload to the database
-    sampleObj = SampleModel(-1, 1, None, request.data['date'], request.data['location_latitude'], request.data['location_longitude'], pollenText,
+    sampleObj = SampleModel(-1, 1, image, request.data['date'], request.data['location_latitude'], request.data['location_longitude'], pollenText,
                             request.data['publication_status'], request.data['anonymous_status'], pollens)
     # query database to upload the sample
     result = db_manager.add_sample(sampleObj)
@@ -248,8 +249,8 @@ def get_samples_of_academic(request,pk):
 @api_view(['PUT'])
 def analyze(request):
 
-    photo_url = request.data['sample_photo']
-    photo_id = request.data['sample_id']
+    photo_url = request.data['url']
+    photo_id = request.data['id']
 
     print(photo_url)
     print(photo_id)

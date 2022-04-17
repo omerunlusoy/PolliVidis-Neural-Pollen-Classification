@@ -135,12 +135,20 @@ const AnalyzeSample = () => {
                 console.log(id)
                 uploadImage(selectedImage,response.data)
                 //setGoAnalysisPage(true)
-                const url = getPhotoURL(id)
-                myObject.sample_photo = url;
-                myObject.sample_id = id;
-                sampleObject['sample_id'] = myObject.sample_id;
-                sampleObject['sample_photo'] = myObject.sample_photo;
-                return axios.put('http://127.0.0.1:8000/api/analyze/', sampleObject)
+
+                let myUrl;
+                let fileU = '/files/' + id
+                const storageRef = ref(storage,fileU);
+                getDownloadURL(storageRef).then((url)=>{
+                    console.log(url)
+                    myUrl = url;
+                    return axios.put('http://127.0.0.1:8000/api/analyze/', {url: myUrl, id:id})
+                }).catch((error) => {
+                    // Handle any errors
+                });
+
+                console.log(myUrl)
+
             })
             .catch(error => {
                 console.log(error)
