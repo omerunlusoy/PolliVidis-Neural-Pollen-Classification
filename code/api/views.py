@@ -6,17 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.core import serializers
 import json
-#import firebase_admin
-
-from firebase import Firebase
-
-#import firebase
-#import firebase
-
-#import pyrebase
-#import pyrebase
-#from firebase import Firebase
-#from firebase_admin import credentials, initialize_app, storage
+from firebase_admin import credentials, initialize_app, storage
 
 from api.Database_Subsytem.AcademicModel import AcademicModel
 
@@ -31,20 +21,14 @@ from .ML_Subsystem.ML_Manager import ML_Manager
 
 from PIL import Image
 
-#cred = credentials.Certificate('firebase-sdk.json')
+cred = credentials.Certificate("firebase-sdk.json")
+initialize_app(cred, {'storageBucket': 'fir-react1-70dd6.appspot.com'})
 
-firebaseConfig = {
-    'apiKey': "AIzaSyDCtmcYxx7-MqKH3CVH8MCW-XwtVcfFO3Y",
-    'authDomain': "fir-react1-70dd6.firebaseapp.com",
-    'projectId': "fir-react1-70dd6",
-    'storageBucket': "fir-react1-70dd6.appspot.com",
-};
-
-firebase = Firebase(firebaseConfig)
-#firebase = firebase_admin.initialize_app(cred,firebaseConfig)
+#firebase = Firebase(firebaseConfig)
+#initialize_app(cred,firebaseConfig)
 #strg = firebase.
 
-storage = firebase.storage()
+#storage = firebase.storage()
 
 #fb_storage = firebase_storage.
 #bucket = firebase_admin.storage().bucket();
@@ -278,9 +262,23 @@ def analyze(request):
 
     print(photo_url)
     print(photo_id)
+    
+    #bucket = storage.bucket()
+    
+    #download_file = 
+    bucket = storage.bucket()
+    fileName= "6.jpg"
+    blob = bucket.blob(fileName)
+    blob.upload_from_filename(fileName)
 
-    im = storage.child(filename).download(photo_id)
-    print(type(im))
+    #blob = bucket.blob('Finals/',bucket)
+    #blob.download_to_filename('')
+    #blob = bucket.blob(filename)
+    #bucket.
+    #storage
+    #filename = photo_id + '_final'
+    
+    #blob.upload_from_filename(filename)
 
     return Response(True)
 
