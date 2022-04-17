@@ -3,7 +3,9 @@ import {Card, CardContent, CardMedia, Container, Grid, makeStyles, Typography} f
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Navbar from "./Navbar";
-import {Link} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
+import {Link, useHistory} from "react-router-dom";
 import ImageCard from "./ImageCard";
 import Box from "@mui/material/Box";
 import axios from "axios";
@@ -30,14 +32,16 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Login = ({ handleClose }) => {
+
+    const navigate = useNavigate();
+
     const classes = useStyles();
     // create state variables for each input
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const [user_info, setUserInfo] = useState('')
-    const isInitialMount = useRef(true);
+    const [user_logged_in, setUser_logged_in] = useState(false)
 
 
     const handleSubmit = e => {
@@ -47,7 +51,13 @@ const Login = ({ handleClose }) => {
 
         fetch(`http://localhost:8000/api/login/${info}/`)
             .then((data) =>  data.json())
-            .then( (data) => sessionStorage.setItem('academic_id',JSON.stringify(data)) )
+            .then( (data) => {sessionStorage.setItem('academic_id',JSON.stringify(data))
+                console.log(data)
+                setUser_logged_in(true)}
+        )
+           // .then((data) =>)
+            //.then()
+            //.then( navigate("/profile") )
             .catch( error => {
                     //this.setState({ errorMessage: error.toString() });
                     console.log('There was an error!', error);
@@ -55,28 +65,13 @@ const Login = ({ handleClose }) => {
 
 
     };
-/*
+
     useEffect(() => {
 
-        if (isInitialMount.current) {
-            isInitialMount.current = false;
-        } else {
-            var id = sessionStorage.getItem('academic_id');
-            if (id == null) {
-                // Initialize page views count
-                id = -1;
-            }
-            else{
-                sessionStorage.setItem('academic_id', data);
-                console.log("aaaaaaa");
-            }
-        }
+        if (user_logged_in) {
+            navigate("/profile")
+        }}, [user_logged_in]);
 
-
-    }, [data]);
-    //console.log(sessionStorage.getItem('academic_id'));
-
-*/
 
     return (
         <div>
