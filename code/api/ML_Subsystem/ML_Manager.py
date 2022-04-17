@@ -57,7 +57,7 @@ class ML_Manager:
             pollens_dict[i] = pollens_dict.get(i, 0) + 1
 
         # get image with labels
-        source_img = self.helper.label_sample_image(sample_image, box_coordinates, pollens=pollens, plot=True, no_grid=True)
+        source_img = self.helper.label_sample_image(sample_image, box_coordinates, pollens=pollens, plot=False, no_grid=True)
         analysis_text = self.get_analysis_text(pollens_dict, location, date, academic_name)
         # source_img.save('pred.jpg')
         return source_img, analysis_text, pollens_dict

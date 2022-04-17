@@ -45,7 +45,8 @@ const AnalyzeSample = () => {
     const [progress,setProgress] = useState(0)
     const [selectedImage, setSelectedImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
-    const [id, setId] = useState(null);
+    let id;
+    //const [id, setId] = useState(null);
     const [goAnalysisPage, setGoAnalysisPage] = useState(false);
 
     const [date, setDate] = useState('');
@@ -131,7 +132,8 @@ const AnalyzeSample = () => {
             .post('http://127.0.0.1:8000/api/analysis_posts/', sampleObject)
             .then(response => {
                 console.log(response.data)
-                setId(response.data);
+                id = response.data
+                //setId(response.data);
                 console.log(id)
                 uploadImage(selectedImage,response.data)
                 //setGoAnalysisPage(true)
@@ -147,7 +149,7 @@ const AnalyzeSample = () => {
                     axios.put('http://127.0.0.1:8000/api/analyze/', {url: myUrl, id:id})
                     .then(response => {
                         // NAVIGATION
-                        //setGoAnalysisPage(true)
+                        setGoAnalysisPage(true)
                     })
                 }).catch((error) => {
                     // Handle any errors

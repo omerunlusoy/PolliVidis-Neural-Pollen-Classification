@@ -21,7 +21,7 @@ from .ML_Subsystem.ML_Manager import ML_Manager
 
 from PIL import Image
 
-cred = credentials.Certificate("./firebase-sdk.json")
+cred = credentials.Certificate("/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/firebase-sdk.json")
 initialize_app(cred, {'storageBucket': 'fir-react1-70dd6.appspot.com'})
 
 #firebase = Firebase(firebaseConfig)
@@ -257,7 +257,7 @@ def analyze(request):
 
     photo_url = request.data['url']
     photo_id = request.data['id']
-
+    #photo_id = photo_id + 1
     fileName = 'files/' + str(photo_id)
 
     print(photo_url)
@@ -270,7 +270,7 @@ def analyze(request):
     #fileName= "/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/6.jpg"
     blob = bucket.blob(fileName)
     print("Irem 2")
-    fileName2 = "./"+str(photo_id) +"_final.jpg"
+    fileName2 = "./"+str(photo_id) +"_.jpg"
 
 
     
@@ -287,9 +287,15 @@ def analyze(request):
     #print('! Pollens dictionary:\n', pollens_dict)
 
     #blob = bucket.blob('Finals/',bucket)
+    fileName2 = str(photo_id) + "_final.jpg"
+    fileName = 'files/' + fileName2
+    blob = bucket.blob(fileName)
+    print(fileName)
     img = source_img.save(fileName2)
+    print("UUUUUUUUUUUUU")
     blob.upload_from_filename(fileName2)
     blob.make_public()
+    print("AAAAAAAAAAAAAAA")
     #im.show()
     #print(im)
 

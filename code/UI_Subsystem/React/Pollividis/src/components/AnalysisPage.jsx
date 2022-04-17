@@ -38,7 +38,7 @@ const Feed = () => {
 
     const getPhoto = async(id) => {
 
-        let fileU = '/files/' + id
+        let fileU = '/files/' + (id) + '_final.jpg'
         const storageRef = ref(storage,fileU);
         getDownloadURL(storageRef).then((url)=>{
             console.log(url)
