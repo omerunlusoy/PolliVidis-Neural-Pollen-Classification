@@ -96,18 +96,18 @@ class ML_Manager:
 
 # MAIN ############################################################################################################
 
-def main():
-    manager = ML_Manager()
+#def main():
+    #manager = ML_Manager()
 
     # # Analyze Sample
-    sample_image = Image.open("test_images/6.jpg")
+    #sample_image = Image.open("test_images/6.jpg")
 
-    source_img, analysis_text, pollens_dict = manager.analyze_sample(sample_image, erosion_dilation=10)
+    #source_img, analysis_text, pollens_dict = manager.analyze_sample(sample_image, erosion_dilation=10)
 
-    plt.imshow(source_img)
-    print('\n! Analysis text:\n', analysis_text)
-    print('! Pollens dictionary:\n', pollens_dict)
+    #plt.imshow(source_img)
+    #print('\n! Analysis text:\n', analysis_text)
+    #print('! Pollens dictionary:\n', pollens_dict)
 
 
-if __name__ == "__main__":
-    main()
+#if __name__ == "__main__":
+#    main()

@@ -6,6 +6,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.core import serializers
 import json
+import firebase_admin
+from firebase_admin import credentials, initialize_app, storage
 
 from api.Database_Subsytem.AcademicModel import AcademicModel
 
@@ -15,12 +17,18 @@ from .serializers import AcademicSerializer, SampleSerializer,FeedbackSerializer
 from .Database_Subsytem.SampleModel import SampleModel
 from .Database_Subsytem.Database_Manager import Database_Manager
 from .Database_Subsytem.FeedbackModel import FeedbackModel
-
+from .ML_Subsystem.ML_Manager import ML_Manager
 #from .ML_Subsystem.ML_Manager import ML_Manager
 
 from PIL import Image
 
+cred = credentials.Certificate('firebase-sdk.json')
+
+firebase_admin.initialize_app(cred,{
+    'storeageBucket': ''
+})
 db_manager = Database_Manager(False)
+ml_manager = ML_Manager()
 print('! views db created')
 #ml_manager = ML_Manager()
 print('! views ml created')
@@ -50,17 +58,19 @@ def analyses_post(request):
 
     # django image to PIL Image
 
-    if isinstance(image, django.core.files.uploadedfile.InMemoryUploadedFile):
-        image = Image.open(image)
-    else:
-        image = Image.open(image.temporary_file_path())
+    #if isinstance(image, django.core.files.uploadedfile.InMemoryUploadedFile):
+    #    image = Image.open(image)
+    #else:
+    #    image = Image.open(image.temporary_file_path())
 
     # create Sample Model to upload to the database
-    sampleObj = SampleModel(-1, 1, image, request.data['date'], request.data['location_latitude'], request.data['location_longitude'], pollenText,
+    sampleObj = SampleModel(-1, 1, None, request.data['date'], request.data['location_latitude'], request.data['location_longitude'], pollenText,
                             request.data['publication_status'], request.data['anonymous_status'], pollens)
     # query database to upload the sample
     result = db_manager.add_sample(sampleObj)
     print('django1', result)
+
+
     if result == -1:
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
     return Response(result)
@@ -234,6 +244,23 @@ def get_samples_of_academic(request,pk):
         samples.append(temp2)
     result = SampleSerializer(samples, many=True).data
     return Response(result)
+
+@api_view(['PUT'])
+def analyze(request):
+
+    photo_url = request.data['sample_photo']
+    photo_id = request.data['sample_id']
+
+    print(photo_url)
+    print(photo_id)
+
+    #bucket = storage.bucket()
+    #filename = photo_id + '_final'
+    #blob = bucket.blob(filename)
+    #blob.upload_from_filename(filename)
+
+    return Response(True)
+
 #    return HttpResponse("Login info")
 
 # def gmap(request):
