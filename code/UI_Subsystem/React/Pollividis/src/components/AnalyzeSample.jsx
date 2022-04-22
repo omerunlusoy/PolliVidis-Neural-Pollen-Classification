@@ -46,14 +46,13 @@ const AnalyzeSample = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
     let id;
-    //const [id, setId] = useState(null);
     const [goAnalysisPage, setGoAnalysisPage] = useState(false);
+    const [myId,setMyId] = useState(null)
 
     const [date, setDate] = useState('');
     const [lat, setLat] = useState(null);
     const [lng, setLng] = useState(null);
 
-    const [location, setLocation] = useState('');
 
     const uploadImage =(file,id)=>{
         if(!file) return;
@@ -64,11 +63,18 @@ const AnalyzeSample = () => {
 
         uploadTask.on("state_changed",(snapshot)=>{
             const progress = Math.round((snapshot.bytesTransferred /snapshot.totalBytes) * 100);
-
             setProgress(progress)
         },(err) => {console.log(err)},
             () => {
-            getDownloadURL(uploadTask.snapshot.ref).then(url => console.log(url))
+             getDownloadURL(uploadTask.snapshot.ref).then(url => {console.log(url);
+                 axios.put('http://127.0.0.1:8000/api/analyze/', {url: url, id:id})
+                     .then(response => {
+                         // NAVIGATION
+                         console.log(id)
+                         setMyId(id)
+                         setGoAnalysisPage(true)
+                     })
+             })
             })
     };
 
@@ -84,18 +90,6 @@ const AnalyzeSample = () => {
         }
     }, [selectedImage,id]);
 
-    const getPhotoURL = async(id) => {
-
-        let fileU = '/files/' + id
-        const storageRef = ref(storage,fileU);
-        getDownloadURL(storageRef).then((url)=>{
-            console.log(url)
-            return url;
-        }).catch((error) => {
-            // Handle any errors
-        });
-
-    }
 
     //analyze button handler
     const submitHandler= () => {
@@ -133,29 +127,8 @@ const AnalyzeSample = () => {
             .then(response => {
                 console.log(response.data)
                 id = response.data
-                //setId(response.data);
                 console.log(id)
                 uploadImage(selectedImage,response.data)
-                //setGoAnalysisPage(true)
-
-                let myUrl;
-                let fileU = '/files/' + id
-                const storageRef = ref(storage,fileU);
-                getDownloadURL(storageRef).then((url)=>{
-
-                    console.log(url)
-                    myUrl = url;
-
-                    axios.put('http://127.0.0.1:8000/api/analyze/', {url: myUrl, id:id})
-                    .then(response => {
-                        // NAVIGATION
-                        setGoAnalysisPage(true)
-                    })
-                }).catch((error) => {
-                    // Handle any errors
-                });
-
-                console.log(myUrl)
 
             })
             .catch(error => {
@@ -163,14 +136,15 @@ const AnalyzeSample = () => {
             })
 
 
-
     }
+
 
     if(goAnalysisPage)
     {
+            console.log("id",myId)
             return <Navigate
                 to={{
-                    pathname: `/analysis/${id}`
+                    pathname: `/analysis/${myId}`
                 }}
             />
 

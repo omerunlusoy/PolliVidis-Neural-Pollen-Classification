@@ -1,9 +1,6 @@
 import {Card, CardActionArea, CardContent, CardMedia, Container, Grid, makeStyles, Typography} from "@material-ui/core";
-import Post from "./Post";
+
 import Navbar from "./Navbar";
-import Leftbar from "./Leftbar";
-import Add from "./Add";
-import SampleImagePreviewCard from "./SampleImagePreviewCard";
 import React, {useEffect, useState} from "react";
 import ImageCard from "./ImageCard";
 import {useLocation, useParams} from "react-router-dom";

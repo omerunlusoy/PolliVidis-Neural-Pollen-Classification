@@ -45,13 +45,15 @@ export default function AnalysisInfoDrawer(props) {
 
     const getPhoto = async(id) => {
 
-        let fileU = '/files/' + id
+        let fileU = '/files/' + id + '_final.jpg'
         const storageRef = ref(storage,fileU);
         getDownloadURL(storageRef).then((url)=>{
             console.log(url)
             setPhoto(url)
         }).catch((error) => {
             // Handle any errors
+            console.log("İrem")
+            setPhoto("https://images.pexels.com/photos/7319337/pexels-photo-7319337.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500")
         });
     }
 
