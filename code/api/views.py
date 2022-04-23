@@ -22,7 +22,11 @@ from .ML_Subsystem.ML_Manager import ML_Manager
 from PIL import Image
 
 cred = credentials.Certificate("/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/firebase-sdk.json")
-initialize_app(cred, {'storageBucket': 'fir-react1-70dd6.appspot.com'})
+init = 0
+if init == 0:
+    initialize_app(cred, {'storageBucket': 'fir-react1-70dd6.appspot.com'})
+    init += 1
+
 
 #firebase = Firebase(firebaseConfig)
 #initialize_app(cred,firebaseConfig)
