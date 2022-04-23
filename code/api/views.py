@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.core import serializers
 import json
-from firebase_admin import credentials, initialize_app, storage
+from firebase_admin import credentials, initialize_app, storage, delete_app, get_app
 
 from api.Database_Subsytem.AcademicModel import AcademicModel
 
@@ -22,10 +22,16 @@ from .ML_Subsystem.ML_Manager import ML_Manager
 from PIL import Image
 
 cred = credentials.Certificate("/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/firebase-sdk.json")
-init = 0
-if init == 0:
-    initialize_app(cred, {'storageBucket': 'fir-react1-70dd6.appspot.com'})
-    init += 1
+
+try:
+    app = initialize_app(cred, {'storageBucket': 'fir-react1-70dd6.appspot.com'})
+except:
+    app = get_app()
+    delete_app(app)
+    print("App deleted")
+    app = initialize_app(cred, {'storageBucket': 'fir-react1-70dd6.appspot.com'})
+
+
 
 
 #firebase = Firebase(firebaseConfig)
