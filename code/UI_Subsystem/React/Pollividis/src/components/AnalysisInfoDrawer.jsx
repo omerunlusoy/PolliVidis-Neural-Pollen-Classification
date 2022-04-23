@@ -25,7 +25,7 @@ export default function AnalysisInfoDrawer(props) {
 
     let lat = 39;
     let lng = 38;
-    const [address, setAddress] = React.useState("");
+    const [address, setAddress] = React.useState("Address unknown");
     const [photo,setPhoto] = useState(null)
 
     const handleDrawerClose = () => {
@@ -80,17 +80,17 @@ export default function AnalysisInfoDrawer(props) {
             sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
             role="presentation"
         >
-            <ImageCard img={photo}/>
-            <Typography style={{marginBottom:3}} variant="h6"  component="p">
+            <ImageCard  img={photo}/>
+            <Typography style={{marginBottom:3, marginLeft:10}} variant="h6"  component="p">
                 Location: {address}
             </Typography>
-            <Typography style={{marginBottom:5}} variant="h6"  component="p">
+            <Typography style={{marginBottom:5, marginLeft:10}} variant="h6"  component="p">
                 Date: {analysis.date}
             </Typography>
-            <Typography style={{marginBottom:2}} variant="h6"  component="p">
+            <Typography style={{marginBottom:2, marginLeft:10}} variant="h6"  component="p">
                 Analysis:
             </Typography>
-            <Typography style={{marginBottom:2}} variant="h5"  component="p">
+            <Typography style={{marginBottom:2, marginLeft:10}} variant="h6"  component="p">
                 {analysis.analysis_text}
             </Typography>
 
