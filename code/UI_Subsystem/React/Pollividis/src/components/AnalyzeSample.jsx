@@ -18,6 +18,8 @@ import {Link, Navigate} from "react-router-dom";
 import {storage} from "../firebase.js"
 import {getDownloadURL, ref, uploadBytesResumable} from "@firebase/storage"
 
+//morphology sequence
+
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -53,6 +55,8 @@ const AnalyzeSample = () => {
     const [lat, setLat] = useState(null);
     const [lng, setLng] = useState(null);
 
+    const [morp, setMorp] = useState("10");
+
 
     const uploadImage =(file,id)=>{
         if(!file) return;
@@ -67,7 +71,7 @@ const AnalyzeSample = () => {
         },(err) => {console.log(err)},
             () => {
              getDownloadURL(uploadTask.snapshot.ref).then(url => {console.log(url);
-                 axios.put('http://127.0.0.1:8000/api/analyze/', {url: url, id:id})
+                 axios.put('http://127.0.0.1:8000/api/analyze/', {url: url, id:id, morp:morp})
                      .then(response => {
                          // NAVIGATION
                          console.log(id)
@@ -219,6 +223,10 @@ const AnalyzeSample = () => {
                                                   </Button>
                                           </CardActions>
                                           <CardActions>
+                                              <div>
+                                                  <TextField id="outlined-basic" label="Morphology Sequence" variant="outlined" size={"small"} value={morp}
+                                                             onChange={e => {setMorp(e.target.value); console.log(morp)}} />
+                                              </div>
                                                       <div>
                                                           <Button
                                                               variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} size="medium"

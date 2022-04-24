@@ -7,6 +7,8 @@ from rest_framework import status
 from django.core import serializers
 import json
 from firebase_admin import credentials, initialize_app, storage, delete_app, get_app
+import matplotlib.pyplot as plt
+
 
 from api.Database_Subsytem.AcademicModel import AcademicModel
 
@@ -267,11 +269,13 @@ def analyze(request):
 
     photo_url = request.data['url']
     photo_id = request.data['id']
+    morp = request.data['morp']
     #photo_id = photo_id + 1
     fileName = 'files/' + str(photo_id)
 
     print(photo_url)
     print(photo_id)
+    print("morp",morp)
     
     #bucket = storage.bucket()
     
@@ -292,7 +296,8 @@ def analyze(request):
 
     source_img, analysis_text, pollens_dict = ml_manager.analyze_sample(sample_image, erosion_dilation=10)
 
-    #plt.imshow(source_img)
+    sample_image.show()
+    source_img.show()
     #print('\n! Analysis text:\n', analysis_text)
     #print('! Pollens dictionary:\n', pollens_dict)
 
