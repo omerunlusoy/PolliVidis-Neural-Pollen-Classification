@@ -30,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
 
 
 const AboutUs = () => {
+
+    const id_s = JSON.parse(sessionStorage.getItem('academic_id'));
+    let id = id_s.academic_id
+
     const Demo = styled('div')(({ theme }) => ({
         backgroundColor: theme.palette.background.paper,
     }));
@@ -39,9 +43,10 @@ const AboutUs = () => {
     const [markers, setMarkers] = React.useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:8000/api/analysis_get`)
+        fetch(`http://localhost:8000/api/get_samples_of_academic/${id}/`)
             .then((data) => data.json())
             .then((data) => setMarkers(data))
+            .then((data) => console.log(data))
     },[]);
 
 

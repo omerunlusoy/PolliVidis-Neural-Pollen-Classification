@@ -29,6 +29,16 @@ const useStyles = makeStyles((theme) => ({
 
 
 const AnalyzeSample = () => {
+
+    let academic_id;
+    if (sessionStorage.getItem("academic_id") != null){
+        const id_s = JSON.parse(sessionStorage.getItem('academic_id'));
+        academic_id = id_s.academic_id;
+    }
+    else{
+        academic_id = 1
+    }
+
   const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -102,7 +112,7 @@ const AnalyzeSample = () => {
 
         const myObject = {
             sample_id: -1,
-            academic_id: -1,
+            academic_id: academic_id,
             sample_photo: selectedImage,
             date: date,
             location_latitude: lat,
