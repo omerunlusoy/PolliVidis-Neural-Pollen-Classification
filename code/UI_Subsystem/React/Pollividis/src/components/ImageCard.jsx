@@ -11,18 +11,18 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    width: 300,
-    height:300,
+    width: 560,
+    height:460,
     marginBottom: theme.spacing(5),
     ///marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
   },
   media: {
-    height: 400,
-    width: 400,
+    height: 450,
+    width: 550,
     [theme.breakpoints.down("sm")]: {
-      height:300,
-      width: 300
+      height:450,
+      width: 550
     },
   },
 }));
