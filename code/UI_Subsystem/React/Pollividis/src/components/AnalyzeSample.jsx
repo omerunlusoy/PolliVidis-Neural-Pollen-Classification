@@ -267,18 +267,23 @@ const AnalyzeSample = () => {
                                   </CardActionArea>
 
                               </Card>
-                              <Card>
-                                  <CardActionArea>
-                                      <CardContent>
-                                          <Map/>
-                                      </CardContent>
-                                  </CardActionArea>
-                              </Card>
+
                           </Container>
                       </Grid>
                       <Grid item sm={4} className={classes.right}>
                           <SampleImagePreviewCard img={imageUrl}/>
                       </Grid>
+                      <Grid item sm={18} className={classes.right}>
+                          <Card>
+                              <CardActionArea>
+                                  <CardContent>
+                                      <Map/>
+                                  </CardContent>
+                              </CardActionArea>
+                          </Card>
+                      </Grid>
+
+
                   </Grid>
               </Grid>
               <Grid item sm={3} className={classes.right}>
