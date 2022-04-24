@@ -52,7 +52,6 @@ export default function AnalysisInfoDrawer(props) {
             setPhoto(url)
         }).catch((error) => {
             // Handle any errors
-            console.log("İrem")
             setPhoto("https://images.pexels.com/photos/7319337/pexels-photo-7319337.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500")
         });
     }
@@ -77,10 +76,14 @@ export default function AnalysisInfoDrawer(props) {
 
     const list = (anchor) => (
         <Box
-            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 420 }}
             role="presentation"
         >
-            <ImageCard  img={photo}/>
+            <img style={{
+                alignSelf: 'center',
+                height: 300,
+                width: 400,
+            }} src={photo}/>
             <Typography style={{marginBottom:3, marginLeft:10}} variant="h6"  component="p">
                 Location: {address}
             </Typography>
