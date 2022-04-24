@@ -81,7 +81,7 @@ def analyses_post(request):
         image = Image.open(image.temporary_file_path())
 
     # create Sample Model to upload to the database
-    sampleObj = SampleModel(-1, 1, image, request.data['date'], request.data['location_latitude'], request.data['location_longitude'], pollenText,
+    sampleObj = SampleModel(-1, request.data['academic_id'], image, request.data['date'], request.data['location_latitude'], request.data['location_longitude'], pollenText,
                             request.data['publication_status'], request.data['anonymous_status'], pollens)
     # query database to upload the sample
     result = db_manager.add_sample(sampleObj)
