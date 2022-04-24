@@ -64,7 +64,12 @@ const Feed = () => {
                       <Typography style={{marginBottom:5}} variant="h5"  component="p">
                           {analysis.analysis_text}
                       </Typography>
-                      <ImageCard img={photo}/>
+                      <img style={{
+                          flex: 1,
+                          width: '100%',
+                          height: '100%',
+                          resizeMode: 'contain',
+                      }} src={photo}/>
                   </Container>
               </Grid>
               <Grid item sm={3} className={classes.right}>
