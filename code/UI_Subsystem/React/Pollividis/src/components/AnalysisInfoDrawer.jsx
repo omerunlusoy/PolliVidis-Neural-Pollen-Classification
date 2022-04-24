@@ -9,6 +9,7 @@ import Geocode from "react-geocode";
 import ImageCard from "./ImageCard";
 import {getDownloadURL, ref} from "@firebase/storage";
 import {storage} from "../firebase";
+import Map from "./Map";
 
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -84,7 +85,7 @@ export default function AnalysisInfoDrawer(props) {
                 height: 300,
                 width: 400,
             }} src={photo}/>
-            <Typography style={{marginBottom:3, marginLeft:10}} variant="h6"  component="p">
+            <Typography style={{marginBottom:3, marginLeft:10   }} variant="h6"  component="p">
                 Location: {address}
             </Typography>
             <Typography style={{marginBottom:5, marginLeft:10}} variant="h6"  component="p">

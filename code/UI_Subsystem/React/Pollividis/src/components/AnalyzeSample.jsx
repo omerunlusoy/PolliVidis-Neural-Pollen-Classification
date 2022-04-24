@@ -17,6 +17,7 @@ import axios from 'axios';
 import {Link, Navigate} from "react-router-dom";
 import {storage} from "../firebase.js"
 import {getDownloadURL, ref, uploadBytesResumable} from "@firebase/storage"
+import Map from "./Map_v2";
 
 //morphology sequence
 
@@ -224,6 +225,7 @@ const AnalyzeSample = () => {
                                                                   </Button>
                                                               </div>
                                                           </CardContent>
+
                                                       </CardActionArea>
 
                                                   </Card>
@@ -264,6 +266,13 @@ const AnalyzeSample = () => {
 
                                   </CardActionArea>
 
+                              </Card>
+                              <Card>
+                                  <CardActionArea>
+                                      <CardContent>
+                                          <Map/>
+                                      </CardContent>
+                                  </CardActionArea>
                               </Card>
                           </Container>
                       </Grid>
