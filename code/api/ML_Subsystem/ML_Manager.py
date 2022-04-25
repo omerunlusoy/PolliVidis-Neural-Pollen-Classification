@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
-from Pollen_Extraction import Pollen_Extraction
-from Helper_Functions import Helper_Functions
+from .Pollen_Extraction import Pollen_Extraction
+from .Helper_Functions import Helper_Functions
 from PIL import Image
 import torch
 import torch.nn as nn
@@ -23,7 +23,7 @@ class ML_Manager:
             self.model = torch.hub.load('pytorch/vision:v0.10.0', 'alexnet', pretrained=False)
             self.model.classifier[6] = nn.Linear(4096, len(self.classes))
 
-            self.model.load_state_dict(torch.load('/Users/omerunlusoy/Desktop/CS 492/copy_project/ML_Subsystem/models/AlexNet_96.69_model.pth'))
+            self.model.load_state_dict(torch.load(r'/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/ML_Subsystem/models/AlexNet_96.69_model.pth', map_location=torch.device('cpu')))
             self.model.eval()
             print('! model and state dict loaded.')
 
