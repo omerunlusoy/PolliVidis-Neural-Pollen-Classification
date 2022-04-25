@@ -1,13 +1,7 @@
 import math
-
 from matplotlib.ticker import MultipleLocator, AutoMinorLocator
-from torchvision import transforms
 import numpy as np
 import matplotlib.pyplot as plt
-from PIL import Image
-from datetime import timedelta, datetime
-import cv2  # for video
-from torchvision.utils import save_image
 from PIL import Image, ImageDraw, ImageFont
 from twilio.rest import Client
 
@@ -80,7 +74,7 @@ class Helper_Functions:
             draw.rectangle([(minc, minr), (maxc, maxr)], outline='blue', width=12)
             if pollens:
                 # font = ImageFont.load_default()
-                font = ImageFont.truetype("/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/ML_Subsystem/Other_Implementations/Helvetica.ttc", 100)
+                font = ImageFont.truetype("Other_Implementations/Helvetica.ttc", 100)
                 if minr - 100 > 0:
                     draw.text((minc, minr - 100), pollens[i], font=font, fill='black')
                 else:
