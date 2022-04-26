@@ -1,6 +1,12 @@
 import matplotlib.pyplot as plt
+<<<<<<< Updated upstream
 from .Pollen_Extraction import Pollen_Extraction
 from .Helper_Functions import Helper_Functions
+=======
+from Pollen_Extraction import Pollen_Extraction
+from Helper_Functions import Helper_Functions
+from Paths_and_Keys import Paths_and_Keys
+>>>>>>> Stashed changes
 from PIL import Image
 import torch
 import torch.nn as nn
@@ -14,6 +20,7 @@ class ML_Manager:
     def __init__(self, load_model=True):
         self.extractor = Pollen_Extraction()
         self.helper = Helper_Functions()
+        self.paths_and_keys = Paths_and_Keys()
 
         if load_model:
             # load model
@@ -23,7 +30,11 @@ class ML_Manager:
             self.model = torch.hub.load('pytorch/vision:v0.10.0', 'alexnet', pretrained=False)
             self.model.classifier[6] = nn.Linear(4096, len(self.classes))
 
+<<<<<<< Updated upstream
             self.model.load_state_dict(torch.load(r'/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/ML_Subsystem/models/AlexNet_96.69_model.pth', map_location=torch.device('cpu')))
+=======
+            self.model.load_state_dict(torch.load(self.paths_and_keys.model_path, map_location=torch.device('cpu')))
+>>>>>>> Stashed changes
             self.model.eval()
             print('! model and state dict loaded.')
 
@@ -38,7 +49,7 @@ class ML_Manager:
         _, predicted_classes = torch.max(output, 1)  # gets the maximum output value for each output
         return self.classes[predicted_classes.item()]
 
-    def analyze_sample(self, sample_image, location=None, date=None, academic_name=None, erosion_dilation=10, morphology_sequence=None):
+    def analyze_sample(self, sample_image, location=None, date=None, academic_name=None, morphology_sequence=None, test_extraction=False):
         # extract pollen images
         padding = 30
         square_threshold = 300
@@ -48,7 +59,24 @@ class ML_Manager:
         plot_image = False
         plot_predicted = False
 
-        pollen_images, box_coordinates = self.extractor.extract_PIL_Image(sample_image, padding, square_threshold, square_dim_size, n_dilation=erosion_dilation, area_closing=area_closing, plot_dilation=plot_dilation, plot_image=plot_image, plot_predicted=plot_predicted, morphology_sequence=morphology_sequence)
+        erosion_dilation_ = None
+        morphology_sequence_ = None
+
+        if morphology_sequence == '' or morphology_sequence is None:
+            erosion_dilation_ = 10
+        elif morphology_sequence.isdigit():
+            erosion_dilation_ = int(morphology_sequence)
+        else:
+            morphology_sequence_ = morphology_sequence
+
+        if test_extraction:
+            pollen_images, box_coordinates = self.extractor.extract_PIL_Image(sample_image, padding, square_threshold, square_dim_size, n_dilation=erosion_dilation_,
+                                                                              area_closing=area_closing, plot_dilation=plot_dilation, plot_image=plot_image,
+                                                                              plot_predicted=plot_predicted, morphology_sequence=morphology_sequence_)
+            final_img = self.helper.label_sample_image(sample_image, box_coordinates, pollens=None, plot=False, no_grid=True, Helvetica_path_=self.paths_and_keys.Helvetica_path)
+            return final_img
+
+        pollen_images, box_coordinates = self.extractor.extract_PIL_Image(sample_image, padding, square_threshold, square_dim_size, n_dilation=erosion_dilation_, area_closing=area_closing, plot_dilation=plot_dilation, plot_image=plot_image, plot_predicted=plot_predicted, morphology_sequence=morphology_sequence_)
 
         # get predictions (forward to the model)
         pollens = []
@@ -64,24 +92,9 @@ class ML_Manager:
             pollens_dict[i] = pollens_dict.get(i, 0) + 1
 
         # get image with labels
-        source_img = self.helper.label_sample_image(sample_image, box_coordinates, pollens=pollens, plot=False, no_grid=True)
+        final_img = self.helper.label_sample_image(sample_image, box_coordinates, pollens=pollens, plot=False, no_grid=True, Helvetica_path_=self.paths_and_keys.Helvetica_path)
         analysis_text = self.get_analysis_text(pollens_dict, location, date, academic_name)
-        # source_img.save('pred.jpg')
-        return source_img, analysis_text, pollens_dict
-
-    def extraction_test(self, sample_image, erosion_dilation=10, morphology_sequence=None):
-        # extract pollen images
-        padding = 30
-        square_threshold = 300
-        square_dim_size = 300
-        area_closing = 1000000
-        plot_dilation = False
-        plot_image = False
-        plot_predicted = False
-
-        pollen_images, box_coordinates = self.extractor.extract_PIL_Image(sample_image, padding, square_threshold, square_dim_size, n_dilation=erosion_dilation, area_closing=area_closing, plot_dilation=plot_dilation, plot_image=plot_image, plot_predicted=plot_predicted, morphology_sequence=morphology_sequence)
-        source_img = self.helper.label_sample_image(sample_image, box_coordinates, pollens=None, plot=False, no_grid=True)
-        return source_img
+        return final_img, analysis_text, pollens_dict
 
     def get_analysis_text(self, pollens_dict, location=None, date=None, academic_name=None):
         analysis_text = ''
@@ -93,19 +106,19 @@ class ML_Manager:
 
     # EXTRACTION
     def extract_dataset_folder(self, source_directory, save_directory, error_directory, current_folder, dilation, area_closing, padding, square_threshold, square_dim_size, plot_threshold, plot_each, plot_final, plot_product, plot_dilation, save_each, reset_=False, error_correction=False, error_padding=200, morphology_sequence=None):
-        self.extractor.extract_folder(source_directory, save_directory, error_directory, current_folder, dilation, area_closing, padding, square_threshold, square_dim_size, plot_threshold=plot_threshold, plot_each=plot_each, plot_final=plot_final, plot_product=plot_product, plot_dilation=plot_dilation, save_each=save_each, helper=self.helper, reset_=reset_, error_correction=error_correction, error_padding=error_padding, morphology_sequence=morphology_sequence)
+        self.extractor.extract_folder(source_directory, save_directory, error_directory, current_folder, dilation, area_closing, padding, square_threshold, square_dim_size, plot_threshold=plot_threshold, plot_each=plot_each, plot_final=plot_final, plot_product=plot_product, plot_dilation=plot_dilation, save_each=save_each, helper=self.helper, reset_=reset_, error_correction=error_correction, error_padding=error_padding, morphology_sequence=morphology_sequence, Helvetica_path_=self.paths_and_keys.Helvetica_path)
 
     def dilation_erosion_test(self, source_directory, current_folder, dilation_range, area_closing, padding, square_threshold, square_dim_size, im_num=5, pass_num=0, plot=True, plot_dilation=False, morphology_sequence=None):
-        self.extractor.dilation_erosion_test(source_directory, current_folder, dilation_range, area_closing, padding, square_threshold, square_dim_size, im_num, pass_num, plot, helper=self.helper, plot_dilation=plot_dilation, morphology_sequence=morphology_sequence)
+        self.extractor.dilation_erosion_test(source_directory, current_folder, dilation_range, area_closing, padding, square_threshold, square_dim_size, im_num, pass_num, plot, helper=self.helper, plot_dilation=plot_dilation, morphology_sequence=morphology_sequence, Helvetica_path_=self.paths_and_keys.Helvetica_path)
 
     def send_SMS(self, text):
         self.helper.send_SMS(text)
 
     def dataset_extraction_procedure(self):
         # extract dataset folder
-        source_directory = r'/Users/omerunlusoy/Desktop/CS 492/PolliVidis-Neural-Pollen-Classification/datasets/Ankara_Dataset/'
-        save_directory = r'/Users/omerunlusoy/Desktop/CS 492/PolliVidis-Neural-Pollen-Classification/datasets/Ankara_Dataset_cropped/'
-        error_directory = r'/Users/omerunlusoy/Desktop/CS 492/PolliVidis-Neural-Pollen-Classification/datasets/Ankara_Dataset_cropped/error/'
+        source_directory = self.paths_and_keys.dataset_source_path
+        save_directory = self.paths_and_keys.dataset_save_path
+        error_directory = self.paths_and_keys.dataset_error_path
 
         # for folder extraction
         folder_dict = {
@@ -234,32 +247,3 @@ class ML_Manager:
                     self.send_SMS('execution finished.')
                 except:
                     print('unable to send SMS!!!')
-
-
-# MAIN ############################################################################################################
-
-def main():
-
-    # extraction_test(sample_image, erosion_dilation=10, morphology_sequence=None) -> final_image
-    # analyze_sample(sample_image, location=None, date=None, academic_name=None, erosion_dilation=10, morphology_sequence=None) -> final_image, analysis_text, pollens_dict
-
-    # manager = ML_Manager(load_model=True)
-    #
-    # # Analyze Sample
-    # sample_image = Image.open("test_images/6.jpg")
-    #
-    # final_img = manager.extraction_test(sample_image, erosion_dilation=10)
-    # final_img, analysis_text, pollens_dict = manager.analyze_sample(sample_image, erosion_dilation=10)
-    #
-    # print(type(final_img))
-    # # plt.imshow(final_img)
-    # # plt.axis('off')
-    # # plt.show()
-    # # final_img.show()
-    # print('\n! Analysis text:\n', analysis_text)
-    # print('! Pollens dictionary:\n', pollens_dict)
-    pass
-
-
-if __name__ == "__main__":
-    main()

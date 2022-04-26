@@ -30,7 +30,7 @@ class Pollen_Extraction:
         labeled_images, box_coordinates = self.label_image(dilated_img, gray_img, original_img, padding, square_threshold, square_dim_size, plot=plot_predicted, save_each=True)
         return labeled_images, box_coordinates
 
-    def extract_folder(self, source_directory, save_directory, error_directory, current_folder, n_dilation, area_closing, padding, square_threshold, square_dim_size, plot_threshold, plot_each, plot_final, plot_product, plot_dilation, save_each, helper, reset_=False, error_correction=False, error_padding=200, morphology_sequence=None):
+    def extract_folder(self, source_directory, save_directory, error_directory, current_folder, n_dilation, area_closing, padding, square_threshold, square_dim_size, plot_threshold, plot_each, plot_final, plot_product, plot_dilation, save_each, helper, reset_=False, error_correction=False, error_padding=200, morphology_sequence=None, Helvetica_path_=None):
         # folders
         source_folder = os.path.join(source_directory, current_folder)
         save_folder = os.path.join(save_directory, current_folder)
@@ -54,7 +54,7 @@ class Pollen_Extraction:
             if filename.endswith(".jpg"):
                 file = os.path.join(source_folder, filename)
 
-                self.extract_image(file, filename, save_folder, err_folder, n_dilation, area_closing, padding, square_threshold, square_dim_size, plot_threshold=plot_threshold, plot_each=plot_each, plot_final=plot_final, plot_product=plot_product, plot_dilation=plot_dilation, fig_title='', save_each=save_each, helper=helper, error_correction=error_correction, error_padding=error_padding, morphology_sequence=morphology_sequence)
+                self.extract_image(file, filename, save_folder, err_folder, n_dilation, area_closing, padding, square_threshold, square_dim_size, plot_threshold=plot_threshold, plot_each=plot_each, plot_final=plot_final, plot_product=plot_product, plot_dilation=plot_dilation, fig_title='', save_each=save_each, helper=helper, error_correction=error_correction, error_padding=error_padding, morphology_sequence=morphology_sequence, Helvetica_path_=Helvetica_path_)
 
                 finish_training_time = time.time()
                 if i % 10 == 0:
@@ -62,7 +62,7 @@ class Pollen_Extraction:
             else:
                 continue
 
-    def dilation_erosion_test(self, source_directory, current_folder, dilation_range, area_closing, padding, square_threshold, square_dim_size, im_num=5, pass_num=0, plot=True, save_each=False, plot_dilation=False, helper=None, morphology_sequence=None):
+    def dilation_erosion_test(self, source_directory, current_folder, dilation_range, area_closing, padding, square_threshold, square_dim_size, im_num=5, pass_num=0, plot=True, save_each=False, plot_dilation=False, helper=None, morphology_sequence=None, Helvetica_path_=None):
         # folders
         source_folder = os.path.join(source_directory, current_folder)
 
@@ -81,7 +81,7 @@ class Pollen_Extraction:
                             plot_ = plot
                         else:
                             plot_ = False
-                        self.extract_image(file, '', '', '', n_dilation, area_closing, padding, square_threshold, square_dim_size, plot_threshold=plot_, plot_each=False, plot_final=False, plot_product=True, plot_dilation=plot_dilation, fig_title=fig_title, save_each=save_each, helper=helper, morphology_sequence=morphology_sequence)
+                        self.extract_image(file, '', '', '', n_dilation, area_closing, padding, square_threshold, square_dim_size, plot_threshold=plot_, plot_each=False, plot_final=False, plot_product=True, plot_dilation=plot_dilation, fig_title=fig_title, save_each=save_each, helper=helper, morphology_sequence=morphology_sequence, Helvetica_path_=Helvetica_path_)
                     else:
                         continue
 
@@ -93,19 +93,19 @@ class Pollen_Extraction:
                         file = os.path.join(source_folder, filename)
                         fig_title = str(current_folder) + ', ' + morphology_seq
                         plot_ = False
-                        self.extract_image(file, '', '', '', None, area_closing, padding, square_threshold, square_dim_size, plot_threshold=plot_, plot_each=False, plot_final=False, plot_product=True, plot_dilation=plot_dilation, fig_title=fig_title, save_each=save_each, helper=helper, morphology_sequence=morphology_seq)
+                        self.extract_image(file, '', '', '', None, area_closing, padding, square_threshold, square_dim_size, plot_threshold=plot_, plot_each=False, plot_final=False, plot_product=True, plot_dilation=plot_dilation, fig_title=fig_title, save_each=save_each, helper=helper, morphology_sequence=morphology_seq, Helvetica_path_=Helvetica_path_)
                     else:
                         continue
 
     # for folder iteration
-    def extract_image(self, file, filename, save_folder, err_folder, n_dilation, area_closing, padding, square_threshold, square_dim_size, plot_threshold=False, plot_each=False, plot_final=False, plot_product=False, plot_dilation=False, fig_title='', save_each=True, helper=None, error_correction=False, error_padding=200, morphology_sequence=None):
+    def extract_image(self, file, filename, save_folder, err_folder, n_dilation, area_closing, padding, square_threshold, square_dim_size, plot_threshold=False, plot_each=False, plot_final=False, plot_product=False, plot_dilation=False, fig_title='', save_each=True, helper=None, error_correction=False, error_padding=200, morphology_sequence=None, Helvetica_path_=None):
         original_img, gray_img, thresholded_img = self.get_image_and_threshold(file_name=file, plot=plot_threshold, fig_title=fig_title, error_correction=error_correction, error_padding=error_padding)
         dilated_img = self.binary_dilation_or_erosion(thresholded_img, n_dilation, filename=file, plot_dilation=plot_dilation, area_closing=area_closing, morphology_sequence=morphology_sequence)
         ims, box_coordinates = self.label_image(dilated_img, gray_img, original_img, padding, square_threshold, square_dim_size, filename, save_folder, err_folder, plot=plot_final, plot_each=plot_each, fig_title=fig_title, save_each=save_each)
         if helper:
             plt.show()
             sample_image = Image.open(file)
-            helper.label_sample_image(sample_image, box_coordinates, pollens=None, plot=plot_product, title=filename.rpartition('/')[-1] + ',   Erosion/Dilation: ' + str(n_dilation))
+            helper.label_sample_image(sample_image, box_coordinates, pollens=None, plot=plot_product, title=filename.rpartition('/')[-1] + ',   Erosion/Dilation: ' + str(n_dilation), Helvetica_path_=Helvetica_path_)
 
     def binary_dilation_or_erosion(self, thresholded_img, n_dilation, filename='', plot_dilation=False, area_closing=1000000, morphology_sequence=None):
         image_dilated = thresholded_img  # OR binary_erosion
@@ -373,7 +373,7 @@ class Pollen_Extraction:
 
         return img
 
-    def rename(self, folder_name, directory=r'/Users/omerunlusoy/Desktop/CS 492/PolliVidis-Neural-Pollen-Classification/datasets/Ankara_Dataset_cropped/error/', ):
+    def rename(self, folder_name, directory=None):
         folder_dir = os.path.join(directory, folder_name)
         folder_dir = os.path.join(folder_dir, folder_name)
 

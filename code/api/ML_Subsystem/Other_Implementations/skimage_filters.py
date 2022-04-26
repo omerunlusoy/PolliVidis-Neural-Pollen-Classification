@@ -56,7 +56,7 @@ plt.imshow(threshold, cmap="gray")
 # threshold values for every pixel - Binarized
 binarized_image = (gray_image > threshold) * 1
 plt.subplot(2, 2, 4)
-plt.title("Sauvola Thresholding - Converting to 0's and 1's")
+plt.title("Sauvola Thresholding - Converting to 0's and 1.jpg's")
 
 # Displaying the binarized image
 plt.imshow(binarized_image, cmap="gray")

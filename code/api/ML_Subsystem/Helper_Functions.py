@@ -66,7 +66,7 @@ class Helper_Functions:
         # plt.savefig('Epoch vs Corrects.jpg', dpi=500, bbox_inches='tight')
         plt.show()
 
-    def label_sample_image(self, sample_image, box_coordinates, pollens=None, plot=False, title='', no_grid=False):
+    def label_sample_image(self, sample_image, box_coordinates, pollens=None, plot=False, title='', no_grid=False, Helvetica_path_=None):
         source_img = sample_image.convert("RGB")
         for i, coo in enumerate(box_coordinates):
             draw = ImageDraw.Draw(source_img)
@@ -74,7 +74,11 @@ class Helper_Functions:
             draw.rectangle([(minc, minr), (maxc, maxr)], outline='blue', width=12)
             if pollens:
                 # font = ImageFont.load_default()
+<<<<<<< Updated upstream
                 font = ImageFont.truetype("/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/ML_Subsystem/Other_Implementations/Helvetica.ttc", 100)
+=======
+                font = ImageFont.truetype(Helvetica_path_, 100)
+>>>>>>> Stashed changes
                 if minr - 100 > 0:
                     draw.text((minc, minr - 100), pollens[i], font=font, fill='black')
                 else:

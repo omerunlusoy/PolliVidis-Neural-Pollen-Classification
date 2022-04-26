@@ -3,7 +3,7 @@ import numpy as np
 from skimage import io, filters, morphology, color
 
 # load image
-img = io.imread("1.jpg")  # Load Image
+img = io.imread("1.jpg.jpg")  # Load Image
 
 rsz_img = cv2.resize(img, None, fx=0.25, fy=0.25)  # resize since image is huge
 gray = cv2.cvtColor(rsz_img, cv2.COLOR_BGR2GRAY)  # convert to grayscale

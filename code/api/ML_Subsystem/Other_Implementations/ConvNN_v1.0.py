@@ -255,8 +255,8 @@ def main():
 
     # transform image
     transform = transforms.Compose([transforms.Resize((28, 28)),
-                                    transforms.ToTensor(),  # from (0, 255) intensity to (0, 1) probability
-                                    transforms.Normalize((0.5,), (0.5,))])  # mean and center deviation to normalize (ranges from -1 to 1)
+                                    transforms.ToTensor(),  # from (0, 255) intensity to (0, 1.jpg) probability
+                                    transforms.Normalize((0.5,), (0.5,))])  # mean and center deviation to normalize (ranges from -1.jpg to 1.jpg)
 
     # training dataset
     training_dataset = datasets.MNIST(root='./data', train=True, download=True, transform=transform)
