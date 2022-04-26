@@ -1,12 +1,7 @@
 import matplotlib.pyplot as plt
-<<<<<<< Updated upstream
 from .Pollen_Extraction import Pollen_Extraction
 from .Helper_Functions import Helper_Functions
-=======
-from Pollen_Extraction import Pollen_Extraction
-from Helper_Functions import Helper_Functions
-from Paths_and_Keys import Paths_and_Keys
->>>>>>> Stashed changes
+from .Paths_and_Keys import Paths_and_Keys
 from PIL import Image
 import torch
 import torch.nn as nn
@@ -30,11 +25,8 @@ class ML_Manager:
             self.model = torch.hub.load('pytorch/vision:v0.10.0', 'alexnet', pretrained=False)
             self.model.classifier[6] = nn.Linear(4096, len(self.classes))
 
-<<<<<<< Updated upstream
-            self.model.load_state_dict(torch.load(r'/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/ML_Subsystem/models/AlexNet_96.69_model.pth', map_location=torch.device('cpu')))
-=======
+
             self.model.load_state_dict(torch.load(self.paths_and_keys.model_path, map_location=torch.device('cpu')))
->>>>>>> Stashed changes
             self.model.eval()
             print('! model and state dict loaded.')
 

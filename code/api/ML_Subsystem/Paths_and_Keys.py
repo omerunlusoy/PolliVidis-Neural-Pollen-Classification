@@ -11,7 +11,7 @@ class User(Enum):
 
 
 # current user and model
-current_user = User.Omer
+current_user = User.Irem
 current_model_name = 'AlexNet_96.69_model.pth'
 
 
@@ -25,9 +25,9 @@ class Paths_and_Keys:
             self.example_image_for_GUI_path = r'/Users/omerunlusoy/Desktop/CS 492/PolliVidis-Neural-Pollen-Classification/datasets/Ankara_Dataset/populus_nigra/1.jpg'
 
         elif current_user == User.Irem:
-            self.ML_Subsystem_path = r''
-            self.datasets_path = r''
-            self.example_image_for_GUI_path = r''
+            self.ML_Subsystem_path = r'/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/ML_Subsystem/'
+            self.datasets_path = ''
+            self.example_image_for_GUI_path = r'/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/ML_Subsystem/test_images/d1.jpg'
 
         elif current_user == User.Umut_Ada:
             self.ML_Subsystem_path = r''

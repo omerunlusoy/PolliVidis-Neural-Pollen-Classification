@@ -45,7 +45,7 @@ except:
 #fb_storage = firebase_storage.
 #bucket = firebase_admin.storage().bucket();
 db_manager = Database_Manager(False)
-ml_manager = ML_Manager()
+ml_manager = ML_Manager(load_model=True)
 print('! views db created')
 #ml_manager = ML_Manager()
 print('! views ml created')
@@ -265,67 +265,29 @@ def get_samples_of_academic(request,pk):
 @api_view(['PUT'])
 def analyze(request):
 
-
-
     photo_url = request.data['url']
     photo_id = request.data['id']
     morp = request.data['morp']
-    #photo_id = photo_id + 1
     fileName = 'files/' + str(photo_id)
 
-    print(photo_url)
-    print(photo_id)
-    print("morp",morp)
-    
-    #bucket = storage.bucket()
-    
-    #download_file = 
     bucket = storage.bucket()
-    #fileName= "/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/6.jpg"
     blob = bucket.blob(fileName)
-    print("Irem 2")
     fileName2 = "./"+str(photo_id) +"_.jpg"
-
-
     
     blob.download_to_filename(fileName2)
-    print("Irem Irem")
-    #print(blob.generate_signed_url(fileName, method='GET'))
 
     sample_image = Image.open(fileName2)
 
-    source_img, analysis_text, pollens_dict = ml_manager.analyze_sample(sample_image, erosion_dilation=10)
+    source_img, analysis_text, pollens_dict = ml_manager.analyze_sample(sample_image, location=None, date=None, academic_name=None, morphology_sequence=morp,
+                                                                        test_extraction=False)
 
-    sample_image.show()
-    source_img.show()
-    #print('\n! Analysis text:\n', analysis_text)
-    #print('! Pollens dictionary:\n', pollens_dict)
 
-    #blob = bucket.blob('Finals/',bucket)
     fileName2 = str(photo_id) + "_final.jpg"
     fileName = 'files/' + fileName2
     blob = bucket.blob(fileName)
-    print(fileName)
     img = source_img.save(fileName2)
-    print("UUUUUUUUUUUUU")
     blob.upload_from_filename(fileName2)
     blob.make_public()
-    print("AAAAAAAAAAAAAAA")
-    #im.show()
-    #print(im)
-
-    #blob = bucket.blob('Finals/',bucket)
-    #blob.download_to_filename('')
-    #blob = bucket.blob(filename)
-    #filename = photo_id + '_final'
-    
-    #blob.upload_from_filename(filename)
 
     return Response(True)
 
-#    return HttpResponse("Login info")
-
-# def gmap(request):
-#    print(request)
-
-#    return HttpResponse("Map info")
