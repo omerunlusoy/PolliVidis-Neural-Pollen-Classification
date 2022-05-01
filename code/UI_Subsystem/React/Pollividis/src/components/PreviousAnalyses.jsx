@@ -31,7 +31,7 @@ import Checkbox from '@mui/material/Checkbox';
 import FolderIcon from '@mui/icons-material/Folder';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {Button} from "@mui/material";
-import AnalysisInfoDrawer from "./AnalysisInfoDrawer";
+import AnalysisInfoDrawer from "./AnalysisInfoDrawerRight";
 
 const useStyles = makeStyles((theme) => ({
   container: {
