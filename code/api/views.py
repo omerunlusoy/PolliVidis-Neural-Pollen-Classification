@@ -256,8 +256,8 @@ def get_samples_of_academic(request,pk):
         temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
                     temp.location_longitude,
                     temp.analysis_text, temp.publication_status, temp.anonymous_status, temp.pollens)
-        print(temp2.sample_id)
-        print("temp:",temp.__str__())
+        #print(temp2.sample_id)
+        #print("temp:",temp.__str__())
         samples.append(temp2)
     result = SampleSerializer(samples, many=True).data
     return Response(result)

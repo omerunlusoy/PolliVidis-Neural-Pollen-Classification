@@ -223,6 +223,8 @@ class Database_Manager:
 
         if len(results) > 0:
 
+            print("NEW ORLEANS")
+
             samples = []
             for i in range(len(results)):
 
@@ -233,12 +235,15 @@ class Database_Manager:
                 self.cursor.execute(sql, val)
                 pollen_results = self.cursor.fetchall()
 
+
                 for pol in pollen_results:
                     pollens[pol[1]] = pol[2]
 
+
                 sample_photo = Image.open(io.BytesIO(results[0][2]))
-                cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, results[0][3], results[0][4], results[0][5], results[0][6], results[0][7], results[0][8], pollens)
+                cur_sample = SampleModel(results[i][0], results[i][1], sample_photo, results[i][3], results[i][4], results[i][5], results[i][6], results[i][7], results[i][8], pollens)
                 samples.append(cur_sample)
+                print(cur_sample.sample_id)
 
             return samples
 

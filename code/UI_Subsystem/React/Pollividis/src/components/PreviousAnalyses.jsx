@@ -38,7 +38,7 @@ const AboutUs = () => {
         backgroundColor: theme.palette.background.paper,
     }));
   const classes = useStyles();
-    const [dense, setDense] = React.useState(false);
+    //const [dense, setDense] = React.useState(false);
     const [secondary, setSecondary] = React.useState(false);
     const [markers, setMarkers] = React.useState([]);
 
@@ -46,8 +46,11 @@ const AboutUs = () => {
         fetch(`http://localhost:8000/api/get_samples_of_academic/${id}/`)
             .then((data) => data.json())
             .then((data) => setMarkers(data))
-            .then((data) => console.log(data))
     },[]);
+
+    const handleClick1 = () => {
+        console.log(markers)
+    }
 
 
   return (
@@ -59,8 +62,9 @@ const AboutUs = () => {
                       <Typography style={{marginBottom:10}}variant="h3" component="p">
                           Previous Analyses
                       </Typography>
+                      <Button onClick={handleClick1}>Press</Button>
                                   <Demo>
-                                      <List dense={dense}>
+                                      <List>
                                           {markers.map((marker) => (
                                               <ListItem
                                                   secondaryAction={
