@@ -105,6 +105,15 @@ const AnalyzeSample = () => {
         }
     }, [selectedImage,id]);
 
+    const handleCallback = (childData) =>{
+
+        setLat(childData[0].lat)
+        setLng(childData[0].lng)
+        setDate(Date().toLocaleString());
+        console.log("data:",lat,",",lng,",",date)
+
+    }
+
 
     //analyze button handler
     const submitHandler= () => {
@@ -277,7 +286,7 @@ const AnalyzeSample = () => {
                           <Card>
                               <CardActionArea>
                                   <CardContent>
-                                      <Map/>
+                                      <Map parentCallback={handleCallback}/>
                                   </CardContent>
                               </CardActionArea>
                           </Card>

@@ -75,7 +75,7 @@ const AboutUs = () => {
                                                       </Avatar>
                                                   </ListItemAvatar>
                                                   <ListItemText
-                                                      primary={marker.location_latitude}
+                                                      primary={marker.date}
                                                       secondary={secondary ? 'Secondary text' : null}
                                                   />
                                               </ListItem>

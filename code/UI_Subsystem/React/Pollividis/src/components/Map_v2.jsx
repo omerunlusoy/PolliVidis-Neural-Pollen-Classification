@@ -42,7 +42,7 @@ const center = {
     lng: 34.915717273488404,
 };
 
-export default function Map() {
+export default function Map(props) {
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: "AIzaSyDr2mi0HT_Hu22x6sriuAYIx1a6M3uWSRU",
         libraries,
@@ -68,6 +68,7 @@ export default function Map() {
     useEffect(() => {
 
         console.log(markers)
+        props.parentCallback(markers);
         }, [markers]);
 
     const mapRef = React.useRef();
