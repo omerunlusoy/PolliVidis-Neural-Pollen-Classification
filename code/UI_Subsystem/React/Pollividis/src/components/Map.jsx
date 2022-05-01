@@ -21,6 +21,12 @@ import {
 import "@reach/combobox/styles.css";
 import Drawer from '@mui/material/Drawer';
 import AnalysisInfoDrawer from "./AnalysisInfoDrawer";
+import Button from "@material-ui/core/Button";
+import Navbar from "./Navbar";
+import {Box, Card, CardActionArea, CardContent, Dialog, Grid, Typography} from "@material-ui/core";
+import CloseIcon from '@mui/icons-material/Close';
+import IconButton from "@mui/material/IconButton";
+import {pink, red} from "@material-ui/core/colors";
 
 //api key: "AIzaSyAHlwtPiz1TdtLSNXtladNYvGRtCbzkm6g"
 //api_key_irem2 : "AIzaSyBKACLg3Nl9SOXYQkYdiMeTR9cVNS2_rJQ"
@@ -49,6 +55,7 @@ export default function Map() {
     });
     const [markers, setMarkers] = React.useState([]);
     const [selected, setSelected] = React.useState(null);
+    const [openD, setOpenD] = React.useState(false);
 
 
     useEffect(() => {
@@ -56,6 +63,10 @@ export default function Map() {
             .then((data) => data.json())
             .then((data) => setMarkers(data))
     },[]);
+
+    const handleClose = () => {
+        setOpenD(false);
+    };
 
 
     const mapRef = React.useRef();
@@ -79,6 +90,77 @@ export default function Map() {
 
     return (
         <div>
+            <div style={{marginBottom:10}}>
+                <Button onClick={()=>{setOpenD(true)}} variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} size="medium" >
+                    Filter
+                </Button>
+            </div>
+            <Dialog
+                open={openD}
+                onClose={handleClose}
+            >
+                <div>
+                    <IconButton style={{align:"left"}} onClick={handleClose} aria-label="close" >
+                        <CloseIcon sx={{ color: "#A6232A" }}/>
+                    </IconButton>
+                </div>
+                <Grid container>
+                    <Grid item sm={23} xs={30} >
+                                <Card>
+                                    <CardActionArea>
+                                        <CardContent>
+                                            <Typography align={"center"} style={{marginBottom:30}} variant="h5" >
+                                                Select Pollen Types
+                                            </Typography>
+                                            <div align={"center"} style={{marginBottom:30}}>
+                                                <label htmlFor="contained-button-file">
+                                                    <Button variant="contained" component="span">
+                                                        Select Image
+                                                    </Button>
+                                                </label>
+                                            </div>
+                                            <div>
+                                                    <Box mt={2} textAlign="center" style={{marginBottom:30}}>
+                                                        <div>
+                                                            <label>
+                                                                {"UUUUU"}
+                                                            </label>
+                                                        </div>
+                                                    </Box>
+                                            </div>
+                                        </CardContent>
+                                    </CardActionArea>
+                                </Card>
+                            </Grid>
+                    <Grid item sm={23} xs={30} >
+                        <Card>
+                            <CardActionArea>
+                                <CardContent>
+                                    <Typography align={"center"} style={{marginBottom:30}} variant="h5" >
+                                        Select Analyses Time
+                                    </Typography>
+                                    <div align={"center"} style={{marginBottom:30}}>
+                                        <label htmlFor="contained-button-file">
+                                            <Button variant="contained" component="span">
+                                                Select Image
+                                            </Button>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <Box mt={2} textAlign="center" style={{marginBottom:30}}>
+                                            <div>
+                                                <label>
+                                                    {"UUUUU"}
+                                                </label>
+                                            </div>
+                                        </Box>
+                                    </div>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    </Grid>
+                </Grid>
+            </Dialog>
 
             <Locate panTo={panTo} />
             <Search panTo={panTo} />

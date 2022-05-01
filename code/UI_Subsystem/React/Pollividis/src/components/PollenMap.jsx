@@ -2,6 +2,7 @@ import {Card, CardActionArea, CardContent, CardMedia, Container, Grid, makeStyle
 import Navbar from "./Navbar";
 import React from "react";
 import Map from "./Map";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -24,7 +25,6 @@ const PollenMap = () => {
                                 </CardContent>
                             </CardActionArea>
                         </Card>
-
                     </Container>
                 </Grid>
                 <Grid item sm={3} className={classes.right}>
