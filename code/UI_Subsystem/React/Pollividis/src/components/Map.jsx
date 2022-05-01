@@ -26,7 +26,7 @@ import Navbar from "./Navbar";
 import {Box, Card, CardActionArea, CardContent, Dialog, Grid, Typography} from "@material-ui/core";
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from "@mui/material/IconButton";
-import {pink, red} from "@material-ui/core/colors";
+import PollenTypes from "./PollenTypesList";
 
 //api key: "AIzaSyAHlwtPiz1TdtLSNXtladNYvGRtCbzkm6g"
 //api_key_irem2 : "AIzaSyBKACLg3Nl9SOXYQkYdiMeTR9cVNS2_rJQ"
@@ -105,26 +105,17 @@ export default function Map() {
                     </IconButton>
                 </div>
                 <Grid container>
-                    <Grid item sm={23} xs={30} >
+                    <Grid item  xs={50} >
                                 <Card>
                                     <CardActionArea>
                                         <CardContent>
-                                            <Typography align={"center"} style={{marginBottom:30}} variant="h5" >
+                                            <Typography align={"center"}  variant="h5" >
                                                 Select Pollen Types
                                             </Typography>
-                                            <div align={"center"} style={{marginBottom:30}}>
-                                                <label htmlFor="contained-button-file">
-                                                    <Button variant="contained" component="span">
-                                                        Select Image
-                                                    </Button>
-                                                </label>
-                                            </div>
                                             <div>
-                                                    <Box mt={2} textAlign="center" style={{marginBottom:30}}>
+                                                    <Box mt={2}>
                                                         <div>
-                                                            <label>
-                                                                {"UUUUU"}
-                                                            </label>
+                                                            <PollenTypes/>
                                                         </div>
                                                     </Box>
                                             </div>
@@ -132,7 +123,7 @@ export default function Map() {
                                     </CardActionArea>
                                 </Card>
                             </Grid>
-                    <Grid item sm={23} xs={30} >
+                    <Grid item sm={24} xs={50} >
                         <Card>
                             <CardActionArea>
                                 <CardContent>
