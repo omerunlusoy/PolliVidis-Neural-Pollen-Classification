@@ -21,7 +21,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function AnalysisInfoDrawer(props) {
 
 
-    console.log(props.sample_id)
+    console.log("irem:,",props.sample_id)
     let myOpen = true;
 
     let lat = 39;

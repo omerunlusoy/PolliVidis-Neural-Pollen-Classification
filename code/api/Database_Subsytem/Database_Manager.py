@@ -243,7 +243,6 @@ class Database_Manager:
                 sample_photo = Image.open(io.BytesIO(results[0][2]))
                 cur_sample = SampleModel(results[i][0], results[i][1], sample_photo, results[i][3], results[i][4], results[i][5], results[i][6], results[i][7], results[i][8], pollens)
                 samples.append(cur_sample)
-                print(cur_sample.sample_id)
 
             return samples
 

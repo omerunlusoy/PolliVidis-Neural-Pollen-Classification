@@ -1,4 +1,14 @@
-import {Card, CardActionArea, CardContent, CardMedia, Container, Grid, makeStyles, Typography} from "@material-ui/core";
+import {
+    Card,
+    CardActionArea,
+    CardContent,
+    CardMedia,
+    Container,
+    Dialog,
+    Grid,
+    makeStyles,
+    Typography
+} from "@material-ui/core";
 import Post from "./Post";
 import Navbar from "./Navbar";
 import Leftbar from "./Leftbar";
@@ -21,6 +31,7 @@ import Checkbox from '@mui/material/Checkbox';
 import FolderIcon from '@mui/icons-material/Folder';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {Button} from "@mui/material";
+import AnalysisInfoDrawer from "./AnalysisInfoDrawer";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -41,6 +52,8 @@ const AboutUs = () => {
     //const [dense, setDense] = React.useState(false);
     const [secondary, setSecondary] = React.useState(false);
     const [markers, setMarkers] = React.useState([]);
+    const [clicked, setClicked] = React.useState(false);
+    const [sample,setSample] = React.useState(null);
 
     useEffect(() => {
         fetch(`http://localhost:8000/api/get_samples_of_academic/${id}/`)
@@ -48,8 +61,8 @@ const AboutUs = () => {
             .then((data) => setMarkers(data))
     },[]);
 
-    const handleClick1 = () => {
-        console.log(markers)
+    const handleCallback = (childData) =>{
+        setClicked(childData)
     }
 
 
@@ -62,13 +75,16 @@ const AboutUs = () => {
                       <Typography style={{marginBottom:10}}variant="h3" component="p">
                           Previous Analyses
                       </Typography>
-                      <Button onClick={handleClick1}>Press</Button>
                                   <Demo>
                                       <List>
                                           {markers.map((marker) => (
                                               <ListItem
                                                   secondaryAction={
-                                                      <Button type="submit" variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} >
+                                                      <Button onClick={()=> {console.log(marker);
+                                                          setClicked(true);
+                                                          setSample(marker);
+
+                                                      }} type="submit" variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} >
                                                           View
                                                       </Button>
                                                   }
@@ -86,6 +102,9 @@ const AboutUs = () => {
                                           ))}
                                       </List>
                                   </Demo>
+                      {clicked ? (
+                          <AnalysisInfoDrawer sample_id={sample.sample_id} open={clicked} parentCallback={handleCallback}/>
+                      ) : null}
 
                   </Container>
               </Grid>
