@@ -18,6 +18,10 @@ import {Link, Navigate} from "react-router-dom";
 import {storage} from "../firebase.js"
 import {getDownloadURL, ref, uploadBytesResumable} from "@firebase/storage"
 import Map from "./Map_v2";
+import InfoIcon from '@mui/icons-material/Info';
+import CloseIcon from "@mui/icons-material/Close";
+import IconButton from "@mui/material/IconButton";
+import PollenTypes from "./PollenTypesList";
 
 //morphology sequence
 
@@ -67,6 +71,9 @@ const AnalyzeSample = () => {
     const [lng, setLng] = useState("");
 
     const [morp, setMorp] = useState("10");
+
+    const [openD, setOpenD] = React.useState(false);
+    const [openD2, setOpenD2] = React.useState(false);
 
 
     const uploadImage =(file,id)=>{
@@ -244,6 +251,27 @@ const AnalyzeSample = () => {
                                                   </Button>
                                           </CardActions>
                                           <CardActions>
+                                              <IconButton style={{align:"left"}} onClick={()=>{setOpenD2(true)}} aria-label="close" >
+                                                  <InfoIcon sx={{ color: "#A6232A" }}/>
+                                              </IconButton>
+                                              <Dialog
+                                                  open={openD2}
+                                              >
+                                                  <div>
+                                                      <IconButton style={{align:"left"}} onClick={()=>{setOpenD2(false)}} aria-label="close" >
+                                                          <CloseIcon sx={{ color: "#A6232A" }}/>
+                                                      </IconButton>
+                                                  </div>
+                                                  <Card>
+                                                      <CardActionArea>
+                                                          <CardContent>
+                                                              <Typography align={"center"}  variant="h5" >
+                                                                  Info text about morphology sequence!
+                                                              </Typography>
+                                                          </CardContent>
+                                                      </CardActionArea>
+                                                  </Card>
+                                              </Dialog>
                                               <div>
                                                   <TextField id="outlined-basic" label="Morphology Sequence" variant="outlined" size={"small"} value={morp}
                                                              onChange={e => {setMorp(e.target.value); console.log(morp)}} />
@@ -267,6 +295,27 @@ const AnalyzeSample = () => {
                                                               }}
                                                           > Get My Location </Button>
                                                       </div>
+                                              <IconButton style={{align:"left"}} onClick={()=>{setOpenD(true)}} aria-label="close" >
+                                                  <InfoIcon sx={{ color: "#A6232A" }}/>
+                                              </IconButton>
+                                              <Dialog
+                                                  open={openD}
+                                              >
+                                                  <div>
+                                                      <IconButton style={{align:"left"}} onClick={()=>{setOpenD(false)}} aria-label="close" >
+                                                          <CloseIcon sx={{ color: "#A6232A" }}/>
+                                                      </IconButton>
+                                                  </div>
+                                                          <Card>
+                                                              <CardActionArea>
+                                                                  <CardContent>
+                                                                      <Typography align={"center"}  variant="h5" >
+                                                                          Click on Get My Location button if you want to use your current location.
+                                                                      </Typography>
+                                                                  </CardContent>
+                                                              </CardActionArea>
+                                                          </Card>
+                                              </Dialog>
                                           </CardActions>
                                           <CardActions>
                                               <Button variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} size="medium" onClick={submitHandler}>Analyze</Button>
