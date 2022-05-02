@@ -63,8 +63,8 @@ const AnalyzeSample = () => {
     const [myId,setMyId] = useState(null)
 
     const [date, setDate] = useState('');
-    const [lat, setLat] = useState(null);
-    const [lng, setLng] = useState(null);
+    const [lat, setLat] = useState("");
+    const [lng, setLng] = useState("");
 
     const [morp, setMorp] = useState("10");
 

@@ -66,9 +66,14 @@ export default function Map(props) {
     }, []);
 
     useEffect(() => {
+        if(markers.length === 0){
+            console.log("why")
 
-        console.log(markers)
-        props.parentCallback(markers);
+        } else {
+            console.log(markers)
+            console.log("sfdsfsdfdsfds")
+            props.parentCallback(markers);
+        }
         }, [markers]);
 
     const mapRef = React.useRef();
