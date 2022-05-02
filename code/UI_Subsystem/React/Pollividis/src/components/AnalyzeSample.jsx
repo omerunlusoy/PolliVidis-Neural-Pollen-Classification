@@ -6,7 +6,7 @@ import {
     Card,
     CardActionArea,
     CardActions,
-    CardContent,
+    CardContent, CircularProgress,
     Container, Dialog,
     Grid, makeStyles, styled, TextField, Typography
 } from "@material-ui/core";
@@ -74,6 +74,7 @@ const AnalyzeSample = () => {
 
     const [openD, setOpenD] = React.useState(false);
     const [openD2, setOpenD2] = React.useState(false);
+    const [openC, setOpenC] = React.useState(false);
 
 
     const uploadImage =(file,id)=>{
@@ -124,6 +125,8 @@ const AnalyzeSample = () => {
 
     //analyze button handler
     const submitHandler= () => {
+
+        setOpenC(true);
 
         let sampleObject = new FormData(); // creates a new FormData object
 
@@ -327,6 +330,22 @@ const AnalyzeSample = () => {
                               </Card>
 
                           </Container>
+                          <Dialog
+                              open={openC}
+                          >
+                              <Card>
+                                  <CardActionArea>
+                                      <CardContent>
+                                          <Typography align={"center"}  variant="h5" >
+                                              Our machine learning model is analyzing your image. Thank you for waiting patiently.
+                                          </Typography>
+                                          <div style={{align:"center"}}>
+                                              <CircularProgress />
+                                          </div>
+                                      </CardContent>
+                                  </CardActionArea>
+                              </Card>
+                          </Dialog>
                       </Grid>
                       <Grid item sm={4} className={classes.right}>
                           <SampleImagePreviewCard img={imageUrl}/>
