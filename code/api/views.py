@@ -314,7 +314,7 @@ def analyze(request):
                                                                         test_extraction=False)
     #analysis_text = analysis_text.replace("/n","\n")
     analysis_text = "<p>" + analysis_text
-    analysis_text = analysis_text.replace("/n","<\p><p>")
+    analysis_text = analysis_text.replace("\n","<\p><p>")
     analysis_text = analysis_text[:-3]
     print("ml finish")
     fileName2 = str(photo_id) + "_final.jpg"
