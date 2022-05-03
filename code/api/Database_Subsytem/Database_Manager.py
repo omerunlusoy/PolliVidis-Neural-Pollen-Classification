@@ -571,9 +571,9 @@ class Database_Manager:
     
         if isinstance(sample, SampleModel):
 
-            sql = "UPDATE Sample SET sample_id = %s, academic_id = %s,  date = %s, location_latitude = %s, location_longitude = %s, analysis_text = %s, publication_status = %s, anonymous_status = %s" \
-                  "WHERE sample_id = %s"
-
+            #sql = "UPDATE Sample SET sample_id = %s, academic_id = %s,  date = %s, location_latitude = %s, location_longitude = %s, analysis_text = %s, publication_status = %s, anonymous_status = %s" \
+            #      "WHERE sample_id = %s"
+            sql = "UPDATE Sample SET analysis_text = %s WHERE sample_id = %s"
             # to use open, we needed to save the image
             '''
             sample.sample_photo.save("buff.jpg")
@@ -582,12 +582,14 @@ class Database_Manager:
             os.remove("buff.jpg")
             '''
             
-            val = (sample.sample_id, sample.academic_id,  sample.date, sample.location_latitude, sample.location_longitude, sample.analysis_text, sample.publication_status,
-                   sample.anonymous_status, sample.sample_id)
+            #val = (sample.sample_id, sample.academic_id,  sample.date, sample.location_latitude, sample.location_longitude, sample.analysis_text, sample.publication_status,
+            #       sample.anonymous_status, sample.sample_id)
+            val = (sample.analysis_text,sample.sample_id)
             try:
-                print("update complete!!!!!!")
+                
                 self.cursor.execute(sql, val)
                 self.db.commit()
+                print("update complete!!!!!!")
                 return True
             except(mysql.connector.Error, mysql.connector.Warning) as e:
                 print(e)
