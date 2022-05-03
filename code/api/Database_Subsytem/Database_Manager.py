@@ -571,18 +571,18 @@ class Database_Manager:
     
         if isinstance(sample, SampleModel):
 
-            sql = "UPDATE Sample SET sample_id = %s, academic_id = %s, sample_photo = %s, date = %s, location_latitude = %s, location_longitude = %s, analysis_text = %s, publication_status = %s, anonymous_status = %s" \
+            sql = "UPDATE Sample SET sample_id = %s, academic_id = %s,  date = %s, location_latitude = %s, location_longitude = %s, analysis_text = %s, publication_status = %s, anonymous_status = %s" \
                   "WHERE sample_id = %s"
 
             # to use open, we needed to save the image
-            
+            '''
             sample.sample_photo.save("buff.jpg")
             with open("buff.jpg", 'rb') as file:
                 binaryData = file.read()
             os.remove("buff.jpg")
+            '''
             
-            
-            val = (sample.sample_id, sample.academic_id, binaryData, sample.date, sample.location_latitude, sample.location_longitude, sample.analysis_text, sample.publication_status,
+            val = (sample.sample_id, sample.academic_id,  sample.date, sample.location_latitude, sample.location_longitude, sample.analysis_text, sample.publication_status,
                    sample.anonymous_status, sample.sample_id)
             try:
                 print("update complete!!!!!!")
