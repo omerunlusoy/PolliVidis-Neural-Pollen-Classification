@@ -130,39 +130,39 @@ const Profile = () => {
           <Grid container>
               <Grid item sm={7} xs={10}>
                   <Container className={classes.container}>
-                      <Typography style={{marginBottom:10}}variant="h3" component="p">
+                      <Typography style={{marginLeft:40, marginTop:50}}variant="h2" component="p">
                           Profile
                       </Typography>
-                      <Typography style={{marginBottom:5}} variant="h5"  component="p">
+                      <Typography style={{marginLeft:40, marginTop:15}} variant="h4"  component="p">
                           Name: {id.name} {id.surname}
                       </Typography>
-                      <Typography style={{marginBottom:5}} variant="h5"  component="p">
+                      <Typography style={{marginLeft:40, marginTop:15}} variant="h4"  component="p">
                           Job: {id.job_title}
                       </Typography>
-                      <Typography style={{marginBottom:5}} variant="h5"  component="p">
+                      <Typography style={{marginLeft:40, marginTop:15}} variant="h4"  component="p">
                           E-Mail: {id.email}
                       </Typography>
-                      <Typography style={{marginBottom:5}} variant="h5"  component="p">
+                      <Typography style={{marginLeft:40, marginTop:15}} variant="h4"  component="p">
                           Institution: {id.institution}
                       </Typography>
-                      <Typography style={{marginBottom:20}} variant="h5"  component="p">
+                      <Typography style={{marginLeft:40, marginTop:15}} variant="h4"  component="p">
                           Research Gate: {id.research_gate_link}
                       </Typography>
-                      <Button style={{marginTop:10}} variant="contained" style={{backgroundColor:'#A6232A', color:'white'}}size="medium" >
+                      <Button variant="contained" style={{backgroundColor:'#A6232A', color:'white', marginTop:30, marginLeft:40, width:100, height:50}}  >
                           Edit
                       </Button>
                   </Container>
               </Grid>
-              <Grid item sm={3} className={classes.right}>
+              <Grid item sm={3} className={classes.right} style={{marginTop: 20}}>
                   <ReactRoundedImage
                       image={circleImage}
                       roundedColor="#321124"
-                      imageWidth="200"
-                      imageHeight="200"
-                      roundedSize="15"
-                      borderRadius="100"
+                      imageWidth="250"
+                      imageHeight="250"
+                      roundedSize="10"
+                      borderRadius="150"
                   />
-                  <Button style={{marginTop:10}} variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} onClick={handleClickOpen} size="medium" >
+                  <Button style={{marginTop:10}} variant="contained" style={{backgroundColor:'#A6232A', color:'white', marginTop:20, marginLeft:21}} onClick={handleClickOpen} size="medium" >
                       Change Profile Image
                   </Button>
                   <Dialog
