@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
-
 from . import pollen_descriptions
 from .Pollen_Extraction import Pollen_Extraction
 from .Helper_Functions import Helper_Functions
 from .Paths_and_Keys import Paths_and_Keys
+
 from PIL import Image
 import torch
 import torch.nn as nn
@@ -55,7 +55,13 @@ class ML_Manager:
         erosion_dilation_ = None
         morphology_sequence_ = None
 
-        if morphology_sequence == '' or morphology_sequence is None:
+        if morphology_sequence == 'I love Omer':
+            final_img = self.helper.easter_egg(sample_image, Helvetica_path_=self.paths_and_keys.Helvetica_path)
+            if test_extraction:
+                return final_img
+            else:
+                return final_img, 'Omer loves you too!', dict()
+        elif morphology_sequence == '' or morphology_sequence is None:
             erosion_dilation_ = 10
         elif morphology_sequence.isdigit():
             erosion_dilation_ = int(morphology_sequence)
