@@ -160,15 +160,43 @@ def get_all_samples(request):
 
     return Response(result)
 
-# def sign_up(request):
-#    print(request)
-#
-#    return HttpResponse(sign_up)
 
-# def profile(request):
-#    print(request)
+@api_view(['GET'])
+def get_samples_by_filter(request,pk):
+    
+    if pk == "":
+        return get_all_samples()
+    else:
+        # Database_Manager.connect_database()
+        all_samples = db_manager.get_all_samples()
+        samples = []
+        
+        for temp in all_samples:
+            if pk not in temp.pollens:
+                continue
+            temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
+                        temp.location_longitude,
+                        temp.analysis_text, temp.publication_status, temp.anonymous_status, temp.pollens)
+            print(temp2.sample_id)
+            print("temp:",temp.__str__())
 
-#    return HttpResponse("Profile")
+            samples.append(temp2)
+
+        print(samples)
+        #test = Sample.objects.all()
+        #print(type(test))
+        #print(test)
+        result = SampleSerializer(samples, many=True).data
+        #result = json.dumps(result)
+
+        #print(samples)
+        print(result)
+
+        print(len(samples))
+        print(len(result))
+        
+        return Response(result)
+
 
 @api_view(['GET'])
 def login(request, pk):
@@ -289,5 +317,12 @@ def analyze(request):
     blob.upload_from_filename(fileName2)
     blob.make_public()
 
-    return Response(True)
+    smpl = db_manager.get_sample(photo_id)
+    smpl.analysis_text = analysis_text
+    smpl.pollens = pollens_dict
+
+    db_manager.update_sample(smpl)
+    #db_manager.delete_sample(photo_id)
+    #db_manager.add_sample(smpl)
+    return Response(db_manager)
 

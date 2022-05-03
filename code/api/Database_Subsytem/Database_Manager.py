@@ -566,6 +566,36 @@ class Database_Manager:
         else:
             print("Given object is not type AcademicModel")
             return False
+    
+    def update_sample(self, sample):
+    
+        if isinstance(sample, SampleModel):
+
+            sql = "UPDATE Sample SET sample_id = %s, academic_id = %s, sample_photo = %s, date = %s, location_latitude = %s, location_longitude = %s, analysis_text = %s, publication_status = %s, anonymous_status = %s" \
+                  "WHERE sample_id = %s"
+
+            # to use open, we needed to save the image
+            '''
+            academic.photo.save("buff.jpg")
+            with open("buff.jpg", 'rb') as file:
+                binaryData = file.read()
+            os.remove("buff.jpg")
+            '''
+            
+            val = (sample.sample_id, sample.academic_id, sample.sample_photo, sample.date, sample.location_latitude, sample.location_longitude, sample.analysis_text, sample.publication_status,
+                   sample.anonymous_status, sample.sample_id)
+            try:
+                self.cursor.execute(sql, val)
+                self.db.commit()
+                return True
+            except(mysql.connector.Error, mysql.connector.Warning) as e:
+                print(e)
+                return False
+
+        else:
+            print("Given object is not type SampleModel")
+            return False
+    
 
     def update_pollen_type_description(self, pollen):
 
