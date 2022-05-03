@@ -12,6 +12,19 @@ import {
     Paper,
     Typography
 } from "@material-ui/core";
+import { alpha, styled } from '@mui/material/styles';
+
+const RedSwitch = styled(Switch)(({ theme }) => ({
+    '& .MuiSwitch-switchBase.Mui-checked': {
+        color: '#A6232A',
+        '&:hover': {
+            backgroundColor: alpha('#A6232A', theme.palette.action.hoverOpacity),
+        },
+    },
+    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+        backgroundColor: '#A6232A',
+    },
+}));
 
 export default function PollenTypes(props) {
 
@@ -385,7 +398,7 @@ export default function PollenTypes(props) {
                     <Paper sx={{ width: 320, maxWidth: '100%' }}>
                         <FormControlLabel
                             value="1"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked1}
                                              value="Ambrosia"
                                              onChange={handleChange1} />}
@@ -394,7 +407,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="2"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked2}
                                              value={"Alnus"}
                                              onChange={handleChange2} />}
@@ -403,7 +416,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="3"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked3}
                                              value="Acer"
                                              onChange={handleChange3} />}
@@ -412,7 +425,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="4"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked4}
                                              value={"Betula"}
                                              onChange={handleChange4} />}
@@ -421,7 +434,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="5"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked5}
                                              value="Juglans"
                                              onChange={handleChange5} />}
@@ -430,7 +443,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="6"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked6}
                                              value={"Artemisia"}
                                              onChange={handleChange6} />}
@@ -439,7 +452,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="7"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked7}
                                              value="Populus"
                                              onChange={handleChange7} />}
@@ -448,7 +461,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="8"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked8}
                                              value={"Phleum"}
                                              onChange={handleChange8} />}
@@ -457,7 +470,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="9"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked9}
                                              value="Picea"
                                              onChange={handleChange9} />}
@@ -466,7 +479,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="10"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked10}
                                              value={"Juniperus"}
                                              onChange={handleChange10} />}
@@ -475,7 +488,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="11"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked11}
                                              value="Ulmus"
                                              onChange={handleChange11} />}
@@ -484,7 +497,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="12"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked12}
                                              value={"Quercus"}
                                              onChange={handleChange12} />}
@@ -493,7 +506,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="13"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked13}
                                              value="Carpinus"
                                              onChange={handleChange13} />}
@@ -502,7 +515,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="14"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked14}
                                              value={"Ligustrum"}
                                              onChange={handleChange14} />}
@@ -511,7 +524,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="15"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked15}
                                              value="Rumex"
                                              onChange={handleChange15} />}
@@ -520,7 +533,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="16"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked16}
                                              value={"Ailantus"}
                                              onChange={handleChange16} />}
@@ -529,7 +542,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="17"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked17}
                                              value="Thymbra"
                                              onChange={handleChange17} />}
@@ -538,7 +551,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="18"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked18}
                                              value={"Rubia"}
                                              onChange={handleChange18} />}
@@ -547,7 +560,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="19"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked19}
                                              value="Olea"
                                              onChange={handleChange19} />}
@@ -556,7 +569,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="20"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked20}
                                              value={"Cichorium"}
                                              onChange={handleChange20} />}
@@ -565,7 +578,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="21"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked21}
                                              value="Chenopodium"
                                              onChange={handleChange21} />}
@@ -574,7 +587,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="22"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked22}
                                              value={"Borago"}
                                              onChange={handleChange22} />}
@@ -583,7 +596,7 @@ export default function PollenTypes(props) {
                         />
                         <FormControlLabel
                             value="23"
-                            control={<Switch color="warning"
+                            control={<RedSwitch color="warning"
                                              checked={checked23}
                                              value="Acacia"
                                              onChange={handleChange23} />}
