@@ -11,7 +11,7 @@ urlpatterns= [
     path('get_academic_by_id/<int:pk>/',get_academic_by_id),
     path('get_samples_of_academic/<int:pk>/',get_samples_of_academic),
     path('analyze/',analyze),
-    path('get_filtered_samples/',get_samples_by_filter)
+    path('get_filtered_samples/<str:pk>',get_samples_by_filter)
     #path('/analysis/:id',analyses),
     #path('/profile',profile),
     #path('/map',gmap)  

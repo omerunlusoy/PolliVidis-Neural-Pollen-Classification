@@ -164,35 +164,38 @@ def get_all_samples(request):
 @api_view(['GET'])
 def get_samples_by_filter(request,pk):
     
-    # Database_Manager.connect_database()
-    all_samples = db_manager.get_all_samples()
-    samples = []
-    
-    for temp in all_samples:
-        if pk not in temp.pollens:
-            continue
-        temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
-                    temp.location_longitude,
-                    temp.analysis_text, temp.publication_status, temp.anonymous_status, temp.pollens)
-        print(temp2.sample_id)
-        print("temp:",temp.__str__())
+    if pk == "":
+        return get_all_samples()
+    else:
+        # Database_Manager.connect_database()
+        all_samples = db_manager.get_all_samples()
+        samples = []
+        
+        for temp in all_samples:
+            if pk not in temp.pollens:
+                continue
+            temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
+                        temp.location_longitude,
+                        temp.analysis_text, temp.publication_status, temp.anonymous_status, temp.pollens)
+            print(temp2.sample_id)
+            print("temp:",temp.__str__())
 
-        samples.append(temp2)
+            samples.append(temp2)
 
-    print(samples)
-    #test = Sample.objects.all()
-    #print(type(test))
-    #print(test)
-    result = SampleSerializer(samples, many=True).data
-    #result = json.dumps(result)
+        print(samples)
+        #test = Sample.objects.all()
+        #print(type(test))
+        #print(test)
+        result = SampleSerializer(samples, many=True).data
+        #result = json.dumps(result)
 
-    #print(samples)
-    print(result)
+        #print(samples)
+        print(result)
 
-    print(len(samples))
-    print(len(result))
-    
-    return Response(result)
+        print(len(samples))
+        print(len(result))
+        
+        return Response(result)
 
 
 @api_view(['GET'])
