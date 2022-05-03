@@ -80,7 +80,8 @@ const SignUp = () => {
     const classes = useStyles();
     // create state variables for each input
 
-    const [fullName, setfullName] = useState('');
+    const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
     const [appellation, setAppellation] = useState('');
     const [email, setEmail] = useState('');
     const [institution, setInstitution] = useState('');
@@ -95,14 +96,14 @@ const SignUp = () => {
         e.preventDefault();
 
 
-        console.log(fullName, appellation, email,institution, password);
+        console.log(name, surname, appellation, email,institution, password);
 
         let sampleObject = new FormData(); // creates a new FormData object
 
         const myObject = {
             academic_id: 0,
-            name: fullName,
-            surname: fullName,
+            name: name,
+            surname: surname,
             appellation: appellation,
             institution: institution,
             job_title: "a",
@@ -144,7 +145,8 @@ const SignUp = () => {
 
     const clearForm = e => {
         e.preventDefault();
-        setfullName('');
+        setName('');
+        setSurname('');
         setAppellation('');
         setEmail('');
         setInstitution('');
@@ -247,11 +249,19 @@ const SignUp = () => {
                         </Typography>
                         <form className={classes.root} onSubmit={handleSubmit}>
                             <TextField
-                                label="Full Name"
+                                label="Name"
                                 variant="filled"
                                 required
-                                value={fullName}
-                                onChange={e => setfullName(e.target.value)}
+                                value={name}
+                                onChange={e => setName(e.target.value)}
+
+                            />
+                            <TextField
+                                label="Surname"
+                                variant="filled"
+                                required
+                                value={surname}
+                                onChange={e => setSurname(e.target.value)}
 
                             />
                             <TextField
