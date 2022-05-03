@@ -312,10 +312,10 @@ def analyze(request):
     print("ml start")
     source_img, analysis_text, pollens_dict = ml_manager.analyze_sample(sample_image, location=None, date=None, academic_name=None, morphology_sequence=morp,
                                                                         test_extraction=False)
-    #analysis_text = analysis_text.replace("/n","\n")
-    analysis_text = "<p>" + analysis_text
-    analysis_text = analysis_text.replace("\n","</p><p>")
-    analysis_text = analysis_text[:-3]
+    analysis_text = analysis_text.replace("/n","\n")
+    #analysis_text = "<p>" + analysis_text
+    #analysis_text = analysis_text.replace("\n","</p><p>")
+    #analysis_text = analysis_text[:-3]
     print("ml finish")
     fileName2 = str(photo_id) + "_final.jpg"
     fileName = 'files/' + fileName2
