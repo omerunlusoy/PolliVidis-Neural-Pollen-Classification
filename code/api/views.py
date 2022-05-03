@@ -293,23 +293,27 @@ def get_samples_of_academic(request,pk):
 @api_view(['PUT'])
 def analyze(request):
 
+    print("analyze enter")
     photo_url = request.data['url']
     photo_id = request.data['id']
     morp = request.data['morp']
     fileName = 'files/' + str(photo_id)
-
+    
+    print("analyze init")
     bucket = storage.bucket()
     blob = bucket.blob(fileName)
     fileName2 = "./"+str(photo_id) +"_.jpg"
     
     blob.download_to_filename(fileName2)
 
+    print("img downlaod complete")
     sample_image = Image.open(fileName2)
 
+    print("ml start")
     source_img, analysis_text, pollens_dict = ml_manager.analyze_sample(sample_image, location=None, date=None, academic_name=None, morphology_sequence=morp,
                                                                         test_extraction=False)
 
-
+    print("ml finish")
     fileName2 = str(photo_id) + "_final.jpg"
     fileName = 'files/' + fileName2
     blob = bucket.blob(fileName)
@@ -320,7 +324,8 @@ def analyze(request):
     smpl = db_manager.get_sample(photo_id)
     smpl.analysis_text = analysis_text
     smpl.pollens = pollens_dict
-
+    print("sample:")
+    print(smpl)
     db_manager.update_sample(smpl)
     #db_manager.delete_sample(photo_id)
     #db_manager.add_sample(smpl)
