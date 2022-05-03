@@ -323,7 +323,10 @@ def analyze(request):
 
     smpl = db_manager.get_sample(photo_id)
     smpl.analysis_text = analysis_text
+    
     smpl.pollens = pollens_dict
+    print("analysis_text")
+    print(analysis_text)
     print("sample:")
     print(smpl)
     db_manager.update_sample(smpl)
