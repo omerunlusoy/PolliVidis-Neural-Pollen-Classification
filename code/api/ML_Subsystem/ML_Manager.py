@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 from .Pollen_Extraction import Pollen_Extraction
 from .Helper_Functions import Helper_Functions
 from .Paths_and_Keys import Paths_and_Keys
+import .pollen_descriptions
 from PIL import Image
 import torch
 import torch.nn as nn
@@ -24,7 +25,6 @@ class ML_Manager:
             self.image_size = 200
             self.model = torch.hub.load('pytorch/vision:v0.10.0', 'alexnet', pretrained=False)
             self.model.classifier[6] = nn.Linear(4096, len(self.classes))
-
 
             self.model.load_state_dict(torch.load(self.paths_and_keys.model_path, map_location=torch.device('cpu')))
             self.model.eval()
@@ -89,10 +89,20 @@ class ML_Manager:
         return final_img, analysis_text, pollens_dict
 
     def get_analysis_text(self, pollens_dict, location=None, date=None, academic_name=None):
-        analysis_text = ''
+        analysis_text = 'The sample has;\n'
 
         for pollen_name, count in pollens_dict.items():
-            analysis_text += pollen_name + ' : ' + str(count) + '\n'
+            pollen_cool_name = pollen_name.replace('_', ' ').capitalize()
+
+            analysis_text += str(count) + ' ' + pollen_cool_name + '\n'
+
+        analysis_text += '\nPollens in this sample is classified as highly allergenic.\n'
+
+        analysis_text += '\nDetails:\n'
+
+        for pollen_name, count in pollens_dict.items():
+            pollen_cool_name = pollen_name.replace('_', ' ').capitalize() + ' Description:\n'
+            analysis_text += pollen_cool_name + pollen_descriptions.descriptions.get(pollen_name) + '\n'
 
         return analysis_text
 

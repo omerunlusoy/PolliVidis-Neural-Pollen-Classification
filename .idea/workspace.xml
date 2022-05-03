@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="183a074e-13d0-460a-8224-d6a7a74a608b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ML_graphs/accuracy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ML_graphs/populus_nigra_105.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ML_graphs/populus_nigra_105_analysis.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/code/api/ML_Subsystem/pollen_descriptions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/api/ML_Subsystem/Paths_and_Keys.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/api/ML_Subsystem/Paths_and_Keys.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/api/ML_Subsystem/ML_Manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/api/ML_Subsystem/ML_Manager.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +244,7 @@
       <workItem from="1650196021242" duration="601000" />
       <workItem from="1650918362936" duration="368000" />
       <workItem from="1650925727319" duration="20000" />
-      <workItem from="1651589780598" duration="1027000" />
+      <workItem from="1651589780598" duration="1123000" />
     </task>
     <servers />
   </component>
