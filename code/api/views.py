@@ -324,5 +324,5 @@ def analyze(request):
     db_manager.update_sample(smpl)
     #db_manager.delete_sample(photo_id)
     #db_manager.add_sample(smpl)
-    return Response(smpl)
+    return Response(True)
 
