@@ -130,7 +130,7 @@ const Profile = () => {
           <Grid container>
               <Grid item sm={7} xs={10}>
                   <Container className={classes.container}>
-                      <Typography style={{marginLeft:40, marginTop:50}}variant="h2" component="p">
+                      <Typography style={{marginLeft:40, marginTop:50,  fontWeight: 600 }}variant="h2" component="p">
                           Profile
                       </Typography>
                       <Typography style={{marginLeft:40, marginTop:15}} variant="h4"  component="p">
