@@ -584,6 +584,9 @@ class Database_Manager:
             
             #val = (sample.sample_id, sample.academic_id,  sample.date, sample.location_latitude, sample.location_longitude, sample.analysis_text, sample.publication_status,
             #       sample.anonymous_status, sample.sample_id)
+            print("in database analysis:")
+            print(sample.analysis_text)
+            print(sample.sample_id)
             val = (sample.analysis_text,sample.sample_id)
             try:
                 
