@@ -27,6 +27,8 @@ import {Box, Card, CardActionArea, CardContent, Dialog, Grid, Typography} from "
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from "@mui/material/IconButton";
 import PollenTypes from "./PollenTypesList";
+import DatePicker from "./DatePicker";
+import {DesktopDatePicker} from "@mui/x-date-pickers";
 
 //api key: "AIzaSyAHlwtPiz1TdtLSNXtladNYvGRtCbzkm6g"
 //api_key_irem2 : "AIzaSyBKACLg3Nl9SOXYQkYdiMeTR9cVNS2_rJQ"
@@ -171,22 +173,13 @@ export default function Map() {
                         <Card>
                             <CardActionArea>
                                 <CardContent>
-                                    <Typography align={"center"} style={{marginBottom:30}} variant="h5" >
-                                        Select Analyses Time
+                                    <Typography align={"center"}  variant="h5" >
+                                        Select Time Interval
                                     </Typography>
-                                    <div align={"center"} style={{marginBottom:30}}>
-                                        <label htmlFor="contained-button-file">
-                                            <Button variant="contained" component="span">
-                                                Select Image
-                                            </Button>
-                                        </label>
-                                    </div>
                                     <div>
-                                        <Box mt={2} textAlign="center" style={{marginBottom:30}}>
+                                        <Box>
                                             <div>
-                                                <label>
-                                                    {"UUUUU"}
-                                                </label>
+                                                <DatePicker/>
                                             </div>
                                         </Box>
                                     </div>
