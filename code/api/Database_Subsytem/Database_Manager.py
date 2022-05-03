@@ -585,7 +585,7 @@ class Database_Manager:
             val = (sample.sample_id, sample.academic_id, binaryData, sample.date, sample.location_latitude, sample.location_longitude, sample.analysis_text, sample.publication_status,
                    sample.anonymous_status, sample.sample_id)
             try:
-                prin("update complete!!!!!!")
+                print("update complete!!!!!!")
                 self.cursor.execute(sql, val)
                 self.db.commit()
                 return True
