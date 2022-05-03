@@ -1,8 +1,9 @@
 import matplotlib.pyplot as plt
+
+from . import pollen_descriptions
 from .Pollen_Extraction import Pollen_Extraction
 from .Helper_Functions import Helper_Functions
 from .Paths_and_Keys import Paths_and_Keys
-import .pollen_descriptions
 from PIL import Image
 import torch
 import torch.nn as nn
