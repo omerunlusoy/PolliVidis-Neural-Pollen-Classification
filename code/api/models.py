@@ -44,7 +44,7 @@ class Sample(models.Model):
     date = models.CharField(max_length=1000)
     location_latitude = models.FloatField()
     location_longitude = models.FloatField()
-    analysis_text = models.CharField(max_length=1000)
+    analysis_text = models.CharField(max_length=10000)
     publication_status = models.BooleanField(default=False,blank=True, null=True)
     anonymous_status = models.BooleanField(default=False,blank=True, null=True)
     pollens = models.CharField(max_length=1000) ## ?????
