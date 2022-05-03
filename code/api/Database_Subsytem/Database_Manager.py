@@ -575,16 +575,17 @@ class Database_Manager:
                   "WHERE sample_id = %s"
 
             # to use open, we needed to save the image
-            '''
-            academic.photo.save("buff.jpg")
+            
+            sample.sample_photo.save("buff.jpg")
             with open("buff.jpg", 'rb') as file:
                 binaryData = file.read()
             os.remove("buff.jpg")
-            '''
             
-            val = (sample.sample_id, sample.academic_id, sample.sample_photo, sample.date, sample.location_latitude, sample.location_longitude, sample.analysis_text, sample.publication_status,
+            
+            val = (sample.sample_id, sample.academic_id, binaryData, sample.date, sample.location_latitude, sample.location_longitude, sample.analysis_text, sample.publication_status,
                    sample.anonymous_status, sample.sample_id)
             try:
+                prin("update complete!!!!!!")
                 self.cursor.execute(sql, val)
                 self.db.commit()
                 return True
