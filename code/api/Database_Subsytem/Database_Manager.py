@@ -549,9 +549,9 @@ class Database_Manager:
 
             # to use open, we needed to save the image
             academic.photo.save("buff.jpg")
-            with open("buff.jpg", 'rb') as file:
+            with open("buff2.jpg", 'rb') as file:
                 binaryData = file.read()
-            os.remove("buff.jpg")
+            os.remove("buff2.jpg")
 
             val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, binaryData,
                    academic.research_gate_link, academic.academic_id)

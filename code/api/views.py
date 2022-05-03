@@ -55,11 +55,11 @@ print('! views ml created')
 @api_view(['POST'])
 def analyses_post(request):
 
-    print(request.data)
-    print(request.FILES)
+    #print(request.data)
+    #print(request.FILES)
 
     print("here analyses_post")
-    print(request.data['sample_photo'])
+    #print(request.data['sample_photo'])
     
     # print('! request.data:', request.data)
     # print('! request.data[sample_photo]:', request.data['sample_photo'])
