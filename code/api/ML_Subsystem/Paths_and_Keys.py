@@ -20,9 +20,9 @@ class Paths_and_Keys:
     # ML_Subsystem_path is mandatory, datasets_path is for Omer
     def __init__(self):
         if current_user == User.Omer:
-            self.ML_Subsystem_path = r'/Users/omerunlusoy/Desktop/CS 492/copy_project/ML_Subsystem/'
-            self.datasets_path = r'/Users/omerunlusoy/Desktop/CS 492/PolliVidis-Neural-Pollen-Classification/datasets/'
-            self.example_image_for_GUI_path = r'/Users/omerunlusoy/Desktop/CS 492/PolliVidis-Neural-Pollen-Classification/datasets/Ankara_Dataset/populus_nigra/1.jpg'
+            self.ML_Subsystem_path = r'/Users/omerunlusoy/Desktop/Coding/Python/PolliVidis_copy_project/ML_Subsystem/'
+            self.datasets_path = r'/Users/omerunlusoy/Desktop/Coding/Python/PolliVidis_datasets'
+            self.example_image_for_GUI_path = r'/Users/omerunlusoy/Desktop/Coding/Python/PolliVidis_datasets/Ankara_Dataset/populus_nigra/1.jpg'
 
         elif current_user == User.Irem:
             self.ML_Subsystem_path = r'/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/ML_Subsystem/'

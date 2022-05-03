@@ -43,9 +43,9 @@ class ML_Manager:
 
     def analyze_sample(self, sample_image, location=None, date=None, academic_name=None, morphology_sequence=None, test_extraction=False):
         # extract pollen images
-        padding = 30
-        square_threshold = 300
-        square_dim_size = 300
+        padding = 50
+        square_threshold = 400
+        square_dim_size = 100
         area_closing = 1000000
         plot_dilation = False
         plot_image = False
