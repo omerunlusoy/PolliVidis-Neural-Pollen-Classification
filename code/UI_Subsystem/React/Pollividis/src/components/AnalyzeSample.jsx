@@ -339,9 +339,9 @@ const AnalyzeSample = () => {
                                           <Typography align={"center"}  variant="h5" >
                                               Our machine learning model is analyzing your image. Thank you for waiting patiently.
                                           </Typography>
-                                          <div style={{align:"center"}}>
-                                              <CircularProgress />
-                                          </div>
+                                          <Box sx={{ display: 'flex' }}>
+                                              <CircularProgress/>
+                                          </Box>
                                       </CardContent>
                                   </CardActionArea>
                               </Card>

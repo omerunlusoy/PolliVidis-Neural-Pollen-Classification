@@ -81,9 +81,53 @@ export default function Map() {
 
     const [plsOpen, setPlsOpen] = React.useState(true);
 
+    const names = [
+        'Ambrosia',
+        'Alnus',
+        'Acer',
+        'Betula',
+        'Juglans',
+        'Artemisia',
+        'Populus',
+        'Phleum',
+        'Picea',
+        'Juniperus',
+        'Ulmus',
+        'Quercus',
+        'Carpinus',
+        'Ligustrum',
+        'Rumex',
+        'Ailantus',
+        'Thymbra',
+        'Rubia',
+        'Olea',
+        'Cichorium',
+        'Chenopodium',
+        'Borago',
+        'Acacia'
+    ];
+
+    const checkedArrHere = [
+        true,true,true,true,true,true,true,true,true,
+        true,true,true,true,true,true,true,true,true,
+        true,true,true,true,true
+    ];
+
+    const [pollenArr, setPollenArr] = React.useState(names);
+    const [checkedArr, setCheckedArr] = React.useState(checkedArrHere);
+
     const handleCallback = (childData) =>{
         setPlsOpen(childData)
     }
+
+    const handleCallbackForPollens = (childDataPollen) =>{
+        setPollenArr(childDataPollen[0])
+        setCheckedArr(childDataPollen[1])
+        console.log("I am parent:",pollenArr)
+        console.log("I am parent2:",checkedArr)
+    }
+
+
 
     if (loadError) return "Error";
     if (!isLoaded) return "Loading...";
@@ -115,7 +159,7 @@ export default function Map() {
                                             <div>
                                                     <Box mt={2}>
                                                         <div>
-                                                            <PollenTypes/>
+                                                            <PollenTypes pollens={pollenArr} checkedArr={checkedArr} parentCallback={handleCallbackForPollens}/>
                                                         </div>
                                                     </Box>
                                             </div>
@@ -166,7 +210,7 @@ export default function Map() {
             >
                 {markers.map((marker) => (
                     <Marker
-                        key={`${marker.location_latitude}-${marker.location_longitude}`}
+                        key={`${marker.sample_id}`}
                         position={{ lat: marker.location_latitude, lng: marker.location_longitude }}
                         onClick={() => {
                             setSelected(marker);
