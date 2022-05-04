@@ -66,6 +66,15 @@ class Helper_Functions:
         # plt.savefig('Epoch vs Corrects.jpg', dpi=500, bbox_inches='tight')
         plt.show()
 
+    def easter_egg(self, sample_image, Helvetica_path_=None):
+        source_img = sample_image.convert("RGB")
+        draw = ImageDraw.Draw(source_img)
+        font = ImageFont.truetype(Helvetica_path_, 200)
+        width, height = sample_image.size
+        draw.text((width/5, height/2), 'Ömer loves you too!', font=font, fill='blue')
+        return source_img
+
+
     def label_sample_image(self, sample_image, box_coordinates, pollens=None, plot=False, title='', no_grid=False, Helvetica_path_=None):
         source_img = sample_image.convert("RGB")
         for i, coo in enumerate(box_coordinates):
@@ -74,7 +83,6 @@ class Helper_Functions:
             draw.rectangle([(minc, minr), (maxc, maxr)], outline='blue', width=12)
             if pollens:
                 # font = ImageFont.load_default()
-
                 font = ImageFont.truetype(Helvetica_path_, 100)
                 if minr - 100 > 0:
                     draw.text((minc, minr - 100), pollens[i], font=font, fill='black')

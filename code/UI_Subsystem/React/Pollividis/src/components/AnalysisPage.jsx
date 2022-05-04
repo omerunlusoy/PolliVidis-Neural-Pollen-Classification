@@ -33,6 +33,7 @@ const Feed = () => {
             .then(()=> getPhoto(id))
     },[]);
 
+
     const getPhoto = async(id) => {
 
         let fileU = '/files/' + (id) + '_final.jpg'
@@ -60,6 +61,9 @@ const Feed = () => {
                       </Typography>
                       <Typography style={{marginBottom:5}} variant="h5"  component="p">
                           Date: {analysis.date}
+                      </Typography>
+                      <Typography style={{marginBottom:5}} variant="h5"  component="p">
+                          Analysis Text:
                       </Typography>
                       <Typography style={{marginBottom:5}} variant="h5"  component="p">
                           {analysis.analysis_text}
