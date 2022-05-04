@@ -136,6 +136,8 @@ def get_all_samples(request):
     #print("sample id:,",all_samples[0].sample_id)
     #print("sample id:,", all_samples[1].sample_id)
     for temp in all_samples:
+        if temp.sample_id == 1:
+                continue
         temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
                     temp.location_longitude,
                     temp.analysis_text, temp.publication_status, temp.anonymous_status, temp.pollens)
@@ -173,6 +175,8 @@ def get_samples_by_filter(request,pk):
         
         for temp in all_samples:
             if pk not in temp.pollens:
+                continue
+            if temp.sample_id == 1:
                 continue
             temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
                         temp.location_longitude,
