@@ -164,9 +164,9 @@ def get_all_samples(request):
 
 
 @api_view(['GET'])
-def get_samples_by_filter(request,pk):
-    
-    if pk == "":
+def get_samples_by_filter(request):
+    pollens = request.data['pollens']
+    if pollens == []:
         return get_all_samples()
     else:
         # Database_Manager.connect_database()
@@ -174,8 +174,16 @@ def get_samples_by_filter(request,pk):
         samples = []
         
         for temp in all_samples:
-            if pk not in temp.pollens:
+            c = 0
+            for pollen in pollens:
+                if pollen in temp.analysis_text:
+                    c = 1
+                if c == 1:
+                    break
+
+            if c == 0:
                 continue
+
             if temp.sample_id == 1:
                 continue
             temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,

@@ -49,6 +49,7 @@ from random import randint
 # delete_pollen_type(pollen_name) -> Boolean
 # delete_feedback(feedback_id) -> Boolean
 
+# update_sample(sample)
 # update_academic(academic) -> Boolean          # uses academic_id to update all other variables (always use after get_academics)
 # update_pollen_type_description(pollen)
 
