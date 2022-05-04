@@ -24,6 +24,11 @@ const AboutUs = () => {
                       <Typography style={{marginBottom:10}}variant="h3" component="p">
                           How Pollividis Works
                       </Typography>
+                      <a target="_blank" href="https://www.google.com/" title="example">
+                          <Typography style={{marginBottom:10}} variant="h6" color="textSecondary" component="p">
+                              Click here to see user manual!
+                          </Typography>
+                      </a>
                       <Card className={classes.card}>
                           <CardActionArea>
                               <img style={{

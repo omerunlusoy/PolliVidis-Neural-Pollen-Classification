@@ -12,6 +12,7 @@ import AnalyzeSample from "./components/AnalyzeSample";
 import SendFeedback from "./components/SendFeedback";
 import HowItWorks from "./components/HowItWorks";
 import PreviousAnalyses from "./components/PreviousAnalyses";
+import DownloadDataset from "./components/DownloadDataset";
 
 const IndexApp = () => {
   return (
@@ -28,6 +29,7 @@ const IndexApp = () => {
               <Route path="/send_feedback" element={<SendFeedback/>} />
               <Route path="/how_pollividis_works" element={<HowItWorks/>} />
               <Route path="/previous_analyses" element={<PreviousAnalyses/>} />
+              <Route path="/download_dataset" element={< DownloadDataset/>} />
               <Route path="/logout" element={<Logout/>} />
 
           </Routes>

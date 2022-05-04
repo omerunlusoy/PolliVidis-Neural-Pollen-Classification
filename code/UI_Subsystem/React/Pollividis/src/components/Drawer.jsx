@@ -70,7 +70,7 @@ export default function RightDrawer() {
                                     case "Previous Analyses": {url = "/previous_analyses"} return <FolderIcon />;
                                     case "Analyze Sample": {url = "/analyze_sample"} return <AnalyticsIcon />;
                                     case "Pollen Map": {url = "/map"} return <MapIcon />;
-                                    case "Download Dataset": {url = "/analyze_sample"} return <GetAppIcon/>;
+                                    case "Download Dataset": {url = "/download_dataset"} return <GetAppIcon/>;
                                     case "About Us": {url = "/about-us"} return <GroupIcon/>;
                                     case "Send Feedback": {url = "/send_feedback"} return  <FeedbackIcon/>;
                                     case "How Pollividis Works": {url = "/how_pollividis_works"} return  <HelpIcon/>;
