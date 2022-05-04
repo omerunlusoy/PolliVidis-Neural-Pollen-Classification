@@ -86,7 +86,7 @@ export default function AnalysisInfoDrawer(props) {
                 width: 400,
             }} src={photo}/>
             <Typography style={{marginBottom:3, marginLeft:10   }} variant="h6"  component="p">
-                Location: {address}
+                Location: {analysis.location_latitude}-{analysis.location_longitude}
             </Typography>
             <Typography style={{marginBottom:5, marginLeft:10}} variant="h6"  component="p">
                 Date: {analysis.date}

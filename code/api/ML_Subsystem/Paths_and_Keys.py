@@ -28,7 +28,7 @@ class Paths_and_Keys:
             self.ML_Subsystem_path = r'/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/ML_Subsystem/'
             self.datasets_path = ''
             self.example_image_for_GUI_path = r'/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/ML_Subsystem/test_images/d1.jpg'
-            self.current_model_name = 'AlexNet_96.69_model.pth'
+            self.current_model_name = 'AlexNet_98.72_model.pth'
 
         elif current_user == User.Umut_Ada:
             self.ML_Subsystem_path = r''

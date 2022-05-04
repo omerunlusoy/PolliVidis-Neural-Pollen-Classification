@@ -104,6 +104,7 @@ class ML_Manager:
             analysis_text += str(count) + ' ' + pollen_cool_name + '\n'
 
         analysis_text += '\nPollens in this sample is classified as highly allergenic.\n'
+        analysis_text += '\nDetails below are taken from PalDat-Palynological Database.\n'
 
         analysis_text += '\nDetails:\n'
 

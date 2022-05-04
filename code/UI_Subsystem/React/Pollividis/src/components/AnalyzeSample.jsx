@@ -269,7 +269,13 @@ const AnalyzeSample = () => {
                                                       <CardActionArea>
                                                           <CardContent>
                                                               <Typography align={"center"}  variant="h5" >
-                                                                  Info text about morphology sequence!
+                                                                  Morphology Sequence parameter helps PolliVidis process the sample image before analysis. If you do not know what morphology sequnce is, you can try a number between 0 and 50 and look for the best result.
+                                                              </Typography>
+                                                              <Typography align={"center"}  variant="h5" >
+                                                                  If you happen to know it, you can always supply complex morphology sequneces such as 'E10-D10-AC100000' which means 10 times Erosion followed by 10 times Dilation and finally 100000 times Area Closing.
+                                                              </Typography>
+                                                              <Typography align={"center"}  variant="h5" >
+                                                                  For more information, please check How PolliVidis Works? page.
                                                               </Typography>
                                                           </CardContent>
                                                       </CardActionArea>
