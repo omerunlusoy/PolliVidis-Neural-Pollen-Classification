@@ -165,7 +165,11 @@ def get_all_samples(request):
 
 @api_view(['GET'])
 def get_samples_by_filter(request):
+    ## Request: api url
+    ## Request: data
     pollens = request.data['pollens']
+    start_date = request.data['start_date'] # null if not specified
+    end_date = request.data['end_date'] # null if not specified
     if pollens == []:
         return get_all_samples()
     else:
@@ -186,6 +190,11 @@ def get_samples_by_filter(request):
 
             if temp.sample_id == 1:
                 continue
+
+            if start_date != None and end_date != None:
+                if temp.date < start_date or temp.date > end_date:
+                    continue
+            
             temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
                         temp.location_longitude,
                         temp.analysis_text, temp.publication_status, temp.anonymous_status, temp.pollens)
@@ -348,4 +357,10 @@ def analyze(request):
     #db_manager.delete_sample(photo_id)
     #db_manager.add_sample(smpl)
     return Response(True)
+
+@api_view(['DELETE'])
+def remove_analysis(request,pk):
+    db_manager.delete_sample(pk)
+    return Response(True)
+    #print(request)
 
