@@ -8,7 +8,7 @@ from django.core import serializers
 import json
 from firebase_admin import credentials, initialize_app, storage, delete_app, get_app
 import matplotlib.pyplot as plt
-
+import datetime
 
 from api.Database_Subsytem.AcademicModel import AcademicModel
 
@@ -23,7 +23,7 @@ from .ML_Subsystem.ML_Manager import ML_Manager
 
 from PIL import Image
 
-cred = credentials.Certificate("/Users/irem_/Documents/GitHub/CS491_Senior_Design_Project/code/api/firebase-sdk.json")
+cred = credentials.Certificate("/Users/eceunal/Documents/GitHub/CS491_Senior_Design_Project/code/api/firebase-sdk.json")
 
 try:
     app = initialize_app(cred, {'storageBucket': 'fir-react1-70dd6.appspot.com'})
@@ -163,13 +163,29 @@ def get_all_samples(request):
     return Response(result)
 
 
-@api_view(['GET'])
+@api_view(['POST'])
 def get_samples_by_filter(request):
+    month_dict = {"Jan": "01", "Feb": "02", "Mar": "03", "Apr": "04", "May": "05", "Jun": "06", "Jul": "07", "Aug": "08", "Sep": "09", "Oct": "10", "Nov": "11", "Dec": "12"}
+
     ## Request: api url
     ## Request: data
     pollens = request.data['pollens']
     start_date = request.data['startDate'] # null if not specified
     end_date = request.data['endDate'] # null if not specified
+
+    temp_start = start_date.split(" ")
+    start_date = month_dict[temp_start[1]] + "-" + temp_start[2] + "-" + temp_start[3]
+    start_date = datetime.datetime.strptime(start_date, '%m-%d-%Y').date()
+
+    temp_end = end_date.split(" ")
+    end_date = month_dict[temp_end[1]] + "-" + temp_end[2] + "-" + temp_end[3]
+    end_date = datetime.datetime.strptime(end_date, '%m-%d-%Y').date()
+
+
+    print(pollens)
+    print(start_date)
+    print(end_date)
+
     if pollens == []:
         return get_all_samples()
     else:
@@ -178,7 +194,19 @@ def get_samples_by_filter(request):
         samples = []
         
         for temp in all_samples:
+            print("abv", temp.date)
+            if temp.date == "":
+                continue
+            temp3 = temp.date.split(" ")
+            if "-" in temp3[0]:
+                temp_date = temp3[0]
+                temp_date = datetime.datetime.strptime(temp_date, '%Y-%m-%d').date()
+            else:
+                temp_date = month_dict[temp3[1]] + "-" + temp3[2] + "-" + temp3[3]
+                temp_date = datetime.datetime.strptime(temp_date, '%m-%d-%Y').date()
+
             c = 0
+            print("temp:" , temp_date)
             for pollen in pollens:
                 if pollen in temp.analysis_text:
                     c = 1
@@ -186,13 +214,20 @@ def get_samples_by_filter(request):
                     break
 
             if c == 0:
+                print("c == 0")
                 continue
-
             if temp.sample_id == 1:
+                print("tem.sampleid")
                 continue
 
             if start_date != None and end_date != None:
-                if temp.date < start_date or temp.date > end_date:
+                print("if 1")
+                print(type(start_date))
+                print(type(temp.date))
+
+                if temp_date < start_date or temp_date > end_date:
+                    print("if 2")
+
                     continue
             
             temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
@@ -203,7 +238,7 @@ def get_samples_by_filter(request):
 
             samples.append(temp2)
 
-        print(samples)
+        print("samples:" ,samples)
         #test = Sample.objects.all()
         #print(type(test))
         #print(test)

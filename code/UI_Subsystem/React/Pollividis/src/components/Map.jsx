@@ -79,12 +79,6 @@ export default function Map() {
     };
 
 
-    const onChangeDate = (dates) => {
-        const [start, end] = dates;
-        setStartDate(start);
-        setEndDate(end);
-    };
-
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
         mapRef.current = map;
@@ -206,7 +200,7 @@ export default function Map() {
                                             <div>
                                                     <Box mt={2}>
                                                         <div>
-                                                            <PollenTypes pollens={pollenArr} checkedArr={checkedArr} parentCallback={handleCallbackForPollens}/>
+                                                            <PollenTypes pollens={pollenArr} checkedArr={checkedArr} startDate={startDate} endDate = {endDate} parentCallback={handleCallbackForPollens}/>
                                                         </div>
                                                     </Box>
                                             </div>

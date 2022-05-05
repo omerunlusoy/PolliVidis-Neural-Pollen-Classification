@@ -390,11 +390,42 @@ export default function PollenTypes(props) {
         let callBackArr = [pollenArr,checkedArr]
         props.parentCallback(callBackArr);
 
+        console.log(pollenArr)
 
-        fetch(`http://127.0.0.1:8000/api/get_filtered_samples/${pollenArr}/`)
+
+        let sampleObject = new FormData(); // creates a new FormData object
+
+        const myObject = {
+            pollens: pollenArr,
+            startDate: props.startDate,
+            endDate: props.endDate
+        };
+
+        sampleObject.append("pollens",myObject.pollens);
+        sampleObject.append("startDate", myObject.startDate);
+        sampleObject.append("endDate", myObject.endDate);// add your file to form data
+
+
+        axios
+            .post('http://127.0.0.1:8000/api/get_filtered_samples/', sampleObject)
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(error => {
+                const resMessage =
+                    (error.response &&
+                        error.response.data &&
+                        error.response.data.message) ||
+                    error.message ||
+                    error.toString();
+
+            })
+
+
+        /*fetch(`http://127.0.0.1:8000/api/get_filtered_samples/${pollenArr}/`)
             .then((data) =>  data.json())
             .then((data) => console.log(JSON.parse(data)))
-
+*/
     };
 
 
