@@ -27,8 +27,11 @@ import {Box, Card, CardActionArea, CardContent, Dialog, Grid, Typography} from "
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from "@mui/material/IconButton";
 import PollenTypes from "./PollenTypesList";
-import DatePicker from "./DatePicker";
 import {DesktopDatePicker} from "@mui/x-date-pickers";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+
 import InfoIcon from "@mui/icons-material/Info";
 import PollenNormalNames from "./PollenNormalNames";
 
@@ -61,6 +64,10 @@ export default function Map() {
     const [selected, setSelected] = React.useState(null);
     const [openD, setOpenD] = React.useState(false);
 
+    const [startDate, setStartDate] = React.useState(new Date());
+    const [endDate, setEndDate] = React.useState(new Date());
+
+
     useEffect(() => {
         fetch(`http://localhost:8000/api/analysis_get`)
             .then((data) => data.json())
@@ -71,6 +78,12 @@ export default function Map() {
         setOpenD(false);
     };
 
+
+    const onChangeDate = (dates) => {
+        const [start, end] = dates;
+        setStartDate(start);
+        setEndDate(end);
+    };
 
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
@@ -123,6 +136,8 @@ export default function Map() {
         setPlsOpen(childData)
     }
 
+
+
     const handleCallbackForPollens = (childDataPollen) =>{
         setPollenArr(childDataPollen[0])
         setCheckedArr(childDataPollen[1])
@@ -146,12 +161,41 @@ export default function Map() {
                 open={openD}
                 onClose={handleClose}
             >
+
                 <div>
                     <IconButton style={{align:"left"}} onClick={handleClose} aria-label="close" >
                         <CloseIcon sx={{ color: "#A6232A" }}/>
                     </IconButton>
                 </div>
+                <Typography align={"center"}  variant="h5" >
+                    Select Time Interval
+                </Typography>
                 <Grid container>
+                    <Grid item  xs={60} style={{marginLeft: 150, marginRight:30, marginBottom:30}} >
+
+                        <DatePicker
+                            selected={startDate}
+                            onChange={(date) => setStartDate(date)}
+                            selectsStart
+                            startDate={startDate}
+                            endDate={endDate}
+                        />
+
+                    </Grid>
+                    <Grid item  xs={60} >
+
+
+                        <DatePicker
+                            selected={endDate}
+                            onChange={(date) => setEndDate(date)}
+                            selectsEnd
+                            startDate={startDate}
+                            endDate={endDate}
+                            minDate={startDate}
+                        />
+                    </Grid>
+
+
                     <Grid item  xs={60} >
                                 <Card style={{marginBottom: 10}}>
                                     <CardActionArea>
@@ -189,6 +233,7 @@ export default function Map() {
                         </Card>
                     </Grid>
                 </Grid>
+
             </Dialog>
 
             <Locate panTo={panTo} />
