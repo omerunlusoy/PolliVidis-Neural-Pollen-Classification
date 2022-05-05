@@ -168,8 +168,8 @@ def get_samples_by_filter(request):
     ## Request: api url
     ## Request: data
     pollens = request.data['pollens']
-    start_date = request.data['start_date'] # null if not specified
-    end_date = request.data['end_date'] # null if not specified
+    start_date = request.data['startDate'] # null if not specified
+    end_date = request.data['endDate'] # null if not specified
     if pollens == []:
         return get_all_samples()
     else:
