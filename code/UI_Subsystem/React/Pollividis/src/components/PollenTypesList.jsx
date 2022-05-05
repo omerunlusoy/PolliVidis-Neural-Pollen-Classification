@@ -13,6 +13,7 @@ import {
     Typography
 } from "@material-ui/core";
 import { alpha, styled } from '@mui/material/styles';
+import axios from "axios";
 
 const RedSwitch = styled(Switch)(({ theme }) => ({
     '& .MuiSwitch-switchBase.Mui-checked': {
@@ -64,7 +65,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Ambrosia');
+            const newList = pollenArr.filter((item) => item !== 'Ambrosia Artemisiifolia');
 
             setPollenArr(newList);
         }
@@ -77,7 +78,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Alnus');
+            const newList = pollenArr.filter((item) => item !== 'Alnus Glutinosa');
 
             setPollenArr(newList);
         }
@@ -90,7 +91,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Acer');
+            const newList = pollenArr.filter((item) => item !== 'Acer Negundo');
 
             setPollenArr(newList);
         }
@@ -103,7 +104,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Betula');
+            const newList = pollenArr.filter((item) => item !== 'Betula Papyrifera');
 
             setPollenArr(newList);
         }
@@ -117,7 +118,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Juglans');
+            const newList = pollenArr.filter((item) => item !== 'Juglans Regia');
 
             setPollenArr(newList);
         }
@@ -130,7 +131,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Artemisia');
+            const newList = pollenArr.filter((item) => item !== 'Artemisia Vulgaris');
 
             setPollenArr(newList);
         }
@@ -143,7 +144,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Populus');
+            const newList = pollenArr.filter((item) => item !== 'Populus Nigra');
 
             setPollenArr(newList);
         }
@@ -156,7 +157,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Phleum');
+            const newList = pollenArr.filter((item) => item !== 'Phleum Phleoides');
 
             setPollenArr(newList);
         }
@@ -169,7 +170,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Picea');
+            const newList = pollenArr.filter((item) => item !== 'Picea Abies');
 
             setPollenArr(newList);
         }
@@ -182,7 +183,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Juniperus');
+            const newList = pollenArr.filter((item) => item !== 'Juniperus Communis');
 
             setPollenArr(newList);
         }
@@ -195,7 +196,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Ulmus');
+            const newList = pollenArr.filter((item) => item !== 'Ulmus Minor');
 
             setPollenArr(newList);
         }
@@ -208,7 +209,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Quercus');
+            const newList = pollenArr.filter((item) => item !== 'Quercus Robur');
 
             setPollenArr(newList);
         }
@@ -221,7 +222,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Carpinus');
+            const newList = pollenArr.filter((item) => item !== 'Carpinus Betulus');
 
             setPollenArr(newList);
         }
@@ -234,7 +235,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Ligustrum');
+            const newList = pollenArr.filter((item) => item !== 'Ligustrum Robustum');
 
             setPollenArr(newList);
         }
@@ -247,7 +248,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Rumex');
+            const newList = pollenArr.filter((item) => item !== 'Rumex Stenophyllus');
 
             setPollenArr(newList);
         }
@@ -260,7 +261,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Ailantus');
+            const newList = pollenArr.filter((item) => item !== 'Ailanthus Altissima');
 
             setPollenArr(newList);
         }
@@ -273,7 +274,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Thymbra');
+            const newList = pollenArr.filter((item) => item !== 'Thymbra Spicata');
 
             setPollenArr(newList);
         }
@@ -286,7 +287,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Rubia');
+            const newList = pollenArr.filter((item) => item !== 'Rubia Peregrina');
 
             setPollenArr(newList);
         }
@@ -299,7 +300,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Olea');
+            const newList = pollenArr.filter((item) => item !== 'Olea Europaea');
 
             setPollenArr(newList);
         }
@@ -312,7 +313,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Cichorium');
+            const newList = pollenArr.filter((item) => item !== 'Cichorium Intybus');
 
             setPollenArr(newList);
         }
@@ -325,7 +326,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Chenopodium');
+            const newList = pollenArr.filter((item) => item !== 'Chenopodium Album');
 
             setPollenArr(newList);
         }
@@ -338,7 +339,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Borago');
+            const newList = pollenArr.filter((item) => item !== 'Borago Officinalis');
 
             setPollenArr(newList);
         }
@@ -351,7 +352,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Acacia');
+            const newList = pollenArr.filter((item) => item !== 'Acacia Dealbata');
 
             setPollenArr(newList);
         }
@@ -390,222 +391,229 @@ export default function PollenTypes(props) {
         props.parentCallback(callBackArr);
 
 
+        fetch(`http://127.0.0.1:8000/api/get_filtered_samples/${pollenArr}/`)
+            .then((data) =>  data.json())
+            .then((data) => console.log(JSON.parse(data)))
+
     };
 
 
 
     return (
-                    <Paper sx={{ width: 320, maxWidth: '100%' }}>
+                    <Paper sx={{ width: 600, maxWidth: '100%' }}>
                         <FormControlLabel
                             value="1"
                             control={<RedSwitch color="warning"
                                              checked={checked1}
-                                             value="Ambrosia"
+                                             value="Ambrosia Artemisiifolia"
                                              onChange={handleChange1} />}
-                            label={"Ambrosia"}
+                            label={"Ambrosia Artemisiifolia"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="2"
                             control={<RedSwitch color="warning"
                                              checked={checked2}
-                                             value={"Alnus"}
+                                             value={"Alnus Glutinosa"}
                                              onChange={handleChange2} />}
-                            label={"Alnus"}
+                            label={"Alnus Glutinosa"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="3"
                             control={<RedSwitch color="warning"
                                              checked={checked3}
-                                             value="Acer"
+                                             value="Acer Negundo"
                                              onChange={handleChange3} />}
-                            label={"Acer"}
+                            label={"Acer Negundo"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="4"
                             control={<RedSwitch color="warning"
                                              checked={checked4}
-                                             value={"Betula"}
+                                             value={"Betula Papyrifera"}
                                              onChange={handleChange4} />}
-                            label={"Betula"}
+                            label={"Betula Papyrifera"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="5"
                             control={<RedSwitch color="warning"
                                              checked={checked5}
-                                             value="Juglans"
+                                             value="Juglans Regia"
                                              onChange={handleChange5} />}
-                            label={"Juglans"}
+                            label={"Juglans Regia"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="6"
                             control={<RedSwitch color="warning"
                                              checked={checked6}
-                                             value={"Artemisia"}
+                                             value={"Artemisia Vulgaris"}
                                              onChange={handleChange6} />}
-                            label={"Artemisia"}
+                            label={"Artemisia Vulgaris"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="7"
                             control={<RedSwitch color="warning"
                                              checked={checked7}
-                                             value="Populus"
+                                             value="Populus Nigra"
                                              onChange={handleChange7} />}
-                            label={"Populus"}
+                            label={"Populus Nigra"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="8"
                             control={<RedSwitch color="warning"
                                              checked={checked8}
-                                             value={"Phleum"}
+                                             value={"Phleum Phleoides"}
                                              onChange={handleChange8} />}
-                            label={"Phleum"}
+                            label={"Phleum Phleoides"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="9"
                             control={<RedSwitch color="warning"
                                              checked={checked9}
-                                             value="Picea"
+                                             value="Picea Abies"
                                              onChange={handleChange9} />}
-                            label={"Picea"}
+                            label={"Picea Abies"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="10"
                             control={<RedSwitch color="warning"
                                              checked={checked10}
-                                             value={"Juniperus"}
+                                             value={"Juniperus Communis"}
                                              onChange={handleChange10} />}
-                            label={"Juniperus"}
+                            label={"Juniperus Communis"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="11"
                             control={<RedSwitch color="warning"
                                              checked={checked11}
-                                             value="Ulmus"
+                                             value="Ulmus Minor"
                                              onChange={handleChange11} />}
-                            label={"Ulmus"}
+                            label={"Ulmus Minor"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="12"
                             control={<RedSwitch color="warning"
                                              checked={checked12}
-                                             value={"Quercus"}
+                                             value={"Quercus Robur"}
                                              onChange={handleChange12} />}
-                            label={"Quercus"}
+                            label={"Quercus Robur"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="13"
                             control={<RedSwitch color="warning"
                                              checked={checked13}
-                                             value="Carpinus"
+                                             value="Carpinus Betulus"
                                              onChange={handleChange13} />}
-                            label={"Carpinus"}
+                            label={"Carpinus Betulus"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="14"
                             control={<RedSwitch color="warning"
                                              checked={checked14}
-                                             value={"Ligustrum"}
+                                             value={"Ligustrum Robustum"}
                                              onChange={handleChange14} />}
-                            label={"Ligustrum"}
+                            label={"Ligustrum Robustum"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="15"
                             control={<RedSwitch color="warning"
                                              checked={checked15}
-                                             value="Rumex"
+                                             value="Rumex Stenophyllus"
                                              onChange={handleChange15} />}
-                            label={"Rumex"}
+                            label={"Rumex Stenophyllus"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="16"
                             control={<RedSwitch color="warning"
                                              checked={checked16}
-                                             value={"Ailantus"}
+                                             value={"Ailanthus Altissima"}
                                              onChange={handleChange16} />}
-                            label={"Ailantus"}
+                            label={"Ailanthus Altissima"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="17"
                             control={<RedSwitch color="warning"
                                              checked={checked17}
-                                             value="Thymbra"
+                                             value="Thymbra Spicata"
                                              onChange={handleChange17} />}
-                            label={"Thymbra"}
+                            label={"Thymbra Spicata"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="18"
                             control={<RedSwitch color="warning"
                                              checked={checked18}
-                                             value={"Rubia"}
+                                             value={"Rubia Peregrina"}
                                              onChange={handleChange18} />}
-                            label={"Rubia"}
+                            label={"Rubia Peregrina"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="19"
                             control={<RedSwitch color="warning"
                                              checked={checked19}
-                                             value="Olea"
+                                             value="Olea Europaea"
                                              onChange={handleChange19} />}
-                            label={"Olea"}
+                            label={"Olea Europaea"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="20"
                             control={<RedSwitch color="warning"
                                              checked={checked20}
-                                             value={"Cichorium"}
+                                             value={"Cichorium Intybus"}
                                              onChange={handleChange20} />}
-                            label={"Cichorium"}
+                            label={"Cichorium Intybus"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="21"
                             control={<RedSwitch color="warning"
                                              checked={checked21}
-                                             value="Chenopodium"
+                                             value="Chenopodium Album"
                                              onChange={handleChange21} />}
-                            label={"Chenopodium"}
+                            label={"Chenopodium Album"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="22"
                             control={<RedSwitch color="warning"
                                              checked={checked22}
-                                             value={"Borago"}
+                                             value={"Borago Officinalis"}
                                              onChange={handleChange22} />}
-                            label={"Borago"}
+                            label={"Borago Officinalis"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="23"
                             control={<RedSwitch color="warning"
                                              checked={checked23}
-                                             value="Acacia"
+                                             value="Acacia Dealbata"
                                              onChange={handleChange23} />}
-                            label={"Acacia"}
+                            label={"Acacia Dealbata"}
                             labelPlacement="end"
                         />
-                        <Button onClick={handleOk} variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} size="medium" >
-                            Ok
-                        </Button>
+                        <div align={"center"}>
+                            <Button onClick={handleOk} variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} size="medium" >
+                                Ok
+                            </Button>
+                        </div>
+
                     </Paper>
     );
 }

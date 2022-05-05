@@ -29,6 +29,8 @@ import IconButton from "@mui/material/IconButton";
 import PollenTypes from "./PollenTypesList";
 import DatePicker from "./DatePicker";
 import {DesktopDatePicker} from "@mui/x-date-pickers";
+import InfoIcon from "@mui/icons-material/Info";
+import PollenNormalNames from "./PollenNormalNames";
 
 //api key: "AIzaSyAHlwtPiz1TdtLSNXtladNYvGRtCbzkm6g"
 //api_key_irem2 : "AIzaSyBKACLg3Nl9SOXYQkYdiMeTR9cVNS2_rJQ"
@@ -58,7 +60,6 @@ export default function Map() {
     const [markers, setMarkers] = React.useState([]);
     const [selected, setSelected] = React.useState(null);
     const [openD, setOpenD] = React.useState(false);
-
 
     useEffect(() => {
         fetch(`http://localhost:8000/api/analysis_get`)
@@ -151,8 +152,8 @@ export default function Map() {
                     </IconButton>
                 </div>
                 <Grid container>
-                    <Grid item  xs={50} >
-                                <Card>
+                    <Grid item  xs={60} >
+                                <Card style={{marginBottom: 10}}>
                                     <CardActionArea>
                                         <CardContent>
                                             <Typography align={"center"}  variant="h5" >
@@ -169,17 +170,17 @@ export default function Map() {
                                     </CardActionArea>
                                 </Card>
                             </Grid>
-                    <Grid item sm={24} xs={50} >
+                    <Grid item  xs={60} >
                         <Card>
                             <CardActionArea>
                                 <CardContent>
                                     <Typography align={"center"}  variant="h5" >
-                                        Select Time Interval
+                                        Non Technical Pollen Names
                                     </Typography>
                                     <div>
-                                        <Box>
-                                            <div>
-                                                <DatePicker/>
+                                        <Box mt={2}>
+                                            <div align={"center"}>
+                                                <PollenNormalNames/>
                                             </div>
                                         </Box>
                                     </div>
