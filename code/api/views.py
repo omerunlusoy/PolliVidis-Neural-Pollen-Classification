@@ -181,7 +181,9 @@ def get_samples_by_filter(request):
     end_date = month_dict[temp_end[1]] + "-" + temp_end[2] + "-" + temp_end[3]
     end_date = datetime.datetime.strptime(end_date, '%m-%d-%Y').date()
 
-
+    if start_date == end_date:
+        start_date = None
+        end_date = None
     print(pollens)
     print(start_date)
     print(end_date)

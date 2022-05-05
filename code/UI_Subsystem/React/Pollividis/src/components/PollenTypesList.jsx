@@ -421,11 +421,6 @@ export default function PollenTypes(props) {
 
             })
 
-
-        /*fetch(`http://127.0.0.1:8000/api/get_filtered_samples/${pollenArr}/`)
-            .then((data) =>  data.json())
-            .then((data) => console.log(JSON.parse(data)))
-*/
     };
 
 
