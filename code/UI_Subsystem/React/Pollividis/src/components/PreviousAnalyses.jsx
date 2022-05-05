@@ -80,13 +80,23 @@ const AboutUs = () => {
                                           {markers.map((marker) => (
                                               <ListItem
                                                   secondaryAction={
-                                                      <Button onClick={()=> {console.log(marker);
-                                                          setClicked(true);
-                                                          setSample(marker);
+                                                      <div>
+                                                          <Button onClick={()=> {console.log(marker);
+                                                              setClicked(true);
+                                                              setSample(marker);
 
-                                                      }} type="submit" variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} >
-                                                          View
-                                                      </Button>
+                                                          }} type="submit" variant="contained" style={{backgroundColor:'#A6232A', color:'white',marginRight:20}} >
+                                                              View
+                                                          </Button>
+                                                          <Button onClick={()=> {console.log(marker);
+                                                              setClicked(true);
+                                                              setSample(marker);
+
+                                                          }} type="submit" variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} >
+                                                              Delete
+                                                          </Button>
+                                                      </div>
+
                                                   }
                                               >
                                                   <ListItemAvatar>

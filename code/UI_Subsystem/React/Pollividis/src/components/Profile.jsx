@@ -130,7 +130,7 @@ const Profile = () => {
           <Grid container>
               <Grid item sm={7} xs={10}>
                   <Container className={classes.container}>
-                      <Typography style={{marginLeft:40, marginTop:50,  fontWeight: 600 }}variant="h2" component="p">
+                      <Typography style={{marginBottom:20}}variant="h3" component="p">
                           Profile
                       </Typography>
                       <Typography style={{marginLeft:40, marginTop:15}} variant="h4"  component="p">
@@ -148,9 +148,6 @@ const Profile = () => {
                       <Typography style={{marginLeft:40, marginTop:15}} variant="h4"  component="p">
                           Research Gate: {id.research_gate_link}
                       </Typography>
-                      <Button variant="contained" style={{backgroundColor:'#A6232A', color:'white', marginTop:30, marginLeft:40, width:100, height:50}}  >
-                          Edit
-                      </Button>
                   </Container>
               </Grid>
               <Grid item sm={3} className={classes.right} style={{marginTop: 20}}>
