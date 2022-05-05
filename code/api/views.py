@@ -360,7 +360,7 @@ def analyze(request):
 
 @api_view(['DELETE'])
 def remove_analysis(request,pk):
-    db_manager.delete_sample(pk)
-    return Response(True)
+    res = db_manager.delete_sample(pk)
+    return Response(res)
     #print(request)
 
