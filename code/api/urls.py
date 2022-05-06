@@ -12,7 +12,7 @@ urlpatterns= [
     path('get_samples_of_academic/<int:pk>/',get_samples_of_academic),
     path('analyze/',analyze),
     path('get_filtered_samples/',get_samples_by_filter),
-    path('remove_analysis/<int:pk>',remove_analysis)
+    path('remove_analysis/<int:pk>/',remove_analysis)
     #path('/analysis/:id',analyses),
     #path('/profile',profile),
     #path('/map',gmap)  
