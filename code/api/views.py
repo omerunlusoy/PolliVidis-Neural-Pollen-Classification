@@ -128,11 +128,11 @@ def analyses_get_by_id(request, pk):
 
 @api_view(['GET'])
 def get_all_samples(request):
-    
+    print("got all samples")
     # Database_Manager.connect_database()
     all_samples = db_manager.get_all_samples()
     samples = []
-    print("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU")
+    #print("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU")
     #print("sample id:,",all_samples[0].sample_id)
     #print("sample id:,", all_samples[1].sample_id)
     for temp in all_samples:
@@ -142,10 +142,10 @@ def get_all_samples(request):
                     temp.location_longitude,
                     temp.analysis_text, temp.publication_status, temp.anonymous_status, temp.pollens)
         print(temp2.sample_id)
-        print("temp:",temp.__str__())
+        #print("temp:",temp.__str__())
         samples.append(temp2)
 
-    print(samples)
+    #print(samples)
     #test = Sample.objects.all()
     #print(type(test))
     #print(test)
@@ -153,10 +153,10 @@ def get_all_samples(request):
     #result = json.dumps(result)
 
     #print(samples)
-    print(result)
+    #print(result)
 
-    print(len(samples))
-    print(len(result))
+    #print(len(samples))
+    #print(len(result))
     #if (result == []):
     #    return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -208,9 +208,12 @@ def get_samples_by_filter(request):
                 temp_date = datetime.datetime.strptime(temp_date, '%m-%d-%Y').date()
 
             c = 0
+            if temp.pollens == []:
+                print("boş bu")
+                continue
             #print("temp:" , temp_date)
             for pollen in pollens:
-                if pollen in temp.analysis_text:
+                if pollen in temp.pollens:
                     c = 1
                 if c == 1:
                     break
