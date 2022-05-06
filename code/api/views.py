@@ -247,6 +247,8 @@ def get_samples_by_filter(request):
         #test = Sample.objects.all()
         #print(type(test))
         #print(test)
+        if len(samples) < 1:
+            print("haci bulamadi")
         result = SampleSerializer(samples, many=True).data
         #result = json.dumps(result)
 
