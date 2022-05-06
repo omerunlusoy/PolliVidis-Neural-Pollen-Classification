@@ -391,6 +391,9 @@ def analyze(request):
     print("sample:")
     print(smpl)
     db_manager.update_sample(smpl)
+    for pollen_name in smpl.pollens:
+        db_manager.add_pollen_has(photo_id,pollen_name,smpl.pollens[pollen_name])
+         
     #db_manager.delete_sample(photo_id)
     #db_manager.add_sample(smpl)
     return Response(True)
