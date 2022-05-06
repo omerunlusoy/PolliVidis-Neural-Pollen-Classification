@@ -69,7 +69,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Ambrosia Artemisiifolia');
+            const newList = pollenArr.filter((item) => item !== 'ambrosia_artemisiifolia');
 
             setPollenArr(newList);
         }
@@ -82,7 +82,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Alnus Glutinosa');
+            const newList = pollenArr.filter((item) => item !== 'alnus_glutinosa');
 
             setPollenArr(newList);
         }
@@ -95,7 +95,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Acer Negundo');
+            const newList = pollenArr.filter((item) => item !== 'acer_negundo');
 
             setPollenArr(newList);
         }
@@ -108,7 +108,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Betula Papyrifera');
+            const newList = pollenArr.filter((item) => item !== 'betula_papyrifera');
 
             setPollenArr(newList);
         }
@@ -122,7 +122,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Juglans Regia');
+            const newList = pollenArr.filter((item) => item !== 'juglans_regia');
 
             setPollenArr(newList);
         }
@@ -135,7 +135,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Artemisia Vulgaris');
+            const newList = pollenArr.filter((item) => item !== 'artemisia_vulgaris');
 
             setPollenArr(newList);
         }
@@ -148,7 +148,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Populus Nigra');
+            const newList = pollenArr.filter((item) => item !== 'populus_nigra');
 
             setPollenArr(newList);
         }
@@ -161,7 +161,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Phleum Phleoides');
+            const newList = pollenArr.filter((item) => item !== 'phleum_phleoides');
 
             setPollenArr(newList);
         }
@@ -174,7 +174,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Picea Abies');
+            const newList = pollenArr.filter((item) => item !== 'picea_abies');
 
             setPollenArr(newList);
         }
@@ -187,7 +187,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Juniperus Communis');
+            const newList = pollenArr.filter((item) => item !== 'juniperus_communis');
 
             setPollenArr(newList);
         }
@@ -200,7 +200,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Ulmus Minor');
+            const newList = pollenArr.filter((item) => item !== 'ulmus_minor');
 
             setPollenArr(newList);
         }
@@ -213,7 +213,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Quercus Robur');
+            const newList = pollenArr.filter((item) => item !== 'quercus_robur');
 
             setPollenArr(newList);
         }
@@ -226,7 +226,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Carpinus Betulus');
+            const newList = pollenArr.filter((item) => item !== 'carpinus_betulus');
 
             setPollenArr(newList);
         }
@@ -239,7 +239,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Ligustrum Robustum');
+            const newList = pollenArr.filter((item) => item !== 'ligustrum_robustrum');
 
             setPollenArr(newList);
         }
@@ -252,7 +252,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Rumex Stenophyllus');
+            const newList = pollenArr.filter((item) => item !== 'rumex_stenophyllus');
 
             setPollenArr(newList);
         }
@@ -265,7 +265,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Ailanthus Altissima');
+            const newList = pollenArr.filter((item) => item !== 'ailanthus_altissima');
 
             setPollenArr(newList);
         }
@@ -278,7 +278,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Thymbra Spicata');
+            const newList = pollenArr.filter((item) => item !== 'thymbra_spicata');
 
             setPollenArr(newList);
         }
@@ -291,7 +291,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Rubia Peregrina');
+            const newList = pollenArr.filter((item) => item !== 'rubia_peregrina');
 
             setPollenArr(newList);
         }
@@ -304,7 +304,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Olea Europaea');
+            const newList = pollenArr.filter((item) => item !== 'olea_europaea');
 
             setPollenArr(newList);
         }
@@ -317,7 +317,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Cichorium Intybus');
+            const newList = pollenArr.filter((item) => item !== 'cichorium_intybus');
 
             setPollenArr(newList);
         }
@@ -330,7 +330,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Chenopodium Album');
+            const newList = pollenArr.filter((item) => item !== 'chenopodium_album');
 
             setPollenArr(newList);
         }
@@ -343,7 +343,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Borago Officinalis');
+            const newList = pollenArr.filter((item) => item !== 'borago_officinalis');
 
             setPollenArr(newList);
         }
@@ -356,7 +356,7 @@ export default function PollenTypes(props) {
             setPollenArr(pollenArr.concat([event.target.value]));
         }
         else{
-            const newList = pollenArr.filter((item) => item !== 'Acacia Dealbata');
+            const newList = pollenArr.filter((item) => item !== 'acacia_dealbata');
 
             setPollenArr(newList);
         }
@@ -408,7 +408,7 @@ export default function PollenTypes(props) {
                             value="1"
                             control={<RedSwitch color="warning"
                                              checked={checked1}
-                                             value="Ambrosia Artemisiifolia"
+                                             value="ambrosia_artemisiifolia"
                                              onChange={handleChange1} />}
                             label={"Ambrosia Artemisiifolia"}
                             labelPlacement="end"
@@ -417,7 +417,7 @@ export default function PollenTypes(props) {
                             value="2"
                             control={<RedSwitch color="warning"
                                              checked={checked2}
-                                             value={"Alnus Glutinosa"}
+                                             value={"alnus_glutinosa"}
                                              onChange={handleChange2} />}
                             label={"Alnus Glutinosa"}
                             labelPlacement="end"
@@ -426,7 +426,7 @@ export default function PollenTypes(props) {
                             value="3"
                             control={<RedSwitch color="warning"
                                              checked={checked3}
-                                             value="Acer Negundo"
+                                             value="acer_negundo"
                                              onChange={handleChange3} />}
                             label={"Acer Negundo"}
                             labelPlacement="end"
@@ -435,7 +435,7 @@ export default function PollenTypes(props) {
                             value="4"
                             control={<RedSwitch color="warning"
                                              checked={checked4}
-                                             value={"Betula Papyrifera"}
+                                             value={"betula_papyrifera"}
                                              onChange={handleChange4} />}
                             label={"Betula Papyrifera"}
                             labelPlacement="end"
@@ -444,7 +444,7 @@ export default function PollenTypes(props) {
                             value="5"
                             control={<RedSwitch color="warning"
                                              checked={checked5}
-                                             value="Juglans Regia"
+                                             value="juglans_regia"
                                              onChange={handleChange5} />}
                             label={"Juglans Regia"}
                             labelPlacement="end"
@@ -453,7 +453,7 @@ export default function PollenTypes(props) {
                             value="6"
                             control={<RedSwitch color="warning"
                                              checked={checked6}
-                                             value={"Artemisia Vulgaris"}
+                                             value={"artemisia_vulgaris"}
                                              onChange={handleChange6} />}
                             label={"Artemisia Vulgaris"}
                             labelPlacement="end"
@@ -462,7 +462,7 @@ export default function PollenTypes(props) {
                             value="7"
                             control={<RedSwitch color="warning"
                                              checked={checked7}
-                                             value="Populus Nigra"
+                                             value="populus_nigra"
                                              onChange={handleChange7} />}
                             label={"Populus Nigra"}
                             labelPlacement="end"
@@ -471,7 +471,7 @@ export default function PollenTypes(props) {
                             value="8"
                             control={<RedSwitch color="warning"
                                              checked={checked8}
-                                             value={"Phleum Phleoides"}
+                                             value={"phleum_phleoides"}
                                              onChange={handleChange8} />}
                             label={"Phleum Phleoides"}
                             labelPlacement="end"
@@ -480,7 +480,7 @@ export default function PollenTypes(props) {
                             value="9"
                             control={<RedSwitch color="warning"
                                              checked={checked9}
-                                             value="Picea Abies"
+                                             value="picea_abies"
                                              onChange={handleChange9} />}
                             label={"Picea Abies"}
                             labelPlacement="end"
@@ -489,7 +489,7 @@ export default function PollenTypes(props) {
                             value="10"
                             control={<RedSwitch color="warning"
                                              checked={checked10}
-                                             value={"Juniperus Communis"}
+                                             value={"juniperus_communis"}
                                              onChange={handleChange10} />}
                             label={"Juniperus Communis"}
                             labelPlacement="end"
@@ -498,7 +498,7 @@ export default function PollenTypes(props) {
                             value="11"
                             control={<RedSwitch color="warning"
                                              checked={checked11}
-                                             value="Ulmus Minor"
+                                             value="ulmus_minor"
                                              onChange={handleChange11} />}
                             label={"Ulmus Minor"}
                             labelPlacement="end"
@@ -507,7 +507,7 @@ export default function PollenTypes(props) {
                             value="12"
                             control={<RedSwitch color="warning"
                                              checked={checked12}
-                                             value={"Quercus Robur"}
+                                             value={"quercus_robur"}
                                              onChange={handleChange12} />}
                             label={"Quercus Robur"}
                             labelPlacement="end"
@@ -516,7 +516,7 @@ export default function PollenTypes(props) {
                             value="13"
                             control={<RedSwitch color="warning"
                                              checked={checked13}
-                                             value="Carpinus Betulus"
+                                             value="carpinus_betulus"
                                              onChange={handleChange13} />}
                             label={"Carpinus Betulus"}
                             labelPlacement="end"
@@ -525,16 +525,16 @@ export default function PollenTypes(props) {
                             value="14"
                             control={<RedSwitch color="warning"
                                              checked={checked14}
-                                             value={"Ligustrum Robustum"}
+                                             value={"ligustrum_robustrum"}
                                              onChange={handleChange14} />}
-                            label={"Ligustrum Robustum"}
+                            label={"Ligustrum Robustrum"}
                             labelPlacement="end"
                         />
                         <FormControlLabel
                             value="15"
                             control={<RedSwitch color="warning"
                                              checked={checked15}
-                                             value="Rumex Stenophyllus"
+                                             value="rumex_stenophyllus"
                                              onChange={handleChange15} />}
                             label={"Rumex Stenophyllus"}
                             labelPlacement="end"
@@ -543,7 +543,7 @@ export default function PollenTypes(props) {
                             value="16"
                             control={<RedSwitch color="warning"
                                              checked={checked16}
-                                             value={"Ailanthus Altissima"}
+                                             value={"ailanthus_altissima"}
                                              onChange={handleChange16} />}
                             label={"Ailanthus Altissima"}
                             labelPlacement="end"
@@ -552,7 +552,7 @@ export default function PollenTypes(props) {
                             value="17"
                             control={<RedSwitch color="warning"
                                              checked={checked17}
-                                             value="Thymbra Spicata"
+                                             value="thymbra_spicata"
                                              onChange={handleChange17} />}
                             label={"Thymbra Spicata"}
                             labelPlacement="end"
@@ -561,7 +561,7 @@ export default function PollenTypes(props) {
                             value="18"
                             control={<RedSwitch color="warning"
                                              checked={checked18}
-                                             value={"Rubia Peregrina"}
+                                             value={"rubia_peregrina"}
                                              onChange={handleChange18} />}
                             label={"Rubia Peregrina"}
                             labelPlacement="end"
@@ -570,7 +570,7 @@ export default function PollenTypes(props) {
                             value="19"
                             control={<RedSwitch color="warning"
                                              checked={checked19}
-                                             value="Olea Europaea"
+                                             value="olea_europaea"
                                              onChange={handleChange19} />}
                             label={"Olea Europaea"}
                             labelPlacement="end"
@@ -579,7 +579,7 @@ export default function PollenTypes(props) {
                             value="20"
                             control={<RedSwitch color="warning"
                                              checked={checked20}
-                                             value={"Cichorium Intybus"}
+                                             value={"cichorium_intybus"}
                                              onChange={handleChange20} />}
                             label={"Cichorium Intybus"}
                             labelPlacement="end"
@@ -588,7 +588,7 @@ export default function PollenTypes(props) {
                             value="21"
                             control={<RedSwitch color="warning"
                                              checked={checked21}
-                                             value="Chenopodium Album"
+                                             value="chenopodium_album"
                                              onChange={handleChange21} />}
                             label={"Chenopodium Album"}
                             labelPlacement="end"
@@ -597,7 +597,7 @@ export default function PollenTypes(props) {
                             value="22"
                             control={<RedSwitch color="warning"
                                              checked={checked22}
-                                             value={"Borago Officinalis"}
+                                             value={"borago_officinalis"}
                                              onChange={handleChange22} />}
                             label={"Borago Officinalis"}
                             labelPlacement="end"
@@ -606,7 +606,7 @@ export default function PollenTypes(props) {
                             value="23"
                             control={<RedSwitch color="warning"
                                              checked={checked23}
-                                             value="Acacia Dealbata"
+                                             value="acacia_dealbata"
                                              onChange={handleChange23} />}
                             label={"Acacia Dealbata"}
                             labelPlacement="end"

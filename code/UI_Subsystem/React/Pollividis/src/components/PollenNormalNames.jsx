@@ -41,7 +41,7 @@ const PollenNormalNames = () => {
                   Ulmus Minor: Field Elm <br/>
                   Quercus Robur: Oak <br/>
                   Carpinus Betulus: Common Hornbeam <br/>
-                  Ligustrum Robustum: Wild Privet <br/>
+                  Ligustrum Robustrum: Wild Privet <br/>
                   Rumex Stenophyllus: Narrow-Leaf Dock <br/>
                   Ailanthus Altissima: Tree of Heaven <br/>
                   Thymbra Spicata: Mediterranean thyme <br/>
