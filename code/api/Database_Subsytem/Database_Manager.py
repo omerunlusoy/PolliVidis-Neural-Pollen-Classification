@@ -502,6 +502,18 @@ class Database_Manager:
             print("Given object is not type SampleModel")
             return -1
 
+    def add_pollen_has(self,sample_id,pollen_name,pollen_count):
+        sql = "INSERT INTO Sample_has_Pollen (sample_id, pollen_name, count) VALUES (%s, %s, %s)"
+        val = (sample_id, pollen_name, pollen_count)  # DO NOT USE sample.sample_id
+        try:
+            self.cursor.execute(sql, val)
+            self.db.commit()
+            return 1
+        except(mysql.connector.Error, mysql.connector.Warning) as e:
+            print("Sample itself is added but one of its pollen types could not be added.")
+            print(e)
+            return -1    
+
     def delete_sample(self, sample_id):
         sql = "DELETE FROM Sample WHERE sample_id = %s"
         val = (sample_id,)
@@ -594,10 +606,12 @@ class Database_Manager:
                 self.cursor.execute(sql, val)
                 self.db.commit()
                 print("update complete!!!!!!")
-                return True
+                #return True
             except(mysql.connector.Error, mysql.connector.Warning) as e:
                 print(e)
                 return False
+            
+
 
         else:
             print("Given object is not type SampleModel")
