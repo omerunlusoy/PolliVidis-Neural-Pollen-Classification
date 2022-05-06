@@ -32,6 +32,7 @@ import FolderIcon from '@mui/icons-material/Folder';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {Button} from "@mui/material";
 import AnalysisInfoDrawer from "./AnalysisInfoDrawerRight";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -88,9 +89,10 @@ const AboutUs = () => {
                                                           }} type="submit" variant="contained" style={{backgroundColor:'#A6232A', color:'white',marginRight:20}} >
                                                               View
                                                           </Button>
-                                                          <Button onClick={()=> {console.log(marker);
-                                                              setClicked(true);
-                                                              setSample(marker);
+                                                          <Button onClick={()=> {
+                                                              console.log(marker);
+                                                              axios.delete(`http://localhost:8000/api/remove_analysis/${marker.sample_id}/`)
+                                                                  .then(() => console.log('Delete successful'));
 
                                                           }} type="submit" variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} >
                                                               Delete
