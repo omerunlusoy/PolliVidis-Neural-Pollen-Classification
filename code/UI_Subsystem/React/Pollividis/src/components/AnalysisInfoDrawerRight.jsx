@@ -94,7 +94,7 @@ export default function AnalysisInfoDrawer(props) {
             <Typography style={{marginBottom:2, marginLeft:10}} variant="h6"  component="p">
                 Analysis:
             </Typography>
-            <pre> style={{marginBottom:2, marginLeft:10}} variant="h6"  component="p">
+            <pre>
                 {analysis.analysis_text}
             </pre>
 
