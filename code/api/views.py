@@ -9,7 +9,7 @@ import json
 from firebase_admin import credentials, initialize_app, storage, delete_app, get_app
 import matplotlib.pyplot as plt
 import datetime
-from local_paths import get_firebase_path
+from .local_paths import get_firebase_path
 from api.Database_Subsytem.AcademicModel import AcademicModel
 
 from .models import Sample, Academic
@@ -184,9 +184,9 @@ def get_samples_by_filter(request):
     if start_date == end_date:
         start_date = None
         end_date = None
-    print(pollens)
-    print(start_date)
-    print(end_date)
+    print("pollens",pollens)
+    #print(start_date)
+    #print(end_date)
 
     if pollens == []:
         return get_all_samples()
@@ -196,7 +196,7 @@ def get_samples_by_filter(request):
         samples = []
         
         for temp in all_samples:
-            print("abv", temp.date)
+            #print("abv", temp.date)
             if temp.date == "":
                 continue
             temp3 = temp.date.split(" ")
@@ -208,7 +208,7 @@ def get_samples_by_filter(request):
                 temp_date = datetime.datetime.strptime(temp_date, '%m-%d-%Y').date()
 
             c = 0
-            print("temp:" , temp_date)
+            #print("temp:" , temp_date)
             for pollen in pollens:
                 if pollen in temp.analysis_text:
                     c = 1
@@ -216,19 +216,19 @@ def get_samples_by_filter(request):
                     break
 
             if c == 0:
-                print("c == 0")
+                #print("c == 0")
                 continue
             if temp.sample_id == 1:
-                print("tem.sampleid")
+                #print("tem.sampleid")
                 continue
 
             if start_date != None and end_date != None:
-                print("if 1")
-                print(type(start_date))
-                print(type(temp.date))
+                #print("if 1")
+                #print(type(start_date))
+                #print(type(temp.date))
 
                 if temp_date < start_date or temp_date > end_date:
-                    print("if 2")
+                    #print("if 2")
 
                     continue
             
@@ -236,11 +236,11 @@ def get_samples_by_filter(request):
                         temp.location_longitude,
                         temp.analysis_text, temp.publication_status, temp.anonymous_status, temp.pollens)
             print(temp2.sample_id)
-            print("temp:",temp.__str__())
+            #print("temp:",temp.__str__())
 
             samples.append(temp2)
 
-        print("samples:" ,samples)
+        #print("samples:" ,samples)
         #test = Sample.objects.all()
         #print(type(test))
         #print(test)
@@ -248,10 +248,10 @@ def get_samples_by_filter(request):
         #result = json.dumps(result)
 
         #print(samples)
-        print(result)
+        #print(result)
 
-        print(len(samples))
-        print(len(result))
+        #print(len(samples))
+        #print(len(result))
         
         return Response(result)
 

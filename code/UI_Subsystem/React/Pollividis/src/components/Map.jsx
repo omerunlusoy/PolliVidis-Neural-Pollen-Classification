@@ -135,8 +135,11 @@ export default function Map() {
     const handleCallbackForPollens = (childDataPollen) =>{
         setPollenArr(childDataPollen[0])
         setCheckedArr(childDataPollen[1])
+        setOpenD(childDataPollen[2])
+        setMarkers(childDataPollen[3])
         console.log("I am parent:",pollenArr)
         console.log("I am parent2:",checkedArr)
+        console.log(markers)
     }
 
 
@@ -200,7 +203,7 @@ export default function Map() {
                                             <div>
                                                     <Box mt={2}>
                                                         <div>
-                                                            <PollenTypes pollens={pollenArr} checkedArr={checkedArr} startDate={startDate} endDate = {endDate} parentCallback={handleCallbackForPollens}/>
+                                                            <PollenTypes markers={markers} openD={openD} pollens={pollenArr} checkedArr={checkedArr} startDate={startDate} endDate = {endDate} parentCallback={handleCallbackForPollens}/>
                                                         </div>
                                                     </Box>
                                             </div>

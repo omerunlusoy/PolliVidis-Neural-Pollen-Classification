@@ -56,6 +56,10 @@ export default function PollenTypes(props) {
     const [checked22, setChecked22] = React.useState(checkedArr[21]);
     const [checked23, setChecked23] = React.useState(checkedArr[22]);
 
+    const [markers, setMarkers] = React.useState(props.markers);
+
+
+
 
 
     const handleChange1 = (event) => {
@@ -387,10 +391,7 @@ export default function PollenTypes(props) {
         checkedArr[21] = checked22;
         checkedArr[22] = checked23;
 
-        let callBackArr = [pollenArr,checkedArr]
-        props.parentCallback(callBackArr);
 
-        console.log(pollenArr)
 
 
         let sampleObject = new FormData(); // creates a new FormData object
@@ -410,6 +411,7 @@ export default function PollenTypes(props) {
             .post('http://127.0.0.1:8000/api/get_filtered_samples/', sampleObject)
             .then(response => {
                 console.log(response.data)
+                setMarkers(response.data)
             })
             .catch(error => {
                 const resMessage =
@@ -420,6 +422,11 @@ export default function PollenTypes(props) {
                     error.toString();
 
             })
+
+        let callBackArr = [pollenArr,checkedArr,false,markers]
+        props.parentCallback(callBackArr);
+
+        console.log(callBackArr)
 
     };
 

@@ -10,5 +10,6 @@
 /code/api/ML_Subsystem/models
 /code/api/ML_Subsystem/__pycache__
 /code/api/__pycache__
+/code/api/local_paths.py
 /code/__pycache__
 /code/api/__pycache__
