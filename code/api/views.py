@@ -409,6 +409,7 @@ def analyze(request):
 
 @api_view(['DELETE'])
 def remove_analysis(request,pk):
+    print("irem:",pk)
     res = db_manager.delete_sample(pk)
     return Response(res)
     #print(request)

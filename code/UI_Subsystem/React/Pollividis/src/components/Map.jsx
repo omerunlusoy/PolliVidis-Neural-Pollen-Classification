@@ -23,7 +23,7 @@ import Drawer from '@mui/material/Drawer';
 import AnalysisInfoDrawer from "./AnalysisInfoDrawer";
 import Button from "@material-ui/core/Button";
 import Navbar from "./Navbar";
-import {Box, Card, CardActionArea, CardContent, Dialog, Grid, Typography} from "@material-ui/core";
+import {Box, Card, CardActionArea, CardContent, CircularProgress, Dialog, Grid, Typography} from "@material-ui/core";
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from "@mui/material/IconButton";
 import PollenTypes from "./PollenTypesList";
@@ -64,6 +64,7 @@ export default function Map() {
     const [markers, setMarkers] = React.useState([]);
     const [selected, setSelected] = React.useState(null);
     const [openD, setOpenD] = React.useState(false);
+    const [openDLoading, setOpenDLoading] = React.useState(true);
 
     const [startDate, setStartDate] = React.useState(new Date());
     const [endDate, setEndDate] = React.useState(new Date());
@@ -72,7 +73,7 @@ export default function Map() {
     useEffect(() => {
         fetch(`http://localhost:8000/api/analysis_get`)
             .then((data) => data.json())
-            .then((data) => setMarkers(data))
+            .then((data) => {setMarkers(data);setOpenDLoading(false)})
     },[]);
 
     const handleClose = () => {
@@ -93,29 +94,29 @@ export default function Map() {
     const [plsOpen, setPlsOpen] = React.useState(true);
 
     const names = [
-        'Ambrosia',
-        'Alnus',
-        'Acer',
-        'Betula',
-        'Juglans',
-        'Artemisia',
-        'Populus',
-        'Phleum',
-        'Picea',
-        'Juniperus',
-        'Ulmus',
-        'Quercus',
-        'Carpinus',
-        'Ligustrum',
-        'Rumex',
-        'Ailantus',
-        'Thymbra',
-        'Rubia',
-        'Olea',
-        'Cichorium',
-        'Chenopodium',
-        'Borago',
-        'Acacia'
+        'ambrosia_artemisiifolia',
+        'alnus_glutinosa',
+        'acer_negundo',
+        'betula_papyrifera',
+        'juglans_regia',
+        'artemisia_vulgaris',
+        'populus_nigra',
+        'phleum_phleoides',
+        'picea_abies',
+        'juniperus_communis',
+        'ulmus_minor',
+        'quercus_robur',
+        'carpinus_betulus',
+        'ligustrum_robustrum',
+        'rumex_stenophyllus',
+        'ailanthus_altissima',
+        'thymbra_spicata',
+        'rubia_peregrina',
+        'olea_europaea',
+        'cichorium_intybus',
+        'chenopodium_album',
+        'borago_officinalis',
+        'acacia_dealbata'
     ];
 
     const checkedArrHere = [
@@ -181,6 +182,22 @@ export default function Map() {
 
     return (
         <div>
+            <Dialog
+                open={openDLoading}
+            >
+                <Card>
+                    <CardActionArea>
+                        <CardContent>
+                            <Typography align={"center"}  variant="h5" >
+                                Analyses are loading. Thank you for your patience.
+                            </Typography>
+                            <Box sx={{ display: 'flex' }}>
+                                <CircularProgress/>
+                            </Box>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+            </Dialog>
             <div style={{marginBottom:10}}>
                 <Button onClick={()=>{setOpenD(true)}} variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} size="medium" >
                     Filter
