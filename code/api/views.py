@@ -208,9 +208,12 @@ def get_samples_by_filter(request):
                 temp_date = datetime.datetime.strptime(temp_date, '%m-%d-%Y').date()
 
             c = 0
+            if temp.pollens == []:
+                print("boş bu")
+                continue
             #print("temp:" , temp_date)
             for pollen in pollens:
-                if pollen in temp.analysis_text:
+                if pollen in temp.pollens:
                     c = 1
                 if c == 1:
                     break
