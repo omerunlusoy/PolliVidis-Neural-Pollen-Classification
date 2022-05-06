@@ -392,41 +392,11 @@ export default function PollenTypes(props) {
         checkedArr[22] = checked23;
 
 
-
-
-        let sampleObject = new FormData(); // creates a new FormData object
-
-        const myObject = {
-            pollens: pollenArr,
-            startDate: props.startDate,
-            endDate: props.endDate
-        };
-
-        sampleObject.append("pollens",myObject.pollens);
-        sampleObject.append("startDate", myObject.startDate);
-        sampleObject.append("endDate", myObject.endDate);// add your file to form data
-
-
-        axios
-            .post('http://127.0.0.1:8000/api/get_filtered_samples/', sampleObject)
-            .then(response => {
-                console.log(response.data)
-                setMarkers(response.data)
-            })
-            .catch(error => {
-                const resMessage =
-                    (error.response &&
-                        error.response.data &&
-                        error.response.data.message) ||
-                    error.message ||
-                    error.toString();
-
-            })
-
         let callBackArr = [pollenArr,checkedArr,false,markers]
         props.parentCallback(callBackArr);
 
         console.log(callBackArr)
+
 
     };
 

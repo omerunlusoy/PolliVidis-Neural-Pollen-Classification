@@ -34,6 +34,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import InfoIcon from "@mui/icons-material/Info";
 import PollenNormalNames from "./PollenNormalNames";
+import axios from "axios";
 
 //api key: "AIzaSyAHlwtPiz1TdtLSNXtladNYvGRtCbzkm6g"
 //api_key_irem2 : "AIzaSyBKACLg3Nl9SOXYQkYdiMeTR9cVNS2_rJQ"
@@ -140,6 +141,37 @@ export default function Map() {
         console.log("I am parent:",pollenArr)
         console.log("I am parent2:",checkedArr)
         console.log(markers)
+
+
+        let sampleObject = new FormData(); // creates a new FormData object
+
+        const myObject = {
+            pollens: pollenArr,
+            startDate: startDate,
+            endDate: endDate
+        };
+
+        sampleObject.append("pollens",myObject.pollens);
+        sampleObject.append("startDate", myObject.startDate);
+        sampleObject.append("endDate", myObject.endDate);// add your file to form data
+
+
+        axios
+            .post('http://127.0.0.1:8000/api/get_filtered_samples/', sampleObject)
+            .then(response => {
+                console.log(response.data)
+                setMarkers(response.data)
+
+            })
+            .catch(error => {
+                const resMessage =
+                    (error.response &&
+                        error.response.data &&
+                        error.response.data.message) ||
+                    error.message ||
+                    error.toString();
+
+            })
     }
 
 
