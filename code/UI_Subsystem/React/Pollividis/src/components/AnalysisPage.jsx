@@ -31,6 +31,8 @@ const Feed = () => {
             .then((data) => setAnalysis(JSON.parse(data)))
             //.then((data) => console.log(data) )
             .then(()=> getPhoto(id))
+
+        console.log(analysis.analysis_text)
     },[]);
 
 
@@ -65,9 +67,9 @@ const Feed = () => {
                       <Typography style={{marginBottom:5}} variant="h5"  component="p">
                           Analysis Text:
                       </Typography>
-                      <Typography style={{marginBottom:5}} variant="h5"  component="p">
+                      <pre>
                           {analysis.analysis_text}
-                      </Typography>
+                      </pre>
                       <img style={{
                           flex: 1,
                           width: '100%',
