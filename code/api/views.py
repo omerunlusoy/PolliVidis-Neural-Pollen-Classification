@@ -9,7 +9,7 @@ import json
 from firebase_admin import credentials, initialize_app, storage, delete_app, get_app
 import matplotlib.pyplot as plt
 import datetime
-
+from local_paths import get_firebase_path
 from api.Database_Subsytem.AcademicModel import AcademicModel
 
 from .models import Sample, Academic
@@ -23,7 +23,7 @@ from .ML_Subsystem.ML_Manager import ML_Manager
 
 from PIL import Image
 
-cred = credentials.Certificate("/Users/eceunal/Documents/GitHub/CS491_Senior_Design_Project/code/api/firebase-sdk.json")
+cred = credentials.Certificate(get_firebase_path())
 
 try:
     app = initialize_app(cred, {'storageBucket': 'fir-react1-70dd6.appspot.com'})
@@ -391,7 +391,11 @@ def analyze(request):
     print("sample:")
     print(smpl)
     db_manager.update_sample(smpl)
+
     for pollen_name in smpl.pollens:
+        print("pollen_name:", pollen_name)
+        print("photo_id:", photo_id)
+        print("count:",smpl.pollens[pollen_name])
         db_manager.add_pollen_has(photo_id,pollen_name,smpl.pollens[pollen_name])
          
     #db_manager.delete_sample(photo_id)
