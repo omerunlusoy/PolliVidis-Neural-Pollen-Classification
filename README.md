@@ -3,6 +3,8 @@
 
 CS 491/2 Senior Design Project (Pollen Classification with Deep Learning)
 
+Along with the developments in machine learning, most systems in natural sciences are transforming into automated models. Nevertheless, currently there is no available model to identify pollen species for palynology, the branch of biology which examines pollens. There are millions of people having seasonal pollen allergies. However, weather reports supply limited information on pollen densities in the air regionally due to the lack of such automation. PolliVidis offers automation for pollen analysis with a deep learning architecture to classify and count pollen species in a sample. Moreover, PolliVidis offers a Pollen Map where every analysis shows up to create an accumulated regional pollen density information.
+
 ### Group Members
   - Ömer Ünlüsoy 	        - 21702136  
   - Elif Gamze Güliter    - 21802870  
