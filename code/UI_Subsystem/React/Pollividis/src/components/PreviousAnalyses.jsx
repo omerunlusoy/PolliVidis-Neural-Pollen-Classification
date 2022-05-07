@@ -92,13 +92,11 @@ const AboutUs = () => {
                                                           <Button onClick={()=> {
                                                               console.log(marker);
                                                               axios.delete(`http://localhost:8000/api/remove_analysis/${marker.sample_id}/`)
-                                                                  .then(() => console.log('Delete successful'));
-
+                                                                  .then(() => window.location.reload());
                                                           }} type="submit" variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} >
                                                               Delete
                                                           </Button>
                                                       </div>
-
                                                   }
                                               >
                                                   <ListItemAvatar>
