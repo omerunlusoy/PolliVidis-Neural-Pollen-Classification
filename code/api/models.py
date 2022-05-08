@@ -34,11 +34,13 @@ class Academic(models.Model):
      job_title = models.CharField(max_length=200)
      email = models.CharField(max_length=200)
      password = models.CharField(max_length=200)
+     photo = models.CharField(max_length=200)
      research_gate_link = models.CharField(max_length=200)
 
 class Sample(models.Model):
     sample_id = models.IntegerField()
     academic_id = models.IntegerField()
+    sample_photo = models.ImageField(upload_to= 'uploads/') ## ???
     date = models.CharField(max_length=1000)
     location_latitude = models.FloatField()
     location_longitude = models.FloatField()
