@@ -149,10 +149,11 @@ def get_all_samples(request):
     #print(type(test))
     #print(test)
     result = 0
-    if len(samples) > 1:
-        result = SampleSerializer(samples, many=True).data
-    else: 
+    if len(samples) == 1:
         result = SampleSerializer(samples[0]).data
+    else:
+        result = SampleSerializer(samples, many=True).data
+        
     #result = json.dumps(result)
 
     #print(samples)
