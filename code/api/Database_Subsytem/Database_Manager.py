@@ -398,7 +398,7 @@ class Database_Manager:
     def add_academic(self, academic):
 
         sql = "INSERT INTO Academic (name, surname, appellation, institution, job_title, email, password, research_gate_link) " \
-              "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+              "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
         print("heey")
         self.print_academic_table()
         print(type(academic))
@@ -461,7 +461,7 @@ class Database_Manager:
     def add_sample(self, sample):
 
         sql = "INSERT INTO Sample (academic_id, date, location_latitude, location_longitude, analysis_text, publication_status, anonymous_status) " \
-              "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+              "VALUES (%s, %s, %s, %s, %s, %s, %s)"
 
         if isinstance(sample, SampleModel):
             # to use open, we needed to save the image
