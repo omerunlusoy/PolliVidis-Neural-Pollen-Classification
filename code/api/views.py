@@ -98,9 +98,9 @@ def analyses_get_by_id(request, pk):
     # Database_Manager.connect_database()
     print('inGet')
     print('django', pk)
-    print(type(pk))
+    #print(type(pk))
     temp = db_manager.get_sample(pk)
-    print("bd: ", temp)
+    #print("bd: ", temp)
     print(temp.sample_id)
     temp2 = Sample(pk,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
                     temp.location_longitude,
@@ -111,11 +111,11 @@ def analyses_get_by_id(request, pk):
     #result = serializers.serialize('json',[temp2])
     # temp2 = model_to_dict(temp)
     result = json.dumps(result)
-    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+    #print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
     #print(result.sample_id)
     #result['sample_photo'] = temp2.sample_photo
-    print(result)
-    print(temp2.sample_photo)
+    #print(result)
+    #print(temp2.sample_photo)
 
 
 
@@ -185,8 +185,8 @@ def get_samples_by_filter(request):
     if start_date == end_date:
         start_date = None
         end_date = None
-        print("agubugu!!!!!")
-    print("pollens",pollens)
+        #print("agubugu!!!!!")
+    #print("pollens",pollens)
     #print(start_date)
     #print(end_date)
 
@@ -215,22 +215,21 @@ def get_samples_by_filter(request):
             
             c = 0
             if temp.pollens == []:
-                print("boş bu")
+                #print("boş bu")
                 continue
-            else:
-                print("temp pollens:", temp.pollens)
             
+
             #print("temp:" , temp_date)
             for pollen in temp.pollens:
-                print("test_pollen",pollen)
-                print(type(pollen))
+                #print("test_pollen",pollen)
+                #print(type(pollen))
                 if pollen in pollens:
-                    print("pollen buldu:", pollen)
+                    #print("pollen buldu:", pollen)
                     c = 1
                     break
 
             if c == 0:
-                print("c == 0")
+                #print("c == 0")
                 continue
             
 
@@ -240,7 +239,7 @@ def get_samples_by_filter(request):
                 #print(type(temp.date))
 
                 if temp_date < start_date or temp_date > end_date:
-                    print("if 2")
+                    #print("if 2")
                     continue
             
             temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
@@ -255,8 +254,7 @@ def get_samples_by_filter(request):
         #test = Sample.objects.all()
         #print(type(test))
         #print(test)
-        if len(samples) < 1:
-            print("haci bulamadi")
+        
         result = SampleSerializer(samples, many=True).data
         #result = json.dumps(result)
 
