@@ -78,9 +78,9 @@ class Database_Manager:
         # update connect info accordingly
         self.db = mysql.connector.connect(
             host="dijkstra.ug.bcc.bilkent.edu.tr",
-            user="omer.unlusoy",
-            password="8cWZ7QRc",
-            database="omer_unlusoy"
+            user="ada.yuruten",
+            password="Rm0L7V4D",
+            database="ada_yuruten"
         )
         self.cursor = self.db.cursor()
         # cursor.execute("CREATE DATABASE pollividis")  # run once
@@ -108,14 +108,14 @@ class Database_Manager:
                             "job_title VARCHAR(1000)," +
                             "email VARCHAR(200) UNIQUE," +
                             "password VARCHAR(50) NOT NULL," +
-                            "photo BLOB," +
+                            #"photo BLOB," +
                             "research_gate_link VARCHAR(1000)," +
                             "PRIMARY KEY(academic_id));")
 
         self.cursor.execute("CREATE TABLE Sample(" +
                             "sample_id VARCHAR(50)," +
                             "academic_id INT NOT NULL," +
-                            "sample_photo BLOB," +  # should not be stored in database but in the file system
+                            #"sample_photo BLOB," +  # should not be stored in database but in the file system
                             "date VARCHAR(100)," +
                             "location_latitude DOUBLE," +
                             "location_longitude DOUBLE," +
@@ -159,8 +159,8 @@ class Database_Manager:
         results = self.cursor.fetchall()
 
         if len(results) == 1:
-            img = Image.open(io.BytesIO(results[0][8]))
-            cur_academic = AcademicModel(results[0][0], results[0][1], results[0][2], results[0][3], results[0][4], results[0][5], results[0][6], results[0][7], img, results[0][9])
+            #img = Image.open(io.BytesIO(results[0][8]))
+            cur_academic = AcademicModel(results[0][0], results[0][1], results[0][2], results[0][3], results[0][4], results[0][5], results[0][6], results[0][7], results[0][8])
             return cur_academic
         else:
             print("Duplicate academic_id")
@@ -174,8 +174,8 @@ class Database_Manager:
 
         if len(results) == 1:
             #img = Image.open(io.BytesIO(results[0][8]))
-            img = None
-            cur_academic = AcademicModel(results[0][0], results[0][1], results[0][2], results[0][3], results[0][4], results[0][5], results[0][6], results[0][7], img, results[0][9])
+            #img = None
+            cur_academic = AcademicModel(results[0][0], results[0][1], results[0][2], results[0][3], results[0][4], results[0][5], results[0][6], results[0][7],  results[0][8])
             return cur_academic
         else:
             print("Duplicate or None academic_id")
@@ -216,8 +216,8 @@ class Database_Manager:
             for pol in pollen_results:
                 pollens[pol[1]] = pol[2]
 
-            sample_photo = Image.open(io.BytesIO(results[0][2]))
-            cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, results[0][3], results[0][4], results[0][5], results[0][6], results[0][7], results[0][8], pollens)
+            #sample_photo = Image.open(io.BytesIO(results[0][2]))
+            cur_sample = SampleModel(results[0][0], results[0][1], results[0][2], results[0][3], results[0][4], results[0][5], results[0][6], results[0][7], pollens)
             return cur_sample
         else:
             print("Duplicate or None sample_id")
@@ -248,8 +248,8 @@ class Database_Manager:
                     pollens[pol[1]] = pol[2]
 
 
-                sample_photo = Image.open(io.BytesIO(results[0][2]))
-                cur_sample = SampleModel(results[i][0], results[i][1], sample_photo, results[i][3], results[i][4], results[i][5], results[i][6], results[i][7], results[i][8], pollens)
+                #sample_photo = Image.open(io.BytesIO(results[0][2]))
+                cur_sample = SampleModel(results[i][0], results[i][1], results[i][2], results[i][3], results[i][4], results[i][5], results[i][6], results[i][7], pollens)
                 samples.append(cur_sample)
 
             return samples
@@ -278,8 +278,8 @@ class Database_Manager:
                 for pol in pollen_results:
                     pollens[pol[1]] = pol[2]
 
-                sample_photo = Image.open(io.BytesIO(results[0][2]))
-                cur_sample = SampleModel(results[0][0], results[0][1], sample_photo, results[0][3], results[0][4], results[0][5], results[0][6], results[0][7], results[0][8], pollens)
+                #sample_photo = Image.open(io.BytesIO(results[0][2]))
+                cur_sample = SampleModel(results[0][0], results[0][1], results[0][2], results[0][3], results[0][4], results[0][5], results[0][6], results[0][7], pollens)
                 samples.append(cur_sample)
 
             return samples
@@ -307,8 +307,8 @@ class Database_Manager:
                 for pol in pollen_results:
                     pollens[pol[1]] = pol[2]
 
-                sample_photo = Image.open(io.BytesIO(results[0][2]))
-                cur_sample = SampleModel(results[i][0], results[i][1], sample_photo, results[i][3], results[i][4], results[i][5], results[i][6], results[i][7], results[i][8], pollens)
+                #sample_photo = Image.open(io.BytesIO(results[0][2]))
+                cur_sample = SampleModel(results[i][0], results[i][1], results[i][2], results[i][3], results[i][4], results[i][5], results[i][6], results[i][7], pollens)
                 samples.append(cur_sample)
 
             return samples
@@ -397,13 +397,14 @@ class Database_Manager:
 
     def add_academic(self, academic):
 
-        sql = "INSERT INTO Academic (name, surname, appellation, institution, job_title, email, password, photo, research_gate_link) " \
+        sql = "INSERT INTO Academic (name, surname, appellation, institution, job_title, email, password, research_gate_link) " \
               "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
         print("heey")
         self.print_academic_table()
         print(type(academic))
         print("hwat")
         if isinstance(academic, AcademicModel):
+            '''
             if academic.photo != None:
                 binaryData = None
             else:
@@ -412,8 +413,8 @@ class Database_Manager:
                 with open("buff.jpg", 'rb') as file:
                     binaryData = file.read()
                 os.remove("buff.jpg")
-
-            val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, binaryData,
+            '''
+            val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, 
                    academic.research_gate_link)
 
             #val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, binaryData, "aaa")
@@ -459,17 +460,19 @@ class Database_Manager:
 
     def add_sample(self, sample):
 
-        sql = "INSERT INTO Sample (academic_id, sample_photo, date, location_latitude, location_longitude, analysis_text, publication_status, anonymous_status) " \
+        sql = "INSERT INTO Sample (academic_id, date, location_latitude, location_longitude, analysis_text, publication_status, anonymous_status) " \
               "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
 
         if isinstance(sample, SampleModel):
             # to use open, we needed to save the image
+            '''
             sample.sample_photo.save("buff.jpg")
             with open("buff.jpg", 'rb') as file:
                 binaryData = file.read()
             os.remove("buff.jpg")
+            '''
 
-            val = (sample.academic_id, binaryData, sample.date, sample.location_latitude, sample.location_longitude,
+            val = (sample.academic_id, sample.date, sample.location_latitude, sample.location_longitude,
                    sample.analysis_text, sample.publication_status, sample.anonymous_status)
             try:
                 self.cursor.execute(sql, val)
@@ -564,16 +567,13 @@ class Database_Manager:
 
         if isinstance(academic, AcademicModel):
 
-            sql = "UPDATE Academic SET name = %s, surname = %s, appellation = %s, institution = %s, job_title = %s, email = %s, password = %s, photo = %s, research_gate_link = %s" \
+            sql = "UPDATE Academic SET name = %s, surname = %s, appellation = %s, institution = %s, job_title = %s, email = %s, password = %s, research_gate_link = %s" \
                   "WHERE academic_id = %s"
 
             # to use open, we needed to save the image
-            academic.photo.save("buff.jpg")
-            with open("buff2.jpg", 'rb') as file:
-                binaryData = file.read()
-            os.remove("buff2.jpg")
+            
 
-            val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, binaryData,
+            val = (academic.name, academic.surname, academic.appellation, academic.institution, academic.job_title, academic.email, academic.password, 
                    academic.research_gate_link, academic.academic_id)
             try:
                 self.cursor.execute(sql, val)
@@ -612,7 +612,7 @@ class Database_Manager:
                 
                 self.cursor.execute(sql, val)
                 self.db.commit()
-                print("update complete!!!!!!")
+                #print("update complete!!!!!!")
                 #return True
             except(mysql.connector.Error, mysql.connector.Warning) as e:
                 print(e)
@@ -651,7 +651,7 @@ class Database_Manager:
         if len(results) > 0:
             print("Academic Table:")
             for i in range(len(results)):
-                print(i, ":", results[i][0], results[i][1], results[i][2], results[i][3], results[i][4], results[i][5], results[i][6], results[i][7], results[i][9])
+                print(i, ":", results[i][0], results[i][1], results[i][2], results[i][3], results[i][4], results[i][5], results[i][6], results[i][7], results[i][8])
             print("")
         else:
             print("No Academic Record...")
@@ -664,7 +664,7 @@ class Database_Manager:
         if len(results) > 0:
             print("Sample Table:")
             for i in range(len(results)):
-                print(i, ":", results[i][0], results[i][1], results[i][2], results[i][3], results[i][4], results[i][5], results[i][6], results[i][7], results[i][8])
+                print(i, ":", results[i][0], results[i][1], results[i][2], results[i][3], results[i][4], results[i][5], results[i][6], results[i][7])
             print("")
         else:
             print("No Sample Record...")

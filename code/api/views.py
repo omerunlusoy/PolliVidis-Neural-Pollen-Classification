@@ -44,7 +44,7 @@ except:
 
 #fb_storage = firebase_storage.
 #bucket = firebase_admin.storage().bucket();
-db_manager = Database_Manager(False)
+db_manager = Database_Manager(True)
 ml_manager = ML_Manager(load_model=True)
 print('! views db created')
 #ml_manager = ML_Manager()
@@ -67,7 +67,7 @@ def analyses_post(request):
 
     # Database_Manager.connect_database()
     # serializer = SampleSerializer(data=request.data)
-    image, pollenText, pollens = request.data['sample_photo'], request.data['analysis_text'], request.data['pollens']
+    pollenText, pollens = request.data['analysis_text'], request.data['pollens']
     # ml_manager.analyze_sample(serializer.data['sample_photo'], "", serializer.data['date'], "John", db_manager)
 
     # serializer = SampleSerializer(data=request.data)
@@ -75,13 +75,9 @@ def analyses_post(request):
 
     # django image to PIL Image
 
-    if isinstance(image, django.core.files.uploadedfile.InMemoryUploadedFile):
-        image = Image.open(image)
-    else:
-        image = Image.open(image.temporary_file_path())
 
     # create Sample Model to upload to the database
-    sampleObj = SampleModel(-1, request.data['academic_id'], image, request.data['date'], request.data['location_latitude'], request.data['location_longitude'], pollenText,
+    sampleObj = SampleModel(-1, request.data['academic_id'],  request.data['date'], request.data['location_latitude'], request.data['location_longitude'], pollenText,
                             request.data['publication_status'], request.data['anonymous_status'], pollens)
     # query database to upload the sample
     result = db_manager.add_sample(sampleObj)
@@ -102,10 +98,10 @@ def analyses_get_by_id(request, pk):
     temp = db_manager.get_sample(pk)
     #print("bd: ", temp)
     print(temp.sample_id)
-    temp2 = Sample(pk,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
+    temp2 = Sample(pk,temp.sample_id, temp.academic_id, temp.date, temp.location_latitude,
                     temp.location_longitude,
                     temp.analysis_text, temp.publication_status, temp.anonymous_status, temp.pollens)
-    print("aaaa: ",temp2.sample_photo)
+    
     result = SampleSerializer(temp2).data
 
     #result = serializers.serialize('json',[temp2])
@@ -139,7 +135,7 @@ def get_all_samples(request):
     for temp in all_samples:
         if temp.academic_id == 1:
                 continue
-        temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
+        temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.date, temp.location_latitude,
                     temp.location_longitude,
                     temp.analysis_text, temp.publication_status, temp.anonymous_status, temp.pollens)
         print(temp2.sample_id)
@@ -242,7 +238,7 @@ def get_samples_by_filter(request):
                     #print("if 2")
                     continue
             
-            temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
+            temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.date, temp.location_latitude,
                         temp.location_longitude,
                         temp.analysis_text, temp.publication_status, temp.anonymous_status, temp.pollens)
             print(temp2.sample_id)
@@ -297,7 +293,7 @@ def signup(request):
     #print(request.data['research_gate_link'])
     mdl = AcademicModel(0,request.data['name'],request.data['surname'],request.data['appellation'],
                     request.data['institution'],request.data['job_title'],request.data['email'],request.data['password'],
-                    request.data['photo'],request.data['research_gate_link'])
+                    request.data['research_gate_link'])
 
    # mdl = Academic(0,request.data['name'],request.data['surname'],request.data['appellation'],
     #                request.data['institution'],request.data['job_title'],request.data['email'],request.data['password'],
@@ -335,7 +331,7 @@ def get_academic_by_id(request,pk):
 
     temp2 = Academic(pk,temp.academic_id, temp.name, temp.surname, temp.appellation,temp.institution, temp.job_title,
                     temp.email,
-                    temp.password, temp.photo, temp.research_gate_link)
+                    temp.password, temp.research_gate_link)
     result = AcademicSerializer(temp2).data
     print(result)
     result = json.dumps(result)
@@ -350,7 +346,7 @@ def get_samples_of_academic(request,pk):
     all_samples = db_manager.get_samples_of_academic(pk)
     samples = []
     for temp in all_samples:
-        temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
+        temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.date, temp.location_latitude,
                     temp.location_longitude,
                     temp.analysis_text, temp.publication_status, temp.anonymous_status, temp.pollens)
         #print(temp2.sample_id)
