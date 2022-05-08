@@ -133,7 +133,6 @@ export default function Map() {
     }
 
 
-
     const handleCallbackForPollens = (childDataPollen) =>{
         setPollenArr(childDataPollen[0])
         setCheckedArr(childDataPollen[1])
@@ -143,6 +142,9 @@ export default function Map() {
         console.log("I am parent2:",checkedArr)
         console.log(markers)
 
+    }
+
+    useEffect(() => {
 
         let sampleObject = new FormData(); // creates a new FormData object
 
@@ -173,7 +175,8 @@ export default function Map() {
                     error.toString();
 
             })
-    }
+
+    },[pollenArr]);
 
 
 
