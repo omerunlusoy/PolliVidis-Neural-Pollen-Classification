@@ -140,9 +140,11 @@ class Database_Manager:
                             "PRIMARY KEY(feedback_id));")
 
     def initialize_pollen_types(self):
-        pollen_type_dict = {}
+        pollen_type_dict = [
+        "ambrosia_artemisiifolia","alnus_glutinosa","acer_negundo","betula_papyrifera","juglans_regia","artemisia_vulgaris","populus_nigra","phleum_phleoides","picea_abies","juniperus_communis","ulmus_minor","quercus_robur","carpinus_betulus","ligustrum_robustrum","rumex_stenophyllus","ailanthus_altissima","thymbra_spicata","rubia_peregrina","olea_europaea","cichorium_intybus","chenopodium_album","borago_officinalis","acacia_dealbata"]
         for pollen in pollen_type_dict:
-            cur_pollen = PollenTypeModel(pollen, pollen_type_dict[pollen])
+            #cur_pollen = PollenTypeModel(pollen, pollen_type_dict[pollen])
+            cur_pollen = PollenTypeModel(pollen, " ")
             self.add_pollen_type(cur_pollen)
 
     def get_academic_from_id(self, academic_id):
@@ -704,4 +706,3 @@ class Database_Manager:
             print("")
         else:
             print("No Feedback Record...")
-
