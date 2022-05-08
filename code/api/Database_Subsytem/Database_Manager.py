@@ -59,6 +59,11 @@ from random import randint
 # print_sample_has_pollen_table()
 # print_feedback_table()
 
+#host="dijkstra.ug.bcc.bilkent.edu.tr",
+#            user="omer.unlusoy",
+#            password="8cWZ7QRc",
+#            database="omer_unlusoy"
+
 class Database_Manager:
 
     def __init__(self, initialize_database=False):
