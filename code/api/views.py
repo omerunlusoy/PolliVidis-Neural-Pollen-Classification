@@ -124,10 +124,11 @@ def analyses_get_by_id(request, pk):
 
 @api_view(['GET'])
 def get_all_samples(request):
-    print("got all samples")
-
+    
+    print("in get all samples")
     # Database_Manager.connect_database()
     all_samples = db_manager.get_all_samples()
+    print("got all samples")
     samples = []
     #print("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU")
     #print("sample id:,",all_samples[0].sample_id)
@@ -142,11 +143,15 @@ def get_all_samples(request):
         #print("temp:",temp.__str__())
         samples.append(temp2)
 
+    print("got all samples")
     #print(samples)
     #test = Sample.objects.all()
     #print(type(test))
     #print(test)
-    result = SampleSerializer(samples, many=True).data
+    if len(result) > 1:
+        result = SampleSerializer(samples, many=True).data
+    else: 
+        result = SampleSerializer(temp2).data
     #result = json.dumps(result)
 
     #print(samples)
