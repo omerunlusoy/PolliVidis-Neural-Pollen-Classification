@@ -185,6 +185,7 @@ def get_samples_by_filter(request):
     if start_date == end_date:
         start_date = None
         end_date = None
+        print("agubugu!!!!!")
     print("pollens",pollens)
     #print(start_date)
     #print(end_date)
@@ -208,6 +209,10 @@ def get_samples_by_filter(request):
                 temp_date = month_dict[temp3[1]] + "-" + temp3[2] + "-" + temp3[3]
                 temp_date = datetime.datetime.strptime(temp_date, '%m-%d-%Y').date()
 
+            if temp.academic_id == 1:
+                #print("tem.sampleid")
+                continue
+            
             c = 0
             if temp.pollens == []:
                 print("boş bu")
@@ -215,6 +220,7 @@ def get_samples_by_filter(request):
             #print("temp:" , temp_date)
             for pollen in pollens:
                 if pollen in temp.pollens:
+                    print("pollen buldu:", pollen)
                     c = 1
                 if c == 1:
                     break
@@ -222,9 +228,7 @@ def get_samples_by_filter(request):
             if c == 0:
                 #print("c == 0")
                 continue
-            if temp.academic_id == 1:
-                #print("tem.sampleid")
-                continue
+            
 
             if start_date != None and end_date != None:
                 #print("if 1")
