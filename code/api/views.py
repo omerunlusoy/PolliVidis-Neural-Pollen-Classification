@@ -217,16 +217,18 @@ def get_samples_by_filter(request):
             if temp.pollens == []:
                 print("boş bu")
                 continue
+            else:
+                print("temp pollens:", temp.pollens)
+                
             #print("temp:" , temp_date)
             for pollen in pollens:
                 if pollen in temp.pollens:
                     print("pollen buldu:", pollen)
                     c = 1
-                if c == 1:
                     break
 
             if c == 0:
-                #print("c == 0")
+                print("c == 0")
                 continue
             
 
@@ -236,8 +238,7 @@ def get_samples_by_filter(request):
                 #print(type(temp.date))
 
                 if temp_date < start_date or temp_date > end_date:
-                    #print("if 2")
-
+                    print("if 2")
                     continue
             
             temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
