@@ -44,7 +44,7 @@ except:
 
 #fb_storage = firebase_storage.
 #bucket = firebase_admin.storage().bucket();
-db_manager = Database_Manager(True)
+db_manager = Database_Manager(False)
 ml_manager = ML_Manager(load_model=True)
 print('! views db created')
 #ml_manager = ML_Manager()
