@@ -129,7 +129,7 @@ def analyses_get_by_id(request, pk):
 @api_view(['GET'])
 def get_all_samples(request):
     print("got all samples")
-    db_manager.initialize_pollen_types()
+
     # Database_Manager.connect_database()
     all_samples = db_manager.get_all_samples()
     samples = []
