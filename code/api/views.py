@@ -219,10 +219,12 @@ def get_samples_by_filter(request):
                 continue
             else:
                 print("temp pollens:", temp.pollens)
-                
+            
             #print("temp:" , temp_date)
-            for pollen in pollens:
-                if pollen in temp.pollens:
+            for pollen in temp.pollens:
+                print("test_pollen",pollen)
+                print(type(pollen))
+                if pollen in pollens:
                     print("pollen buldu:", pollen)
                     c = 1
                     break
