@@ -152,7 +152,7 @@ def get_all_samples(request):
     if len(samples) > 1:
         result = SampleSerializer(samples, many=True).data
     else: 
-        result = SampleSerializer(temp2).data
+        result = SampleSerializer(samples[0]).data
     #result = json.dumps(result)
 
     #print(samples)
