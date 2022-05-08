@@ -148,7 +148,8 @@ def get_all_samples(request):
     #test = Sample.objects.all()
     #print(type(test))
     #print(test)
-    if len(result) > 1:
+    result = 0
+    if len(samples) > 1:
         result = SampleSerializer(samples, many=True).data
     else: 
         result = SampleSerializer(temp2).data
