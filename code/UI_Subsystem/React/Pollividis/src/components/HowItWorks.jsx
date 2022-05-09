@@ -24,7 +24,7 @@ const AboutUs = () => {
                       <Typography style={{marginBottom:10}}variant="h3" component="p">
                           How Pollividis Works
                       </Typography>
-                      <a target="_blank" href="https://www.google.com/" title="example">
+                      <a target="_blank" href="https://github.com/omerunlusoy/PolliVidis-Neural-Pollen-Classification/blob/main/reports/User_Manual.pdf" title="example">
                           <Typography style={{marginBottom:10}} variant="h6" color="textSecondary" component="p">
                               Click here to see user manual!
                           </Typography>

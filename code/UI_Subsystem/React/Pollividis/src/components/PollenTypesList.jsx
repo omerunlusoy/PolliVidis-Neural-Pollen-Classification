@@ -400,6 +400,62 @@ export default function PollenTypes(props) {
 
     };
 
+    const handleSelectAll = () => {
+
+        setChecked1(true);
+        setChecked2(true);
+        setChecked3(true);
+        setChecked4(true);
+        setChecked5(true);
+        setChecked6(true);
+        setChecked7(true);
+        setChecked8(true);
+        setChecked9(true);
+        setChecked10(true);
+        setChecked11(true);
+        setChecked12(true);
+        setChecked13(true);
+        setChecked14(true);
+        setChecked15(true);
+        setChecked16(true);
+        setChecked17(true);
+        setChecked18(true);
+        setChecked19(true);
+        setChecked20(true);
+        setChecked21(true);
+        setChecked22(true);
+        setChecked23(true);
+
+    };
+
+    const handleUnSelectAll = () => {
+
+        setChecked1(false);
+        setChecked2(false);
+        setChecked3(false);
+        setChecked4(false);
+        setChecked5(false);
+        setChecked6(false);
+        setChecked7(false);
+        setChecked8(false);
+        setChecked9(false);
+        setChecked10(false);
+        setChecked11(false);
+        setChecked12(false);
+        setChecked13(false);
+        setChecked14(false);
+        setChecked15(false);
+        setChecked16(false);
+        setChecked17(false);
+        setChecked18(false);
+        setChecked19(false);
+        setChecked20(false);
+        setChecked21(false);
+        setChecked22(false);
+        setChecked23(false);
+
+    };
+
 
 
     return (
@@ -611,6 +667,14 @@ export default function PollenTypes(props) {
                             label={"Acacia Dealbata"}
                             labelPlacement="end"
                         />
+                        <div align={"center"} style={{marginBottom: 10}}>
+                            <Button onClick={handleSelectAll} variant="contained" style={{backgroundColor:'#A6232A', color:'white',marginRight:4}} size="medium" >
+                                Select All
+                            </Button>
+                            <Button onClick={handleUnSelectAll} variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} size="medium" >
+                                Unselect All
+                            </Button>
+                        </div>
                         <div align={"center"}>
                             <Button onClick={handleOk} variant="contained" style={{backgroundColor:'#A6232A', color:'white'}} size="medium" >
                                 Ok

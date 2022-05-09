@@ -30,7 +30,7 @@ const AboutUs = () => {
   return (
       <div>
           <Navbar />
-          <Typography style={{marginBottom:10, marginLeft:35, marginTop:100}}variant="h2" component="p">
+          <Typography style={{marginBottom:10, marginLeft:35, marginTop:100}}variant="h3" component="p">
               About Us
           </Typography>
           <Typography style={{marginBottom:20, marginLeft:35}} variant="h6" color="textSecondary" component="p">
