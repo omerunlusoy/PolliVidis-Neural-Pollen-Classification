@@ -59,6 +59,32 @@ export default function PollenTypes(props) {
     const [markers, setMarkers] = React.useState(props.markers);
 
 
+    const heyu = [
+        'ambrosia_artemisiifolia',
+        'alnus_glutinosa',
+        'acer_negundo',
+        'betula_papyrifera',
+        'juglans_regia',
+        'artemisia_vulgaris',
+        'populus_nigra',
+        'phleum_phleoides',
+        'picea_abies',
+        'juniperus_communis',
+        'ulmus_minor',
+        'quercus_robur',
+        'carpinus_betulus',
+        'ligustrum_robustrum',
+        'rumex_stenophyllus',
+        'ailanthus_altissima',
+        'thymbra_spicata',
+        'rubia_peregrina',
+        'olea_europaea',
+        'cichorium_intybus',
+        'chenopodium_album',
+        'borago_officinalis',
+        'acacia_dealbata'
+    ];
+
 
 
 
@@ -426,6 +452,8 @@ export default function PollenTypes(props) {
         setChecked22(true);
         setChecked23(true);
 
+        setPollenArr(heyu);
+
     };
 
     const handleUnSelectAll = () => {
@@ -453,6 +481,8 @@ export default function PollenTypes(props) {
         setChecked21(false);
         setChecked22(false);
         setChecked23(false);
+
+        setPollenArr([]);
 
     };
 
