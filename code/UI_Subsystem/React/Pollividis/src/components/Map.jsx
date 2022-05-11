@@ -163,12 +163,15 @@ export default function Map() {
             sampleObject.append("startDate", myObject.startDate);
             sampleObject.append("endDate", myObject.endDate);// add your file to form data
 
+            setOpenDLoading(true);
+
 
             axios
                 .post('http://127.0.0.1:8000/api/get_filtered_samples/', sampleObject)
                 .then(response => {
                     console.log(response.data)
                     setMarkers(response.data)
+                    setOpenDLoading(false);
 
                 })
                 .catch(error => {
