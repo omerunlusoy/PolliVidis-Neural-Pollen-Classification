@@ -421,7 +421,7 @@ export default function PollenTypes(props) {
         let callBackArr = [pollenArr,checkedArr,false,markers]
         props.parentCallback(callBackArr);
 
-        console.log(callBackArr)
+        console.log("child :", callBackArr)
 
 
     };
