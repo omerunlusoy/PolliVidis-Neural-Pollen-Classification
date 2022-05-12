@@ -137,16 +137,10 @@ const Profile = () => {
                           Name: {id.name} {id.surname}
                       </Typography>
                       <Typography style={{marginLeft:40, marginTop:15}} variant="h4"  component="p">
-                          Job: {id.job_title}
-                      </Typography>
-                      <Typography style={{marginLeft:40, marginTop:15}} variant="h4"  component="p">
                           E-Mail: {id.email}
                       </Typography>
                       <Typography style={{marginLeft:40, marginTop:15}} variant="h4"  component="p">
                           Institution: {id.institution}
-                      </Typography>
-                      <Typography style={{marginLeft:40, marginTop:15}} variant="h4"  component="p">
-                          Research Gate: {id.research_gate_link}
                       </Typography>
                   </Container>
               </Grid>

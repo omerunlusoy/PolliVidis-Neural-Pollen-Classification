@@ -182,7 +182,7 @@ def get_samples_by_filter(request):
         start_date = None
         end_date = None
         #print("agubugu!!!!!")
-    #print("pollens",pollens)
+    print("pollens",pollens)
     #print(start_date)
     #print(end_date)
 

@@ -135,45 +135,62 @@ export default function Map() {
 
 
     const handleCallbackForPollens = (childDataPollen) =>{
+
+        console.log("child to parent", childDataPollen);
         setPollenArr(childDataPollen[0])
         setCheckedArr(childDataPollen[1])
         setOpenD(childDataPollen[2])
         setMarkers(childDataPollen[3])
-        console.log("I am parent:",pollenArr)
-        console.log("I am parent2:",checkedArr)
-        console.log(markers)
 
-
-        let sampleObject = new FormData(); // creates a new FormData object
-
-        const myObject = {
-            pollens: pollenArr,
-            startDate: startDate,
-            endDate: endDate
-        };
-
-        sampleObject.append("pollens",myObject.pollens);
-        sampleObject.append("startDate", myObject.startDate);
-        sampleObject.append("endDate", myObject.endDate);// add your file to form data
-
-
-        axios
-            .post('http://127.0.0.1:8000/api/get_filtered_samples/', sampleObject)
-            .then(response => {
-                console.log(response.data)
-                setMarkers(response.data)
-
-            })
-            .catch(error => {
-                const resMessage =
-                    (error.response &&
-                        error.response.data &&
-                        error.response.data.message) ||
-                    error.message ||
-                    error.toString();
-
-            })
     }
+
+    const [x, setX] = React.useState(false);
+    useEffect(() => {
+
+        if ( x ){
+            console.log("hey");
+            console.log(pollenArr)
+
+            let sampleObject = new FormData(); // creates a new FormData object
+
+            let myObject = {
+                pollens: pollenArr,
+                startDate: startDate,
+                endDate: endDate
+            };
+
+            sampleObject.append("pollens",myObject.pollens);
+            sampleObject.append("startDate", myObject.startDate);
+            sampleObject.append("endDate", myObject.endDate);// add your file to form data
+
+            setOpenDLoading(true);
+
+
+            axios
+                .post('http://127.0.0.1:8000/api/get_filtered_samples/', sampleObject)
+                .then(response => {
+                    console.log(response.data)
+                    setMarkers(response.data)
+                    setOpenDLoading(false);
+
+                })
+                .catch(error => {
+                    const resMessage =
+                        (error.response &&
+                            error.response.data &&
+                            error.response.data.message) ||
+                        error.message ||
+                        error.toString();
+
+                })
+        }
+        else {
+            console.log("ho");
+            console.log(pollenArr)
+            setX(true)
+        }
+
+        }, [pollenArr]);
 
 
 

@@ -110,7 +110,7 @@ class ML_Manager:
 
         for pollen_name, count in pollens_dict.items():
             pollen_cool_name = pollen_name.replace('_', ' ').capitalize() + ' Description:\n'
-            analysis_text += pollen_cool_name + pollen_descriptions.descriptions.get(pollen_name) + '\n'
+            analysis_text += pollen_cool_name + pollen_descriptions.descriptions.get(pollen_name) + '\n\n'
 
         return analysis_text
 
