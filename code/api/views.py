@@ -87,7 +87,7 @@ def analyses_post(request):
                             request.data['publication_status'], request.data['anonymous_status'], pollens)
 
     result = analyze(result,sampleObj,image,morp)
-
+    print("GOT ID FROM DATABASE", result)
     if result == -1:
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
     return Response(result)
