@@ -7,9 +7,10 @@ class SampleModel:
     # location object type will be compatible with GoogleMaps API
     # publication_status and anonymous_status are booleans
     # pollens is a dictionary {pollen_type: number}
-    def __init__(self, sample_id, academic_id, date, location_latitude, location_longitude, analysis_text, publication_status, anonymous_status, pollens):
+    def __init__(self, sample_id, academic_id, sample_photo, date, location_latitude, location_longitude, analysis_text, publication_status, anonymous_status, pollens):
         self.sample_id = sample_id
         self.academic_id = academic_id
+        self.sample_photo = sample_photo
         self.date = date
         self.location_latitude = location_latitude
         self.location_longitude = location_longitude

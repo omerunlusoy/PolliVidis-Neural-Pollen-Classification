@@ -28,11 +28,11 @@ const Feed = () => {
     useEffect(() => {
         fetch(`http://localhost:8000/api/analysis_get_id/${id}/`)
             .then((data) =>  data.json())
-            .then((data) => setAnalysis(JSON.parse(data)))
+            .then((data) => {setAnalysis(JSON.parse(data));console.log(JSON.parse(data).analysis_text)})
             //.then((data) => console.log(data) )
             .then(()=> getPhoto(id))
 
-        console.log(analysis.analysis_text)
+
     },[]);
 
 
@@ -67,9 +67,9 @@ const Feed = () => {
                       <Typography style={{marginBottom:5}} variant="h5"  component="p">
                           Analysis Text:
                       </Typography>
-                      <pre>
-                          {analysis.analysis_text}
-                      </pre>
+                      <div style={{width:200}}>
+                          <pre>{analysis.analysis_text}</pre>
+                      </div>
                       <img style={{
                           flex: 1,
                           width: '100%',
