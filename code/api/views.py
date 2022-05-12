@@ -76,11 +76,88 @@ def analyses_post(request):
     print("add sample complete")
     #print('django1', result)
 
+    if result == -1:
+        return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
+
+    sampleObj = SampleModel(result, request.data['academic_id'], image, request.data['date'], request.data['location_latitude'], request.data['location_longitude'], pollenText,
+                            request.data['publication_status'], request.data['anonymous_status'], pollens)
+    result = analyze(result,sampleObj)
 
     if result == -1:
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
     return Response(result)
 
+def analyze(photo_id,sample_obj):
+    fileName = 'files/' + str(photo_id)
+    
+    print("analyze init")
+    bucket = storage.bucket()
+    blob = bucket.blob(fileName)
+    fileName2 = "./"+str(photo_id) +"_.jpg"
+    
+    #blob.download_to_filename(fileName2)
+
+    print("img download complete")
+    #sample_image = Image.open(fileName2)
+    sample_image = sample_obj.sample_photo
+    print("img captured")
+    
+    print("ml start")
+    source_img, analysis_text, pollens_dict = ml_manager.analyze_sample(sample_image, location=None, date=None, academic_name=None, morphology_sequence=morp,
+                                                                        test_extraction=False)
+    analysis_text = analysis_text.replace("/n","\n")
+    #analysis_text = "<p>" + analysis_text
+    #analysis_text = analysis_text.replace("\n","</p><p>")
+    #analysis_text = analysis_text[:-3]
+    print("ml finish")
+
+    print("image upload start")
+    fileName2 = str(photo_id) + "_final.jpg"
+    fileName = 'files/' + fileName2
+    blob = bucket.blob(fileName)
+    img = source_img.save(fileName2)
+    blob.upload_from_filename(fileName2)
+    blob.make_public()
+    print("image upload complete")
+
+    smpl = db_manager.get_sample(photo_id)
+    smpl.analysis_text = analysis_text
+    
+    smpl.pollens = pollens_dict
+    print("analysis_text")
+    print(analysis_text)
+    print("sample:")
+    print(smpl)
+    db_manager.update_sample(smpl)
+    print("sample update complete")
+
+    for pollen_name in smpl.pollens:
+        print("pollen_name:", pollen_name)
+        print("photo_id:", photo_id)
+        print("count:",smpl.pollens[pollen_name])
+        db_manager.add_pollen_has(photo_id,pollen_name,smpl.pollens[pollen_name])
+
+    print("sample has pollen update complete")
+    #db_manager.delete_sample(photo_id)
+    #db_manager.add_sample(smpl)
+    return Response(photo_id)
+
+'''
+@api_view(['PUT'])
+def analyze(request):
+
+    print("analyze enter")
+    photo_url = request.data['url']
+    photo_id = request.data['id']
+    morp = request.data['morp']
+    
+'''
+@api_view(['DELETE'])
+def remove_analysis(request,pk):
+    print("irem:",pk)
+    res = db_manager.delete_sample(pk)
+    return Response(res)
+    #print(request)
 
 @api_view(['GET'])
 def analyses_get_by_id(request, pk):
@@ -355,70 +432,5 @@ def get_samples_of_academic(request,pk):
     result = SampleSerializer(samples, many=True).data
     return Response(result)
 
-@api_view(['PUT'])
-def analyze(request):
 
-    print("analyze enter")
-    photo_url = request.data['url']
-    photo_id = request.data['id']
-    morp = request.data['morp']
-    fileName = 'files/' + str(photo_id)
-    
-    print("analyze init")
-    bucket = storage.bucket()
-    blob = bucket.blob(fileName)
-    fileName2 = "./"+str(photo_id) +"_.jpg"
-    
-    blob.download_to_filename(fileName2)
-
-    print("img download complete")
-    sample_image = Image.open(fileName2)
-    print("img captured")
-    
-    print("ml start")
-    source_img, analysis_text, pollens_dict = ml_manager.analyze_sample(sample_image, location=None, date=None, academic_name=None, morphology_sequence=morp,
-                                                                        test_extraction=False)
-    analysis_text = analysis_text.replace("/n","\n")
-    #analysis_text = "<p>" + analysis_text
-    #analysis_text = analysis_text.replace("\n","</p><p>")
-    #analysis_text = analysis_text[:-3]
-    print("ml finish")
-
-    print("image upload start")
-    fileName2 = str(photo_id) + "_final.jpg"
-    fileName = 'files/' + fileName2
-    blob = bucket.blob(fileName)
-    img = source_img.save(fileName2)
-    blob.upload_from_filename(fileName2)
-    blob.make_public()
-    print("image upload complete")
-
-    smpl = db_manager.get_sample(photo_id)
-    smpl.analysis_text = analysis_text
-    
-    smpl.pollens = pollens_dict
-    print("analysis_text")
-    print(analysis_text)
-    print("sample:")
-    print(smpl)
-    db_manager.update_sample(smpl)
-    print("sample update complete")
-
-    for pollen_name in smpl.pollens:
-        print("pollen_name:", pollen_name)
-        print("photo_id:", photo_id)
-        print("count:",smpl.pollens[pollen_name])
-        db_manager.add_pollen_has(photo_id,pollen_name,smpl.pollens[pollen_name])
-        
-    print("sample has pollen update complete")
-    #db_manager.delete_sample(photo_id)
-    #db_manager.add_sample(smpl)
-    return Response(True)
-
-@api_view(['DELETE'])
-def remove_analysis(request,pk):
-    print("irem:",pk)
-    res = db_manager.delete_sample(pk)
-    return Response(res)
-    #print(request)
 
