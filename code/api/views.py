@@ -145,7 +145,7 @@ def analyze(photo_id,sample_obj,image,morp):
     print("sample has pollen update complete")
     #db_manager.delete_sample(photo_id)
     #db_manager.add_sample(smpl)
-    return Response(photo_id)
+    return photo_id
 
 '''
 @api_view(['PUT'])
