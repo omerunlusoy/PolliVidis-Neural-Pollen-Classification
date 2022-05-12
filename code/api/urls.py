@@ -10,7 +10,7 @@ urlpatterns= [
     path('feedback/', add_feedback),
     path('get_academic_by_id/<int:pk>/',get_academic_by_id),
     path('get_samples_of_academic/<int:pk>/',get_samples_of_academic),
-    path('analyze/',analyze),
+    #path('analyze/',analyze),
     path('get_filtered_samples/',get_samples_by_filter),
     path('remove_analysis/<int:pk>/',remove_analysis)
     #path('/analysis/:id',analyses),

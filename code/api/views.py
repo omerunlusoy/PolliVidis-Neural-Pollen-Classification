@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import datetime
 from .local_paths import get_firebase_path
 from api.Database_Subsytem.AcademicModel import AcademicModel
-
+from PIL import Image
 from .models import Sample, Academic
 from .serializers import AcademicSerializer, SampleSerializer,FeedbackSerializer
 
@@ -56,7 +56,7 @@ print('! views ml created')
 def analyses_post(request):
 
     print("here analyses_post")
-    image, pollenText, pollens = request.data['sample_photo'], request.data['analysis_text'], request.data['pollens']
+    image, pollenText, pollens, morp = request.data['sample_photo'], request.data['analysis_text'], request.data['pollens'], request.data['morp']
 
     # django image to PIL Image
     
@@ -66,9 +66,13 @@ def analyses_post(request):
     else:
         image = Image.open(image.temporary_file_path())
     print("image transform end")
+    
+     
+    empty_image = Image.new('RGB', (1, 1))
+
 
     # create Sample Model to upload to the database
-    sampleObj = SampleModel(-1, request.data['academic_id'], image, request.data['date'], request.data['location_latitude'], request.data['location_longitude'], pollenText,
+    sampleObj = SampleModel(-1, request.data['academic_id'], empty_image, request.data['date'], request.data['location_latitude'], request.data['location_longitude'], pollenText,
                             request.data['publication_status'], request.data['anonymous_status'], pollens)
     # query database to upload the sample
     print("adding sample")
@@ -81,13 +85,14 @@ def analyses_post(request):
 
     sampleObj = SampleModel(result, request.data['academic_id'], image, request.data['date'], request.data['location_latitude'], request.data['location_longitude'], pollenText,
                             request.data['publication_status'], request.data['anonymous_status'], pollens)
-    result = analyze(result,sampleObj)
+
+    result = analyze(result,sampleObj,image,morp)
 
     if result == -1:
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
     return Response(result)
 
-def analyze(photo_id,sample_obj):
+def analyze(photo_id,sample_obj,image,morp):
     fileName = 'files/' + str(photo_id)
     
     print("analyze init")
@@ -99,7 +104,7 @@ def analyze(photo_id,sample_obj):
 
     print("img download complete")
     #sample_image = Image.open(fileName2)
-    sample_image = sample_obj.sample_photo
+    sample_image = image
     print("img captured")
     
     print("ml start")
