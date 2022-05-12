@@ -140,7 +140,8 @@ const AnalyzeSample = () => {
             analysis_text:"this is example analysis text",
             publication_status: false,
             anonymous_status:false,
-            pollens: []
+            pollens: [],
+            morp: morp
         }
 
         sampleObject.append("sample_id",myObject.sample_id);
@@ -153,6 +154,7 @@ const AnalyzeSample = () => {
         sampleObject.append("publication_status",myObject.publication_status);
         sampleObject.append("anonymous_status",myObject.anonymous_status);
         sampleObject.append("pollens",myObject.pollens);
+        sampleObject.append("morp",myObject.morp);
 
 
 
@@ -162,7 +164,9 @@ const AnalyzeSample = () => {
                 console.log(response.data)
                 id = response.data
                 console.log(id)
-                uploadImage(selectedImage,response.data)
+                //uploadImage(selectedImage,response.data)
+                setMyId(id)
+                setGoAnalysisPage(true)
 
             })
             .catch(error => {
