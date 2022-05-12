@@ -55,37 +55,26 @@ print('! views ml created')
 @api_view(['POST'])
 def analyses_post(request):
 
-    #print(request.data)
-    #print(request.FILES)
-
     print("here analyses_post")
-    #print(request.data['sample_photo'])
-    
-    # print('! request.data:', request.data)
-    # print('! request.data[sample_photo]:', request.data['sample_photo'])
-    # print("! end of data.")
-
-    # Database_Manager.connect_database()
-    # serializer = SampleSerializer(data=request.data)
     image, pollenText, pollens = request.data['sample_photo'], request.data['analysis_text'], request.data['pollens']
-    # ml_manager.analyze_sample(serializer.data['sample_photo'], "", serializer.data['date'], "John", db_manager)
-
-    # serializer = SampleSerializer(data=request.data)
-    # sampleObj = SampleModel(-1,-1, serializer.data['sample_photo'],serializer.data['location_latitude'],serializer.data['location_longitude'],serializer.data['analysis_text'],serializer.data['publication_status']serializer.data['anonymous_status'],serializer.data['pollens'])
 
     # django image to PIL Image
-
+    
+    print("image to binary data transform start")
     if isinstance(image, django.core.files.uploadedfile.InMemoryUploadedFile):
         image = Image.open(image)
     else:
         image = Image.open(image.temporary_file_path())
+    print("image transform end")
 
     # create Sample Model to upload to the database
     sampleObj = SampleModel(-1, request.data['academic_id'], image, request.data['date'], request.data['location_latitude'], request.data['location_longitude'], pollenText,
                             request.data['publication_status'], request.data['anonymous_status'], pollens)
     # query database to upload the sample
+    print("adding sample")
     result = db_manager.add_sample(sampleObj)
-    print('django1', result)
+    print("add sample complete")
+    #print('django1', result)
 
 
     if result == -1:
@@ -382,9 +371,10 @@ def analyze(request):
     
     blob.download_to_filename(fileName2)
 
-    print("img downlaod complete")
+    print("img download complete")
     sample_image = Image.open(fileName2)
-
+    print("img captured")
+    
     print("ml start")
     source_img, analysis_text, pollens_dict = ml_manager.analyze_sample(sample_image, location=None, date=None, academic_name=None, morphology_sequence=morp,
                                                                         test_extraction=False)
@@ -393,12 +383,15 @@ def analyze(request):
     #analysis_text = analysis_text.replace("\n","</p><p>")
     #analysis_text = analysis_text[:-3]
     print("ml finish")
+
+    print("image upload start")
     fileName2 = str(photo_id) + "_final.jpg"
     fileName = 'files/' + fileName2
     blob = bucket.blob(fileName)
     img = source_img.save(fileName2)
     blob.upload_from_filename(fileName2)
     blob.make_public()
+    print("image upload complete")
 
     smpl = db_manager.get_sample(photo_id)
     smpl.analysis_text = analysis_text
@@ -409,13 +402,15 @@ def analyze(request):
     print("sample:")
     print(smpl)
     db_manager.update_sample(smpl)
+    print("sample update complete")
 
     for pollen_name in smpl.pollens:
         print("pollen_name:", pollen_name)
         print("photo_id:", photo_id)
         print("count:",smpl.pollens[pollen_name])
         db_manager.add_pollen_has(photo_id,pollen_name,smpl.pollens[pollen_name])
-         
+        
+    print("sample has pollen update complete")
     #db_manager.delete_sample(photo_id)
     #db_manager.add_sample(smpl)
     return Response(True)
