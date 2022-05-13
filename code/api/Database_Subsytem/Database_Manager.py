@@ -315,36 +315,6 @@ class Database_Manager:
 
         else:
             return []
-    
-    def get_all_samples_filtered(self):
-        sql = "SELECT * FROM Sample where academic_id != %s"
-        val = ("1")
-        self.cursor.execute(sql,val)
-        results = self.cursor.fetchall()
-
-        if len(results) > 0:
-
-            samples = []
-            for i in range(len(results)):
-
-                pollens = {}
-                # we have found the sample, now lets fetch its pollens from Sample_has_Pollen Table
-                sql = "SELECT * FROM Sample_has_Pollen WHERE sample_id = %s"
-                val = (results[i][0],)
-                self.cursor.execute(sql, val)
-                pollen_results = self.cursor.fetchall()
-
-                for pol in pollen_results:
-                    pollens[pol[1]] = pol[2]
-
-                sample_photo = Image.open(io.BytesIO(results[0][2]))
-                cur_sample = SampleModel(results[i][0], results[i][1], sample_photo, results[i][3], results[i][4], results[i][5], results[i][6], results[i][7], results[i][8], pollens)
-                samples.append(cur_sample)
-
-            return samples
-
-        else:
-            return []
 
     def get_total_sample_num(self):
         sql = "SELECT * FROM Sample"
