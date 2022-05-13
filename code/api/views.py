@@ -202,15 +202,15 @@ def get_all_samples(request):
     
     print("in get all samples")
     # Database_Manager.connect_database()
-    all_samples = db_manager.get_all_samples_filtered()
+    all_samples = db_manager.get_all_samples()
     print("got all samples")
     samples = []
     #print("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU")
     #print("sample id:,",all_samples[0].sample_id)
     #print("sample id:,", all_samples[1].sample_id)
     for temp in all_samples:
-        #if temp.academic_id == 1:
-        #        continue
+        if temp.academic_id == 1:
+                continue
         temp2 = Sample(temp.sample_id,temp.sample_id, temp.academic_id, temp.sample_photo, temp.date, temp.location_latitude,
                     temp.location_longitude,
                     temp.analysis_text, temp.publication_status, temp.anonymous_status, temp.pollens)
@@ -272,7 +272,7 @@ def get_samples_by_filter(request):
         return get_all_samples()
     else:
         # Database_Manager.connect_database()
-        all_samples = db_manager.get_all_samples_filtered()
+        all_samples = db_manager.get_all_samples()
         samples = []
         
         for temp in all_samples:
@@ -287,9 +287,9 @@ def get_samples_by_filter(request):
                 temp_date = month_dict[temp3[1]] + "-" + temp3[2] + "-" + temp3[3]
                 temp_date = datetime.datetime.strptime(temp_date, '%m-%d-%Y').date()
 
-            #if temp.academic_id == 1:
+            if temp.academic_id == 1:
                 #print("tem.sampleid")
-            #    continue
+                continue
             
             c = 0
             if temp.pollens == []:

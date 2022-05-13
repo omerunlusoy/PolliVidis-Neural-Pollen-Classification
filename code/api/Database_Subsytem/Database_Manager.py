@@ -315,7 +315,7 @@ class Database_Manager:
 
         else:
             return []
-    
+    '''
     def get_all_samples_filtered(self):
         sql = "SELECT * FROM Sample where academic_id != %s"
         val = ("1")
@@ -345,7 +345,7 @@ class Database_Manager:
 
         else:
             return []
-
+    '''
     def get_total_sample_num(self):
         sql = "SELECT * FROM Sample"
         self.cursor.execute(sql)
